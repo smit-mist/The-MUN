@@ -34,6 +34,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
               children: [
                 ElevatedButton(
                   onPressed: () {
+                    Navigator.of(context).pushNamed('sign_up');
 
                   },
                   child: Container(

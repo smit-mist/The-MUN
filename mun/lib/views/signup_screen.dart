@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-class LoginScreen extends StatefulWidget {
+class SignUpScreen extends StatefulWidget {
   @override
-  _LoginScreenState createState() => _LoginScreenState();
+  _SignUpScreenState createState() => _SignUpScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
-  String email = "", password = "";
+class _SignUpScreenState extends State<SignUpScreen> {
+  String name, email, password1, password2;
   @override
   Widget build(BuildContext context) {
     double h = MediaQuery.of(context).size.height;
@@ -16,19 +16,20 @@ class _LoginScreenState extends State<LoginScreen> {
         title: Text(' '),
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            Text(
-              'Login',
-              style: Theme.of(context).textTheme.headline6,
-            ),
-            Material(
-              elevation: 20,
-              borderRadius: BorderRadius.circular(20),
-              child: Container(
-                width: w * 0.75,
-                height: h * 0.5,
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Text(
+                'Sign Up',
+                style: Theme.of(context).textTheme.headline6,
+              ),
+              SizedBox(
+                height: h * 0.05,
+              ),
+              Container(
+                width: w * 0.85,
+                height: h * 0.6,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
                   border: Border.all(color: Colors.black),
@@ -38,6 +39,20 @@ class _LoginScreenState extends State<LoginScreen> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
+                      Container(
+                        width: w * 0.6,
+                        child: TextField(
+                          onChanged: (change) {
+                            setState(() {
+                              name = change;
+                            });
+                          },
+                          decoration: InputDecoration(
+                            labelText: 'Name',
+                            prefixIcon: Icon(Icons.account_circle),
+                          ),
+                        ),
+                      ),
                       Container(
                         width: w * 0.6,
                         child: TextField(
@@ -57,7 +72,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         child: TextField(
                           onChanged: (change) {
                             setState(() {
-                              password = change;
+                              password1 = change;
                             });
                           },
                           obscureText: true,
@@ -67,13 +82,28 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                         ),
                       ),
+                      Container(
+                        width: w * 0.6,
+                        child: TextField(
+                          onChanged: (change) {
+                            setState(() {
+                              password2 = change;
+                            });
+                          },
+                          obscureText: true,
+                          decoration: InputDecoration(
+                            labelText: 'Verify Password',
+                            prefixIcon: Icon(Icons.vpn_key_sharp),
+                          ),
+                        ),
+                      ),
                       ElevatedButton(
                         onPressed: () {},
                         child: Container(
                           width: w * 0.45,
                           child: Center(
                             child: Text(
-                              'Login',
+                              'Sign Up',
                             ),
                           ),
                         ),
@@ -82,11 +112,11 @@ class _LoginScreenState extends State<LoginScreen> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text("Don't have an accound?"),
+                            Text("Already have an account?"),
                             TextButton(
-                              child: Text("Sign Up"),
+                              child: Text("Login"),
                               onPressed: () {
-                                Navigator.of(context).pushNamed('sign_up');
+                                Navigator.of(context).pushNamed('login');
                               },
                             ),
                           ],
@@ -96,8 +126,8 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
