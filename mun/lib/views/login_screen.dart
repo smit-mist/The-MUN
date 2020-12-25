@@ -1,12 +1,14 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
   _LoginScreenState createState() => _LoginScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _LoginScreenState extends State<LoginScreen> with TickerProviderStateMixin {
+  bool isLoading = false;
   final _auth = FirebaseAuth.instance;
   String email = "", password = "";
 
@@ -70,34 +72,49 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                         ),
                       ),
-                      ElevatedButton(
-                        onPressed: ()  async{
-                          try {
-                            final user = await  _auth.signInWithEmailAndPassword(
-                                email: email, password: password);
-                            final current = _auth.currentUser;
-                            print(current.email);
-                            print(current.displayName);
-                            if (user != null) {
-                              Navigator.pushNamedAndRemoveUntil(context, 'home', (route) => false);
-                            }
-
-                          } catch (e) {
-                            Scaffold.of(context).showSnackBar(
-                              SnackBar(
-                                content: Text('Something went wrong'),
+                      Column(
+                        children: [
+                          ElevatedButton(
+                            onPressed: () async {
+                              setState(() {
+                                isLoading = true;
+                              });
+                              try {
+                                final user = await _auth.signInWithEmailAndPassword(
+                                    email: email, password: password);
+                                setState(() {
+                                  isLoading = false;
+                                });
+                                if (user != null) {
+                                  Navigator.pushNamedAndRemoveUntil(
+                                      context, 'home', (route) => false);
+                                }
+                              } catch (e) {
+                                Scaffold.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text('Something went wrong'),
+                                  ),
+                                );
+                              }
+                            },
+                            child: Container(
+                              width: w * 0.45,
+                              child: Center(
+                                child: Text(
+                                  'Login',
+                                ),
                               ),
-                            );
-                          }
-                        },
-                        child: Container(
-                          width: w * 0.45,
-                          child: Center(
-                            child: Text(
-                              'Login',
                             ),
                           ),
-                        ),
+                          isLoading
+                              ? SpinKitCircle(
+                                  color: Colors.tealAccent,
+                                  size: 50.0,
+                                  controller: AnimationController(
+                                      vsync: this, duration: const Duration(milliseconds: 1200)),
+                                )
+                              : Column(),
+                        ],
                       ),
                       Center(
                         child: Row(

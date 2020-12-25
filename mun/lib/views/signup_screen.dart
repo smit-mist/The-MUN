@@ -1,12 +1,14 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class SignUpScreen extends StatefulWidget {
   @override
   _SignUpScreenState createState() => _SignUpScreenState();
 }
 
-class _SignUpScreenState extends State<SignUpScreen> {
+class _SignUpScreenState extends State<SignUpScreen> with TickerProviderStateMixin {
+  bool isLoading = false;
   final _auth = FirebaseAuth.instance;
   String name, email, password1, password2;
   @override
@@ -99,30 +101,48 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           ),
                         ),
                       ),
-                      ElevatedButton(
-                        onPressed: () async{
-                          try {
-                            final user = await _auth.createUserWithEmailAndPassword(
-                                email: email, password: password1);
-                            if (user != null) {
-                              Navigator.pushNamedAndRemoveUntil(context, 'home', (route) => false);
-                            }
-                          } catch (e) {
-                            Scaffold.of(context).showSnackBar(
-                              SnackBar(
-                                content: Text('Something went wrong'),
+                      Column(
+                        children: [
+                          ElevatedButton(
+                            onPressed: () async {
+                              setState(() {
+                                isLoading = true;
+                              });
+                              try {
+                                final User user = (await _auth.createUserWithEmailAndPassword(
+                                        email: email, password: password1))
+                                    .user;
+                                setState(() {
+                                  isLoading = false;
+                                });
+                                Navigator.pushNamedAndRemoveUntil(
+                                    context, 'home', (route) => false);
+                              } catch (e) {
+                                Scaffold.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text('Something went wrong'),
+                                  ),
+                                );
+                              }
+                            },
+                            child: Container(
+                              width: w * 0.45,
+                              child: Center(
+                                child: Text(
+                                  'Sign Up',
+                                ),
                               ),
-                            );
-                          }
-                        },
-                        child: Container(
-                          width: w * 0.45,
-                          child: Center(
-                            child: Text(
-                              'Sign Up',
                             ),
                           ),
-                        ),
+                          isLoading
+                              ? SpinKitCircle(
+                                  color: Colors.tealAccent,
+                                  size: 50.0,
+                                  controller: AnimationController(
+                                      vsync: this, duration: const Duration(milliseconds: 1200)),
+                                )
+                              : Column(),
+                        ],
                       ),
                       Center(
                         child: Row(
