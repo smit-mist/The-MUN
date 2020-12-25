@@ -18,7 +18,62 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
           ),
         ),
       ),
-      body: Container(),
+      body: Center(
+        child: Material(
+          elevation: 20,
+          borderRadius: BorderRadius.circular(20),
+          child: Container(
+            width: w * 0.75,
+            height: h * 0.5,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              border: Border.all(color: Colors.black),
+            ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                ElevatedButton(
+                  onPressed: () {
+
+                  },
+                  child: Container(
+                    width: w * 0.45,
+                    child: Center(
+                      child: Text(
+                        'Sign Up',
+                      ),
+                    ),
+                  ),
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.of(context).pushNamed('login');
+                  },
+                  child: Container(
+                    width: w * 0.45,
+                    child: Center(
+                      child: Text(
+                        'Login',
+                      ),
+                    ),
+                  ),
+                ),
+                ElevatedButton(
+                  onPressed: () {},
+                  child: Container(
+                    width: w * 0.45,
+                    child: Center(
+                      child: Text(
+                        'Continue with Google',
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
     );
   }
 }
