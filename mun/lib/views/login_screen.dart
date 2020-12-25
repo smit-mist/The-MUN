@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -6,7 +7,9 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  final _auth = FirebaseAuth.instance;
   String email = "", password = "";
+
   @override
   Widget build(BuildContext context) {
     double h = MediaQuery.of(context).size.height;
@@ -68,7 +71,21 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                       ),
                       ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () async {
+                          try {
+                            final user = await _auth.signInWithEmailAndPassword(
+                                email: email, password: password);
+                            if (user != null) {
+                              Navigator.pushNamedAndRemoveUntil(context, 'home', (route) => false);
+                            }
+                          } catch (e) {
+                            Scaffold.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text('Something went wrong'),
+                              ),
+                            );
+                          }
+                        },
                         child: Container(
                           width: w * 0.45,
                           child: Center(
@@ -82,7 +99,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text("Don't have an accound?"),
+                            Text("Don't have an account?"),
                             TextButton(
                               child: Text("Sign Up"),
                               onPressed: () {
