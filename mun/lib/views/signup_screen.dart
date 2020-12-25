@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class SignUpScreen extends StatefulWidget {
@@ -6,6 +7,7 @@ class SignUpScreen extends StatefulWidget {
 }
 
 class _SignUpScreenState extends State<SignUpScreen> {
+  final _auth = FirebaseAuth.instance;
   String name, email, password1, password2;
   @override
   Widget build(BuildContext context) {
@@ -98,7 +100,21 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         ),
                       ),
                       ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () async {
+                          try {
+                            final user = await _auth.createUserWithEmailAndPassword(
+                                email: email, password: password1);
+                            if (user != null) {
+                              Navigator.pushNamedAndRemoveUntil(context, 'home', (route) => false);
+                            }
+                          } catch (e) {
+                            Scaffold.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text('Something went wrong'),
+                              ),
+                            );
+                          }
+                        },
                         child: Container(
                           width: w * 0.45,
                           child: Center(
