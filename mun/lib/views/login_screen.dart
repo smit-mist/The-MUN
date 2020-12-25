@@ -71,13 +71,17 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                       ),
                       ElevatedButton(
-                        onPressed: () async {
+                        onPressed: ()  async{
                           try {
-                            final user = await _auth.signInWithEmailAndPassword(
+                            final user = await  _auth.signInWithEmailAndPassword(
                                 email: email, password: password);
+                            final current = _auth.currentUser;
+                            print(current.email);
+                            print(current.displayName);
                             if (user != null) {
                               Navigator.pushNamedAndRemoveUntil(context, 'home', (route) => false);
                             }
+
                           } catch (e) {
                             Scaffold.of(context).showSnackBar(
                               SnackBar(

@@ -100,7 +100,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         ),
                       ),
                       ElevatedButton(
-                        onPressed: () async {
+                        onPressed: () async{
                           try {
                             final user = await _auth.createUserWithEmailAndPassword(
                                 email: email, password: password1);
