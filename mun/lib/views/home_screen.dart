@@ -1,7 +1,11 @@
 import 'dart:ui';
+import 'package:mun/views/about_us_screen.dart';
+import 'package:mun/views/events_screen.dart';
+
 import 'contact_us_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'user_profile_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -11,27 +15,15 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   int index = 1;
   List body = [
-    Container(
-      color: Colors.blue,
-      height: 100,
-      width: 100,
-    ),
-    Container(
-      color: Colors.orange,
-      height: 100,
-      width: 100,
-    ),
+    AboutUsScreen(),
+    EventScreen(),
     Container(
       color: Colors.black,
       height: 100,
       width: 100,
     ),
     ContactUs(),
-    Container(
-      color: Colors.red,
-      height: 100,
-      width: 100,
-    ),
+    UserProfileScreen(),
   ];
   final _auth = FirebaseAuth.instance;
   @override
@@ -47,15 +39,6 @@ class _HomeScreenState extends State<HomeScreen> {
             color: Colors.white,
           ),
         ),
-        actions: [
-          IconButton(
-            icon: Icon(Icons.cancel),
-            onPressed: () {
-              _auth.signOut();
-              Navigator.popAndPushNamed(context, 'welcome');
-            },
-          ),
-        ],
       ),
       body: body[index - 1],
       floatingActionButton: FloatingActionButton(
