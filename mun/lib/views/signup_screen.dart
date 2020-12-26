@@ -109,6 +109,7 @@ class _SignUpScreenState extends State<SignUpScreen> with TickerProviderStateMix
                                 isLoading = true;
                               });
                               try {
+                                print('=============> here');
                                 final User user = (await _auth.createUserWithEmailAndPassword(
                                         email: email, password: password1))
                                     .user;
@@ -118,6 +119,8 @@ class _SignUpScreenState extends State<SignUpScreen> with TickerProviderStateMix
                                 Navigator.pushNamedAndRemoveUntil(
                                     context, 'home', (route) => false);
                               } catch (e) {
+                                print('==============>>');
+                                print(e);
                                 Scaffold.of(context).showSnackBar(
                                   SnackBar(
                                     content: Text('Something went wrong'),
