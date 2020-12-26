@@ -1,5 +1,5 @@
 import 'dart:ui';
-
+import 'contact_us_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -26,11 +26,7 @@ class _HomeScreenState extends State<HomeScreen> {
       height: 100,
       width: 100,
     ),
-    Container(
-      color: Colors.green,
-      height: 100,
-      width: 100,
-    ),
+    ContactUs(),
     Container(
       color: Colors.red,
       height: 100,
