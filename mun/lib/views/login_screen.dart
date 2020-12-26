@@ -1,13 +1,12 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
   _LoginScreenState createState() => _LoginScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> with TickerProviderStateMixin {
+class _LoginScreenState extends State<LoginScreen> {
   bool isLoading = false;
   final _auth = FirebaseAuth.instance;
   String email = "", password = "";
@@ -106,14 +105,14 @@ class _LoginScreenState extends State<LoginScreen> with TickerProviderStateMixin
                               ),
                             ),
                           ),
-                          isLoading
-                              ? SpinKitCircle(
-                                  color: Colors.tealAccent,
-                                  size: 50.0,
-                                  controller: AnimationController(
-                                      vsync: this, duration: const Duration(milliseconds: 1200)),
-                                )
-                              : Column(),
+                          Visibility(
+                            child: CircularProgressIndicator(
+                              valueColor: AlwaysStoppedAnimation<Color>(
+                                Color(0xFF2F2D52),
+                              ),
+                            ),
+                            visible: isLoading,
+                          ),
                         ],
                       ),
                       Center(

@@ -1,10 +1,10 @@
 import 'dart:ui';
+
+import 'package:flutter/material.dart';
 import 'package:mun/views/about_us_screen.dart';
 import 'package:mun/views/events_screen.dart';
 
 import 'contact_us_screen.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
 import 'user_profile_screen.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -25,7 +25,6 @@ class _HomeScreenState extends State<HomeScreen> {
     ContactUs(),
     UserProfileScreen(),
   ];
-  final _auth = FirebaseAuth.instance;
   @override
   Widget build(BuildContext context) {
     double h = MediaQuery.of(context).size.height;
