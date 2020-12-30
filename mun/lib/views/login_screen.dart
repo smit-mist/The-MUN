@@ -20,121 +20,123 @@ class _LoginScreenState extends State<LoginScreen> {
         title: Text(' '),
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            Text(
-              'Login',
-              style: Theme.of(context).textTheme.headline6,
-            ),
-            Material(
-              elevation: 20,
-              borderRadius: BorderRadius.circular(20),
-              child: Container(
-                width: w * 0.75,
-                height: h * 0.5,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  border: Border.all(color: Colors.black),
-                ),
-                child: Center(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Container(
-                        width: w * 0.6,
-                        child: TextField(
-                          onChanged: (change) {
-                            setState(() {
-                              email = change;
-                            });
-                          },
-                          decoration: InputDecoration(
-                            labelText: 'Email',
-                            prefixIcon: Icon(Icons.email),
-                          ),
-                        ),
-                      ),
-                      Container(
-                        width: w * 0.6,
-                        child: TextField(
-                          onChanged: (change) {
-                            setState(() {
-                              password = change;
-                            });
-                          },
-                          obscureText: true,
-                          decoration: InputDecoration(
-                            labelText: 'Password',
-                            prefixIcon: Icon(Icons.vpn_key),
-                          ),
-                        ),
-                      ),
-                      Column(
-                        children: [
-                          ElevatedButton(
-                            onPressed: () async {
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Text(
+                'Login',
+                style: Theme.of(context).textTheme.headline6,
+              ),
+              Material(
+                elevation: 20,
+                borderRadius: BorderRadius.circular(20),
+                child: Container(
+                  width: w * 0.75,
+                  height: h * 0.5,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    border: Border.all(color: Colors.black),
+                  ),
+                  child: Center(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Container(
+                          width: w * 0.6,
+                          child: TextField(
+                            onChanged: (change) {
                               setState(() {
-                                isLoading = true;
+                                email = change;
                               });
-                              try {
-                                final user = await _auth.signInWithEmailAndPassword(
-                                    email: email, password: password);
-                                setState(() {
-                                  isLoading = false;
-                                });
-                                if (user != null) {
-                                  Navigator.pushNamedAndRemoveUntil(
-                                      context, 'home', (route) => false);
-                                }
-                              } catch (e) {
-                                Scaffold.of(context).showSnackBar(
-                                  SnackBar(
-                                    content: Text('Something went wrong'),
-                                  ),
-                                );
-                              }
                             },
-                            child: Container(
-                              width: w * 0.45,
-                              child: Center(
-                                child: Text(
-                                  'Login',
+                            decoration: InputDecoration(
+                              labelText: 'Email',
+                              prefixIcon: Icon(Icons.email),
+                            ),
+                          ),
+                        ),
+                        Container(
+                          width: w * 0.6,
+                          child: TextField(
+                            onChanged: (change) {
+                              setState(() {
+                                password = change;
+                              });
+                            },
+                            obscureText: true,
+                            decoration: InputDecoration(
+                              labelText: 'Password',
+                              prefixIcon: Icon(Icons.vpn_key),
+                            ),
+                          ),
+                        ),
+                        Column(
+                          children: [
+                            ElevatedButton(
+                              onPressed: () async {
+                                setState(() {
+                                  isLoading = true;
+                                });
+                                try {
+                                  final user = await _auth.signInWithEmailAndPassword(
+                                      email: email, password: password);
+                                  setState(() {
+                                    isLoading = false;
+                                  });
+                                  if (user != null) {
+                                    Navigator.pushNamedAndRemoveUntil(
+                                        context, 'home', (route) => false);
+                                  }
+                                } catch (e) {
+                                  Scaffold.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Text('Something went wrong'),
+                                    ),
+                                  );
+                                }
+                              },
+                              child: Container(
+                                width: w * 0.45,
+                                child: Center(
+                                  child: Text(
+                                    'Login',
+                                  ),
                                 ),
                               ),
                             ),
-                          ),
-                          Visibility(
-                            child: CircularProgressIndicator(
-                              valueColor: AlwaysStoppedAnimation<Color>(
-                                Color(0xFF2F2D52),
+                            Visibility(
+                              child: CircularProgressIndicator(
+                                valueColor: AlwaysStoppedAnimation<Color>(
+                                  Color(0xFF2F2D52),
+                                ),
                               ),
-                            ),
-                            visible: isLoading,
-                          ),
-                        ],
-                      ),
-                      Center(
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text("Don't have an account?"),
-                            TextButton(
-                              child: Text("Sign Up"),
-                              onPressed: () {
-                                Navigator.of(context).pushNamed('sign_up');
-                              },
+                              visible: isLoading,
                             ),
                           ],
                         ),
-                      )
-                    ],
+                        Center(
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text("Don't have an account?"),
+                              TextButton(
+                                child: Text("Sign Up"),
+                                onPressed: () {
+                                  Navigator.of(context).pushNamed('sign_up');
+                                },
+                              ),
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
                   ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
