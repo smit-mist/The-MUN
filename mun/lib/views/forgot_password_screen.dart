@@ -117,10 +117,11 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                                 height: h * 0.055,
                                 child: ElevatedButton(
                                   onPressed: () async {
+                                    print(email);
                                     setState(() {
-                                      email = "";
                                       isLoading = true;
                                     });
+                                    print(email);
                                     try {
                                       print('=============> here');
                                       await _auth
@@ -129,7 +130,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                                                 showDialog(
                                                   context: context,
                                                   builder:
-                                                      (BuildContext context) {
+                                                      (BuildContext context1) {
                                                     return AlertDialog(
                                                       title: Text(
                                                         'Email sent successfully',
@@ -154,8 +155,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                                                       actions: [
                                                         TextButton(
                                                           onPressed: () {
-                                                            Navigator.pop(
-                                                                context);
+                                                            Navigator.pushNamedAndRemoveUntil(context,'login', (route) => false);
                                                           },
                                                           child: Text(
                                                             'Done',
@@ -164,7 +164,8 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                                                                   'Helvetica',
                                                               fontSize: 16,
                                                               color: Color(
-                                                                  0xff707070),
+                                                                0xff707070,
+                                                              ),
                                                             ),
                                                           ),
                                                         ),
@@ -174,9 +175,12 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                                                 ),
                                               });
                                       setState(() {
+                                          email = "";
+
                                         isLoading = false;
                                       });
                                     } catch (e) {
+                                      print('catch block');
                                       print('==============>>');
                                       print(e);
                                       Scaffold.of(context).showSnackBar(
