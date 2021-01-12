@@ -137,7 +137,8 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                                                         style: TextStyle(
                                                           fontFamily:
                                                               'Helvetica',
-                                                          fontSize: 16,
+                                                          fontSize: 18,
+                                                          fontWeight: FontWeight.bold,
                                                           color:
                                                               Color(0xff707070),
                                                         ),
@@ -163,9 +164,8 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                                                               fontFamily:
                                                                   'Helvetica',
                                                               fontSize: 16,
-                                                              color: Color(
-                                                                0xff707070,
-                                                              ),
+
+                                                              color: Colors.blue,
                                                             ),
                                                           ),
                                                         ),

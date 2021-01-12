@@ -5,6 +5,9 @@ import 'package:mun/views/welcome_screen.dart';
 
 import 'routes.dart';
 
+
+//TODO:Color with hex code...
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();

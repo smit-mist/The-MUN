@@ -240,6 +240,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       child: Center(
                         child: Text(
                           'Sign Up',
+                          style: TextStyle(
+                            fontFamily: 'Helvetic',
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20,
+                          ),
                         ),
                       ),
                     ),
