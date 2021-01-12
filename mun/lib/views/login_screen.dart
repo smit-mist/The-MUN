@@ -133,7 +133,9 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     Spacer(),
                     GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.pushNamed(context, 'forgot_password');
+                      },
                       child: Text(
                         'Forgot password?',
                         style: TextStyle(
@@ -195,7 +197,9 @@ class _LoginScreenState extends State<LoginScreen> {
                   visible: isLoading,
                 ),
               ),
-              SizedBox(height: h*0.05,),
+              SizedBox(
+                height: h * 0.05,
+              ),
               Center(
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -216,7 +220,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                       ),
                       onPressed: () {
-                        Navigator.of(context).pushNamed('sign_up');
+                        Navigator.of(context).pushReplacementNamed('sign_up');
                       },
                     ),
                   ],

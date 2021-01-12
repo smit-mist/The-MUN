@@ -249,7 +249,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
               Center(
                 child: Visibility(
                   child: CircularProgressIndicator(
-                    valueColor: AlwaysStoppedAnimation<Color>(Color(0xFF2F2D52)),
+                    valueColor:
+                        AlwaysStoppedAnimation<Color>(Color(0xFF2F2D52)),
                   ),
                   visible: isLoading,
                 ),
@@ -339,7 +340,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         ),
                       ),
                       onTap: () {
-                        Navigator.of(context).pushNamed('login');
+                        Navigator.of(context).pushReplacementNamed('login');
                       },
                     )
                   ],
