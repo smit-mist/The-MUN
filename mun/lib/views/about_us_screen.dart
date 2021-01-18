@@ -43,11 +43,16 @@ class _AboutUsScreenState extends State<AboutUsScreen> {
           ),
         ),
         actions: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Icon(
-              Icons.search,
-              color: Colors.black,
+          GestureDetector(
+            onTap: (){
+              Navigator.pushNamed(context, 'extra_details');
+            },
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Icon(
+                Icons.search,
+                color: Colors.black,
+              ),
             ),
           ),
           Padding(
