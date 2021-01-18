@@ -233,10 +233,3 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 }
-/*
-Column(
-children: [
-
-
-
-*/

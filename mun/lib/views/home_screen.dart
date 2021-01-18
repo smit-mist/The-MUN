@@ -30,31 +30,18 @@ class _HomeScreenState extends State<HomeScreen> {
     double h = MediaQuery.of(context).size.height;
     double w = MediaQuery.of(context).size.width;
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.blue,
-        title: Text(
-          'The MUN',
-          style: TextStyle(
-            color: Colors.white,
-          ),
-        ),
-      ),
+      // appBar: AppBar(
+      //   backgroundColor: Colors.blue,
+      //   title: Text(
+      //     'The MUN',
+      //     style: TextStyle(
+      //       color: Colors.white,
+      //     ),
+      //   ),
+      // ),
       body: body[index - 1],
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          setState(() {
-            index = 3;
-          });
-        },
-        child: Icon(
-          Icons.add,
-          color: index == 3 ? Colors.white : Colors.grey,
-        ),
-        backgroundColor: index == 3 ? Colors.blue : Colors.white,
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+
       bottomNavigationBar: BottomAppBar(
-        shape: CircularNotchedRectangle(),
         notchMargin: 10,
         child: Container(
           height: h * 0.07,
@@ -71,11 +58,11 @@ class _HomeScreenState extends State<HomeScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Icon(
-                      Icons.info_outline,
+                      Icons.home_outlined,
                       color: index == 1 ? Colors.blue : Colors.grey,
                     ),
                     Text(
-                      "About Us",
+                      "Home",
                       style: TextStyle(
                         color: index == 1 ? Colors.blue : Colors.grey,
                       ),
@@ -93,11 +80,11 @@ class _HomeScreenState extends State<HomeScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Icon(
-                      Icons.calendar_today_outlined,
+                      Icons.shopping_cart_outlined,
                       color: index == 2 ? Colors.blue : Colors.grey,
                     ),
                     Text(
-                      "Events",
+                      "Cart",
                       style: TextStyle(
                         color: index == 2 ? Colors.blue : Colors.grey,
                       ),
@@ -105,9 +92,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ],
                 ),
               ),
-              SizedBox(
-                width: w * 0.05,
-              ),
+
               RawMaterialButton(
                 onPressed: () {
                   setState(() {
@@ -118,11 +103,11 @@ class _HomeScreenState extends State<HomeScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Icon(
-                      Icons.contact_support_outlined,
+                      Icons.card_giftcard_outlined,
                       color: index == 4 ? Colors.blue : Colors.grey,
                     ),
                     Text(
-                      "Contact Us",
+                      "Premium",
                       style: TextStyle(
                         color: index == 4 ? Colors.blue : Colors.grey,
                       ),
@@ -140,7 +125,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Icon(
-                      Icons.account_circle_outlined,
+                      Icons.account_circle_rounded,
                       color: index == 5 ? Colors.blue : Colors.grey,
                     ),
                     Text(

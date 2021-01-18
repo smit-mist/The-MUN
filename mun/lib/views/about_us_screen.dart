@@ -10,57 +10,59 @@ class _AboutUsScreenState extends State<AboutUsScreen> {
   Widget build(BuildContext context) {
     double h = MediaQuery.of(context).size.height;
     double w = MediaQuery.of(context).size.width;
-    return Container(
-      padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
-      height: h,
-      width: w,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            'What is MUN? ',
-            style: Theme.of(context).textTheme.headline6,
+    return Scaffold(
+      appBar: AppBar(
+        toolbarHeight: 60,
+        title: Padding(
+          padding: const EdgeInsets.only(left: 10),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'It All Starts Here!',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 22
+                )
+              ),
+              Text(
+                'City >',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 16
+                )
+              )
+            ],
           ),
-          //  SizedBox(height: 10,),
-          Text(
-            'Some text here',
-            style: Theme.of(context).textTheme.bodyText1,
-          ),
-          //  SizedBox(height: 20,),
-
-          Text(
-            'What we do? ',
-            style: Theme.of(context).textTheme.headline6,
-          ),
-          //  SizedBox(height: 10,),
-
-          Text(
-            'Some text here',
-            style: Theme.of(context).textTheme.bodyText1,
-          ),
-          //   SizedBox(height: 20,),
-          Container(
-            height: h * 0.5,
-            child: PageView(
-              children: [
-                Container(
-                  color: Colors.red,
-                ),
-                Container(
-                  color: Colors.yellow,
-                ),
-                Container(
-                  color: Colors.green,
-                ),
-                Container(
-                  color: Colors.blue,
-                ),
-              ],
+        ),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Icon(
+              Icons.search,
+              color: Colors.black,
             ),
           ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Icon(
+              Icons.notifications,
+              color: Colors.black,
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Icon(
+              Icons.qr_code,
+              color: Colors.black,
+            ),
+          )
         ],
+        backgroundColor: Colors.white,
       ),
+      body: Container(),
     );
   }
 }
