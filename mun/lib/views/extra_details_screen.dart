@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:mun/views/summary_of_booking_screen.dart';
 
 class ExtraDetails extends StatefulWidget {
   @override
@@ -62,7 +63,7 @@ class _ExtraDetailsState extends State<ExtraDetails> {
         ),
       ),
       body: Container(
-        height: h*0.9,
+        height: h * 0.9,
         child: Center(
           child: SingleChildScrollView(
             child: Column(
@@ -146,11 +147,23 @@ class _ExtraDetailsState extends State<ExtraDetails> {
                     ),
                   ),
                 ),
-                SizedBox(height: h*0.25,),
+                SizedBox(
+                  height: h * 0.25,
+                ),
                 Padding(
                   padding: const EdgeInsets.only(bottom: 20.0),
                   child: GestureDetector(
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) => SummaryOfBooking(
+                            dateOfMUN: DateTime.now(),
+                            dob: DateTime.now(),
+                          ),
+                        ),
+                      );
+                    },
                     child: Container(
                       width: w * 0.8,
                       height: h * 0.07,
