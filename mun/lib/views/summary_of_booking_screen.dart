@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:mun/views/receipt_screen.dart';
 
 class SummaryOfBooking extends StatefulWidget {
   String name, email, mobileNo, nameOfCommittee, nameOfMUN, address, city;
-  DateTime dob=DateTime.now(), dateOfMUN=DateTime.now();
+  DateTime dob = DateTime.now(), dateOfMUN = DateTime.now();
   SummaryOfBooking({
     this.name,
     this.email,
@@ -55,7 +56,6 @@ class _SummaryOfBookingState extends State<SummaryOfBooking> {
                   readOnly: true,
                   initialValue: "Smit Mistry",
                   cursorColor: Colors.black,
-
                   decoration: InputDecoration(
                     helperStyle: TextStyle(
                       fontFamily: 'Helvetica',
@@ -63,7 +63,7 @@ class _SummaryOfBookingState extends State<SummaryOfBooking> {
                     ),
                     prefixText: 'Name: ',
                     contentPadding:
-                    EdgeInsets.symmetric(horizontal: 10, vertical: 2),
+                        EdgeInsets.symmetric(horizontal: 10, vertical: 2),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(3),
                       borderSide: BorderSide(
@@ -83,7 +83,6 @@ class _SummaryOfBookingState extends State<SummaryOfBooking> {
                   readOnly: true,
                   initialValue: 'demo@gmail.com',
                   cursorColor: Colors.black,
-
                   decoration: InputDecoration(
                     helperStyle: TextStyle(
                       fontFamily: 'Helvetica',
@@ -91,7 +90,7 @@ class _SummaryOfBookingState extends State<SummaryOfBooking> {
                     ),
                     prefixText: 'Email: ',
                     contentPadding:
-                    EdgeInsets.symmetric(horizontal: 10, vertical: 2),
+                        EdgeInsets.symmetric(horizontal: 10, vertical: 2),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(3),
                       borderSide: BorderSide(
@@ -118,7 +117,7 @@ class _SummaryOfBookingState extends State<SummaryOfBooking> {
                     ),
                     prefixText: 'Date of Birth: ',
                     contentPadding:
-                    EdgeInsets.symmetric(horizontal: 10, vertical: 2),
+                        EdgeInsets.symmetric(horizontal: 10, vertical: 2),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(3),
                       borderSide: BorderSide(
@@ -145,7 +144,7 @@ class _SummaryOfBookingState extends State<SummaryOfBooking> {
                     ),
                     prefixText: 'Mobile No: ',
                     contentPadding:
-                    EdgeInsets.symmetric(horizontal: 10, vertical: 2),
+                        EdgeInsets.symmetric(horizontal: 10, vertical: 2),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(3),
                       borderSide: BorderSide(
@@ -172,7 +171,7 @@ class _SummaryOfBookingState extends State<SummaryOfBooking> {
                     ),
                     prefixText: 'Committee: ',
                     contentPadding:
-                    EdgeInsets.symmetric(horizontal: 10, vertical: 2),
+                        EdgeInsets.symmetric(horizontal: 10, vertical: 2),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(3),
                       borderSide: BorderSide(
@@ -199,7 +198,7 @@ class _SummaryOfBookingState extends State<SummaryOfBooking> {
                     ),
                     prefixText: 'Date of MUN: ',
                     contentPadding:
-                    EdgeInsets.symmetric(horizontal: 10, vertical: 2),
+                        EdgeInsets.symmetric(horizontal: 10, vertical: 2),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(3),
                       borderSide: BorderSide(
@@ -226,7 +225,7 @@ class _SummaryOfBookingState extends State<SummaryOfBooking> {
                     ),
                     prefixText: 'Name of MUN: ',
                     contentPadding:
-                    EdgeInsets.symmetric(horizontal: 10, vertical: 2),
+                        EdgeInsets.symmetric(horizontal: 10, vertical: 2),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(3),
                       borderSide: BorderSide(
@@ -243,11 +242,12 @@ class _SummaryOfBookingState extends State<SummaryOfBooking> {
               Container(
                 width: w * 0.85,
                 child: TextFormField(
-                //  expands: true,
+                  //  expands: true,
                   minLines: 1,
                   maxLines: 5,
                   readOnly: true,
-                  initialValue: "Here comes the address of the MUN if address is too big it will go in next line",
+                  initialValue:
+                      "Here comes the address of the MUN if address is too big it will go in next line",
                   cursorColor: Colors.black,
                   decoration: InputDecoration(
                     helperStyle: TextStyle(
@@ -256,7 +256,7 @@ class _SummaryOfBookingState extends State<SummaryOfBooking> {
                     ),
                     prefixText: 'Address: ',
                     contentPadding:
-                    EdgeInsets.symmetric(horizontal: 10, vertical: 2),
+                        EdgeInsets.symmetric(horizontal: 10, vertical: 2),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(3),
                       borderSide: BorderSide(
@@ -283,7 +283,7 @@ class _SummaryOfBookingState extends State<SummaryOfBooking> {
                     ),
                     prefixText: 'City: ',
                     contentPadding:
-                    EdgeInsets.symmetric(horizontal: 10, vertical: 2),
+                        EdgeInsets.symmetric(horizontal: 10, vertical: 2),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(3),
                       borderSide: BorderSide(
@@ -297,11 +297,20 @@ class _SummaryOfBookingState extends State<SummaryOfBooking> {
                   ),
                 ),
               ),
-              SizedBox(height: h*0.05,),
+              SizedBox(
+                height: h * 0.05,
+              ),
               Padding(
                 padding: const EdgeInsets.only(bottom: 20.0),
                 child: GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => ReceiptScreen(),
+                      ),
+                    );
+                  },
                   child: Container(
                     width: w * 0.8,
                     height: h * 0.07,
