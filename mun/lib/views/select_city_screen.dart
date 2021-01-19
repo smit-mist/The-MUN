@@ -44,7 +44,7 @@ class _SelectCityScreenState extends State<SelectCityScreen> {
           mainAxisSize: MainAxisSize.min,
           children: [
             Container(
-              height: h * 0.01,
+              height: h * 0.2,
               width: w,
               color: Colors.grey[150],
               child: Row(
@@ -55,7 +55,9 @@ class _SelectCityScreenState extends State<SelectCityScreen> {
                     width: w * 0.005,
                   ),
                   TextField(
+
                     decoration: InputDecoration(
+
                       hintText: 'Search for your city',
                       hintStyle: TextStyle(
                         fontFamily: 'Helvetica',
