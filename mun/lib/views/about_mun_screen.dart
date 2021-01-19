@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mun/views/select_committee_screen.dart';
 
 class AboutMunScreen extends StatefulWidget {
   @override
@@ -29,6 +30,7 @@ class _AboutMunScreenState extends State<AboutMunScreen> {
             Text(
               'Name of the MUN',
               style: TextStyle(
+                fontFamily: 'Helvetica',
                 fontSize: 20.0,
                 color: Colors.black,
                 fontWeight: FontWeight.bold,
@@ -37,6 +39,7 @@ class _AboutMunScreenState extends State<AboutMunScreen> {
             Text(
               'Date',
               style: TextStyle(
+                fontFamily: 'Helvetica',
                 fontSize: 15.0,
                 color: Colors.grey,
                 fontWeight: FontWeight.w100,
@@ -70,6 +73,7 @@ class _AboutMunScreenState extends State<AboutMunScreen> {
                 child: Text(
                   'TRAILER',
                   style: TextStyle(
+                    fontFamily: 'Helvetica',
                     fontSize: 20.0,
                     color: Colors.black,
                     fontWeight: FontWeight.bold,
@@ -86,6 +90,7 @@ class _AboutMunScreenState extends State<AboutMunScreen> {
                 child: Text(
                   'Description (A-Z)',
                   style: TextStyle(
+                    fontFamily: 'Helvetica',
                     fontSize: 30.0,
                     color: Colors.black,
                     fontWeight: FontWeight.bold,
@@ -98,10 +103,18 @@ class _AboutMunScreenState extends State<AboutMunScreen> {
               height: 40.0,
               child: Center(
                 child: TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => SelectCommitteeScreen(),
+                      ),
+                    );
+                  },
                   child: Text(
                     'Select Committee',
                     style: TextStyle(
+                      fontFamily: 'Helvetica',
                       fontSize: 20.0,
                       color: Colors.black,
                       fontWeight: FontWeight.bold,

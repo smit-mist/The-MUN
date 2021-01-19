@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:mun/views/about_mun_screen.dart';
+import 'package:mun/views/select_city_screen.dart';
 
 class AboutUsScreen extends StatefulWidget {
   @override
@@ -37,14 +39,26 @@ class _AboutUsScreenState extends State<AboutUsScreen> {
                       color: Colors.black,
                       fontWeight: FontWeight.bold,
                       fontSize: 22)),
-              Text('City >',
-                  style: TextStyle(color: Colors.black, fontSize: 16))
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => SelectCityScreen(),
+                    ),
+                  );
+                },
+                child: Text(
+                  'City >',
+                  style: TextStyle(color: Colors.black, fontSize: 16),
+                ),
+              )
             ],
           ),
         ),
         actions: [
           GestureDetector(
-            onTap: (){
+            onTap: () {
               Navigator.pushNamed(context, 'extra_details');
             },
             child: Padding(
@@ -72,7 +86,7 @@ class _AboutUsScreenState extends State<AboutUsScreen> {
         ],
         backgroundColor: Colors.white,
       ),
-      body:Container(
+      body: Container(
         child: Column(
           children: [
             Container(
@@ -126,8 +140,9 @@ class _AboutUsScreenState extends State<AboutUsScreen> {
                 ],
               ),
             ),
-            SizedBox(height: h*0.02,),
-
+            SizedBox(
+              height: h * 0.02,
+            ),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Row(
@@ -150,25 +165,37 @@ class _AboutUsScreenState extends State<AboutUsScreen> {
                 ],
               ),
             ),
-            SizedBox(height: h*0.02,),
+            SizedBox(
+              height: h * 0.02,
+            ),
             Expanded(
               child: Container(
                 width: w,
                 child: GridView.count(
-                 crossAxisCount: 2,
+                  crossAxisCount: 2,
                   children: List.generate(100, (index) {
-                    return Container(
-                      height: w*0.5,
-                      child: Column(
-                        children: [
-                          Container(
-                            color: Colors.blue,
-                            width: w*0.4,
-                            height: w*0.4,
+                    return GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => AboutMunScreen(),
                           ),
-                          Text('MUN ${index+1}'),
-                          Text('Date of MUN'),
-                        ],
+                        );
+                      },
+                      child: Container(
+                        height: w * 0.5,
+                        child: Column(
+                          children: [
+                            Container(
+                              color: Colors.blue,
+                              width: w * 0.4,
+                              height: w * 0.4,
+                            ),
+                            Text('MUN ${index + 1}'),
+                            Text('Date of MUN'),
+                          ],
+                        ),
                       ),
                     );
                   }),

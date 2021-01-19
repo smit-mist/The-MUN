@@ -29,6 +29,7 @@ class _AboutCommittteeScreenState extends State<AboutCommittteeScreen> {
             Text(
               'Name of the Committee',
               style: TextStyle(
+                fontFamily: 'Helvetica',
                 fontSize: 20.0,
                 color: Colors.black,
                 fontWeight: FontWeight.bold,
@@ -37,6 +38,7 @@ class _AboutCommittteeScreenState extends State<AboutCommittteeScreen> {
             Text(
               'AGENDA',
               style: TextStyle(
+                fontFamily: 'Helvetica',
                 fontSize: 15.0,
                 color: Colors.grey,
                 fontWeight: FontWeight.w100,
@@ -59,6 +61,7 @@ class _AboutCommittteeScreenState extends State<AboutCommittteeScreen> {
                 child: Text(
                   'Trailer of the Committee',
                   style: TextStyle(
+                    fontFamily: 'Helvetica',
                     fontSize: 20.0,
                     color: Colors.black,
                     fontWeight: FontWeight.bold,
@@ -75,6 +78,7 @@ class _AboutCommittteeScreenState extends State<AboutCommittteeScreen> {
                 child: Text(
                   'Description (A-Z)',
                   style: TextStyle(
+                    fontFamily: 'Helvetica',
                     fontSize: 30.0,
                     color: Colors.black,
                     fontWeight: FontWeight.bold,
@@ -91,6 +95,7 @@ class _AboutCommittteeScreenState extends State<AboutCommittteeScreen> {
                   child: Text(
                     'Confirm Committee',
                     style: TextStyle(
+                      fontFamily: 'Helvetica',
                       fontSize: 20.0,
                       color: Colors.black,
                       fontWeight: FontWeight.bold,
