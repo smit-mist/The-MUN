@@ -26,6 +26,7 @@ class _SelectCityScreenState extends State<SelectCityScreen> {
     double w = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.white,
         centerTitle: true,
         title: Text(
           'Pick A Region',
@@ -38,32 +39,25 @@ class _SelectCityScreenState extends State<SelectCityScreen> {
         ),
       ),
       body: Container(
+        padding: EdgeInsets.only(top: 16.0),
         height: h,
         width: w,
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
             Container(
-              height: h * 0.01,
+              height: h * 0.08,
               width: w,
               color: Colors.grey[150],
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  IconButton(icon: Icon(Icons.search), onPressed: () {}),
-                  SizedBox(
-                    width: w * 0.005,
+              child: TextField(
+                decoration: InputDecoration(
+                  prefixIcon: Icon(Icons.search),
+                  hintText: 'Search for your city',
+                  hintStyle: TextStyle(
+                    fontFamily: 'Helvetica',
+                    color: Colors.black,
                   ),
-                  TextField(
-                    decoration: InputDecoration(
-                      hintText: 'Search for your city',
-                      hintStyle: TextStyle(
-                        fontFamily: 'Helvetica',
-                        color: Colors.black,
-                      ),
-                    ),
-                  ),
-                ],
+                ),
               ),
             ),
             SizedBox(
