@@ -8,8 +8,7 @@ class ExtraDetails extends StatefulWidget {
 
 class _ExtraDetailsState extends State<ExtraDetails> {
   final _auth = FirebaseAuth.instance;
-  String email = "",name = "";
-
+  String email = "", name = "";
 
   DateTime selectedDate = DateTime.now();
   Future<void> _selectDate(BuildContext context) async {
@@ -23,6 +22,7 @@ class _ExtraDetailsState extends State<ExtraDetails> {
         selectedDate = picked;
       });
   }
+
   @override
   void initState() {
     // TODO: implement initState
@@ -31,8 +31,8 @@ class _ExtraDetailsState extends State<ExtraDetails> {
     print(email);
     print(name);
     super.initState();
-
   }
+
   @override
   Widget build(BuildContext context) {
     double h = MediaQuery.of(context).size.height;
@@ -62,105 +62,109 @@ class _ExtraDetailsState extends State<ExtraDetails> {
         ),
       ),
       body: Container(
+        height: h*0.9,
         child: Center(
-          child: Column(
-            children: [
-              SizedBox(
-                height: h * 0.05,
-              ),
-              Container(
-                width: w * 0.8,
-                child: TextField(
-                  onChanged: (change) {
-                    setState(() {
-                      name = change;
-                    });
-                  },
-                  decoration: InputDecoration(
-                    labelText: 'Name',
-                    border: OutlineInputBorder(
-                      borderSide: BorderSide(),
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                SizedBox(
+                  height: h * 0.05,
+                ),
+                Container(
+                  width: w * 0.8,
+                  child: TextFormField(
+                    initialValue: name,
+                    onChanged: (change) {
+                      setState(() {
+                        name = change;
+                      });
+                    },
+                    decoration: InputDecoration(
+                      labelText: 'Name',
+                      border: OutlineInputBorder(
+                        borderSide: BorderSide(),
+                      ),
+                      prefixIcon: Icon(Icons.account_circle),
                     ),
-                    prefixIcon: Icon(Icons.account_circle),
                   ),
                 ),
-              ),
-              SizedBox(
-                height: h * 0.05,
-              ),
-              Container(
-                width: w * 0.8,
-                child: TextField(
-
-                  onChanged: (change) {
-                    setState(() {
-                      email = change;
-                    });
-                  },
-                  decoration: InputDecoration(
-                    labelText: 'Email',
-                    border: OutlineInputBorder(
-                      borderSide: BorderSide(),
+                SizedBox(
+                  height: h * 0.05,
+                ),
+                Container(
+                  width: w * 0.8,
+                  child: TextFormField(
+                    initialValue: email,
+                    onChanged: (change) {
+                      setState(() {
+                        email = change;
+                      });
+                    },
+                    decoration: InputDecoration(
+                      labelText: 'Email',
+                      border: OutlineInputBorder(
+                        borderSide: BorderSide(),
+                      ),
+                      prefixIcon: Icon(Icons.email_outlined),
                     ),
-                    prefixIcon: Icon(Icons.email_outlined),
                   ),
                 ),
-              ),
-              SizedBox(
-                height: h * 0.05,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Text("${selectedDate.toLocal()}".split(' ')[0]),
-                  SizedBox(
-                    width: 30.0,
-                  ),
-                  RaisedButton(
-                    onPressed: () => _selectDate(context),
-                    child: Text('Select date'),
-                  ),
-                ],
-              ),
-              SizedBox(
-                height: h * 0.05,
-              ),
-              Container(
-                width: w * 0.8,
-                child: TextField(
-                  onChanged: (change) {
-                    setState(() {
-                      //password = change;
-                    });
-                  },
-                  keyboardType: TextInputType.number,
-                  decoration: InputDecoration(
-                    labelText: 'Mobile Number',
-                    border: OutlineInputBorder(
-                      borderSide: BorderSide(),
+                SizedBox(
+                  height: h * 0.05,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Text("${selectedDate.toLocal()}".split(' ')[0]),
+                    SizedBox(
+                      width: 30.0,
                     ),
-                    prefixIcon: Icon(Icons.phone),
+                    RaisedButton(
+                      onPressed: () => _selectDate(context),
+                      child: Text('Select date'),
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: h * 0.05,
+                ),
+                Container(
+                  width: w * 0.8,
+                  child: TextField(
+                    onChanged: (change) {
+                      setState(() {
+                        //password = change;
+                      });
+                    },
+                    keyboardType: TextInputType.number,
+                    decoration: InputDecoration(
+                      labelText: 'Mobile Number',
+                      border: OutlineInputBorder(
+                        borderSide: BorderSide(),
+                      ),
+                      prefixIcon: Icon(Icons.phone),
+                    ),
                   ),
                 ),
-              ),
-              Spacer(),
-              Padding(
-                padding: const EdgeInsets.only(bottom:20.0),
-                child: GestureDetector(
-                  onTap: () {},
-                  child: Container(
-                    width: w * 0.8,
-                    height: h * 0.07,
-                    child: Center(
-                        child: Text(
-                      'Proceed',
-                      style: Theme.of(context).textTheme.headline6,
-                    )),
-                    color: Colors.grey.shade400,
+                SizedBox(height: h*0.25,),
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 20.0),
+                  child: GestureDetector(
+                    onTap: () {},
+                    child: Container(
+                      width: w * 0.8,
+                      height: h * 0.07,
+                      child: Center(
+                          child: Text(
+                        'Proceed',
+                        style: Theme.of(context).textTheme.headline6,
+                      )),
+                      color: Colors.grey.shade400,
+                    ),
                   ),
-                ),
-              )
-            ],
+                )
+              ],
+            ),
           ),
         ),
       ),
