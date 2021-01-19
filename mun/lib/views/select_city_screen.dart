@@ -52,11 +52,23 @@ class _SelectCityScreenState extends State<SelectCityScreen> {
               child: TextField(
                 decoration: InputDecoration(
                   prefixIcon: Icon(Icons.search),
-                  hintText: 'Search for your city',
                   hintStyle: TextStyle(
                     fontFamily: 'Helvetica',
-                    color: Colors.black,
+                    fontSize: 18,
                   ),
+                  hintText: 'Search for your city',
+                  contentPadding:
+                      EdgeInsets.symmetric(horizontal: 10, vertical: 2),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(3),
+                    borderSide: BorderSide(
+                      width: 0,
+                      style: BorderStyle.none,
+                    ),
+                  ),
+                  filled: true,
+                  fillColor: Colors.grey.withOpacity(0.25),
+                  focusColor: Colors.grey,
                 ),
               ),
             ),

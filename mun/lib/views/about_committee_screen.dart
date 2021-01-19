@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mun/views/extra_details_screen.dart';
 
 class AboutCommittteeScreen extends StatefulWidget {
   @override
@@ -91,7 +92,14 @@ class _AboutCommittteeScreenState extends State<AboutCommittteeScreen> {
               height: 40.0,
               child: Center(
                 child: TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ExtraDetails(),
+                      ),
+                    );
+                  },
                   child: Text(
                     'Confirm Committee',
                     style: TextStyle(

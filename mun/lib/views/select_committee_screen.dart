@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mun/views/extra_details_screen.dart';
+import 'about_committee_screen.dart';
 
 class SelectCommitteeScreen extends StatefulWidget {
   @override
@@ -73,7 +73,7 @@ class _SelectCommitteeScreenState extends State<SelectCommitteeScreen> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => ExtraDetails(),
+                    builder: (context) => AboutCommittteeScreen(),
                   ),
                 );
               },
