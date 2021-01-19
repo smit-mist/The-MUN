@@ -9,7 +9,7 @@ class ExtraDetails extends StatefulWidget {
 
 class _ExtraDetailsState extends State<ExtraDetails> {
   final _auth = FirebaseAuth.instance;
-  String email = "", name = "";
+  String email = "", name = "",mobileNo="";
 
   DateTime selectedDate = DateTime.now();
   Future<void> _selectDate(BuildContext context) async {
@@ -72,20 +72,33 @@ class _ExtraDetailsState extends State<ExtraDetails> {
                   height: h * 0.05,
                 ),
                 Container(
-                  width: w * 0.8,
+                  width: w * 0.85,
                   child: TextFormField(
-                    initialValue: name,
+                    initialValue: name??'',
+                    cursorColor: Colors.black,
                     onChanged: (change) {
                       setState(() {
                         name = change;
                       });
                     },
                     decoration: InputDecoration(
-                      labelText: 'Name',
-                      border: OutlineInputBorder(
-                        borderSide: BorderSide(),
+                      hintStyle: TextStyle(
+                        fontFamily: 'Helvetica',
+                        fontSize: 18,
                       ),
-                      prefixIcon: Icon(Icons.account_circle),
+                      hintText: 'Name',
+                      contentPadding:
+                      EdgeInsets.symmetric(horizontal: 10, vertical: 2),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(3),
+                        borderSide: BorderSide(
+                          width: 0,
+                          style: BorderStyle.none,
+                        ),
+                      ),
+                      filled: true,
+                      fillColor: Colors.grey.withOpacity(0.25),
+                      focusColor: Colors.grey,
                     ),
                   ),
                 ),
@@ -93,57 +106,106 @@ class _ExtraDetailsState extends State<ExtraDetails> {
                   height: h * 0.05,
                 ),
                 Container(
-                  width: w * 0.8,
+                  width: w * 0.85,
                   child: TextFormField(
-                    initialValue: email,
+                    initialValue: email??'',
+                    cursorColor: Colors.black,
                     onChanged: (change) {
                       setState(() {
                         email = change;
                       });
                     },
                     decoration: InputDecoration(
-                      labelText: 'Email',
-                      border: OutlineInputBorder(
-                        borderSide: BorderSide(),
+                      hintStyle: TextStyle(
+                        fontFamily: 'Helvetica',
+                        fontSize: 18,
                       ),
-                      prefixIcon: Icon(Icons.email_outlined),
+                      hintText: 'Email',
+                      contentPadding:
+                      EdgeInsets.symmetric(horizontal: 10, vertical: 2),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(3),
+                        borderSide: BorderSide(
+                          width: 0,
+                          style: BorderStyle.none,
+                        ),
+                      ),
+                      filled: true,
+                      fillColor: Colors.grey.withOpacity(0.25),
+                      focusColor: Colors.grey,
                     ),
                   ),
                 ),
                 SizedBox(
                   height: h * 0.05,
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Text("${selectedDate.toLocal()}".split(' ')[0]),
-                    SizedBox(
-                      width: 30.0,
+                Container(
+                  width: w * 0.85,
+                  child: TextFormField(
+                    cursorHeight: 0,
+
+                    cursorWidth: 0,
+                    onTap: () => _selectDate(context),
+                    initialValue: "DOB:-"+ "${selectedDate.toLocal()}".split(' ')[0],
+                    cursorColor: Colors.black,
+                    decoration: InputDecoration(
+                      suffixIcon: IconButton(
+                        icon: Icon(
+                          Icons.date_range,
+                          color: Colors.black,
+                        ),
+                        onPressed: () => _selectDate(context),
+                      ),
+                      hintStyle: TextStyle(
+                        fontFamily: 'Helvetica',
+                        fontSize: 18,
+                      ),
+                      hintText: 'Date',
+                      contentPadding:
+                          EdgeInsets.symmetric(horizontal: 10, vertical: 2),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(3),
+                        borderSide: BorderSide(
+                          width: 0,
+                          style: BorderStyle.none,
+                        ),
+                      ),
+                      filled: true,
+                      fillColor: Colors.grey.withOpacity(0.25),
+                      focusColor: Colors.grey,
                     ),
-                    RaisedButton(
-                      onPressed: () => _selectDate(context),
-                      child: Text('Select date'),
-                    ),
-                  ],
+                  ),
                 ),
                 SizedBox(
                   height: h * 0.05,
                 ),
                 Container(
-                  width: w * 0.8,
+                  width: w * 0.85,
                   child: TextField(
+                    cursorColor: Colors.black,
                     onChanged: (change) {
                       setState(() {
-                        //password = change;
+                        mobileNo = change;
                       });
                     },
-                    keyboardType: TextInputType.number,
                     decoration: InputDecoration(
-                      labelText: 'Mobile Number',
-                      border: OutlineInputBorder(
-                        borderSide: BorderSide(),
+                      hintStyle: TextStyle(
+                        fontFamily: 'Helvetica',
+                        fontSize: 18,
                       ),
-                      prefixIcon: Icon(Icons.phone),
+                      hintText: 'Mobile No',
+                      contentPadding:
+                          EdgeInsets.symmetric(horizontal: 10, vertical: 2),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(3),
+                        borderSide: BorderSide(
+                          width: 0,
+                          style: BorderStyle.none,
+                        ),
+                      ),
+                      filled: true,
+                      fillColor: Colors.grey.withOpacity(0.25),
+                      focusColor: Colors.grey,
                     ),
                   ),
                 ),

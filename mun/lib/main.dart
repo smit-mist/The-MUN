@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'The MUN',
-      initialRoute: isUserLoggedIn() ? 'home' : 'welcome',
+      initialRoute: isUserLoggedIn() ? 'home' : 'login',
       routes: route_generator,
       theme: ThemeData(
         primarySwatch: Colors.blue,
