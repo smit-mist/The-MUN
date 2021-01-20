@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mun/views/select_committee_screen.dart';
+import 'package:share/share.dart';
 
 class AboutMunScreen extends StatefulWidget {
   @override
@@ -54,7 +55,9 @@ class _AboutMunScreenState extends State<AboutMunScreen> {
               icon: Icon(
                 Icons.share,
               ),
-              onPressed: () {},
+              onPressed: () {
+                Share.share('Hey check this out');
+              },
             ),
           ),
         ],
