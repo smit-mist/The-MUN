@@ -50,14 +50,15 @@ class _AboutCommittteeScreenState extends State<AboutCommittteeScreen> {
       ),
       body: Container(
         padding: EdgeInsets.only(top: 40.0),
-        color: Colors.grey[200],
+        color: Colors.white,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Container(
               margin: EdgeInsets.symmetric(horizontal: 12.0),
               width: w,
-              height: 80.0,
+              color: Colors.grey[200],
+              height: 200.0,
               child: Center(
                 child: Text(
                   'Trailer of the Committee',
@@ -71,8 +72,7 @@ class _AboutCommittteeScreenState extends State<AboutCommittteeScreen> {
               ),
             ),
             Container(
-              color: Colors.white,
-              margin: EdgeInsets.symmetric(horizontal: 12.0),
+              margin: EdgeInsets.symmetric(horizontal: 10.0),
               width: w,
               height: 350.0,
               child: Center(
@@ -87,26 +87,28 @@ class _AboutCommittteeScreenState extends State<AboutCommittteeScreen> {
                 ),
               ),
             ),
-            Container(
-              color: Colors.grey[200],
-              height: 40.0,
-              child: Center(
-                child: TextButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => ExtraDetails(),
+            Expanded(
+              child: Container(
+                color: Colors.grey[200],
+                height: 80.0,
+                child: Center(
+                  child: TextButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ExtraDetails(),
+                        ),
+                      );
+                    },
+                    child: Text(
+                      'Confirm Committee',
+                      style: TextStyle(
+                        fontFamily: 'Helvetica',
+                        fontSize: 20.0,
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
                       ),
-                    );
-                  },
-                  child: Text(
-                    'Confirm Committee',
-                    style: TextStyle(
-                      fontFamily: 'Helvetica',
-                      fontSize: 20.0,
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),
