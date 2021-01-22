@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:mun/views/elements/textstyles.dart';
+import 'all_mun_screen.dart';
 import 'file:///C:/Users/smit3/AndroidStudioProjects/The-MUN/mun/lib/views/booking_mun/about_mun_screen.dart';
 import 'package:mun/views/Home/select_city_screen.dart';
 
@@ -34,11 +36,10 @@ class _AboutUsScreenState extends State<AboutUsScreen> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text('It All Starts Here!',
-                  style: TextStyle(
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 22)),
+              Text(
+                'It All Starts Here!',
+                style: boldHeading,
+              ),
               GestureDetector(
                 onTap: () {
                   Navigator.push(
@@ -57,16 +58,11 @@ class _AboutUsScreenState extends State<AboutUsScreen> {
           ),
         ),
         actions: [
-          GestureDetector(
-            onTap: () {
-              Navigator.pushNamed(context, 'extra_details');
-            },
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Icon(
-                Icons.search,
-                color: Colors.black,
-              ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Icon(
+              Icons.search,
+              color: Colors.black,
             ),
           ),
           Padding(
@@ -90,7 +86,7 @@ class _AboutUsScreenState extends State<AboutUsScreen> {
         child: Column(
           children: [
             Container(
-              height: h * 0.2,
+              height: h * 0.3,
               width: w,
               child: Stack(
                 children: [
@@ -109,7 +105,7 @@ class _AboutUsScreenState extends State<AboutUsScreen> {
                     ],
                   ),
                   Positioned(
-                    top: h * 0.07,
+                    top: h * 0.13,
                     child: IconButton(
                       icon: Icon(Icons.arrow_back_ios),
                       onPressed: () {
@@ -123,7 +119,7 @@ class _AboutUsScreenState extends State<AboutUsScreen> {
                     ),
                   ),
                   Positioned(
-                    top: h * 0.07,
+                    top: h * 0.13,
                     right: 0,
                     child: IconButton(
                       icon: Icon(Icons.arrow_forward_ios),
@@ -141,7 +137,7 @@ class _AboutUsScreenState extends State<AboutUsScreen> {
               ),
             ),
             SizedBox(
-              height: h * 0.02,
+              height: h * 0.06,
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
@@ -150,56 +146,64 @@ class _AboutUsScreenState extends State<AboutUsScreen> {
                 children: [
                   Text(
                     'MUNs In Your Region:',
-                    style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold),
+                    style: boldHeading,
                   ),
-                  Text(
-                    'See all >',
-                    style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 20,
-                        fontWeight: FontWeight.w400),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) => AllMun(),
+                        ),
+                      );
+                    },
+                    child: Text(
+                      'See all >',
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 20,
+                          fontWeight: FontWeight.w400),
+                    ),
                   ),
                 ],
               ),
             ),
             SizedBox(
-              height: h * 0.02,
+              height: h * 0.06,
             ),
-            Expanded(
-              child: Container(
-                width: w,
-                child: GridView.count(
-                  crossAxisCount: 2,
-                  children: List.generate(100, (index) {
-                    return GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => AboutMunScreen(),
-                          ),
-                        );
-                      },
-                      child: Container(
-                        height: w * 0.5,
-                        child: Column(
-                          children: [
-                            Container(
-                              color: Colors.blue,
-                              width: w * 0.4,
-                              height: w * 0.4,
-                            ),
-                            Text('MUN ${index + 1}'),
-                            Text('Date of MUN'),
-                          ],
+            Container(
+              width: w,
+              height: h * 0.3,
+              child: ListView.builder(
+                itemCount: 50,
+                scrollDirection: Axis.horizontal,
+                itemBuilder: (BuildContext context, int index) {
+                  return GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => AboutMunScreen(),
                         ),
+                      );
+                    },
+                    child: Container(
+                      padding: EdgeInsets.symmetric(horizontal: 10),
+                      height: w * 0.6,
+                      width: w * 0.4,
+                      child: Column(
+                        children: [
+                          Container(
+                            color: Colors.blue,
+                            height: w * 0.5,
+                          ),
+                          Text('MUN ${index + 1}'),
+                          Text('Date of MUN'),
+                        ],
                       ),
-                    );
-                  }),
-                ),
+                    ),
+                  );
+                },
               ),
             )
           ],

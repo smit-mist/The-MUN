@@ -30,17 +30,7 @@ class _HomeScreenState extends State<HomeScreen> {
     double h = MediaQuery.of(context).size.height;
     double w = MediaQuery.of(context).size.width;
     return Scaffold(
-      // appBar: AppBar(
-      //   backgroundColor: Colors.blue,
-      //   title: Text(
-      //     'The MUN',
-      //     style: TextStyle(
-      //       color: Colors.white,
-      //     ),
-      //   ),
-      // ),
       body: body[index - 1],
-
       bottomNavigationBar: BottomAppBar(
         notchMargin: 10,
         child: Container(
@@ -92,7 +82,6 @@ class _HomeScreenState extends State<HomeScreen> {
                   ],
                 ),
               ),
-
               RawMaterialButton(
                 onPressed: () {
                   setState(() {

@@ -42,20 +42,7 @@ class _SelectCommitteeScreenState extends State<SelectCommitteeScreen> {
             fontWeight: FontWeight.bold,
           ),
         ),
-        actions: [
-          Container(
-            padding: EdgeInsets.only(right: 4.0),
-            child: GestureDetector(
-              onTap: () {},
-              child: Center(
-                child: Text(
-                  'See all >',
-                  style: TextStyle(color: Colors.black),
-                ),
-              ),
-            ),
-          ),
-        ],
+
       ),
       body: Container(
         padding: EdgeInsets.only(top: 24.0),
