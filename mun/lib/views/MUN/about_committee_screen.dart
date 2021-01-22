@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:mun/views/select_committee_screen.dart';
-import 'package:share/share.dart';
+import 'package:mun/views/Booking%20MUN/extra_details_screen.dart';
 
-class AboutMunScreen extends StatefulWidget {
+class AboutCommittteeScreen extends StatefulWidget {
   @override
-  _AboutMunScreenState createState() => _AboutMunScreenState();
+  _AboutCommittteeScreenState createState() => _AboutCommittteeScreenState();
 }
 
-class _AboutMunScreenState extends State<AboutMunScreen> {
+class _AboutCommittteeScreenState extends State<AboutCommittteeScreen> {
   @override
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width;
@@ -29,7 +28,7 @@ class _AboutMunScreenState extends State<AboutMunScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Name of the MUN',
+              'Name of the Committee',
               style: TextStyle(
                 fontFamily: 'Helvetica',
                 fontSize: 20.0,
@@ -38,7 +37,7 @@ class _AboutMunScreenState extends State<AboutMunScreen> {
               ),
             ),
             Text(
-              'Date',
+              'AGENDA',
               style: TextStyle(
                 fontFamily: 'Helvetica',
                 fontSize: 15.0,
@@ -48,34 +47,21 @@ class _AboutMunScreenState extends State<AboutMunScreen> {
             ),
           ],
         ),
-        actions: [
-          Container(
-            padding: EdgeInsets.only(right: 4.0),
-            child: IconButton(
-              icon: Icon(
-                Icons.share,
-              ),
-              onPressed: () {
-                Share.share('Hey check this out');
-              },
-            ),
-          ),
-        ],
       ),
       body: Container(
+        padding: EdgeInsets.only(top: 40.0),
         color: Colors.white,
-        padding: EdgeInsets.only(top: 30.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Container(
-              color: Colors.grey[200],
               margin: EdgeInsets.symmetric(horizontal: 12.0),
               width: w,
+              color: Colors.grey[200],
               height: 200.0,
               child: Center(
                 child: Text(
-                  'TRAILER',
+                  'Trailer of the Committee',
                   style: TextStyle(
                     fontFamily: 'Helvetica',
                     fontSize: 20.0,
@@ -111,12 +97,12 @@ class _AboutMunScreenState extends State<AboutMunScreen> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => SelectCommitteeScreen(),
+                          builder: (context) => ExtraDetails(),
                         ),
                       );
                     },
                     child: Text(
-                      'Select Committee',
+                      'Confirm Committee',
                       style: TextStyle(
                         fontFamily: 'Helvetica',
                         fontSize: 20.0,

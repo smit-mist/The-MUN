@@ -1,8 +1,8 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:mun/views/about_us_screen.dart';
-import 'package:mun/views/events_screen.dart';
+import 'package:mun/views/Home/about_us_screen.dart';
+import 'package:mun/views/Home/events_screen.dart';
 
 import 'contact_us_screen.dart';
 import 'user_profile_screen.dart';

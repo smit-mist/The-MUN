@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mun/views/about_mun_screen.dart';
-import 'package:mun/views/select_city_screen.dart';
+import 'package:mun/views/MUN/about_mun_screen.dart';
+import 'package:mun/views/Home/select_city_screen.dart';
 
 class AboutUsScreen extends StatefulWidget {
   @override

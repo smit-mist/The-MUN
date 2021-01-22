@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:mun/views/extra_details_screen.dart';
+import 'package:mun/views/MUN/select_committee_screen.dart';
+import 'package:share/share.dart';
 
-class AboutCommittteeScreen extends StatefulWidget {
+class AboutMunScreen extends StatefulWidget {
   @override
-  _AboutCommittteeScreenState createState() => _AboutCommittteeScreenState();
+  _AboutMunScreenState createState() => _AboutMunScreenState();
 }
 
-class _AboutCommittteeScreenState extends State<AboutCommittteeScreen> {
+class _AboutMunScreenState extends State<AboutMunScreen> {
   @override
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width;
@@ -28,7 +29,7 @@ class _AboutCommittteeScreenState extends State<AboutCommittteeScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Name of the Committee',
+              'Name of the MUN',
               style: TextStyle(
                 fontFamily: 'Helvetica',
                 fontSize: 20.0,
@@ -37,7 +38,7 @@ class _AboutCommittteeScreenState extends State<AboutCommittteeScreen> {
               ),
             ),
             Text(
-              'AGENDA',
+              'Date',
               style: TextStyle(
                 fontFamily: 'Helvetica',
                 fontSize: 15.0,
@@ -47,21 +48,34 @@ class _AboutCommittteeScreenState extends State<AboutCommittteeScreen> {
             ),
           ],
         ),
+        actions: [
+          Container(
+            padding: EdgeInsets.only(right: 4.0),
+            child: IconButton(
+              icon: Icon(
+                Icons.share,
+              ),
+              onPressed: () {
+                Share.share('Hey check this out');
+              },
+            ),
+          ),
+        ],
       ),
       body: Container(
-        padding: EdgeInsets.only(top: 40.0),
         color: Colors.white,
+        padding: EdgeInsets.only(top: 30.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Container(
+              color: Colors.grey[200],
               margin: EdgeInsets.symmetric(horizontal: 12.0),
               width: w,
-              color: Colors.grey[200],
               height: 200.0,
               child: Center(
                 child: Text(
-                  'Trailer of the Committee',
+                  'TRAILER',
                   style: TextStyle(
                     fontFamily: 'Helvetica',
                     fontSize: 20.0,
@@ -97,12 +111,12 @@ class _AboutCommittteeScreenState extends State<AboutCommittteeScreen> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => ExtraDetails(),
+                          builder: (context) => SelectCommitteeScreen(),
                         ),
                       );
                     },
                     child: Text(
-                      'Confirm Committee',
+                      'Select Committee',
                       style: TextStyle(
                         fontFamily: 'Helvetica',
                         fontSize: 20.0,
