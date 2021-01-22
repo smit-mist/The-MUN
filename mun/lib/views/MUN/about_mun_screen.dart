@@ -101,33 +101,32 @@ class _AboutMunScreenState extends State<AboutMunScreen> {
                 ),
               ),
             ),
-            Expanded(
-              child: Container(
-                color: Colors.grey[200],
-                height: 80.0,
-                child: Center(
-                  child: TextButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => SelectCommitteeScreen(),
-                        ),
-                      );
-                    },
-                    child: Text(
-                      'Select Committee',
-                      style: TextStyle(
-                        fontFamily: 'Helvetica',
-                        fontSize: 20.0,
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
+            Container(
+              color: Colors.grey[200],
+              height: 80.0,
+              child: Center(
+                child: TextButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => SelectCommitteeScreen(),
                       ),
+                    );
+                  },
+                  child: Text(
+                    'Select Committee',
+                    style: TextStyle(
+                      fontFamily: 'Helvetica',
+                      fontSize: 20.0,
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),
               ),
             ),
+         //   SizedBox(height: 10,),
           ],
         ),
       ),

@@ -87,28 +87,26 @@ class _AboutCommittteeScreenState extends State<AboutCommittteeScreen> {
                 ),
               ),
             ),
-            Expanded(
-              child: Container(
-                color: Colors.grey[200],
-                height: 80.0,
-                child: Center(
-                  child: TextButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => ExtraDetails(),
-                        ),
-                      );
-                    },
-                    child: Text(
-                      'Confirm Committee',
-                      style: TextStyle(
-                        fontFamily: 'Helvetica',
-                        fontSize: 20.0,
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
+            Container(
+              color: Colors.grey[200],
+              height: 80.0,
+              child: Center(
+                child: TextButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ExtraDetails(),
                       ),
+                    );
+                  },
+                  child: Text(
+                    'Confirm Committee',
+                    style: TextStyle(
+                      fontFamily: 'Helvetica',
+                      fontSize: 20.0,
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),
