@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mun/views/Booking%20MUN/extra_details_screen.dart';
+import 'package:mun/views/booking_mun/extra_details_screen.dart';
 
 class AboutCommittteeScreen extends StatefulWidget {
   @override

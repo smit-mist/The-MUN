@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mun/views/MUN/about_mun_screen.dart';
+import 'file:///C:/Users/smit3/AndroidStudioProjects/The-MUN/mun/lib/views/booking_mun/about_mun_screen.dart';
 import 'package:mun/views/Home/select_city_screen.dart';
 
 class AboutUsScreen extends StatefulWidget {

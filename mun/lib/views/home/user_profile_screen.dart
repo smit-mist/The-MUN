@@ -20,7 +20,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
         child: ElevatedButton(
           onPressed: (){
             _auth.signOut();
-            Navigator.popAndPushNamed(context, 'welcome');
+            Navigator.popAndPushNamed(context, 'login');
           },
           child: Text('Logout'),
         ),

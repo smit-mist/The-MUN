@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mun/views/MUN/select_committee_screen.dart';
+import 'file:///C:/Users/smit3/AndroidStudioProjects/The-MUN/mun/lib/views/booking_mun/select_committee_screen.dart';
 import 'package:share/share.dart';
 
 class AboutMunScreen extends StatefulWidget {

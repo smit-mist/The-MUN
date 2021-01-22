@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mun/views/Booking%20MUN/receipt_screen.dart';
+import 'package:mun/views/booking_mun/receipt_screen.dart';
 
 class SummaryOfBooking extends StatefulWidget {
   String name, email, mobileNo, nameOfCommittee, nameOfMUN, address, city;

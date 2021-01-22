@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:mun/views/Booking%20MUN/summary_of_booking_screen.dart';
+import 'package:mun/views/booking_mun/summary_of_booking_screen.dart';
 
 class ExtraDetails extends StatefulWidget {
   @override
