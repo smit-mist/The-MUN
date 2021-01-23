@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:mun/views/elements/textstyles.dart';
 
 class ForgotPassword extends StatefulWidget {
   @override
@@ -38,10 +39,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                 padding: EdgeInsets.only(left: w * 0.075),
                 child: Text(
                   'Password Assistance',
-                  style: TextStyle(
-                    fontSize: 28,
-                    fontFamily: 'Helvetica',
-                  ),
+                  style:simple(28),
                 ),
               ),
               SizedBox(
@@ -57,20 +55,14 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                     children: [
                       Text(
                         'Enter the email address associated with your',
-                        style: TextStyle(
-                          fontFamily: 'Helvetica',
-                          fontSize: 15,
-                        ),
+                        style:simple(15),
                       ),
                       SizedBox(
                         height: h * 0.0075,
                       ),
                       Text(
                         'BookMyMUN account.',
-                        style: TextStyle(
-                          fontFamily: 'Helvetica',
-                          fontSize: 15,
-                        ),
+                        style: simple(15),
                       ),
                       SizedBox(
                         height: h * 0.03,
@@ -82,11 +74,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                           });
                         },
                         decoration: InputDecoration(
-                          hintStyle: TextStyle(
-                            fontFamily: 'Helvetica',
-                            fontSize: 16,
-                            color: Color(0xff707070),
-                          ),
+                          hintStyle: simple(16),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(3),
                             borderSide: BorderSide(
@@ -195,11 +183,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                                     child: Center(
                                       child: Text(
                                         'Continue',
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                          fontFamily: 'Helvetica',
-                                          fontWeight: FontWeight.bold,
-                                        ),
+                                        style: boldHeading.copyWith(color: Colors.white,),
                                       ),
                                     ),
                                   ),
@@ -217,10 +201,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                           alignment: Alignment.centerRight,
                           child: Text(
                             'Back',
-                            style: TextStyle(
-                              fontFamily: 'Helvetica',
-                              fontSize: 18,
-                            ),
+                            style: simple(18),
                           ),
                         ),
                       ),

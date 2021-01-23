@@ -29,7 +29,7 @@ class _AboutUsScreenState extends State<AboutUsScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        toolbarHeight: 60,
+        toolbarHeight: h*0.07,
         title: Padding(
           padding: const EdgeInsets.only(left: 10),
           child: Column(
@@ -51,7 +51,7 @@ class _AboutUsScreenState extends State<AboutUsScreen> {
                 },
                 child: Text(
                   'City >',
-                  style: TextStyle(color: Colors.black, fontSize: 16),
+                  style:simple(16),
                 ),
               )
             ],
@@ -159,10 +159,7 @@ class _AboutUsScreenState extends State<AboutUsScreen> {
                     },
                     child: Text(
                       'See all >',
-                      style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 20,
-                          fontWeight: FontWeight.w400),
+                      style: simple(20),
                     ),
                   ),
                 ],
@@ -197,8 +194,11 @@ class _AboutUsScreenState extends State<AboutUsScreen> {
                             color: Colors.blue,
                             height: w * 0.5,
                           ),
-                          Text('MUN ${index + 1}'),
-                          Text('Date of MUN'),
+                          SizedBox(height: 7,),
+                          Text('MUN ${index + 1}',style:simple(16)),
+                          SizedBox(height: 7,),
+
+                          Text('DD/MM/YYYY',style:simple(14)),
                         ],
                       ),
                     ),

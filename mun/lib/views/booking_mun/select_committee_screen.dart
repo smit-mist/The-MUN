@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mun/views/elements/textstyles.dart';
 import 'about_committee_screen.dart';
 
 class SelectCommitteeScreen extends StatefulWidget {
@@ -37,10 +38,7 @@ class _SelectCommitteeScreenState extends State<SelectCommitteeScreen> {
         ),
         title: Text(
           'Committees',
-          style: TextStyle(
-            color: Colors.black,
-            fontWeight: FontWeight.bold,
-          ),
+          style: boldHeading,
         ),
 
       ),
@@ -69,9 +67,7 @@ class _SelectCommitteeScreenState extends State<SelectCommitteeScreen> {
                 child: Center(
                   child: Text(
                     committeeNames[index],
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                    ),
+                    style: boldHeading,
                   ),
                 ),
               ),

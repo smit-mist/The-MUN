@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:mun/views/elements/textstyles.dart';
 
 class SignUpScreen extends StatefulWidget {
   @override
@@ -38,10 +39,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 padding: EdgeInsets.only(left: w * 0.075),
                 child: Text(
                   'Create account',
-                  style: TextStyle(
-                    fontSize: 28,
-                    fontFamily: 'Helvetica',
-                  ),
+                  style: simple(28),
                 ),
               ),
               SizedBox(
@@ -64,10 +62,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               });
                             },
                             decoration: InputDecoration(
-                              hintStyle: TextStyle(
-                                fontFamily: 'Helvetica',
-                                fontSize: 18,
-                              ),
+                              hintStyle: simple(18),
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(3),
                                 borderSide: BorderSide(
@@ -94,10 +89,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               });
                             },
                             decoration: InputDecoration(
-                              hintStyle: TextStyle(
-                                fontFamily: 'Helvetica',
-                                fontSize: 18,
-                              ),
+                              hintStyle:simple(18),
                               hintText: 'Your email address',
                               contentPadding: EdgeInsets.symmetric(
                                   horizontal: 10, vertical: 2),
@@ -125,10 +117,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             },
                             obscureText: isVisible ? false : true,
                             decoration: InputDecoration(
-                              hintStyle: TextStyle(
-                                fontFamily: 'Helvetica',
-                                fontSize: 18,
-                              ),
+                              hintStyle:simple(18),
                               hintText: 'Create Password',
                               contentPadding: EdgeInsets.symmetric(
                                   horizontal: 10, vertical: 2),
@@ -155,10 +144,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             },
                             obscureText: isVisible ? false : true,
                             decoration: InputDecoration(
-                              hintStyle: TextStyle(
-                                fontFamily: 'Helvetica',
-                                fontSize: 18,
-                              ),
+                              hintStyle:simple(18),
                               hintText: 'Confirm Password',
                               contentPadding: EdgeInsets.symmetric(
                                   horizontal: 10, vertical: 2),
@@ -200,7 +186,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     ),
                     Text(
                       'Show Password',
-                      style: TextStyle(fontFamily: 'Helvetica', fontSize: 14),
+                      style: simple(14),
                     ),
                   ],
                 ),
@@ -240,11 +226,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       child: Center(
                         child: Text(
                           'Sign Up',
-                          style: TextStyle(
-                            fontFamily: 'Helvetic',
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20,
-                          ),
+                          style: boldHeading.copyWith(color: Colors.white,),
                         ),
                       ),
                     ),
@@ -285,34 +267,24 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         children: [
                           Text(
                             "By creating account or logging in, you agree to BookMyMUN's ",
-                            style: TextStyle(
-                                fontFamily: 'Helvetica', fontSize: 12),
+                            style: simple(12),
                           ),
                           GestureDetector(
                             onTap: () {},
                             child: Text(
                               'Conditions of Use ',
-                              style: TextStyle(
-                                fontFamily: 'Helvetica',
-                                fontSize: 12,
-                                color: Colors.blue,
-                              ),
+                              style: simple(12).copyWith(color:Colors.blue,),
                             ),
                           ),
                           Text(
                             'and',
-                            style: TextStyle(
-                                fontFamily: 'Helvetica', fontSize: 12),
+                            style: simple(12),
                           ),
                           GestureDetector(
                             onTap: () {},
                             child: Text(
                               ' Privacy Policy',
-                              style: TextStyle(
-                                fontFamily: 'Helvetica',
-                                fontSize: 12,
-                                color: Colors.blue,
-                              ),
+                              style: simple(12).copyWith(color:Colors.blue,),
                             ),
                           ),
                         ],

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mun/views/elements/textstyles.dart';
 import 'file:///C:/Users/smit3/AndroidStudioProjects/The-MUN/mun/lib/views/booking_mun/select_committee_screen.dart';
 import 'package:share/share.dart';
 
@@ -30,21 +31,11 @@ class _AboutMunScreenState extends State<AboutMunScreen> {
           children: [
             Text(
               'Name of the MUN',
-              style: TextStyle(
-                fontFamily: 'Helvetica',
-                fontSize: 20.0,
-                color: Colors.black,
-                fontWeight: FontWeight.bold,
-              ),
+              style: boldHeading,
             ),
             Text(
               'Date',
-              style: TextStyle(
-                fontFamily: 'Helvetica',
-                fontSize: 15.0,
-                color: Colors.grey,
-                fontWeight: FontWeight.w100,
-              ),
+              style: simple(15),
             ),
           ],
         ),
@@ -76,28 +67,18 @@ class _AboutMunScreenState extends State<AboutMunScreen> {
               child: Center(
                 child: Text(
                   'TRAILER',
-                  style: TextStyle(
-                    fontFamily: 'Helvetica',
-                    fontSize: 20.0,
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                  ),
+                  style:boldHeading,
                 ),
               ),
             ),
             Container(
               margin: EdgeInsets.symmetric(horizontal: 10.0),
               width: w,
-              height: 350.0,
+              height: h*0.2,
               child: Center(
                 child: Text(
                   'Description (A-Z)',
-                  style: TextStyle(
-                    fontFamily: 'Helvetica',
-                    fontSize: 30.0,
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                  ),
+                  style:boldHeading,
                 ),
               ),
             ),
@@ -116,12 +97,7 @@ class _AboutMunScreenState extends State<AboutMunScreen> {
                   },
                   child: Text(
                     'Select Committee',
-                    style: TextStyle(
-                      fontFamily: 'Helvetica',
-                      fontSize: 20.0,
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold,
-                    ),
+                    style:boldHeading,
                   ),
                 ),
               ),

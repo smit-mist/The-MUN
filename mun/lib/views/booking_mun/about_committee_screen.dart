@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mun/views/booking_mun/extra_details_screen.dart';
+import 'package:mun/views/elements/textstyles.dart';
 
 class AboutCommittteeScreen extends StatefulWidget {
   @override
@@ -29,12 +30,7 @@ class _AboutCommittteeScreenState extends State<AboutCommittteeScreen> {
           children: [
             Text(
               'Name of the Committee',
-              style: TextStyle(
-                fontFamily: 'Helvetica',
-                fontSize: 20.0,
-                color: Colors.black,
-                fontWeight: FontWeight.bold,
-              ),
+              style: boldHeading,
             ),
             Text(
               'AGENDA',
@@ -62,12 +58,7 @@ class _AboutCommittteeScreenState extends State<AboutCommittteeScreen> {
               child: Center(
                 child: Text(
                   'Trailer of the Committee',
-                  style: TextStyle(
-                    fontFamily: 'Helvetica',
-                    fontSize: 20.0,
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                  ),
+                  style:boldHeading,
                 ),
               ),
             ),
@@ -78,12 +69,7 @@ class _AboutCommittteeScreenState extends State<AboutCommittteeScreen> {
               child: Center(
                 child: Text(
                   'Description (A-Z)',
-                  style: TextStyle(
-                    fontFamily: 'Helvetica',
-                    fontSize: 30.0,
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                  ),
+                  style:boldHeading,
                 ),
               ),
             ),
@@ -102,12 +88,7 @@ class _AboutCommittteeScreenState extends State<AboutCommittteeScreen> {
                   },
                   child: Text(
                     'Confirm Committee',
-                    style: TextStyle(
-                      fontFamily: 'Helvetica',
-                      fontSize: 20.0,
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold,
-                    ),
+                    style:boldHeading,
                   ),
                 ),
               ),

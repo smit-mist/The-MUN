@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:mun/views/booking_mun/summary_of_booking_screen.dart';
+import 'package:mun/views/elements/textstyles.dart';
 
 class ExtraDetails extends StatefulWidget {
   @override
@@ -55,11 +56,7 @@ class _ExtraDetailsState extends State<ExtraDetails> {
         ),
         title: Text(
           'Fill Your Details',
-          style: TextStyle(
-            color: Colors.black,
-            fontWeight: FontWeight.bold,
-            fontSize: 22,
-          ),
+          style: boldHeading,
         ),
       ),
       body: Container(
@@ -74,7 +71,7 @@ class _ExtraDetailsState extends State<ExtraDetails> {
                 Container(
                   width: w * 0.85,
                   child: TextFormField(
-                    initialValue: name??'',
+                    initialValue: '',
                     cursorColor: Colors.black,
                     onChanged: (change) {
                       setState(() {
@@ -108,7 +105,7 @@ class _ExtraDetailsState extends State<ExtraDetails> {
                 Container(
                   width: w * 0.85,
                   child: TextFormField(
-                    initialValue: email??'',
+                    initialValue: '',
                     cursorColor: Colors.black,
                     onChanged: (change) {
                       setState(() {
@@ -232,7 +229,7 @@ class _ExtraDetailsState extends State<ExtraDetails> {
                       child: Center(
                           child: Text(
                         'Proceed',
-                        style: Theme.of(context).textTheme.headline6,
+                        style: boldHeading,
                       )),
                       color: Colors.grey.shade400,
                     ),

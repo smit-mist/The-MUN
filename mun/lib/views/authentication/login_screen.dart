@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:mun/views/elements/textstyles.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -51,10 +52,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           });
                         },
                         decoration: InputDecoration(
-                          hintStyle: TextStyle(
-                            fontFamily: 'Helvetica',
-                            fontSize: 18,
-                          ),
+                          hintStyle: simple(18),
                           hintText: 'Email',
                           contentPadding:
                               EdgeInsets.symmetric(horizontal: 10, vertical: 2),
@@ -82,10 +80,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         },
                         obscureText: isVisible ? false : true,
                         decoration: InputDecoration(
-                          hintStyle: TextStyle(
-                            fontFamily: 'Helvetica',
-                            fontSize: 18,
-                          ),
+                          hintStyle:simple(18),
                           hintText: 'Password',
                           contentPadding:
                               EdgeInsets.symmetric(horizontal: 10, vertical: 2),
@@ -128,7 +123,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       padding: const EdgeInsets.only(top: 18),
                       child: Text(
                         'Show Password',
-                        style: TextStyle(fontFamily: 'Helvetica', fontSize: 14),
+                        style: simple(14),
                       ),
                     ),
                     Spacer(),
@@ -138,10 +133,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       },
                       child: Text(
                         'Forgot password?',
-                        style: TextStyle(
-                          fontFamily: 'Helvetica',
-                          color: Colors.blue,
-                        ),
+                        style:simple(14).copyWith(color: Colors.blue),
                       ),
                     )
                   ],
@@ -178,10 +170,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     child: Center(
                       child: Text(
                         'Log In',
-                        style: TextStyle(
-                            fontFamily: 'Helvetica',
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold),
+                        style: boldHeading.copyWith(color: Colors.white),
                       ),
                     ),
                   ),
@@ -206,18 +195,12 @@ class _LoginScreenState extends State<LoginScreen> {
                   children: [
                     Text(
                       "Don't have an account?",
-                      style: TextStyle(
-                        fontFamily: 'Helvetica',
-                        fontSize: 18,
-                      ),
+                      style: simple(18),
                     ),
                     TextButton(
                       child: Text(
                         "Sign Up",
-                        style: TextStyle(
-                          fontFamily: 'Helvetica',
-                          fontSize: 18,
-                        ),
+                        style: simple(18).copyWith(color:Colors.blue,),
                       ),
                       onPressed: () {
                         Navigator.of(context).pushReplacementNamed('sign_up');

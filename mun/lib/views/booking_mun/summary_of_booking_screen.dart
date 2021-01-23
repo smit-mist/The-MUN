@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mun/views/booking_mun/receipt_screen.dart';
+import 'package:mun/views/elements/textstyles.dart';
 
 class SummaryOfBooking extends StatefulWidget {
   String name, email, mobileNo, nameOfCommittee, nameOfMUN, address, city;
@@ -38,10 +39,7 @@ class _SummaryOfBookingState extends State<SummaryOfBooking> {
         ),
         title: Text(
           'Summary of your booking',
-          style: TextStyle(
-            color: Colors.black,
-            fontSize: 20,
-          ),
+          style: boldHeading,
         ),
       ),
       body: Container(
@@ -317,7 +315,7 @@ class _SummaryOfBookingState extends State<SummaryOfBooking> {
                     child: Center(
                         child: Text(
                       'Proceed to Pay',
-                      style: Theme.of(context).textTheme.headline6,
+                      style: boldHeading,
                     )),
                     color: Colors.grey.shade400,
                   ),
