@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:mun/views/booking_mun/summary_of_booking_screen.dart';
 import 'package:mun/views/elements/textstyles.dart';
+import 'package:mun/views/elements/widgets.dart';
 
 class ExtraDetails extends StatefulWidget {
   @override
@@ -78,25 +79,7 @@ class _ExtraDetailsState extends State<ExtraDetails> {
                         name = change;
                       });
                     },
-                    decoration: InputDecoration(
-                      hintStyle: TextStyle(
-                        fontFamily: 'Helvetica',
-                        fontSize: 18,
-                      ),
-                      hintText: 'Name',
-                      contentPadding:
-                      EdgeInsets.symmetric(horizontal: 10, vertical: 2),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(3),
-                        borderSide: BorderSide(
-                          width: 0,
-                          style: BorderStyle.none,
-                        ),
-                      ),
-                      filled: true,
-                      fillColor: Colors.grey.withOpacity(0.25),
-                      focusColor: Colors.grey,
-                    ),
+                    decoration: textFieldDecoration('Name'),
                   ),
                 ),
                 SizedBox(
@@ -112,25 +95,7 @@ class _ExtraDetailsState extends State<ExtraDetails> {
                         email = change;
                       });
                     },
-                    decoration: InputDecoration(
-                      hintStyle: TextStyle(
-                        fontFamily: 'Helvetica',
-                        fontSize: 18,
-                      ),
-                      hintText: 'Email',
-                      contentPadding:
-                      EdgeInsets.symmetric(horizontal: 10, vertical: 2),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(3),
-                        borderSide: BorderSide(
-                          width: 0,
-                          style: BorderStyle.none,
-                        ),
-                      ),
-                      filled: true,
-                      fillColor: Colors.grey.withOpacity(0.25),
-                      focusColor: Colors.grey,
-                    ),
+                    decoration: textFieldDecoration('Email'),
                   ),
                 ),
                 SizedBox(
@@ -185,25 +150,7 @@ class _ExtraDetailsState extends State<ExtraDetails> {
                         mobileNo = change;
                       });
                     },
-                    decoration: InputDecoration(
-                      hintStyle: TextStyle(
-                        fontFamily: 'Helvetica',
-                        fontSize: 18,
-                      ),
-                      hintText: 'Mobile No',
-                      contentPadding:
-                          EdgeInsets.symmetric(horizontal: 10, vertical: 2),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(3),
-                        borderSide: BorderSide(
-                          width: 0,
-                          style: BorderStyle.none,
-                        ),
-                      ),
-                      filled: true,
-                      fillColor: Colors.grey.withOpacity(0.25),
-                      focusColor: Colors.grey,
-                    ),
+                    decoration: textFieldDecoration('Mobile No'),
                   ),
                 ),
                 SizedBox(

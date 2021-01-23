@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:mun/views/elements/textstyles.dart';
+import 'package:mun/views/elements/widgets.dart';
 
 class SignUpScreen extends StatefulWidget {
   @override
@@ -11,6 +12,31 @@ class _SignUpScreenState extends State<SignUpScreen> {
   bool isLoading = false, isVisible = false, isAccepted = false;
   final _auth = FirebaseAuth.instance;
   String name, email, password1, password2;
+
+  void signMeUp() async {
+    setState(() {
+      isLoading = true;
+    });
+    try {
+      print('=============> here');
+      final User user = (await _auth.createUserWithEmailAndPassword(
+              email: email, password: password1))
+          .user;
+      setState(() {
+        isLoading = false;
+      });
+      Navigator.pushNamedAndRemoveUntil(context, 'home', (route) => false);
+    } catch (e) {
+      print('==============>>');
+      print(e);
+      Scaffold.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Something went wrong'),
+        ),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     double h = MediaQuery.of(context).size.height;
@@ -61,22 +87,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                 name = change;
                               });
                             },
-                            decoration: InputDecoration(
-                              hintStyle: simple(18),
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(3),
-                                borderSide: BorderSide(
-                                  width: 0,
-                                  style: BorderStyle.none,
-                                ),
-                              ),
-                              hintText: 'Name',
-                              contentPadding: EdgeInsets.symmetric(
-                                  horizontal: 10, vertical: 2),
-                              filled: true,
-                              fillColor: Colors.grey.withOpacity(0.25),
-                              focusColor: Colors.grey,
-                            ),
+                            decoration: textFieldDecoration('Name'),
                             cursorColor: Colors.black,
                           ),
                         ),
@@ -88,22 +99,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                 email = change;
                               });
                             },
-                            decoration: InputDecoration(
-                              hintStyle:simple(18),
-                              hintText: 'Your email address',
-                              contentPadding: EdgeInsets.symmetric(
-                                  horizontal: 10, vertical: 2),
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(3),
-                                borderSide: BorderSide(
-                                  width: 0,
-                                  style: BorderStyle.none,
-                                ),
-                              ),
-                              filled: true,
-                              fillColor: Colors.grey.withOpacity(0.25),
-                              focusColor: Colors.grey,
-                            ),
+                            decoration: textFieldDecoration('Your email address'),
                           ),
                         ),
                         Container(
@@ -116,22 +112,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               });
                             },
                             obscureText: isVisible ? false : true,
-                            decoration: InputDecoration(
-                              hintStyle:simple(18),
-                              hintText: 'Create Password',
-                              contentPadding: EdgeInsets.symmetric(
-                                  horizontal: 10, vertical: 2),
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(3),
-                                borderSide: BorderSide(
-                                  width: 0,
-                                  style: BorderStyle.none,
-                                ),
-                              ),
-                              filled: true,
-                              fillColor: Colors.grey.withOpacity(0.25),
-                              focusColor: Colors.grey,
-                            ),
+                            decoration: textFieldDecoration('Create Password'),
                           ),
                         ),
                         Container(
@@ -143,22 +124,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               });
                             },
                             obscureText: isVisible ? false : true,
-                            decoration: InputDecoration(
-                              hintStyle:simple(18),
-                              hintText: 'Confirm Password',
-                              contentPadding: EdgeInsets.symmetric(
-                                  horizontal: 10, vertical: 2),
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(3),
-                                borderSide: BorderSide(
-                                  width: 0,
-                                  style: BorderStyle.none,
-                                ),
-                              ),
-                              filled: true,
-                              fillColor: Colors.grey.withOpacity(0.25),
-                              focusColor: Colors.grey,
-                            ),
+                            decoration: textFieldDecoration('Confirm Password'),
                           ),
                         ),
                       ],
@@ -191,47 +157,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ],
                 ),
               ),
-              Center(
-                child: Container(
-                  width: w * 0.85,
-                  height: h * 0.055,
-                  child: ElevatedButton(
-                    onPressed: () async {
-                      setState(() {
-                        isLoading = true;
-                      });
-                      try {
-                        print('=============> here');
-                        final User user =
-                            (await _auth.createUserWithEmailAndPassword(
-                                    email: email, password: password1))
-                                .user;
-                        setState(() {
-                          isLoading = false;
-                        });
-                        Navigator.pushNamedAndRemoveUntil(
-                            context, 'home', (route) => false);
-                      } catch (e) {
-                        print('==============>>');
-                        print(e);
-                        Scaffold.of(context).showSnackBar(
-                          SnackBar(
-                            content: Text('Something went wrong'),
-                          ),
-                        );
-                      }
-                    },
-                    child: Container(
-                      width: w * 0.45,
-                      child: Center(
-                        child: Text(
-                          'Sign Up',
-                          style: boldHeading.copyWith(color: Colors.white,),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
+              NormalButton(
+                function: signMeUp,
+                width: w * 0.85,
+                height: h * 0.055,
+                text: 'Sign Up',
               ),
               Center(
                 child: Visibility(
@@ -273,7 +203,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             onTap: () {},
                             child: Text(
                               'Conditions of Use ',
-                              style: simple(12).copyWith(color:Colors.blue,),
+                              style: simple(12).copyWith(
+                                color: Colors.blue,
+                              ),
                             ),
                           ),
                           Text(
@@ -284,7 +216,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             onTap: () {},
                             child: Text(
                               ' Privacy Policy',
-                              style: simple(12).copyWith(color:Colors.blue,),
+                              style: simple(12).copyWith(
+                                color: Colors.blue,
+                              ),
                             ),
                           ),
                         ],

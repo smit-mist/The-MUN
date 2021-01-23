@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:mun/views/elements/textstyles.dart';
+import 'package:mun/views/elements/widgets.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -12,6 +13,28 @@ class _LoginScreenState extends State<LoginScreen> {
   bool isVisible = false;
   final _auth = FirebaseAuth.instance;
   String email = "", password = "";
+
+  void logMeIn() async {
+    setState(() {
+      isLoading = true;
+    });
+    try {
+      final user = await _auth.signInWithEmailAndPassword(
+          email: email, password: password);
+      setState(() {
+        isLoading = false;
+      });
+      if (user != null) {
+        Navigator.pushNamedAndRemoveUntil(context, 'home', (route) => false);
+      }
+    } catch (e) {
+      Scaffold.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Something went wrong'),
+        ),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -51,22 +74,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             email = change;
                           });
                         },
-                        decoration: InputDecoration(
-                          hintStyle: simple(18),
-                          hintText: 'Email',
-                          contentPadding:
-                              EdgeInsets.symmetric(horizontal: 10, vertical: 2),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(3),
-                            borderSide: BorderSide(
-                              width: 0,
-                              style: BorderStyle.none,
-                            ),
-                          ),
-                          filled: true,
-                          fillColor: Colors.grey.withOpacity(0.25),
-                          focusColor: Colors.grey,
-                        ),
+                        decoration: textFieldDecoration('Email'),
                       ),
                     ),
                     Container(
@@ -79,22 +87,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           });
                         },
                         obscureText: isVisible ? false : true,
-                        decoration: InputDecoration(
-                          hintStyle:simple(18),
-                          hintText: 'Password',
-                          contentPadding:
-                              EdgeInsets.symmetric(horizontal: 10, vertical: 2),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(3),
-                            borderSide: BorderSide(
-                              width: 0,
-                              style: BorderStyle.none,
-                            ),
-                          ),
-                          filled: true,
-                          fillColor: Colors.grey.withOpacity(0.25),
-                          focusColor: Colors.grey,
-                        ),
+                        decoration: textFieldDecoration('Password'),
                       ),
                     ),
                   ],
@@ -133,48 +126,16 @@ class _LoginScreenState extends State<LoginScreen> {
                       },
                       child: Text(
                         'Forgot password?',
-                        style:simple(14).copyWith(color: Colors.blue),
+                        style: simple(14).copyWith(color: Colors.blue),
                       ),
                     )
                   ],
                 ),
               ),
-              Container(
+              NormalButton(
+                function: logMeIn,
                 width: w * 0.85,
                 height: h * 0.05,
-                child: ElevatedButton(
-                  onPressed: () async {
-                    setState(() {
-                      isLoading = true;
-                    });
-                    try {
-                      final user = await _auth.signInWithEmailAndPassword(
-                          email: email, password: password);
-                      setState(() {
-                        isLoading = false;
-                      });
-                      if (user != null) {
-                        Navigator.pushNamedAndRemoveUntil(
-                            context, 'home', (route) => false);
-                      }
-                    } catch (e) {
-                      Scaffold.of(context).showSnackBar(
-                        SnackBar(
-                          content: Text('Something went wrong'),
-                        ),
-                      );
-                    }
-                  },
-                  child: Container(
-                    //  width: w * 0.8,
-                    child: Center(
-                      child: Text(
-                        'Log In',
-                        style: boldHeading.copyWith(color: Colors.white),
-                      ),
-                    ),
-                  ),
-                ),
               ),
               Center(
                 child: Visibility(
@@ -200,7 +161,9 @@ class _LoginScreenState extends State<LoginScreen> {
                     TextButton(
                       child: Text(
                         "Sign Up",
-                        style: simple(18).copyWith(color:Colors.blue,),
+                        style: simple(18).copyWith(
+                          color: Colors.blue,
+                        ),
                       ),
                       onPressed: () {
                         Navigator.of(context).pushReplacementNamed('sign_up');
