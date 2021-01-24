@@ -6,24 +6,27 @@ class NormalButton extends StatelessWidget {
   final double height;
   final double width;
   final String text;
-  NormalButton({this.function, this.height, this.width, this.text});
+  final Color color;
+  NormalButton({this.function, this.height, this.width, this.text,this.color});
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Container(
-        width: width,
-        height: height,
-        child: ElevatedButton(
-          onPressed: () {
-            function();
-          },
-          child: Container(
-            //  width: w * 0.8,
-            child: Center(
-              child: Text(
-                text,
-                style: boldHeading.copyWith(color: Colors.white),
-              ),
+    return Container(
+      color: color??Colors.blue,
+      width: width,
+      height: height,
+      child: ElevatedButton(
+
+        onPressed: () {
+          function();
+        },
+        child: Container(
+          //  width: w * 0.8,
+          width: width,
+          color: color??Colors.blue,
+          child: Center(
+            child: Text(
+              text,
+              style: boldHeading.copyWith(color: Colors.white),
             ),
           ),
         ),

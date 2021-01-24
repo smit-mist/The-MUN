@@ -132,10 +132,13 @@ class _LoginScreenState extends State<LoginScreen> {
                   ],
                 ),
               ),
-              NormalButton(
-                function: logMeIn,
-                width: w * 0.85,
-                height: h * 0.05,
+              Center(
+                child: NormalButton(
+                  text: 'Log In',
+                  function: logMeIn,
+                  width: w * 0.85,
+                  height: h * 0.05,
+                ),
               ),
               Center(
                 child: Visibility(

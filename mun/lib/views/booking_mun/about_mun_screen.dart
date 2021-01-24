@@ -4,6 +4,16 @@ import 'package:mun/views/elements/textstyles.dart';
 import 'package:share/share.dart';
 
 class AboutMunScreen extends StatefulWidget {
+  String name;
+  String imageUrl;
+  String date;
+  String description;
+  AboutMunScreen({
+    this.name,
+    this.imageUrl,
+    this.description,
+    this.date,
+  });
   @override
   _AboutMunScreenState createState() => _AboutMunScreenState();
 }
@@ -30,11 +40,11 @@ class _AboutMunScreenState extends State<AboutMunScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Name of the MUN',
+              widget.name ?? 'ok',
               style: boldHeading,
             ),
             Text(
-              'Date',
+              widget.date ?? 'd',
               style: simple(15),
             ),
           ],
@@ -57,34 +67,38 @@ class _AboutMunScreenState extends State<AboutMunScreen> {
         color: Colors.white,
         padding: EdgeInsets.only(top: 30.0),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Container(
               color: Colors.grey[200],
               margin: EdgeInsets.symmetric(horizontal: 12.0),
               width: w,
-              height: 200.0,
-              child: Center(
-                child: Text(
-                  'TRAILER',
-                  style:boldHeading,
-                ),
+              height: h * 0.3,
+              child: Image.network(
+                widget.imageUrl,
+                fit: BoxFit.cover,
               ),
             ),
+            SizedBox(
+              height: h * 0.05,
+            ),
+
             Container(
               margin: EdgeInsets.symmetric(horizontal: 10.0),
               width: w,
-              height: h*0.2,
+              height: h * 0.3,
               child: Center(
                 child: Text(
                   'Description (A-Z)',
-                  style:boldHeading,
+                  style: boldHeading,
                 ),
               ),
             ),
+            SizedBox(
+              height: h * 0.05,
+            ),
             Container(
               color: Colors.grey[200],
-              height: 80.0,
+              height: h * 0.1,
               child: Center(
                 child: TextButton(
                   onPressed: () {
@@ -97,12 +111,12 @@ class _AboutMunScreenState extends State<AboutMunScreen> {
                   },
                   child: Text(
                     'Select Committee',
-                    style:boldHeading,
+                    style: boldHeading,
                   ),
                 ),
               ),
             ),
-         //   SizedBox(height: 10,),
+            //   SizedBox(height: 10,),
           ],
         ),
       ),

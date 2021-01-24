@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mun/views/booking_mun/about_mun_screen.dart';
 import 'package:mun/views/elements/textstyles.dart';
+import 'package:mun/views/elements/widgets/horizontal_tile_widget.dart';
 import 'all_mun_screen.dart';
 import 'package:mun/views/Home/select_city_screen.dart';
 
@@ -29,7 +30,7 @@ class _AboutUsScreenState extends State<AboutUsScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        toolbarHeight: h*0.07,
+        toolbarHeight: h * 0.07,
         title: Padding(
           padding: const EdgeInsets.only(left: 10),
           child: Column(
@@ -51,7 +52,7 @@ class _AboutUsScreenState extends State<AboutUsScreen> {
                 },
                 child: Text(
                   'City >',
-                  style:simple(16),
+                  style: simple(16),
                 ),
               )
             ],
@@ -89,23 +90,33 @@ class _AboutUsScreenState extends State<AboutUsScreen> {
               height: h * 0.3,
               width: w,
               child: Stack(
+                alignment: Alignment.center,
                 children: [
                   PageView(
                     controller: _pageController,
                     children: [
                       Container(
-                        color: Colors.green,
+                        child: Image.network(
+                          'https://picsum.photos/id/54/200/300',
+                          fit: BoxFit.cover,
+                        ),
                       ),
                       Container(
-                        color: Colors.cyan,
+                        child: Image.network(
+                          'https://picsum.photos/id/34/200/300',
+                          fit: BoxFit.cover,
+                        ),
                       ),
                       Container(
-                        color: Colors.red,
+                        child: Image.network(
+                          'https://picsum.photos/id/100/200/300',
+                          fit: BoxFit.cover,
+                        ),
                       ),
                     ],
                   ),
                   Positioned(
-                    top: h * 0.13,
+                    left: 5,
                     child: IconButton(
                       icon: Icon(Icons.arrow_back_ios),
                       onPressed: () {
@@ -119,8 +130,7 @@ class _AboutUsScreenState extends State<AboutUsScreen> {
                     ),
                   ),
                   Positioned(
-                    top: h * 0.13,
-                    right: 0,
+                    right: 5,
                     child: IconButton(
                       icon: Icon(Icons.arrow_forward_ios),
                       onPressed: () {
@@ -175,33 +185,10 @@ class _AboutUsScreenState extends State<AboutUsScreen> {
                 itemCount: 50,
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (BuildContext context, int index) {
-                  return GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => AboutMunScreen(),
-                        ),
-                      );
-                    },
-                    child: Container(
-                      padding: EdgeInsets.symmetric(horizontal: 10),
-                      height: w * 0.6,
-                      width: w * 0.4,
-                      child: Column(
-                        children: [
-                          Container(
-                            color: Colors.blue,
-                            height: w * 0.5,
-                          ),
-                          SizedBox(height: 7,),
-                          Text('MUN ${index + 1}',style:simple(16)),
-                          SizedBox(height: 7,),
-
-                          Text('DD/MM/YYYY',style:simple(14)),
-                        ],
-                      ),
-                    ),
+                  return HorizontalTile(
+                    imageUrl: 'https://picsum.photos/id/${index+10}/200/300',
+                    name: 'MUN ${index+1}',
+                    date: 'DD/MM/YYYY',
                   );
                 },
               ),

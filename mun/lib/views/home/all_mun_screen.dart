@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:mun/views/booking_mun/about_mun_screen.dart';
 import 'package:mun/views/elements/textstyles.dart';
+import 'package:mun/views/elements/widgets/horizontal_tile_widget.dart';
 
 class AllMun extends StatefulWidget {
   @override
@@ -26,44 +27,24 @@ class _AllMunState extends State<AllMun> {
         ),
         backgroundColor: Colors.white,
         title: Text(
-          'All Mun',style: boldHeading,
+          'All Mun',
+          style: boldHeading,
         ),
-
       ),
       body: Container(
-        padding: EdgeInsets.symmetric(horizontal: 10),
+        padding: EdgeInsets.symmetric(horizontal: 10,vertical: 10),
         child: GridView.builder(
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
             mainAxisSpacing: 5.0,
             crossAxisSpacing: 8.0,
-            childAspectRatio: 5/6,
+            childAspectRatio: 5 / 7,
           ),
           itemBuilder: (BuildContext context, int index) {
-            return GestureDetector(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => AboutMunScreen(),
-                  ),
-                );
-              },
-              child: Container(
-                height: h*0.1,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Container(
-                      color: Colors.blue,
-                      height: w * 0.4,
-                      width: w*0.35,
-                    ),
-                    Text('MUN ${index + 1}',style:simple(16)),
-                    Text('Date of MUN',style:simple(14)),
-                  ],
-                ),
-              ),
+            return HorizontalTile(
+              imageUrl: 'https://picsum.photos/id/${index+10}/200/300',
+              name: 'MUN ${index+1}',
+              date: 'DD/MM/YYYY',
             );
           },
         ),

@@ -157,11 +157,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ],
                 ),
               ),
-              NormalButton(
-                function: signMeUp,
-                width: w * 0.85,
-                height: h * 0.055,
-                text: 'Sign Up',
+              Center(
+                child: NormalButton(
+                  function: signMeUp,
+                  width: w * 0.85,
+                  height: h * 0.055,
+                  text: 'Sign Up',
+                ),
               ),
               Center(
                 child: Visibility(
