@@ -9,31 +9,34 @@ class SignUpScreen extends StatefulWidget {
 }
 
 class _SignUpScreenState extends State<SignUpScreen> {
+  GlobalKey<FormState> _key = GlobalKey<FormState>();
   bool isLoading = false, isVisible = false, isAccepted = false;
   final _auth = FirebaseAuth.instance;
   String name, email, password1, password2;
 
   void signMeUp() async {
-    setState(() {
-      isLoading = true;
-    });
-    try {
-      print('=============> here');
-      final User user = (await _auth.createUserWithEmailAndPassword(
-              email: email, password: password1))
-          .user;
+    if (_key.currentState.validate()) {
       setState(() {
-        isLoading = false;
+        isLoading = true;
       });
-      Navigator.pushNamedAndRemoveUntil(context, 'home', (route) => false);
-    } catch (e) {
-      print('==============>>');
-      print(e);
-      Scaffold.of(context).showSnackBar(
-        SnackBar(
-          content: Text('Something went wrong'),
-        ),
-      );
+      try {
+        print('=============> here');
+        final User user = (await _auth.createUserWithEmailAndPassword(
+                email: email, password: password1))
+            .user;
+        setState(() {
+          isLoading = false;
+        });
+        Navigator.pushNamedAndRemoveUntil(context, 'home', (route) => false);
+      } catch (e) {
+        print('==============>>');
+        print(e);
+        Scaffold.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Something went wrong'),
+          ),
+        );
+      }
     }
   }
 
@@ -72,62 +75,92 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 height: h * 0.02,
               ),
               Center(
-                child: Container(
-                  width: w * 0.85,
-                  height: h * 0.3,
-                  child: Center(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Container(
-                          child: TextField(
-                            onChanged: (change) {
-                              setState(() {
-                                name = change;
-                              });
-                            },
-                            decoration: textFieldDecoration('Name'),
-                            cursorColor: Colors.black,
-                          ),
+                child: SingleChildScrollView(
+                  child: Container(
+                    width: w * 0.85,
+                    height: h * 0.4,
+                    child: Center(
+                      child: Form(
+                        key: _key,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Container(
+                              child: TextFormField(
+                                validator: (value) {
+                                  return value.isEmpty
+                                      ? 'Enter a proper username'
+                                      : null;
+                                },
+                                onChanged: (change) {
+                                  setState(() {
+                                    name = change;
+                                  });
+                                },
+                                decoration: textFieldDecoration('Name'),
+                                cursorColor: Colors.black,
+                              ),
+                            ),
+                            Container(
+                              child: TextFormField(
+                                validator: (value) {
+                                  return (value.isEmpty ||
+                                          !RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                                              .hasMatch(value))
+                                      ? 'Enter a valid email'
+                                      : null;
+                                },
+                                cursorColor: Colors.black,
+                                onChanged: (change) {
+                                  setState(() {
+                                    email = change;
+                                  });
+                                },
+                                decoration:
+                                    textFieldDecoration('Your email address'),
+                              ),
+                            ),
+                            Container(
+                              //height: 70,
+                              child: TextFormField(
+                                validator: (value) {
+                                  return (value.isEmpty || value.length < 8)
+                                      ? 'Minimum length of password is 8'
+                                      : null;
+                                },
+                                cursorColor: Colors.black,
+                                onChanged: (change) {
+                                  setState(() {
+                                    password1 = change;
+                                  });
+                                },
+                                obscureText: isVisible ? false : true,
+                                decoration:
+                                    textFieldDecoration('Create Password'),
+                              ),
+                            ),
+                            Container(
+                              child: TextFormField(
+                                cursorColor: Colors.black,
+                                onChanged: (change) {
+                                  setState(() {
+                                    password2 = change;
+                                  });
+                                },
+                                obscureText: isVisible ? false : true,
+                                decoration:
+                                    textFieldDecoration('Confirm Password'),
+                                validator: (value) {
+                                  return (password2 != password1)
+                                      ? 'Passwords don\'t match'
+                                      : null;
+                                },
+                              ),
+                            ),
+                          ],
                         ),
-                        Container(
-                          child: TextField(
-                            cursorColor: Colors.black,
-                            onChanged: (change) {
-                              setState(() {
-                                email = change;
-                              });
-                            },
-                            decoration: textFieldDecoration('Your email address'),
-                          ),
-                        ),
-                        Container(
-                          //height: 70,
-                          child: TextField(
-                            cursorColor: Colors.black,
-                            onChanged: (change) {
-                              setState(() {
-                                password1 = change;
-                              });
-                            },
-                            obscureText: isVisible ? false : true,
-                            decoration: textFieldDecoration('Create Password'),
-                          ),
-                        ),
-                        Container(
-                          child: TextField(
-                            cursorColor: Colors.black,
-                            onChanged: (change) {
-                              setState(() {
-                                password2 = change;
-                              });
-                            },
-                            obscureText: isVisible ? false : true,
-                            decoration: textFieldDecoration('Confirm Password'),
-                          ),
-                        ),
-                      ],
+                      ),
                     ),
                   ),
                 ),
@@ -181,52 +214,61 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 padding: EdgeInsets.only(
                   left: (w * 0.075 - 12) < 0 ? 0 : (w * 0.075 - 12),
                 ),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Checkbox(
-                      value: isAccepted,
-                      activeColor: Colors.blue,
-                      onChanged: (bool newValue) {
-                        setState(() {
-                          isAccepted = newValue;
-                        });
-                      },
-                    ),
-                    Container(
-                      width: w * 0.8,
-                      child: Wrap(
-                        children: [
-                          Text(
-                            "By creating account or logging in, you agree to BookMyMUN's ",
-                            style: simple(12),
-                          ),
-                          GestureDetector(
-                            onTap: () {},
-                            child: Text(
-                              'Conditions of Use ',
-                              style: simple(12).copyWith(
-                                color: Colors.blue,
+                child: FormField(
+                  validator: (value) {
+                    return (!isAccepted)
+                        ? 'Please accept the terms and conditions'
+                        : null;
+                  },
+                  builder: (state) {
+                    return Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Checkbox(
+                          value: isAccepted,
+                          activeColor: Colors.blue,
+                          onChanged: (bool newValue) {
+                            setState(() {
+                              isAccepted = newValue;
+                            });
+                          },
+                        ),
+                        Container(
+                          width: w * 0.8,
+                          child: Wrap(
+                            children: [
+                              Text(
+                                "By creating account or logging in, you agree to BookMyMUN's ",
+                                style: simple(12),
                               ),
-                            ),
-                          ),
-                          Text(
-                            'and',
-                            style: simple(12),
-                          ),
-                          GestureDetector(
-                            onTap: () {},
-                            child: Text(
-                              ' Privacy Policy',
-                              style: simple(12).copyWith(
-                                color: Colors.blue,
+                              GestureDetector(
+                                onTap: () {},
+                                child: Text(
+                                  'Conditions of Use ',
+                                  style: simple(12).copyWith(
+                                    color: Colors.blue,
+                                  ),
+                                ),
                               ),
-                            ),
+                              Text(
+                                'and',
+                                style: simple(12),
+                              ),
+                              GestureDetector(
+                                onTap: () {},
+                                child: Text(
+                                  ' Privacy Policy',
+                                  style: simple(12).copyWith(
+                                    color: Colors.blue,
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
-                        ],
-                      ),
-                    ),
-                  ],
+                        ),
+                      ],
+                    );
+                  },
                 ),
               ),
               SizedBox(

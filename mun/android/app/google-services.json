@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "941703345942",
-    "project_id": "mun-app-58e85",
-    "storage_bucket": "mun-app-58e85.appspot.com"
+    "project_number": "95371037587",
+    "project_id": "bookmymun-565d9",
+    "storage_bucket": "bookmymun-565d9.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:941703345942:android:51ab2869df579c3e9a0237",
+        "mobilesdk_app_id": "1:95371037587:android:912b75a983b406830cf666",
         "android_client_info": {
           "package_name": "com.example.mun"
         }
       },
       "oauth_client": [
         {
-          "client_id": "941703345942-556n6qdfj8sptsdbfqvk20hr9ln2mjfc.apps.googleusercontent.com",
+          "client_id": "95371037587-2rsf8smvutrjn68d7mm1e0miel9vio31.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAhupMyZecLSAdu0JSrGthfx1EY3CJRomY"
+          "current_key": "AIzaSyAkgT-zOs9ZFBnumECpwKZhZHYQGueQ6EI"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "941703345942-556n6qdfj8sptsdbfqvk20hr9ln2mjfc.apps.googleusercontent.com",
+              "client_id": "95371037587-2rsf8smvutrjn68d7mm1e0miel9vio31.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

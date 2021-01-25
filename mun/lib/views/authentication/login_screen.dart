@@ -9,30 +9,33 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  GlobalKey<FormState> _key = GlobalKey<FormState>();
   bool isLoading = false;
   bool isVisible = false;
   final _auth = FirebaseAuth.instance;
   String email = "", password = "";
 
   void logMeIn() async {
-    setState(() {
-      isLoading = true;
-    });
-    try {
-      final user = await _auth.signInWithEmailAndPassword(
-          email: email, password: password);
+    if (_key.currentState.validate()) {
       setState(() {
-        isLoading = false;
+        isLoading = true;
       });
-      if (user != null) {
-        Navigator.pushNamedAndRemoveUntil(context, 'home', (route) => false);
+      try {
+        final user = await _auth.signInWithEmailAndPassword(
+            email: email, password: password);
+        setState(() {
+          isLoading = false;
+        });
+        if (user != null) {
+          Navigator.pushNamedAndRemoveUntil(context, 'home', (route) => false);
+        }
+      } catch (e) {
+        Scaffold.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Something went wrong'),
+          ),
+        );
       }
-    } catch (e) {
-      Scaffold.of(context).showSnackBar(
-        SnackBar(
-          content: Text('Something went wrong'),
-        ),
-      );
     }
   }
 
@@ -59,38 +62,55 @@ class _LoginScreenState extends State<LoginScreen> {
               SizedBox(
                 height: h * 0.1,
               ),
-              Container(
-                height: h * 0.15,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                      width: w * 0.85,
-                      child: TextField(
-                        cursorColor: Colors.black,
-                        onChanged: (change) {
-                          setState(() {
-                            email = change;
-                          });
-                        },
-                        decoration: textFieldDecoration('Email'),
-                      ),
+              SingleChildScrollView(
+                child: Container(
+                  height: h * 0.15,
+                  child: Form(
+                    key: _key,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Container(
+                          width: w * 0.85,
+                          child: TextFormField(
+                            validator: (value) {
+                              return (value.isEmpty ||
+                                      !RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                                          .hasMatch(value))
+                                  ? 'Enter a valid email'
+                                  : null;
+                            },
+                            cursorColor: Colors.black,
+                            onChanged: (change) {
+                              setState(() {
+                                email = change;
+                              });
+                            },
+                            decoration: textFieldDecoration('Email'),
+                          ),
+                        ),
+                        Container(
+                          width: w * 0.85,
+                          child: TextFormField(
+                            validator: (value) {
+                              return (value.isEmpty || value.length < 8)
+                                  ? 'Minimum length of password is 8'
+                                  : null;
+                            },
+                            cursorColor: Colors.black,
+                            onChanged: (change) {
+                              setState(() {
+                                password = change;
+                              });
+                            },
+                            obscureText: isVisible ? false : true,
+                            decoration: textFieldDecoration('Password'),
+                          ),
+                        ),
+                      ],
                     ),
-                    Container(
-                      width: w * 0.85,
-                      child: TextField(
-                        cursorColor: Colors.black,
-                        onChanged: (change) {
-                          setState(() {
-                            password = change;
-                          });
-                        },
-                        obscureText: isVisible ? false : true,
-                        decoration: textFieldDecoration('Password'),
-                      ),
-                    ),
-                  ],
+                  ),
                 ),
               ),
               SizedBox(
