@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:mun/views/elements/database.dart';
 import 'package:mun/views/elements/textstyles.dart';
 import 'package:mun/views/elements/widgets.dart';
 
@@ -9,6 +10,7 @@ class SignUpScreen extends StatefulWidget {
 }
 
 class _SignUpScreenState extends State<SignUpScreen> {
+  Database database = Database();
   GlobalKey<FormState> _key = GlobalKey<FormState>();
   bool isLoading = false, isVisible = false, isAccepted = false;
   final _auth = FirebaseAuth.instance;
@@ -24,6 +26,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
         final User user = (await _auth.createUserWithEmailAndPassword(
                 email: email, password: password1))
             .user;
+        await database.addUser(email, name);
         setState(() {
           isLoading = false;
         });
