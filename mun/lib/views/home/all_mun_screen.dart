@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mun/logic/database.dart';
 
 import 'package:mun/views/booking_mun/about_mun_screen.dart';
 import 'package:mun/views/elements/textstyles.dart';
@@ -34,6 +35,7 @@ class _AllMunState extends State<AllMun> {
       body: Container(
         padding: EdgeInsets.symmetric(horizontal: 10,vertical: 10),
         child: GridView.builder(
+          itemCount: allMuns.length,
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
             mainAxisSpacing: 5.0,
@@ -42,9 +44,9 @@ class _AllMunState extends State<AllMun> {
           ),
           itemBuilder: (BuildContext context, int index) {
             return HorizontalTile(
-              imageUrl: 'https://picsum.photos/id/${index+10}/200/300',
-              name: 'MUN ${index+1}',
-              date: 'DD/MM/YYYY',
+              imageUrl: allMuns[index].imageUrls,
+              name: allMuns[index].venue,
+              date: allMuns[index].date,
             );
           },
         ),

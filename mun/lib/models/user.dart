@@ -3,7 +3,7 @@ import 'meeting.dart';
 class User {
   String name = "", email="", mobileNo="";
   DateTime dob = DateTime.now();
-  List<Meeting>history = [];
+
   String getName(){
     return name;
   }
@@ -18,3 +18,4 @@ class User {
   }
 
 }
+

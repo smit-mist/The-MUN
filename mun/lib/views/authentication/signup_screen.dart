@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:mun/views/elements/database.dart';
+import 'file:///C:/Users/smit3/AndroidStudioProjects/The-MUN/mun/lib/logic/database.dart';
 import 'package:mun/views/elements/textstyles.dart';
 import 'package:mun/views/elements/widgets.dart';
 

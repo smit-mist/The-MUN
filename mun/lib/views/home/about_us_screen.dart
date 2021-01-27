@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mun/logic/database.dart';
 import 'package:mun/views/booking_mun/about_mun_screen.dart';
 import 'package:mun/views/elements/textstyles.dart';
 import 'package:mun/views/elements/widgets/horizontal_tile_widget.dart';
@@ -27,7 +28,7 @@ class _AboutUsScreenState extends State<AboutUsScreen> {
   Widget build(BuildContext context) {
     double h = MediaQuery.of(context).size.height;
     double w = MediaQuery.of(context).size.width;
-
+    print(allMuns.length);
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: h * 0.07,
@@ -182,13 +183,13 @@ class _AboutUsScreenState extends State<AboutUsScreen> {
               width: w,
               height: h * 0.3,
               child: ListView.builder(
-                itemCount: 50,
+                itemCount: allMuns.length,
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (BuildContext context, int index) {
                   return HorizontalTile(
-                    imageUrl: 'https://picsum.photos/id/${index+10}/200/300',
-                    name: 'MUN ${index+1}',
-                    date: 'DD/MM/YYYY',
+                    imageUrl:allMuns[index].imageUrls,
+                    name: allMuns[index].venue,
+                    date: allMuns[index].date,
                   );
                 },
               ),
