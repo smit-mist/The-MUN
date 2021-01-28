@@ -12,10 +12,12 @@ class AboutUsScreen extends StatefulWidget {
 }
 
 class _AboutUsScreenState extends State<AboutUsScreen> {
+  Database db = Database();
   PageController _pageController = PageController(initialPage: 0);
   double currentPage = 0;
   @override
   void initState() {
+    db.getMUN();
     _pageController.addListener(() {
       setState(() {
         currentPage = _pageController.page;
@@ -99,18 +101,57 @@ class _AboutUsScreenState extends State<AboutUsScreen> {
                       Container(
                         child: Image.network(
                           'https://picsum.photos/id/54/200/300',
+                          loadingBuilder: (BuildContext context, Widget child,
+                              ImageChunkEvent loadingProgress) {
+                            if (loadingProgress == null) return child;
+                            return Center(
+                              child: CircularProgressIndicator(
+                                value: loadingProgress.expectedTotalBytes !=
+                                        null
+                                    ? loadingProgress.cumulativeBytesLoaded /
+                                        loadingProgress.expectedTotalBytes
+                                    : null,
+                              ),
+                            );
+                          },
                           fit: BoxFit.cover,
                         ),
                       ),
                       Container(
                         child: Image.network(
                           'https://picsum.photos/id/34/200/300',
+                          loadingBuilder: (BuildContext context, Widget child,
+                              ImageChunkEvent loadingProgress) {
+                            if (loadingProgress == null) return child;
+                            return Center(
+                              child: CircularProgressIndicator(
+                                value: loadingProgress.expectedTotalBytes !=
+                                        null
+                                    ? loadingProgress.cumulativeBytesLoaded /
+                                        loadingProgress.expectedTotalBytes
+                                    : null,
+                              ),
+                            );
+                          },
                           fit: BoxFit.cover,
                         ),
                       ),
                       Container(
                         child: Image.network(
                           'https://picsum.photos/id/100/200/300',
+                          loadingBuilder: (BuildContext context, Widget child,
+                              ImageChunkEvent loadingProgress) {
+                            if (loadingProgress == null) return child;
+                            return Center(
+                              child: CircularProgressIndicator(
+                                value: loadingProgress.expectedTotalBytes !=
+                                        null
+                                    ? loadingProgress.cumulativeBytesLoaded /
+                                        loadingProgress.expectedTotalBytes
+                                    : null,
+                              ),
+                            );
+                          },
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -187,13 +228,13 @@ class _AboutUsScreenState extends State<AboutUsScreen> {
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (BuildContext context, int index) {
                   return HorizontalTile(
-                    imageUrl:allMuns[index].imageUrls,
+                    imageUrl: allMuns[index].imageUrls,
                     name: allMuns[index].venue,
                     date: allMuns[index].date,
                   );
                 },
               ),
-            )
+            ),
           ],
         ),
       ),

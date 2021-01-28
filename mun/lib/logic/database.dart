@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:mun/models/meeting.dart';
 List<MUN> allMuns = [];
+
 class Database {
 
   final _db = FirebaseFirestore.instance;
@@ -12,9 +13,11 @@ class Database {
       'name': name,
     });
   }
-
+  bool gettingMUN = false;
   Future<void> getMUN() async {
+    gettingMUN=true;
     await _db.collection('MUN').get().then((value) {
+
       value.docs.forEach((element) {
           MUN current = MUN(
             id: element.id,
@@ -31,6 +34,7 @@ class Database {
           allMuns.add(current);
 
       });
+      gettingMUN=false;
 
     });
     return;

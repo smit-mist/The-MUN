@@ -38,7 +38,19 @@ class _HorizontalTileState extends State<HorizontalTile> {
           children: [
             Container(
               child: Image.network(
+
                 widget.imageUrl,
+                loadingBuilder: (BuildContext context, Widget child, ImageChunkEvent loadingProgress) {
+                  if (loadingProgress == null)
+                    return child;
+                  return Center(
+                    child: CircularProgressIndicator(
+                      value: loadingProgress.expectedTotalBytes != null
+                          ? loadingProgress.cumulativeBytesLoaded / loadingProgress.expectedTotalBytes
+                          : null,
+                    ),
+                  );
+                },
                 fit: BoxFit.cover,
               ),
               height: w * 0.5,
