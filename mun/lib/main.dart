@@ -5,8 +5,12 @@ import 'package:mun/views/authentication/login_screen.dart';
 import 'routes.dart';
 
 
-//TODO:Color with hex code...
-
+// TODO : Color with hex code...
+// TODO : Case management for user login/sign up (Email taken, Password Wrong, No internet Connection)
+// TODO : All function of authentication in database.dart also save user into a user model
+// TODO : Make Streams of Users
+// TODO : File for MUNs
+// TODO : Streams and model instance for MUN's
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();

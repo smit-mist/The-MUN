@@ -1,11 +1,10 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
-import 'package:mun/views/Home/about_us_screen.dart';
-import 'package:mun/views/Home/events_screen.dart';
 import 'package:mun/logic/database.dart';
-import 'contact_us_screen.dart';
-import 'user_profile_screen.dart';
+import 'package:mun/views/booking_mun/about_mun_screen.dart';
+import 'package:mun/views/elements/textstyles.dart';
+import 'package:mun/views/elements/widgets/horizontal_tile_widget.dart';
+import 'all_mun_screen.dart';
+import 'package:mun/views/Home/select_city_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -13,127 +12,230 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  int index = 1;
-  List body = [
-    AboutUsScreen(),
-    EventScreen(),
-    Container(
-      color: Colors.black,
-      height: 100,
-      width: 100,
-    ),
-    ContactUs(),
-    UserProfileScreen(),
-  ];
+  Database db = Database();
+  PageController _pageController = PageController(initialPage: 0);
+  double currentPage = 0;
   @override
   void initState() {
-    // TODO: implement initState
-    print('done');
+    db.getMUN();
+    _pageController.addListener(() {
+      setState(() {
+        currentPage = _pageController.page;
+      });
+    });
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     double h = MediaQuery.of(context).size.height;
     double w = MediaQuery.of(context).size.width;
+    print(allMuns.length);
     return Scaffold(
-      body: body[index - 1],
-      bottomNavigationBar: BottomAppBar(
-        notchMargin: 10,
-        child: Container(
-          height: h * 0.07,
-          child: Row(
+      appBar: AppBar(
+        toolbarHeight: h * 0.07,
+        title: Padding(
+          padding: const EdgeInsets.only(left: 10),
+          child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              RawMaterialButton(
-                onPressed: () {
-                  setState(() {
-                    index = 1;
-                  });
-                },
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Icon(
-                      Icons.home_outlined,
-                      color: index == 1 ? Colors.blue : Colors.grey,
-                    ),
-                    Text(
-                      "Home",
-                      style: TextStyle(
-                        color: index == 1 ? Colors.blue : Colors.grey,
-                      ),
-                    ),
-                  ],
-                ),
+              Text(
+                'It All Starts Here!',
+                style: boldHeading,
               ),
-              RawMaterialButton(
-                onPressed: () {
-                  setState(() {
-                    index = 2;
-                  });
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => SelectCityScreen(),
+                    ),
+                  );
                 },
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Icon(
-                      Icons.shopping_cart_outlined,
-                      color: index == 2 ? Colors.blue : Colors.grey,
-                    ),
-                    Text(
-                      "Cart",
-                      style: TextStyle(
-                        color: index == 2 ? Colors.blue : Colors.grey,
-                      ),
-                    ),
-                  ],
+                child: Text(
+                  'City >',
+                  style: simple(16),
                 ),
-              ),
-              RawMaterialButton(
-                onPressed: () {
-                  setState(() {
-                    index = 4;
-                  });
-                },
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Icon(
-                      Icons.card_giftcard_outlined,
-                      color: index == 4 ? Colors.blue : Colors.grey,
-                    ),
-                    Text(
-                      "Premium",
-                      style: TextStyle(
-                        color: index == 4 ? Colors.blue : Colors.grey,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              RawMaterialButton(
-                onPressed: () {
-                  setState(() {
-                    index = 5;
-                  });
-                },
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Icon(
-                      Icons.account_circle_rounded,
-                      color: index == 5 ? Colors.blue : Colors.grey,
-                    ),
-                    Text(
-                      "Profile",
-                      style: TextStyle(
-                        color: index == 5 ? Colors.blue : Colors.grey,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+              )
             ],
           ),
+        ),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Icon(
+              Icons.search,
+              color: Colors.black,
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Icon(
+              Icons.notifications,
+              color: Colors.black,
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Icon(
+              Icons.qr_code,
+              color: Colors.black,
+            ),
+          )
+        ],
+        backgroundColor: Colors.white,
+      ),
+      body: Container(
+        child: Column(
+          children: [
+            Container(
+              height: h * 0.3,
+              width: w,
+              child: Stack(
+                alignment: Alignment.center,
+                children: [
+                  PageView(
+                    controller: _pageController,
+                    children: [
+                      Container(
+                        child: Image.network(
+                          'https://picsum.photos/id/54/200/300',
+                          loadingBuilder: (BuildContext context, Widget child,
+                              ImageChunkEvent loadingProgress) {
+                            if (loadingProgress == null) return child;
+                            return Center(
+                              child: CircularProgressIndicator(
+                                value: loadingProgress.expectedTotalBytes !=
+                                        null
+                                    ? loadingProgress.cumulativeBytesLoaded /
+                                        loadingProgress.expectedTotalBytes
+                                    : null,
+                              ),
+                            );
+                          },
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                      Container(
+                        child: Image.network(
+                          'https://picsum.photos/id/34/200/300',
+                          loadingBuilder: (BuildContext context, Widget child,
+                              ImageChunkEvent loadingProgress) {
+                            if (loadingProgress == null) return child;
+                            return Center(
+                              child: CircularProgressIndicator(
+                                value: loadingProgress.expectedTotalBytes !=
+                                        null
+                                    ? loadingProgress.cumulativeBytesLoaded /
+                                        loadingProgress.expectedTotalBytes
+                                    : null,
+                              ),
+                            );
+                          },
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                      Container(
+                        child: Image.network(
+                          'https://picsum.photos/id/100/200/300',
+                          loadingBuilder: (BuildContext context, Widget child,
+                              ImageChunkEvent loadingProgress) {
+                            if (loadingProgress == null) return child;
+                            return Center(
+                              child: CircularProgressIndicator(
+                                value: loadingProgress.expectedTotalBytes !=
+                                        null
+                                    ? loadingProgress.cumulativeBytesLoaded /
+                                        loadingProgress.expectedTotalBytes
+                                    : null,
+                              ),
+                            );
+                          },
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    ],
+                  ),
+                  Positioned(
+                    left: 5,
+                    child: IconButton(
+                      icon: Icon(Icons.arrow_back_ios),
+                      onPressed: () {
+                        setState(() {
+                          _pageController.animateToPage(currentPage.round() - 1,
+                              duration: Duration(milliseconds: 600),
+                              curve: Curves.ease);
+                          currentPage--;
+                        });
+                      },
+                    ),
+                  ),
+                  Positioned(
+                    right: 5,
+                    child: IconButton(
+                      icon: Icon(Icons.arrow_forward_ios),
+                      onPressed: () {
+                        setState(() {
+                          _pageController.animateToPage(currentPage.round() + 1,
+                              duration: Duration(milliseconds: 600),
+                              curve: Curves.ease);
+                          currentPage++;
+                        });
+                      },
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(
+              height: h * 0.06,
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'MUNs In Your Region:',
+                    style: boldHeading,
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) => AllMun(),
+                        ),
+                      );
+                    },
+                    child: Text(
+                      'See all >',
+                      style: simple(20),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(
+              height: h * 0.06,
+            ),
+            Container(
+              width: w,
+              height: h * 0.3,
+              child: ListView.builder(
+                itemCount: allMuns.length,
+                scrollDirection: Axis.horizontal,
+                itemBuilder: (BuildContext context, int index) {
+                  return HorizontalTile(
+                    imageUrl: allMuns[index].imageUrls,
+                    name: allMuns[index].venue,
+                    date: allMuns[index].date,
+                  );
+                },
+              ),
+            ),
+          ],
         ),
       ),
     );
