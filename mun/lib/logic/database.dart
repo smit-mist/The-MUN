@@ -1,8 +1,8 @@
 import 'dart:async';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:mun/models/meeting.dart';
-List<MUN> allMuns = [];
+import 'package:mun/models/mun.dart';
+List<Mun> allMuns = [];
 
 class Database {
 
@@ -13,30 +13,5 @@ class Database {
       'name': name,
     });
   }
-  bool gettingMUN = false;
-  Future<void> getMUN() async {
-    gettingMUN=true;
-    await _db.collection('MUN').get().then((value) {
 
-      value.docs.forEach((element) {
-          MUN current = MUN(
-            id: element.id,
-            venue: element['Venue'],
-        //    description: element['Description'],
-          //  registrationFees: element['Fees'],
-            imageUrls: element['Media'],
-          //  registrationTime: element['Registration Time'],
-           // sheetLink: element['Sheet link'],
-            //city: element['City'],
-            date: element['Date'],
-
-          );
-          allMuns.add(current);
-
-      });
-      gettingMUN=false;
-
-    });
-    return;
-  }
 }

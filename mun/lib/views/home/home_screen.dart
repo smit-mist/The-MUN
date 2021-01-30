@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:mun/logic/database.dart';
+import 'package:mun/logic/mun_data.dart';
+import 'package:mun/models/mun.dart';
 import 'package:mun/views/booking_mun/about_mun_screen.dart';
 import 'package:mun/views/elements/textstyles.dart';
 import 'package:mun/views/elements/widgets/horizontal_tile_widget.dart';
+import 'package:provider/provider.dart';
 import 'all_mun_screen.dart';
 import 'package:mun/views/Home/select_city_screen.dart';
 
@@ -17,7 +20,7 @@ class _HomeScreenState extends State<HomeScreen> {
   double currentPage = 0;
   @override
   void initState() {
-    db.getMUN();
+ //   db.getMUN();
     _pageController.addListener(() {
       setState(() {
         currentPage = _pageController.page;
@@ -223,14 +226,14 @@ class _HomeScreenState extends State<HomeScreen> {
             Container(
               width: w,
               height: h * 0.3,
-              child: ListView.builder(
-                itemCount: allMuns.length,
+              child:Provider.of<List<Mun>>(context)==null?Center(child: Container(child: CircularProgressIndicator(),height: h*0.05,)): ListView.builder(
+                itemCount:Provider.of<List<Mun>>(context).length,
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (BuildContext context, int index) {
                   return HorizontalTile(
-                    imageUrl: allMuns[index].imageUrls,
-                    name: allMuns[index].venue,
-                    date: allMuns[index].date,
+                    imageUrl: Provider.of<List<Mun>>(context)[index].imageUrls[0],
+                    name: Provider.of<List<Mun>>(context)[index].venue,
+                    date: Provider.of<List<Mun>>(context)[index].date,
                   );
                 },
               ),
@@ -241,3 +244,30 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 }
+
+// bool gettingMUN = false;
+// Future<void> getMUN() async {
+//   gettingMUN=true;
+//   await _db.collection('MUN').get().then((value) {
+//
+//     value.docs.forEach((element) {
+//       MUN current = MUN(
+//         id: element.id,
+//         venue: element['Venue'],
+//         //    description: element['Description'],
+//         //  registrationFees: element['Fees'],
+//         imageUrls: element['Media'],
+//         //  registrationTime: element['Registration Time'],
+//         // sheetLink: element['Sheet link'],
+//         //city: element['City'],
+//         date: element['Date'],
+//
+//       );
+//       allMuns.add(current);
+//
+//     });
+//     gettingMUN=false;
+//
+//   });
+//   return;
+// }

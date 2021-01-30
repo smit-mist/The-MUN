@@ -1,6 +1,6 @@
 import 'package:mun/models/committee.dart';
 
-class MUN {
+class Mun {
   String venue, city;
   String id;
   String date, registrationTime;
@@ -8,10 +8,10 @@ class MUN {
   int remainingSeats;
   int registrationFees;
   String sheetLink;
-  String imageUrls;
+  List<String> imageUrls;
 
   List<Committee> committees = [];
-  MUN({
+  Mun({
     this.id,
     this.date,
     this.description = 'No description given',
