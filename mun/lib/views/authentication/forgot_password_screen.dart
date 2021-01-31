@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:mun/views/elements/constants.dart';
 import 'package:mun/views/elements/textstyles.dart';
 
 class ForgotPassword extends StatefulWidget {
@@ -39,7 +40,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                 padding: EdgeInsets.only(left: w * 0.075),
                 child: Text(
                   'Password Assistance',
-                  style:simple(28),
+                  style: simple(28),
                 ),
               ),
               SizedBox(
@@ -55,7 +56,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                     children: [
                       Text(
                         'Enter the email address associated with your',
-                        style:simple(15),
+                        style: simple(15),
                       ),
                       SizedBox(
                         height: h * 0.0075,
@@ -86,8 +87,8 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                           contentPadding:
                               EdgeInsets.symmetric(horizontal: 15, vertical: 8),
                           filled: true,
-                          fillColor: Colors.grey.withOpacity(0.15),
-                          focusColor: Colors.grey,
+                          fillColor: kGreyShade.withOpacity(0.15),
+                          focusColor: kGreyShade,
                         ),
                         cursorColor: Colors.black,
                       ),
@@ -98,7 +99,8 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                         child: isLoading
                             ? CircularProgressIndicator(
                                 valueColor: AlwaysStoppedAnimation<Color>(
-                                    Color(0xFF2F2D52)),
+                                  kBlueShade,
+                                ),
                               )
                             : Container(
                                 width: w * 0.85,
@@ -126,9 +128,9 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                                                           fontFamily:
                                                               'Helvetica',
                                                           fontSize: 18,
-                                                          fontWeight: FontWeight.bold,
-                                                          color:
-                                                              Color(0xff707070),
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          color: kGreyShade,
                                                         ),
                                                       ),
                                                       content: Text(
@@ -137,14 +139,18 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                                                           fontFamily:
                                                               'Helvetica',
                                                           fontSize: 16,
-                                                          color:
-                                                              Color(0xff707070),
+                                                          color: kGreyShade,
                                                         ),
                                                       ),
                                                       actions: [
                                                         TextButton(
                                                           onPressed: () {
-                                                            Navigator.pushNamedAndRemoveUntil(context,'login', (route) => false);
+                                                            Navigator
+                                                                .pushNamedAndRemoveUntil(
+                                                                    context,
+                                                                    'login',
+                                                                    (route) =>
+                                                                        false);
                                                           },
                                                           child: Text(
                                                             'Done',
@@ -152,8 +158,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                                                               fontFamily:
                                                                   'Helvetica',
                                                               fontSize: 16,
-
-                                                              color: Colors.blue,
+                                                              color: kBlueShade,
                                                             ),
                                                           ),
                                                         ),
@@ -163,7 +168,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                                                 ),
                                               });
                                       setState(() {
-                                          email = "";
+                                        email = "";
 
                                         isLoading = false;
                                       });
@@ -183,7 +188,9 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                                     child: Center(
                                       child: Text(
                                         'Continue',
-                                        style: boldHeading.copyWith(color: Colors.white,),
+                                        style: boldHeading.copyWith(
+                                          color: Colors.white,
+                                        ),
                                       ),
                                     ),
                                   ),

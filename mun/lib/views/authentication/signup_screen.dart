@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:mun/views/elements/constants.dart';
 import 'file:///C:/Users/smit3/AndroidStudioProjects/The-MUN/mun/lib/logic/database.dart';
 import 'package:mun/views/elements/textstyles.dart';
 import 'package:mun/views/elements/widgets.dart';
@@ -205,7 +206,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 child: Visibility(
                   child: CircularProgressIndicator(
                     valueColor:
-                        AlwaysStoppedAnimation<Color>(Color(0xFF2F2D52)),
+                        AlwaysStoppedAnimation<Color>(kBlueShade),
                   ),
                   visible: isLoading,
                 ),
@@ -229,7 +230,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       children: [
                         Checkbox(
                           value: isAccepted,
-                          activeColor: Colors.blue,
+                          activeColor: kBlueShade,
                           onChanged: (bool newValue) {
                             setState(() {
                               isAccepted = newValue;
@@ -249,7 +250,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                 child: Text(
                                   'Conditions of Use ',
                                   style: simple(12).copyWith(
-                                    color: Colors.blue,
+                                    color: kBlueShade,
                                   ),
                                 ),
                               ),
@@ -262,7 +263,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                 child: Text(
                                   ' Privacy Policy',
                                   style: simple(12).copyWith(
-                                    color: Colors.blue,
+                                    color:kBlueShade,
                                   ),
                                 ),
                               ),
@@ -294,7 +295,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         style: TextStyle(
                           fontFamily: 'Helvetica',
                           fontSize: 18,
-                          color: Colors.blue,
+                          color: kBlueShade,
                         ),
                       ),
                       onTap: () {

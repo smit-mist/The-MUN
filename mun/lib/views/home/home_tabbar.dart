@@ -5,6 +5,7 @@ import 'package:mun/logic/mun_data.dart';
 import 'package:mun/models/mun.dart';
 import 'package:mun/views/Home/events_screen.dart';
 import 'package:mun/logic/database.dart';
+import 'package:mun/views/elements/constants.dart';
 import 'package:mun/views/home/home_screen.dart';
 import 'package:provider/provider.dart';
 import 'contact_us_screen.dart';
@@ -33,6 +34,7 @@ class _HomeTabBarState extends State<HomeTabBar> {
     // TODO: implement initState
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     double h = MediaQuery.of(context).size.height;
@@ -57,12 +59,12 @@ class _HomeTabBarState extends State<HomeTabBar> {
                   children: [
                     Icon(
                       Icons.home_outlined,
-                      color: index == 1 ? Colors.blue : Colors.grey,
+                      color: index == 1 ? kBlueShade : kGreyShade,
                     ),
                     Text(
                       "Home",
                       style: TextStyle(
-                        color: index == 1 ? Colors.blue : Colors.grey,
+                        color: index == 1 ? kBlueShade : kGreyShade,
                       ),
                     ),
                   ],
@@ -79,12 +81,12 @@ class _HomeTabBarState extends State<HomeTabBar> {
                   children: [
                     Icon(
                       Icons.shopping_cart_outlined,
-                      color: index == 2 ? Colors.blue : Colors.grey,
+                      color: index == 2 ? kBlueShade : kGreyShade,
                     ),
                     Text(
                       "Cart",
                       style: TextStyle(
-                        color: index == 2 ? Colors.blue : Colors.grey,
+                        color: index == 2 ? kBlueShade : kGreyShade,
                       ),
                     ),
                   ],
@@ -101,12 +103,12 @@ class _HomeTabBarState extends State<HomeTabBar> {
                   children: [
                     Icon(
                       Icons.card_giftcard_outlined,
-                      color: index == 4 ? Colors.blue : Colors.grey,
+                      color: index == 4 ? kBlueShade : kGreyShade,
                     ),
                     Text(
                       "Premium",
                       style: TextStyle(
-                        color: index == 4 ? Colors.blue : Colors.grey,
+                        color: index == 4 ? kBlueShade : kGreyShade,
                       ),
                     ),
                   ],
@@ -123,12 +125,12 @@ class _HomeTabBarState extends State<HomeTabBar> {
                   children: [
                     Icon(
                       Icons.account_circle_rounded,
-                      color: index == 5 ? Colors.blue : Colors.grey,
+                      color: index == 5 ? kBlueShade : kGreyShade,
                     ),
                     Text(
                       "Profile",
                       style: TextStyle(
-                        color: index == 5 ? Colors.blue : Colors.grey,
+                        color: index == 5 ? kBlueShade : kGreyShade,
                       ),
                     ),
                   ],

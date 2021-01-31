@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:mun/views/elements/constants.dart';
 import 'package:mun/views/elements/textstyles.dart';
 import 'package:mun/views/elements/widgets.dart';
 
@@ -125,7 +126,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   children: [
                     Checkbox(
                       value: isVisible,
-                      activeColor: Colors.blue,
+                      activeColor: kBlueShade,
                       onChanged: (bool newValue) {
                         setState(() {
                           isVisible = newValue;
@@ -146,7 +147,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       },
                       child: Text(
                         'Forgot password?',
-                        style: simple(14).copyWith(color: Colors.blue),
+                        style: simple(14).copyWith(color: kBlueShade),
                       ),
                     )
                   ],
@@ -164,7 +165,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 child: Visibility(
                   child: CircularProgressIndicator(
                     valueColor: AlwaysStoppedAnimation<Color>(
-                      Color(0xFF2F2D52),
+                      kBlueShade,
                     ),
                   ),
                   visible: isLoading,
@@ -185,7 +186,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       child: Text(
                         "Sign Up",
                         style: simple(18).copyWith(
-                          color: Colors.blue,
+                          color: kBlueShade,
                         ),
                       ),
                       onPressed: () {
