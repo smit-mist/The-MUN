@@ -15,17 +15,6 @@ class SelectCommitteeScreen extends StatefulWidget {
 }
 
 class _SelectCommitteeScreenState extends State<SelectCommitteeScreen> {
-  List<String> committeeNames = [
-    'ECOSOC',
-    'UNGA',
-    'UNSC',
-    'CCC',
-    'UNHRC',
-    'IP',
-    'IAEC',
-    'UNESCO',
-    'UNHSC',
-  ];
 
   @override
   Widget build(BuildContext context) {

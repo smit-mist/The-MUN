@@ -32,11 +32,11 @@ class _AboutCommitteeScreenState extends State<AboutCommitteeScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Name of the Committee',
+              widget.currentCommittee.name,
               style: boldHeading,
             ),
             Text(
-              'AGENDA',
+              widget.currentCommittee.agenda,
               style: TextStyle(
                 fontFamily: 'Helvetica',
                 fontSize: 15.0,
@@ -54,15 +54,13 @@ class _AboutCommitteeScreenState extends State<AboutCommitteeScreen> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Container(
+              color: Colors.grey[200],
               margin: EdgeInsets.symmetric(horizontal: 12.0),
               width: w,
-              color: Colors.grey[200],
-              height: 200.0,
-              child: Center(
-                child: Text(
-                  'Trailer of the Committee',
-                  style:boldHeading,
-                ),
+              height: h * 0.3,
+              child: Image.network(
+                widget.currentCommittee.imageUrls[0].toString(),
+                fit: BoxFit.cover,
               ),
             ),
             Container(
