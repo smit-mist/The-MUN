@@ -22,30 +22,34 @@ class _SignUpScreenState extends State<SignUpScreen> {
   AuthService _auth = AuthService();
   String name, email, password1, password2;
 
-  void signMeUp() async {
-    if (_key.currentState.validate()) {
-      setState(() {
-        isLoading = true;
-      });
-      final User user = await _auth.signUp(email, password1);
-      if (user != null) {
-        MUNUser currentUser = _auth.userFromFirebaseUser(user);
-        await _database.addUser(email, name, currentUser.uid);
-        Navigator.pushAndRemoveUntil(
-            context,
-            MaterialPageRoute(builder: (context) => SelectCityScreen()),
-            (route) => false);
-      } else {
-        setState(() {
-          isLoading = false;
-        });
-      }
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
-    final user = Provider.of<MUNUser>(context);
+    final currUser = Provider.of<MUNUser>(context);
+    void signMeUp() async {
+      if (_key.currentState.validate()) {
+        setState(() {
+          isLoading = true;
+        });
+        final User user = await _auth.signUp(email, password1);
+        if (user != null) {
+          MUNUser currentUser = _auth.userFromFirebaseUser(user);
+          await _database.addUser(email, name, currentUser.uid);
+          currUser.name = name;
+          setState(() {
+            isLoading = false;
+          });
+          Navigator.pushAndRemoveUntil(
+              context,
+              MaterialPageRoute(builder: (context) => SelectCityScreen()),
+              (route) => false);
+        } else {
+          setState(() {
+            isLoading = false;
+          });
+        }
+      }
+    }
+
     double h = MediaQuery.of(context).size.height;
     double w = MediaQuery.of(context).size.width;
     return isLoading
@@ -101,7 +105,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                             : null;
                                       },
                                       onChanged: (change) {
-                                        user.name = change;
                                         setState(() {
                                           name = change;
                                         });
