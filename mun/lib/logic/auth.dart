@@ -7,7 +7,7 @@ class AuthService {
   final Database _database = Database();
 
   MUNUser userFromFirebaseUser(User user) {
-    return user != null ? MUNUser(uid: user.uid, email: user.email) : null;
+    return user != null ? MUNUser(uid: user.uid, email: user.email,city: 'City',) : null;
   }
 
   Future<User> signUp(String email, String password) async {
