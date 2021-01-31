@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mun/logic/database.dart';
+import 'package:mun/models/user.dart';
+import 'package:provider/provider.dart';
 import 'package:mun/views/elements/textstyles.dart';
 import 'package:mun/views/elements/widgets/home_mun_list.dart';
 import 'all_mun_screen.dart';
@@ -25,6 +26,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final user = Provider.of<MUNUser>(context);
     double h = MediaQuery.of(context).size.height;
     double w = MediaQuery.of(context).size.width;
     return Scaffold(
@@ -50,7 +52,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   );
                 },
                 child: Text(
-                  'City >',
+                  user.city,
                   style: simple(16),
                 ),
               )

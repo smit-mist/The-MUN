@@ -1,6 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:mun/logic/auth.dart';
+import 'package:mun/views/home/select_city_screen.dart';
 import 'package:mun/logic/database.dart';
 import 'package:mun/models/user.dart';
 import 'package:mun/views/elements/constants.dart';
@@ -28,8 +30,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
       final User user = await _auth.signUp(email, password1);
       if (user != null) {
         MUNUser currentUser = _auth.userFromFirebaseUser(user);
-        await _database.addUser(email, name,currentUser.uid);
-        Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => SelectCityScreen()), (route) => false);
+        await _database.addUser(email, name, currentUser.uid);
+        Navigator.pushAndRemoveUntil(
+            context,
+            MaterialPageRoute(builder: (context) => SelectCityScreen()),
+            (route) => false);
       } else {
         setState(() {
           isLoading = false;
@@ -40,6 +45,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final user = Provider.of<MUNUser>(context);
     double h = MediaQuery.of(context).size.height;
     double w = MediaQuery.of(context).size.width;
     return isLoading
@@ -95,6 +101,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                             : null;
                                       },
                                       onChanged: (change) {
+                                        user.name = change;
                                         setState(() {
                                           name = change;
                                         });
