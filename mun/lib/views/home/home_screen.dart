@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mun/logic/database.dart';
-import 'package:mun/logic/mun_data.dart';
-import 'package:mun/models/mun.dart';
-import 'package:mun/views/booking_mun/about_mun_screen.dart';
 import 'package:mun/views/elements/textstyles.dart';
-import 'package:mun/views/elements/widgets/horizontal_tile_widget.dart';
-import 'package:provider/provider.dart';
+import 'package:mun/views/elements/widgets/home_mun_list.dart';
 import 'all_mun_screen.dart';
 import 'package:mun/views/Home/select_city_screen.dart';
 
@@ -15,12 +11,10 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  Database db = Database();
   PageController _pageController = PageController(initialPage: 0);
   double currentPage = 0;
   @override
   void initState() {
- //   db.getMUN();
     _pageController.addListener(() {
       setState(() {
         currentPage = _pageController.page;
@@ -33,7 +27,6 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     double h = MediaQuery.of(context).size.height;
     double w = MediaQuery.of(context).size.width;
-    print(allMuns.length);
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: h * 0.07,
@@ -223,21 +216,22 @@ class _HomeScreenState extends State<HomeScreen> {
             SizedBox(
               height: h * 0.06,
             ),
-            Container(
-              width: w,
-              height: h * 0.3,
-              child:Provider.of<List<Mun>>(context)==null?Center(child: Container(child: CircularProgressIndicator(),height: h*0.05,)): ListView.builder(
-                itemCount:Provider.of<List<Mun>>(context).length,
-                scrollDirection: Axis.horizontal,
-                itemBuilder: (BuildContext context, int index) {
-                  return HorizontalTile(
-                    imageUrl: Provider.of<List<Mun>>(context)[index].imageUrls[0],
-                    name: Provider.of<List<Mun>>(context)[index].venue,
-                    date: Provider.of<List<Mun>>(context)[index].date,
-                  );
-                },
-              ),
-            ),
+            // Container(
+            //   width: w,
+            //   height: h * 0.3,
+            //   child:Provider.of<List<Mun>>(context)==null?Center(child: Container(child: CircularProgressIndicator(),height: h*0.05,)): ListView.builder(
+            //     itemCount:Provider.of<List<Mun>>(context).length,
+            //     scrollDirection: Axis.horizontal,
+            //     itemBuilder: (BuildContext context, int index) {
+            //       return HorizontalTile(
+            //         imageUrl: Provider.of<List<Mun>>(context)[index].imageUrls[0].toString(),
+            //         name: Provider.of<List<Mun>>(context)[index].venue,
+            //         date: Provider.of<List<Mun>>(context)[index].date,
+            //       );
+            //     },
+            //   ),
+            // ),
+            MunList(),
           ],
         ),
       ),

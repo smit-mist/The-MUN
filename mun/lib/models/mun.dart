@@ -8,7 +8,7 @@ class Mun {
   int remainingSeats;
   int registrationFees;
   String sheetLink;
-  List<String> imageUrls;
+  List<dynamic> imageUrls;
 
   List<Committee> committees = [];
   Mun({

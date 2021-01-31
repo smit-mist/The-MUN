@@ -20,18 +20,24 @@ class MunService {
   }
 
   List<Mun> munList(QuerySnapshot snapshot) {
+
     return snapshot.docs.map((snap) {
       Map<String, dynamic> item = snap.data();
-      return Mun(
-        venue: item['venue'].toString() ?? 'No Venue',
-        date: item['date'].toString() ?? 'DD/MM/YYYY',
-        imageUrls: item['media'] ?? [],
-        sheetLink: item['sheet_link'] ?? '',
-        registrationTime: item['registration_time'] ?? '',
-        remainingSeats: item['seats'].toInt() ?? 0,
-        description: item['description'].toString() ?? 'Nothing',
-        registrationFees: item['fees'].toInt() ?? -1,
-      );
+      try{
+        return Mun(
+          venue: item['venue'].toString() ?? 'No Venue',
+          date: item['date'].toString() ?? 'DD/MM/YYYY',
+          imageUrls: item['media'] ?? [],
+          sheetLink: item['sheet_link'] ?? '',
+          registrationTime: item['registration_time'] ?? '',
+          remainingSeats: item['seats'].toInt() ?? 0,
+          description: item['description'].toString() ?? 'Nothing',
+          registrationFees: item['fees'].toInt() ?? -1,
+        );
+      }catch(e){
+        print(e.toString());
+      }
+
     }).toList();
   }
 

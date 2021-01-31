@@ -1,7 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:mun/logic/mun_data.dart';
 import 'package:mun/views/authentication/login_screen.dart';
+import 'package:provider/provider.dart';
+import 'models/mun.dart';
 import 'routes.dart';
 
 
@@ -20,16 +23,19 @@ void main() async {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'The MUN',
-      initialRoute: isUserLoggedIn() ? 'home' : 'login',
-      routes: route_generator,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
+    return StreamProvider<List<Mun>>.value(
+      value: MunService().muns,
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'The MUN',
+        initialRoute: isUserLoggedIn() ? 'home' : 'login',
+        routes: route_generator,
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+          visualDensity: VisualDensity.adaptivePlatformDensity,
+        ),
+        home: LoginScreen(),
       ),
-      home: LoginScreen(),
     );
   }
 }
