@@ -34,10 +34,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
         if (user != null) {
           MUNUser currentUser = _auth.userFromFirebaseUser(user);
           await _database.addUser(email, name, currentUser.uid);
-          currUser.name = name;
-          setState(() {
-            isLoading = false;
-          });
+          // currUser.name = name;
+          print('===========');
           Navigator.pushAndRemoveUntil(
               context,
               MaterialPageRoute(builder: (context) => SelectCityScreen()),

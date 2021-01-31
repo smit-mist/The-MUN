@@ -12,8 +12,6 @@ class Database {
   }
 
   Future<void> addUserCity({String city, String uid}) {
-    return _db.collection('users').doc(uid).set({
-      'city':city,
-    });
+    return _db.collection('users').doc(uid).update({'city':city});
   }
 }
