@@ -30,9 +30,7 @@ class _MunListState extends State<MunList> {
               scrollDirection: Axis.horizontal,
               itemBuilder: (BuildContext context, int index) {
                 return HorizontalTile(
-                  imageUrl: list[index].imageUrls[0].toString(),
-                  name: list[index].venue,
-                  date: list[index].date,
+                 currentMun: list[index],
                 );
               },
             ),

@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:mun/models/mun.dart';
 import 'package:mun/views/booking_mun/about_mun_screen.dart';
 
 import '../textstyles.dart';
 
 class HorizontalTile extends StatefulWidget {
-  String name;
-  String date;
-  String imageUrl;
-  HorizontalTile({this.name, this.date, this.imageUrl});
+  Mun currentMun;
+  HorizontalTile({this.currentMun});
   @override
   _HorizontalTileState createState() => _HorizontalTileState();
 }
@@ -22,10 +21,7 @@ class _HorizontalTileState extends State<HorizontalTile> {
           context,
           MaterialPageRoute(
             builder: (context) => AboutMunScreen(
-              name: widget.name,
-              imageUrl: widget.imageUrl,
-              date: widget.date,
-              description: "This is description",
+              currentMun: widget.currentMun,
             ),
           ),
         );
@@ -38,15 +34,15 @@ class _HorizontalTileState extends State<HorizontalTile> {
           children: [
             Container(
               child: Image.network(
-
-                widget.imageUrl,
-                loadingBuilder: (BuildContext context, Widget child, ImageChunkEvent loadingProgress) {
-                  if (loadingProgress == null)
-                    return child;
+                widget.currentMun.imageUrls[0].toString(),
+                loadingBuilder: (BuildContext context, Widget child,
+                    ImageChunkEvent loadingProgress) {
+                  if (loadingProgress == null) return child;
                   return Center(
                     child: CircularProgressIndicator(
                       value: loadingProgress.expectedTotalBytes != null
-                          ? loadingProgress.cumulativeBytesLoaded / loadingProgress.expectedTotalBytes
+                          ? loadingProgress.cumulativeBytesLoaded /
+                              loadingProgress.expectedTotalBytes
                           : null,
                     ),
                   );
@@ -58,12 +54,12 @@ class _HorizontalTileState extends State<HorizontalTile> {
             SizedBox(
               height: 7,
             ),
-            Text(widget.name, style: simple(16)),
+            Text(widget.currentMun.venue, style: simple(16)),
             SizedBox(
               height: 7,
             ),
             Text(
-              widget.date,
+              widget.currentMun.date,
               style: simple(14),
             ),
           ],

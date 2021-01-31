@@ -1,18 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:mun/models/mun.dart';
 import 'package:mun/views/booking_mun/select_committee_screen.dart';
 import 'package:mun/views/elements/textstyles.dart';
 import 'package:share/share.dart';
 
 class AboutMunScreen extends StatefulWidget {
-  String name;
-  String imageUrl;
-  String date;
-  String description;
+  Mun currentMun;
   AboutMunScreen({
-    this.name,
-    this.imageUrl,
-    this.description,
-    this.date,
+    this.currentMun,
   });
   @override
   _AboutMunScreenState createState() => _AboutMunScreenState();
@@ -40,11 +35,11 @@ class _AboutMunScreenState extends State<AboutMunScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              widget.name ?? 'ok',
+              widget.currentMun.venue ?? 'ok',
               style: boldHeading,
             ),
             Text(
-              widget.date ?? 'd',
+              widget.currentMun.date ?? 'd',
               style: simple(15),
             ),
           ],
@@ -74,7 +69,7 @@ class _AboutMunScreenState extends State<AboutMunScreen> {
               width: w,
               height: h * 0.3,
               child: Image.network(
-                widget.imageUrl,
+                widget.currentMun.imageUrls[0].toString(),
                 fit: BoxFit.cover,
               ),
             ),
@@ -105,7 +100,9 @@ class _AboutMunScreenState extends State<AboutMunScreen> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => SelectCommitteeScreen(),
+                        builder: (context) => SelectCommitteeScreen(
+                          currentMun: widget.currentMun,
+                        ),
                       ),
                     );
                   },

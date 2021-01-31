@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:mun/models/committee.dart';
 import 'package:mun/views/booking_mun/extra_details_screen.dart';
 import 'package:mun/views/elements/textstyles.dart';
 
-class AboutCommittteeScreen extends StatefulWidget {
+class AboutCommitteeScreen extends StatefulWidget {
+  Committee currentCommittee;
+  AboutCommitteeScreen({this.currentCommittee});
   @override
-  _AboutCommittteeScreenState createState() => _AboutCommittteeScreenState();
+  _AboutCommitteeScreenState createState() => _AboutCommitteeScreenState();
 }
 
-class _AboutCommittteeScreenState extends State<AboutCommittteeScreen> {
+class _AboutCommitteeScreenState extends State<AboutCommitteeScreen> {
   @override
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width;

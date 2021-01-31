@@ -1,7 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:mun/models/mun.dart';
-import 'package:mun/models/committee.dart';
 
 class MunService {
   final munReference = FirebaseFirestore.instance.collection('MUN');
@@ -33,6 +31,7 @@ class MunService {
           remainingSeats: item['seats'].toInt() ?? 0,
           description: item['description'].toString() ?? 'Nothing',
           registrationFees: item['fees'].toInt() ?? -1,
+          id: snap.id,
         );
       }catch(e){
         print(e.toString());

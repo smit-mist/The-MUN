@@ -27,9 +27,7 @@ class _MunGridState extends State<MunGrid> {
               ),
               itemBuilder: (BuildContext context, int index) {
                 return HorizontalTile(
-                  imageUrl: list[index].imageUrls[0].toString(),
-                  name: list[index].venue,
-                  date: list[index].date,
+                  currentMun: list[index],
                 );
               },
             ),
