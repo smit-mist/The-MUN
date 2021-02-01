@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:mun/views/elements/constants.dart';
-import 'file:///C:/Users/smit3/AndroidStudioProjects/The-MUN/mun/lib/logic/database.dart';
+import 'package:mun/logic/database.dart';
 import 'package:mun/views/elements/textstyles.dart';
 import 'package:mun/views/elements/widgets.dart';
 
@@ -22,25 +22,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
       setState(() {
         isLoading = true;
       });
-      try {
-        print('=============> here');
-        final User user = (await _auth.createUserWithEmailAndPassword(
-                email: email, password: password1))
-            .user;
-        await database.addUser(email, name);
-        setState(() {
-          isLoading = false;
-        });
-        Navigator.pushNamedAndRemoveUntil(context, 'home', (route) => false);
-      } catch (e) {
-        print('==============>>');
-        print(e);
-        Scaffold.of(context).showSnackBar(
-          SnackBar(
-            content: Text('Something went wrong'),
-          ),
-        );
-      }
+      await database.addUser(email, name);
+      Navigator.pushNamedAndRemoveUntil(context, 'home', (route) => false);
     }
   }
 

@@ -22,20 +22,22 @@ class _LoginScreenState extends State<LoginScreen> {
         isLoading = true;
       });
       try {
-        final user = await _auth.signInWithEmailAndPassword(
-            email: email, password: password);
+        final User user = (await _auth.signInWithEmailAndPassword(
+                email: email, password: password))
+            .user;
         setState(() {
           isLoading = false;
         });
         if (user != null) {
           Navigator.pushNamedAndRemoveUntil(context, 'home', (route) => false);
         }
-      } catch (e) {
-        Scaffold.of(context).showSnackBar(
-          SnackBar(
-            content: Text('Something went wrong'),
-          ),
-        );
+      } on FirebaseAuthException catch (e) {
+        print(e);
+        // Scaffold.of(context).showSnackBar(
+        //   SnackBar(
+        //     content: Text('Something went wrong'),
+        //   ),
+        // );
       }
     }
   }
