@@ -1,4 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:mun/logic/database.dart';
 import 'package:mun/models/user.dart';
 
@@ -7,7 +9,7 @@ class AuthService {
   final Database _database = Database();
 
   MUNUser userFromFirebaseUser(User user) {
-    return user != null ? MUNUser(uid: user.uid, email: user.email) : null;
+    return MUNUser(uid: user.uid, email: user.email);
   }
 
   Future<User> signUp(String email, String password) async {
@@ -20,10 +22,6 @@ class AuthService {
     } catch (e) {
       return null;
     }
-  }
-
-  Stream<MUNUser> get user {
-    return _auth.authStateChanges().map(userFromFirebaseUser);
   }
 
   Future<User> signIn(String email, String password) async {

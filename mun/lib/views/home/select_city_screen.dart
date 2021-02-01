@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:mun/models/user.dart';
-import 'package:mun/logic/database.dart';
 
 class SelectCityScreen extends StatefulWidget {
   @override
@@ -9,7 +6,6 @@ class SelectCityScreen extends StatefulWidget {
 }
 
 class _SelectCityScreenState extends State<SelectCityScreen> {
-  Database _database = Database();
   List<String> cityNames = [
     'Ahmedabad',
     'Surat',
@@ -26,7 +22,6 @@ class _SelectCityScreenState extends State<SelectCityScreen> {
   ];
   @override
   Widget build(BuildContext context) {
-    final user = Provider.of<MUNUser>(context);
     double h = MediaQuery.of(context).size.height;
     double w = MediaQuery.of(context).size.width;
     return Scaffold(
@@ -90,22 +85,15 @@ class _SelectCityScreenState extends State<SelectCityScreen> {
                   //childAspectRatio: (w * 0.04) / (h * 0.008),
                 ),
                 itemBuilder: (BuildContext context, int index) {
-                  return GestureDetector(
-                    onTap: () async {
-                      await _database.addUserCity(city: cityNames[index],uid: user.uid);
-                      user.city = cityNames[index];
-                      Navigator.pushNamed(context, 'home');
-                    },
-                    child: Container(
-                      color: Colors.grey[200],
-                      child: Center(
-                        child: Text(
-                          cityNames[index],
-                          style: TextStyle(
-                            fontFamily: 'Helvetica',
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold,
-                          ),
+                  return Container(
+                    color: Colors.grey[200],
+                    child: Center(
+                      child: Text(
+                        cityNames[index],
+                        style: TextStyle(
+                          fontFamily: 'Helvetica',
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
                     ),
