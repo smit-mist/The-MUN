@@ -32,7 +32,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
         });
         final User user = await _auth.signUp(email, password1);
         if (user != null) {
-          await _database.addUser(email, name, currUser.uid);
+          MUNUser currentUser = _auth.userFromFirebaseUser(user);
+          await _database.addUser(email, name, currentUser.uid);
           // currUser.name = name;
           print('===========');
           Navigator.pushAndRemoveUntil(

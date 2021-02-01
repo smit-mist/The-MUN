@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:mun/models/user.dart';
-import 'package:mun/views/elements/widgets/loading.dart';
 import 'package:provider/provider.dart';
 import 'package:mun/views/elements/textstyles.dart';
 import 'package:mun/views/elements/widgets/home_mun_list.dart';
@@ -30,228 +29,215 @@ class _HomeScreenState extends State<HomeScreen> {
     final user = Provider.of<MUNUser>(context);
     double h = MediaQuery.of(context).size.height;
     double w = MediaQuery.of(context).size.width;
-    return user == null
-        ? Loading()
-        : Scaffold(
-            appBar: AppBar(
-              toolbarHeight: h * 0.07,
-              title: Padding(
-                padding: const EdgeInsets.only(left: 0),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'It All Starts Here!',
-                      style: boldHeading,
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => SelectCityScreen(),
-                          ),
-                        );
-                      },
-                      child: Text(
-                        user.city ?? 'Hello',
-                        style: simple(16),
-                      ),
-                    )
-                  ],
-                ),
+    return Scaffold(
+      appBar: AppBar(
+        toolbarHeight: h * 0.07,
+        title: Padding(
+          padding: const EdgeInsets.only(left: 10),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'It All Starts Here!',
+                style: boldHeading,
               ),
-              actions: [
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Icon(
-                    Icons.search,
-                    color: Colors.black,
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Icon(
-                    Icons.notifications,
-                    color: Colors.black,
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Icon(
-                    Icons.qr_code,
-                    color: Colors.black,
-                  ),
-                )
-              ],
-              backgroundColor: Colors.white,
-            ),
-            body: Container(
-              child: Column(
-                children: [
-                  Container(
-                    height: h * 0.3,
-                    width: w,
-                    child: Stack(
-                      alignment: Alignment.center,
-                      children: [
-                        PageView(
-                          controller: _pageController,
-                          children: [
-                            Container(
-                              child: Image.network(
-                                'https://picsum.photos/id/54/500/300',
-                                loadingBuilder: (BuildContext context,
-                                    Widget child,
-                                    ImageChunkEvent loadingProgress) {
-                                  if (loadingProgress == null) return child;
-                                  return Center(
-                                    child: CircularProgressIndicator(
-                                      value: loadingProgress
-                                                  .expectedTotalBytes !=
-                                              null
-                                          ? loadingProgress
-                                                  .cumulativeBytesLoaded /
-                                              loadingProgress.expectedTotalBytes
-                                          : null,
-                                    ),
-                                  );
-                                },
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                            Container(
-                              child: Image.network(
-                                'https://picsum.photos/id/34/500/300',
-                                loadingBuilder: (BuildContext context,
-                                    Widget child,
-                                    ImageChunkEvent loadingProgress) {
-                                  if (loadingProgress == null) return child;
-                                  return Center(
-                                    child: CircularProgressIndicator(
-                                      value: loadingProgress
-                                                  .expectedTotalBytes !=
-                                              null
-                                          ? loadingProgress
-                                                  .cumulativeBytesLoaded /
-                                              loadingProgress.expectedTotalBytes
-                                          : null,
-                                    ),
-                                  );
-                                },
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                            Container(
-                              child: Image.network(
-                                'https://picsum.photos/id/100/500/300',
-                                loadingBuilder: (BuildContext context,
-                                    Widget child,
-                                    ImageChunkEvent loadingProgress) {
-                                  if (loadingProgress == null) return child;
-                                  return Center(
-                                    child: CircularProgressIndicator(
-                                      value: loadingProgress
-                                                  .expectedTotalBytes !=
-                                              null
-                                          ? loadingProgress
-                                                  .cumulativeBytesLoaded /
-                                              loadingProgress.expectedTotalBytes
-                                          : null,
-                                    ),
-                                  );
-                                },
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                          ],
-                        ),
-                        Positioned(
-                          left: 5,
-                          child: IconButton(
-                            icon: Icon(Icons.arrow_back_ios),
-                            onPressed: () {
-                              setState(() {
-                                _pageController.animateToPage(
-                                    currentPage.round() - 1,
-                                    duration: Duration(milliseconds: 600),
-                                    curve: Curves.ease);
-                                currentPage--;
-                              });
-                            },
-                          ),
-                        ),
-                        Positioned(
-                          right: 5,
-                          child: IconButton(
-                            icon: Icon(Icons.arrow_forward_ios),
-                            onPressed: () {
-                              setState(() {
-                                _pageController.animateToPage(
-                                    currentPage.round() + 1,
-                                    duration: Duration(milliseconds: 600),
-                                    curve: Curves.ease);
-                                currentPage++;
-                              });
-                            },
-                          ),
-                        ),
-                      ],
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => SelectCityScreen(),
                     ),
-                  ),
-                  SizedBox(
-                    height: h * 0.06,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          'MUNs In Your Region:',
-                          style: boldHeading,
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (_) => AllMun(),
+                  );
+                },
+                child: Text(
+                  user.city,
+                  style: simple(16),
+                ),
+              )
+            ],
+          ),
+        ),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Icon(
+              Icons.search,
+              color: Colors.black,
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Icon(
+              Icons.notifications,
+              color: Colors.black,
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Icon(
+              Icons.qr_code,
+              color: Colors.black,
+            ),
+          )
+        ],
+        backgroundColor: Colors.white,
+      ),
+      body: Container(
+        child: Column(
+          children: [
+            Container(
+              height: h * 0.3,
+              width: w,
+              child: Stack(
+                alignment: Alignment.center,
+                children: [
+                  PageView(
+                    controller: _pageController,
+                    children: [
+                      Container(
+                        child: Image.network(
+                          'https://picsum.photos/id/54/200/300',
+                          loadingBuilder: (BuildContext context, Widget child,
+                              ImageChunkEvent loadingProgress) {
+                            if (loadingProgress == null) return child;
+                            return Center(
+                              child: CircularProgressIndicator(
+                                value: loadingProgress.expectedTotalBytes !=
+                                        null
+                                    ? loadingProgress.cumulativeBytesLoaded /
+                                        loadingProgress.expectedTotalBytes
+                                    : null,
                               ),
                             );
                           },
-                          child: Text(
-                            'See all >',
-                            style: simple(20),
-                          ),
+                          fit: BoxFit.cover,
                         ),
-                      ],
+                      ),
+                      Container(
+                        child: Image.network(
+                          'https://picsum.photos/id/34/200/300',
+                          loadingBuilder: (BuildContext context, Widget child,
+                              ImageChunkEvent loadingProgress) {
+                            if (loadingProgress == null) return child;
+                            return Center(
+                              child: CircularProgressIndicator(
+                                value: loadingProgress.expectedTotalBytes !=
+                                        null
+                                    ? loadingProgress.cumulativeBytesLoaded /
+                                        loadingProgress.expectedTotalBytes
+                                    : null,
+                              ),
+                            );
+                          },
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                      Container(
+                        child: Image.network(
+                          'https://picsum.photos/id/100/200/300',
+                          loadingBuilder: (BuildContext context, Widget child,
+                              ImageChunkEvent loadingProgress) {
+                            if (loadingProgress == null) return child;
+                            return Center(
+                              child: CircularProgressIndicator(
+                                value: loadingProgress.expectedTotalBytes !=
+                                        null
+                                    ? loadingProgress.cumulativeBytesLoaded /
+                                        loadingProgress.expectedTotalBytes
+                                    : null,
+                              ),
+                            );
+                          },
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    ],
+                  ),
+                  Positioned(
+                    left: 5,
+                    child: IconButton(
+                      icon: Icon(Icons.arrow_back_ios),
+                      onPressed: () {
+                        setState(() {
+                          _pageController.animateToPage(currentPage.round() - 1,
+                              duration: Duration(milliseconds: 600),
+                              curve: Curves.ease);
+                          currentPage--;
+                        });
+                      },
                     ),
                   ),
-                  SizedBox(
-                    height: h * 0.06,
+                  Positioned(
+                    right: 5,
+                    child: IconButton(
+                      icon: Icon(Icons.arrow_forward_ios),
+                      onPressed: () {
+                        setState(() {
+                          _pageController.animateToPage(currentPage.round() + 1,
+                              duration: Duration(milliseconds: 600),
+                              curve: Curves.ease);
+                          currentPage++;
+                        });
+                      },
+                    ),
                   ),
-                  // Container(
-                  //   width: w,
-                  //   height: h * 0.3,
-                  //   child:Provider.of<List<Mun>>(context)==null?Center(child: Container(child: CircularProgressIndicator(),height: h*0.05,)): ListView.builder(
-                  //     itemCount:Provider.of<List<Mun>>(context).length,
-                  //     scrollDirection: Axis.horizontal,
-                  //     itemBuilder: (BuildContext context, int index) {
-                  //       return HorizontalTile(
-                  //         imageUrl: Provider.of<List<Mun>>(context)[index].imageUrls[0].toString(),
-                  //         name: Provider.of<List<Mun>>(context)[index].venue,
-                  //         date: Provider.of<List<Mun>>(context)[index].date,
-                  //       );
-                  //     },
-                  //   ),
-                  // ),
-                  MunList(),
                 ],
               ),
             ),
-          );
+            SizedBox(
+              height: h * 0.06,
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'MUNs In Your Region:',
+                    style: boldHeading,
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) => AllMun(),
+                        ),
+                      );
+                    },
+                    child: Text(
+                      'See all >',
+                      style: simple(20),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(
+              height: h * 0.06,
+            ),
+            // Container(
+            //   width: w,
+            //   height: h * 0.3,
+            //   child:Provider.of<List<Mun>>(context)==null?Center(child: Container(child: CircularProgressIndicator(),height: h*0.05,)): ListView.builder(
+            //     itemCount:Provider.of<List<Mun>>(context).length,
+            //     scrollDirection: Axis.horizontal,
+            //     itemBuilder: (BuildContext context, int index) {
+            //       return HorizontalTile(
+            //         imageUrl: Provider.of<List<Mun>>(context)[index].imageUrls[0].toString(),
+            //         name: Provider.of<List<Mun>>(context)[index].venue,
+            //         date: Provider.of<List<Mun>>(context)[index].date,
+            //       );
+            //     },
+            //   ),
+            // ),
+            MunList(),
+          ],
+        ),
+      ),
+    );
   }
 }
 
