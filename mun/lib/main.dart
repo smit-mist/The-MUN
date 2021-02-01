@@ -1,7 +1,6 @@
- import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:mun/logic/auth.dart';
 import 'package:mun/logic/mun_data.dart';
 import 'package:mun/views/authentication/login_screen.dart';
 import 'package:provider/provider.dart';
@@ -29,7 +28,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'The MUN',
-        initialRoute: AuthService().isUserLoggedIn() ? 'home' : 'login',
+        initialRoute: isUserLoggedIn() ? 'home' : 'login',
         routes: route_generator,
         theme: ThemeData(
           primarySwatch: Colors.blue,
@@ -41,3 +40,10 @@ class MyApp extends StatelessWidget {
   }
 }
 
+bool isUserLoggedIn() {
+  final user = FirebaseAuth.instance.currentUser;
+  if (user != null) {
+    return true;
+  }
+  return false;
+}

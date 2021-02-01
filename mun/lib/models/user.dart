@@ -1,27 +1,21 @@
 import 'mun.dart';
 
-class MUNUser {
-  String name;
-  String email;
-  String city;
-  DateTime dob;
-  String uid;
-  int age;
-  String mobileNumber;
-  bool foodPref;
-  String committtee;
-  String institution;
+class User {
+  String name = "", email="", mobileNo="";
+  DateTime dob = DateTime.now();
 
-  MUNUser({
-    this.uid,
-    this.age,
-    this.city,
-    this.committtee,
-    this.dob,
-    this.email,
-    this.foodPref,
-    this.institution,
-    this.mobileNumber,
-    this.name,
-  });
+  String getName(){
+    return name;
+  }
+  String getEmail(){
+    return email;
+  }
+  String getMobileNo(){
+    return mobileNo;
+  }
+  DateTime getDOB(){
+    return dob;
+  }
+
 }
+
