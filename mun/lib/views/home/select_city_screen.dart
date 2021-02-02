@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:mun/logic/database.dart';
+import 'package:mun/models/mun_user.dart';
+import 'package:mun/views/home/home_screen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SelectCityScreen extends StatefulWidget {
   @override
@@ -6,6 +10,7 @@ class SelectCityScreen extends StatefulWidget {
 }
 
 class _SelectCityScreenState extends State<SelectCityScreen> {
+  final _db = Database();
   List<String> cityNames = [
     'Ahmedabad',
     'Surat',
@@ -85,15 +90,27 @@ class _SelectCityScreenState extends State<SelectCityScreen> {
                   //childAspectRatio: (w * 0.04) / (h * 0.008),
                 ),
                 itemBuilder: (BuildContext context, int index) {
-                  return Container(
-                    color: Colors.grey[200],
-                    child: Center(
-                      child: Text(
-                        cityNames[index],
-                        style: TextStyle(
-                          fontFamily: 'Helvetica',
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
+                  return GestureDetector(
+                    onTap: () async {
+                      SharedPreferences prefs = await SharedPreferences.getInstance();
+                      await _db.addUserCity(prefs.getString('uid'), cityNames[index]);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => HomeScreen(),
+                        ),
+                      );
+                    },
+                    child: Container(
+                      color: Colors.grey[200],
+                      child: Center(
+                        child: Text(
+                          cityNames[index],
+                          style: TextStyle(
+                            fontFamily: 'Helvetica',
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
                     ),

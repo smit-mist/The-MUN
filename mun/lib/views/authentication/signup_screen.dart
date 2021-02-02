@@ -1,9 +1,15 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:mun/logic/auth.dart';
+import 'package:mun/models/mun_user.dart';
 import 'package:mun/views/elements/constants.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:mun/logic/database.dart';
 import 'package:mun/views/elements/textstyles.dart';
 import 'package:mun/views/elements/widgets.dart';
+import 'package:mun/views/elements/widgets/loading.dart';
+import 'package:mun/views/home/select_city_screen.dart';
 
 class SignUpScreen extends StatefulWidget {
   @override
@@ -14,7 +20,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   Database database = Database();
   GlobalKey<FormState> _key = GlobalKey<FormState>();
   bool isLoading = false, isVisible = false, isAccepted = false;
-  final _auth = FirebaseAuth.instance;
+  final _auth = AuthService();
   String name, email, password1, password2;
 
   void signMeUp() async {
@@ -22,8 +28,27 @@ class _SignUpScreenState extends State<SignUpScreen> {
       setState(() {
         isLoading = true;
       });
-      await database.addUser(email, name);
-      Navigator.pushNamedAndRemoveUntil(context, 'home', (route) => false);
+      final MUNUser user = await _auth.signUp(email, password1);
+      if (user != null) {
+        await database.addUser(email, name, user.uid);
+        SharedPreferences prefs = await SharedPreferences.getInstance();
+        prefs.setString('uid', user.uid);
+        Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(builder: (context) => SelectCityScreen()),
+          (route) => false,
+        );
+      } else {
+        setState(() {
+          isLoading = false;
+        });
+        Fluttertoast.showToast(
+          msg: 'Something went wrong',
+          fontSize: 16.0,
+          gravity: ToastGravity.BOTTOM,
+          toastLength: Toast.LENGTH_LONG,
+        );
+      }
     }
   }
 
@@ -31,268 +56,272 @@ class _SignUpScreenState extends State<SignUpScreen> {
   Widget build(BuildContext context) {
     double h = MediaQuery.of(context).size.height;
     double w = MediaQuery.of(context).size.width;
-    return Scaffold(
-      body: Center(
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Center(
-                child: Text(
-                  'BookMyMun',
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                    fontFamily: 'Helvetica',
-                    fontSize: 35,
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: h * 0.05,
-              ),
-              Padding(
-                padding: EdgeInsets.only(left: w * 0.075),
-                child: Text(
-                  'Create account',
-                  style: simple(28),
-                ),
-              ),
-              SizedBox(
-                height: h * 0.02,
-              ),
-              Center(
-                child: SingleChildScrollView(
-                  child: Container(
-                    width: w * 0.85,
-                    height: h * 0.4,
-                    child: Center(
-                      child: Form(
-                        key: _key,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Container(
-                              child: TextFormField(
-                                validator: (value) {
-                                  return value.isEmpty
-                                      ? 'Enter a proper username'
-                                      : null;
-                                },
-                                onChanged: (change) {
-                                  setState(() {
-                                    name = change;
-                                  });
-                                },
-                                decoration: textFieldDecoration('Name'),
-                                cursorColor: Colors.black,
-                              ),
-                            ),
-                            Container(
-                              child: TextFormField(
-                                validator: (value) {
-                                  return (value.isEmpty ||
-                                          !RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
-                                              .hasMatch(value))
-                                      ? 'Enter a valid email'
-                                      : null;
-                                },
-                                cursorColor: Colors.black,
-                                onChanged: (change) {
-                                  setState(() {
-                                    email = change;
-                                  });
-                                },
-                                decoration:
-                                    textFieldDecoration('Your email address'),
-                              ),
-                            ),
-                            Container(
-                              //height: 70,
-                              child: TextFormField(
-                                validator: (value) {
-                                  return (value.isEmpty || value.length < 8)
-                                      ? 'Minimum length of password is 8'
-                                      : null;
-                                },
-                                cursorColor: Colors.black,
-                                onChanged: (change) {
-                                  setState(() {
-                                    password1 = change;
-                                  });
-                                },
-                                obscureText: isVisible ? false : true,
-                                decoration:
-                                    textFieldDecoration('Create Password'),
-                              ),
-                            ),
-                            Container(
-                              child: TextFormField(
-                                cursorColor: Colors.black,
-                                onChanged: (change) {
-                                  setState(() {
-                                    password2 = change;
-                                  });
-                                },
-                                obscureText: isVisible ? false : true,
-                                decoration:
-                                    textFieldDecoration('Confirm Password'),
-                                validator: (value) {
-                                  return (password2 != password1)
-                                      ? 'Passwords don\'t match'
-                                      : null;
-                                },
-                              ),
-                            ),
-                          ],
+    return isLoading
+        ? Loading()
+        : Scaffold(
+            body: Center(
+              child: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Center(
+                      child: Text(
+                        'BookMyMun',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: 'Helvetica',
+                          fontSize: 35,
                         ),
                       ),
                     ),
-                  ),
-                ),
-              ),
-              // SizedBox(
-              //   height: h * 0.01,
-              // ),
-              Padding(
-                padding: EdgeInsets.only(
-                  left: (w * 0.075 - 12) < 0 ? 0 : (w * 0.075 - 12),
-                ),
-                child: Row(
-                  children: [
-                    Checkbox(
-                      value: isVisible,
-                      activeColor: Colors.blue,
-                      onChanged: (bool newValue) {
-                        setState(() {
-                          isVisible = newValue;
-                        });
-                      },
+                    SizedBox(
+                      height: h * 0.05,
                     ),
-                    Text(
-                      'Show Password',
-                      style: simple(14),
+                    Padding(
+                      padding: EdgeInsets.only(left: w * 0.075),
+                      child: Text(
+                        'Create account',
+                        style: simple(28),
+                      ),
                     ),
-                  ],
-                ),
-              ),
-              Center(
-                child: NormalButton(
-                  function: signMeUp,
-                  width: w * 0.85,
-                  height: h * 0.055,
-                  text: 'Sign Up',
-                ),
-              ),
-              Center(
-                child: Visibility(
-                  child: CircularProgressIndicator(
-                    valueColor:
-                        AlwaysStoppedAnimation<Color>(kBlueShade),
-                  ),
-                  visible: isLoading,
-                ),
-              ),
-              SizedBox(
-                height: h * 0.01,
-              ),
-              Padding(
-                padding: EdgeInsets.only(
-                  left: (w * 0.075 - 12) < 0 ? 0 : (w * 0.075 - 12),
-                ),
-                child: FormField(
-                  validator: (value) {
-                    return (!isAccepted)
-                        ? 'Please accept the terms and conditions'
-                        : null;
-                  },
-                  builder: (state) {
-                    return Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Checkbox(
-                          value: isAccepted,
-                          activeColor: kBlueShade,
-                          onChanged: (bool newValue) {
-                            setState(() {
-                              isAccepted = newValue;
-                            });
-                          },
+                    SizedBox(
+                      height: h * 0.02,
+                    ),
+                    Center(
+                      child: SingleChildScrollView(
+                        child: Container(
+                          width: w * 0.85,
+                          height: h * 0.4,
+                          child: Center(
+                            child: Form(
+                              key: _key,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  Container(
+                                    child: TextFormField(
+                                      validator: (value) {
+                                        return value.isEmpty
+                                            ? 'Enter a proper username'
+                                            : null;
+                                      },
+                                      onChanged: (change) {
+                                        setState(() {
+                                          name = change;
+                                        });
+                                      },
+                                      decoration: textFieldDecoration('Name'),
+                                      cursorColor: Colors.black,
+                                    ),
+                                  ),
+                                  Container(
+                                    child: TextFormField(
+                                      validator: (value) {
+                                        return (value.isEmpty ||
+                                                !RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                                                    .hasMatch(value))
+                                            ? 'Enter a valid email'
+                                            : null;
+                                      },
+                                      cursorColor: Colors.black,
+                                      onChanged: (change) {
+                                        setState(() {
+                                          email = change;
+                                        });
+                                      },
+                                      decoration: textFieldDecoration(
+                                          'Your email address'),
+                                    ),
+                                  ),
+                                  Container(
+                                    //height: 70,
+                                    child: TextFormField(
+                                      validator: (value) {
+                                        return (value.isEmpty ||
+                                                value.length < 8)
+                                            ? 'Minimum length of password is 8'
+                                            : null;
+                                      },
+                                      cursorColor: Colors.black,
+                                      onChanged: (change) {
+                                        setState(() {
+                                          password1 = change;
+                                        });
+                                      },
+                                      obscureText: isVisible ? false : true,
+                                      decoration: textFieldDecoration(
+                                          'Create Password'),
+                                    ),
+                                  ),
+                                  Container(
+                                    child: TextFormField(
+                                      cursorColor: Colors.black,
+                                      onChanged: (change) {
+                                        setState(() {
+                                          password2 = change;
+                                        });
+                                      },
+                                      obscureText: isVisible ? false : true,
+                                      decoration: textFieldDecoration(
+                                          'Confirm Password'),
+                                      validator: (value) {
+                                        return (password2 != password1)
+                                            ? 'Passwords don\'t match'
+                                            : null;
+                                      },
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
                         ),
-                        Container(
-                          width: w * 0.8,
-                          child: Wrap(
+                      ),
+                    ),
+                    // SizedBox(
+                    //   height: h * 0.01,
+                    // ),
+                    Padding(
+                      padding: EdgeInsets.only(
+                        left: (w * 0.075 - 12) < 0 ? 0 : (w * 0.075 - 12),
+                      ),
+                      child: Row(
+                        children: [
+                          Checkbox(
+                            value: isVisible,
+                            activeColor: Colors.blue,
+                            onChanged: (bool newValue) {
+                              setState(() {
+                                isVisible = newValue;
+                              });
+                            },
+                          ),
+                          Text(
+                            'Show Password',
+                            style: simple(14),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Center(
+                      child: NormalButton(
+                        function: signMeUp,
+                        width: w * 0.85,
+                        height: h * 0.055,
+                        text: 'Sign Up',
+                      ),
+                    ),
+                    Center(
+                      child: Visibility(
+                        child: CircularProgressIndicator(
+                          valueColor: AlwaysStoppedAnimation<Color>(kBlueShade),
+                        ),
+                        visible: isLoading,
+                      ),
+                    ),
+                    SizedBox(
+                      height: h * 0.01,
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(
+                        left: (w * 0.075 - 12) < 0 ? 0 : (w * 0.075 - 12),
+                      ),
+                      child: FormField(
+                        validator: (value) {
+                          return (!isAccepted)
+                              ? 'Please accept the terms and conditions'
+                              : null;
+                        },
+                        builder: (state) {
+                          return Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              Text(
-                                "By creating account or logging in, you agree to BookMyMUN's ",
-                                style: simple(12),
+                              Checkbox(
+                                value: isAccepted,
+                                activeColor: kBlueShade,
+                                onChanged: (bool newValue) {
+                                  setState(() {
+                                    isAccepted = newValue;
+                                  });
+                                },
                               ),
-                              GestureDetector(
-                                onTap: () {},
-                                child: Text(
-                                  'Conditions of Use ',
-                                  style: simple(12).copyWith(
-                                    color: kBlueShade,
-                                  ),
-                                ),
-                              ),
-                              Text(
-                                'and',
-                                style: simple(12),
-                              ),
-                              GestureDetector(
-                                onTap: () {},
-                                child: Text(
-                                  ' Privacy Policy',
-                                  style: simple(12).copyWith(
-                                    color:kBlueShade,
-                                  ),
+                              Container(
+                                width: w * 0.8,
+                                child: Wrap(
+                                  children: [
+                                    Text(
+                                      "By creating account or logging in, you agree to BookMyMUN's ",
+                                      style: simple(12),
+                                    ),
+                                    GestureDetector(
+                                      onTap: () {},
+                                      child: Text(
+                                        'Conditions of Use ',
+                                        style: simple(12).copyWith(
+                                          color: kBlueShade,
+                                        ),
+                                      ),
+                                    ),
+                                    Text(
+                                      'and',
+                                      style: simple(12),
+                                    ),
+                                    GestureDetector(
+                                      onTap: () {},
+                                      child: Text(
+                                        ' Privacy Policy',
+                                        style: simple(12).copyWith(
+                                          color: kBlueShade,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ),
                             ],
-                          ),
-                        ),
-                      ],
-                    );
-                  },
-                ),
-              ),
-              SizedBox(
-                height: h * 0.05,
-              ),
-              Center(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      "Already have an account?",
-                      style: TextStyle(
-                        fontFamily: 'Helvetica',
-                        fontSize: 18,
+                          );
+                        },
                       ),
                     ),
-                    GestureDetector(
-                      child: Text(
-                        ' Log In',
-                        style: TextStyle(
-                          fontFamily: 'Helvetica',
-                          fontSize: 18,
-                          color: kBlueShade,
-                        ),
+                    SizedBox(
+                      height: h * 0.05,
+                    ),
+                    Center(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            "Already have an account?",
+                            style: TextStyle(
+                              fontFamily: 'Helvetica',
+                              fontSize: 18,
+                            ),
+                          ),
+                          GestureDetector(
+                            child: Text(
+                              ' Log In',
+                              style: TextStyle(
+                                fontFamily: 'Helvetica',
+                                fontSize: 18,
+                                color: kBlueShade,
+                              ),
+                            ),
+                            onTap: () {
+                              Navigator.of(context)
+                                  .pushReplacementNamed('login');
+                            },
+                          )
+                        ],
                       ),
-                      onTap: () {
-                        Navigator.of(context).pushReplacementNamed('login');
-                      },
                     )
                   ],
                 ),
-              )
-            ],
-          ),
-        ),
-      ),
-    );
+              ),
+            ),
+          );
   }
 }
 // Container(

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:mun/logic/database.dart';
+import 'package:mun/models/mun_user.dart';
 import 'package:mun/views/elements/textstyles.dart';
 import 'package:mun/views/elements/widgets/home_mun_list.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'all_mun_screen.dart';
 import 'package:mun/views/Home/select_city_screen.dart';
 
@@ -13,6 +15,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   PageController _pageController = PageController(initialPage: 0);
   double currentPage = 0;
+  String city;
   @override
   void initState() {
     _pageController.addListener(() {
@@ -20,7 +23,17 @@ class _HomeScreenState extends State<HomeScreen> {
         currentPage = _pageController.page;
       });
     });
+    getUserCityName();
     super.initState();
+  }
+
+  void getUserCityName() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String uid = prefs.getString('uid');
+    String cityName = await Database().getUserCity(uid);
+    setState(() {
+      city = cityName;
+    });
   }
 
   @override
@@ -50,7 +63,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   );
                 },
                 child: Text(
-                  'City >',
+                  city != null ? city : 'City >',
                   style: simple(16),
                 ),
               )
