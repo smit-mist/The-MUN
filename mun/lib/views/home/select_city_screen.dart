@@ -94,12 +94,7 @@ class _SelectCityScreenState extends State<SelectCityScreen> {
                     onTap: () async {
                       SharedPreferences prefs = await SharedPreferences.getInstance();
                       await _db.addUserCity(prefs.getString('uid'), cityNames[index]);
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => HomeScreen(),
-                        ),
-                      );
+                      Navigator.pushReplacementNamed(context, 'home');
                     },
                     child: Container(
                       color: Colors.grey[200],
