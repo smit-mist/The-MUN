@@ -18,7 +18,7 @@ class _CommitteeGridState extends State<CommitteeGrid> {
     double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.height;
     return list == null
-        ? CircularProgressIndicator()
+        ? Center(child: CircularProgressIndicator())
         : Container(
             padding: EdgeInsets.only(top: 24.0),
             child: GridView.builder(
