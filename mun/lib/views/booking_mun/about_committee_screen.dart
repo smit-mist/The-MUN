@@ -52,6 +52,7 @@ class _AboutCommitteeScreenState extends State<AboutCommitteeScreen> {
         color: Colors.white,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
               color: Colors.grey[200],
@@ -63,33 +64,61 @@ class _AboutCommitteeScreenState extends State<AboutCommitteeScreen> {
                 fit: BoxFit.cover,
               ),
             ),
-            Container(
-              margin: EdgeInsets.symmetric(horizontal: 10.0),
-              width: w,
-              height: 350.0,
-              child: Center(
-                child: Text(
-                  'Description (A-Z)',
-                  style:boldHeading,
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Container(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Agenda :- ${widget.currentCommittee.agenda}',
+                      style:simple(16),
+                    ),
+                    SizedBox(height: 10,),
+                    Text(
+                      'Seats :- ${widget.currentCommittee.remainingSeats}',
+                      style:simple(16),
+                    ),
+                    SizedBox(height: 10,),
+                    Text(
+                      'Suggestions :- ${widget.currentCommittee.suggestions}',
+                      style:simple(16),
+                    ),
+                    SizedBox(height: 10,),
+                    Text(
+                      'Description :-',
+                      style:boldHeading,
+                    ),
+                    SizedBox(height: 10,),
+                    Text(
+                      '${widget.currentCommittee.description}',
+                      style:simple(16),
+                    ),
+                    SizedBox(height: 10,),
+                  ],
                 ),
               ),
             ),
-            Container(
-              color: Colors.grey[200],
-              height: 80.0,
-              child: Center(
-                child: TextButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => ExtraDetails(),
-                      ),
-                    );
-                  },
-                  child: Text(
-                    'Confirm Committee',
-                    style:boldHeading,
+            Spacer(),
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Container(
+                color: Colors.grey[200],
+                height: 80.0,
+                child: Center(
+                  child: TextButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ExtraDetails(),
+                        ),
+                      );
+                    },
+                    child: Text(
+                      'Confirm Committee',
+                      style:boldHeading,
+                    ),
                   ),
                 ),
               ),
