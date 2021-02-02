@@ -15,6 +15,7 @@ class _HorizontalTileState extends State<HorizontalTile> {
   @override
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width;
+    double h = MediaQuery.of(context).size.height;
     return GestureDetector(
       onTap: () {
         Navigator.push(
@@ -28,8 +29,7 @@ class _HorizontalTileState extends State<HorizontalTile> {
       },
       child: Container(
         padding: EdgeInsets.symmetric(horizontal: 10),
-        height: w * 0.6,
-        width: w * 0.4,
+        width: w * 0.45,
         child: Column(
           children: [
             Container(

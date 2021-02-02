@@ -43,32 +43,29 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: h * 0.07,
-        title: Padding(
-          padding: const EdgeInsets.only(left: 10),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'It All Starts Here!',
-                style: boldHeading,
+        title: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'It All Starts Here!',
+              style: boldHeading,
+            ),
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => SelectCityScreen(),
+                  ),
+                );
+              },
+              child: Text(
+                city != null ? city : 'City >',
+                style: simple(16),
               ),
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => SelectCityScreen(),
-                    ),
-                  );
-                },
-                child: Text(
-                  city != null ? city : 'City >',
-                  style: simple(16),
-                ),
-              )
-            ],
-          ),
+            )
+          ],
         ),
         actions: [
           Padding(
