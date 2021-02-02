@@ -30,23 +30,26 @@ class _CommitteeGridState extends State<CommitteeGrid> {
                 childAspectRatio: (w * 0.04) / (h * 0.03),
               ),
               itemBuilder: (BuildContext context, int index) {
-                return GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => AboutCommitteeScreen(
-                          currentCommittee: list[index],
+                return Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => AboutCommitteeScreen(
+                            currentCommittee: list[index],
+                          ),
                         ),
-                      ),
-                    );
-                  },
-                  child: Container(
-                    color: Colors.grey[200],
-                    child: Center(
-                      child: Text(
-                        list[index].name,
-                        style: boldHeading,
+                      );
+                    },
+                    child: Container(
+                      color: Colors.grey[200],
+                      child: Center(
+                        child: Text(
+                          list[index].name,
+                          style: boldHeading,
+                        ),
                       ),
                     ),
                   ),
