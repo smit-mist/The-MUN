@@ -135,7 +135,7 @@ class _AboutMunScreenState extends State<AboutMunScreen> {
             ),
             Spacer(),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 10, vertical: 20),
+              padding: EdgeInsets.symmetric(horizontal: 10),
               child: Container(
                 color: Colors.grey[200],
                 height: h * 0.1,

@@ -17,7 +17,7 @@ class _MunListState extends State<MunList> {
     var list = Provider.of<List<Mun>>(context);
     return Container(
       width: w,
-      height: h * 0.35,
+      height: h * 0.33,
       child: list == null
           ? Center(
               child: Container(
