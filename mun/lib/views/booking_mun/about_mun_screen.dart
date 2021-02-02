@@ -77,38 +77,84 @@ class _AboutMunScreenState extends State<AboutMunScreen> {
               height: h * 0.05,
             ),
 
-            Container(
-              margin: EdgeInsets.symmetric(horizontal: 10.0),
-              width: w,
-              height: h * 0.3,
-              child: Center(
-                child: Text(
-                  'Description (A-Z)',
-                  style: boldHeading,
+            Center(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Venue :- ${widget.currentMun.venue}',
+                      style: simple(16),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Text(
+                      'Total Seats :- ${widget.currentMun.remainingSeats}',
+                      style: simple(16),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Text(
+                      'Date :- ${widget.currentMun.date}',
+                      style: simple(16),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Text(
+                      'Registration Starts :- ${widget.currentMun.registrationTime}',
+                      style: simple(16),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Text(
+                      'Fees :- ${widget.currentMun.registrationFees}',
+                      style: simple(16),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Text(
+                      'Description',
+                      style: boldHeading,
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Text(
+                      widget.currentMun.description,
+                      style: simple(14),
+                    ),
+                  ],
                 ),
               ),
             ),
-            SizedBox(
-              height: h * 0.05,
-            ),
-            Container(
-              color: Colors.grey[200],
-              height: h * 0.1,
-              child: Center(
-                child: TextButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => SelectCommitteeScreen(
-                          currentMun: widget.currentMun,
+            Spacer(),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 10, vertical: 20),
+              child: Container(
+                color: Colors.grey[200],
+                height: h * 0.1,
+                child: Center(
+                  child: TextButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => SelectCommitteeScreen(
+                            currentMun: widget.currentMun,
+                          ),
                         ),
-                      ),
-                    );
-                  },
-                  child: Text(
-                    'Select Committee',
-                    style: boldHeading,
+                      );
+                    },
+                    child: Text(
+                      'Select Committee',
+                      style: boldHeading,
+                    ),
                   ),
                 ),
               ),
