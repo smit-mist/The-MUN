@@ -23,6 +23,7 @@ class _AboutMunScreenState extends State<AboutMunScreen> {
 
   @override
   Widget build(BuildContext context) {
+    PageController _controller = PageController(initialPage: 0);
     double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.height;
     return Scaffold(
@@ -71,13 +72,58 @@ class _AboutMunScreenState extends State<AboutMunScreen> {
         child: Column(
           children: [
             Container(
-              color: Colors.grey[200],
-              margin: EdgeInsets.symmetric(horizontal: 12.0),
-              width: w,
               height: h * 0.3,
-              child: Video(
-                controller: VideoPlayerController.network(
-                    'https://flutter.github.io/assets-for-api-docs/assets/videos/butterfly.mp4'),
+              width: w,
+              child: PageView(
+                controller: _controller,
+                children: [
+                  Container(
+                    color: Colors.grey[200],
+                    margin: EdgeInsets.symmetric(horizontal: 12.0),
+                    width: w,
+                    height: h * 0.3,
+                    child: Video(
+                      controller: VideoPlayerController.network(
+                          'https://flutter.github.io/assets-for-api-docs/assets/videos/butterfly.mp4'),
+                    ),
+                  ),
+                  Container(
+                    child: Image.network(
+                      'https://picsum.photos/id/34/200/300',
+                      loadingBuilder: (BuildContext context, Widget child,
+                          ImageChunkEvent loadingProgress) {
+                        if (loadingProgress == null) return child;
+                        return Center(
+                          child: CircularProgressIndicator(
+                            value: loadingProgress.expectedTotalBytes != null
+                                ? loadingProgress.cumulativeBytesLoaded /
+                                    loadingProgress.expectedTotalBytes
+                                : null,
+                          ),
+                        );
+                      },
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                  Container(
+                    child: Image.network(
+                      'https://picsum.photos/id/100/200/300',
+                      loadingBuilder: (BuildContext context, Widget child,
+                          ImageChunkEvent loadingProgress) {
+                        if (loadingProgress == null) return child;
+                        return Center(
+                          child: CircularProgressIndicator(
+                            value: loadingProgress.expectedTotalBytes != null
+                                ? loadingProgress.cumulativeBytesLoaded /
+                                    loadingProgress.expectedTotalBytes
+                                : null,
+                          ),
+                        );
+                      },
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ],
               ),
             ),
             SizedBox(
