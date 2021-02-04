@@ -1,5 +1,3 @@
-import 'mun.dart';
-
 class User {
   String name = "", email="", mobileNo="";
   DateTime dob = DateTime.now();

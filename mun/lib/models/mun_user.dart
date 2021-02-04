@@ -1,5 +1,3 @@
-import 'mun.dart';
-
 class MUNUser {
   String name;
   String email;

@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:mun/models/mun.dart';
 
 class Database {
   final _db = FirebaseFirestore.instance;

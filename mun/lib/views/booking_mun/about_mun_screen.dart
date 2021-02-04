@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:mun/models/mun.dart';
 import 'package:mun/views/booking_mun/select_committee_screen.dart';
 import 'package:mun/views/elements/textstyles.dart';
+import 'package:mun/views/elements/widgets/chewie_video_player.dart';
 import 'package:share/share.dart';
+import 'package:video_player/video_player.dart';
 
 class AboutMunScreen extends StatefulWidget {
   Mun currentMun;
@@ -14,6 +16,11 @@ class AboutMunScreen extends StatefulWidget {
 }
 
 class _AboutMunScreenState extends State<AboutMunScreen> {
+  @override
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width;
@@ -68,68 +75,69 @@ class _AboutMunScreenState extends State<AboutMunScreen> {
               margin: EdgeInsets.symmetric(horizontal: 12.0),
               width: w,
               height: h * 0.3,
-              child: Image.network(
-                widget.currentMun.imageUrls[0].toString(),
-                fit: BoxFit.cover,
+              child: Video(
+                controller: VideoPlayerController.network(
+                    'https://flutter.github.io/assets-for-api-docs/assets/videos/butterfly.mp4'),
               ),
             ),
             SizedBox(
               height: h * 0.05,
             ),
-
             Center(
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Venue :- ${widget.currentMun.venue}',
-                      style: simple(16),
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Text(
-                      'Total Seats :- ${widget.currentMun.remainingSeats}',
-                      style: simple(16),
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Text(
-                      'Date :- ${widget.currentMun.date}',
-                      style: simple(16),
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Text(
-                      'Registration Starts :- ${widget.currentMun.registrationTime}',
-                      style: simple(16),
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Text(
-                      'Fees :- ${widget.currentMun.registrationFees}',
-                      style: simple(16),
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Text(
-                      'Description',
-                      style: boldHeading,
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Text(
-                      widget.currentMun.description,
-                      style: simple(14),
-                    ),
-                  ],
+                child: SingleChildScrollView(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Venue :- ${widget.currentMun.venue}',
+                        style: simple(16),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Text(
+                        'Total Seats :- ${widget.currentMun.remainingSeats}',
+                        style: simple(16),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Text(
+                        'Date :- ${widget.currentMun.date}',
+                        style: simple(16),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Text(
+                        'Registration Starts :- ${widget.currentMun.registrationTime}',
+                        style: simple(16),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Text(
+                        'Fees :- ${widget.currentMun.registrationFees}',
+                        style: simple(16),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Text(
+                        'Description',
+                        style: boldHeading,
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Text(
+                        widget.currentMun.description,
+                        style: simple(14),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
@@ -138,7 +146,7 @@ class _AboutMunScreenState extends State<AboutMunScreen> {
               padding: EdgeInsets.symmetric(horizontal: 10),
               child: Container(
                 color: Colors.grey[200],
-                height: h * 0.1,
+                height: h * 0.04,
                 child: Center(
                   child: TextButton(
                     onPressed: () {

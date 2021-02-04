@@ -1,13 +1,9 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:mun/logic/mun_data.dart';
-import 'package:mun/models/mun.dart';
 import 'package:mun/views/Home/events_screen.dart';
-import 'package:mun/logic/database.dart';
 import 'package:mun/views/elements/constants.dart';
 import 'package:mun/views/home/home_screen.dart';
-import 'package:provider/provider.dart';
 import 'contact_us_screen.dart';
 import 'user_profile_screen.dart';
 

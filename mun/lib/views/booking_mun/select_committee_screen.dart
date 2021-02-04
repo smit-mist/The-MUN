@@ -5,7 +5,6 @@ import 'package:mun/models/mun.dart';
 import 'package:mun/views/elements/textstyles.dart';
 import 'package:mun/views/elements/widgets/committee_grid.dart';
 import 'package:provider/provider.dart';
-import 'about_committee_screen.dart';
 
 class SelectCommitteeScreen extends StatefulWidget {
   Mun currentMun;

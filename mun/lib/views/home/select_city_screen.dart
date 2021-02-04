@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:mun/logic/database.dart';
-import 'package:mun/models/mun_user.dart';
-import 'package:mun/views/home/home_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SelectCityScreen extends StatefulWidget {
