@@ -84,12 +84,12 @@ class _AboutMunScreenState extends State<AboutMunScreen> {
                     height: h * 0.3,
                     child: Video(
                       controller: VideoPlayerController.network(
-                          'https://flutter.github.io/assets-for-api-docs/assets/videos/butterfly.mp4'),
+                          widget.currentMun.imageUrls[0].toString()),
                     ),
                   ),
                   Container(
                     child: Image.network(
-                      'https://picsum.photos/id/34/200/300',
+                      widget.currentMun.imageUrls[1].toString(),
                       loadingBuilder: (BuildContext context, Widget child,
                           ImageChunkEvent loadingProgress) {
                         if (loadingProgress == null) return child;

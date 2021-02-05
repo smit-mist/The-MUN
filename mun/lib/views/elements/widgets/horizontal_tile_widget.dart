@@ -34,7 +34,7 @@ class _HorizontalTileState extends State<HorizontalTile> {
           children: [
             Container(
               child: Image.network(
-                widget.currentMun.imageUrls[0].toString(),
+                widget.currentMun.imageUrls[1].toString(),
                 loadingBuilder: (BuildContext context, Widget child,
                     ImageChunkEvent loadingProgress) {
                   if (loadingProgress == null) return child;

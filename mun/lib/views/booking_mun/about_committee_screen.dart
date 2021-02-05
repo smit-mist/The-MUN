@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:mun/models/committee.dart';
 import 'package:mun/views/booking_mun/extra_details_screen.dart';
 import 'package:mun/views/elements/textstyles.dart';
+import 'package:mun/views/elements/widgets/chewie_video_player.dart';
+import 'package:video_player/video_player.dart';
 
 class AboutCommitteeScreen extends StatefulWidget {
   Committee currentCommittee;
@@ -11,6 +13,7 @@ class AboutCommitteeScreen extends StatefulWidget {
 }
 
 class _AboutCommitteeScreenState extends State<AboutCommitteeScreen> {
+  PageController _controller = PageController(initialPage: 0);
   @override
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width;
@@ -55,13 +58,58 @@ class _AboutCommitteeScreenState extends State<AboutCommitteeScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              color: Colors.grey[200],
-              margin: EdgeInsets.symmetric(horizontal: 12.0),
-              width: w,
               height: h * 0.3,
-              child: Image.network(
-                widget.currentCommittee.imageUrls[0].toString(),
-                fit: BoxFit.cover,
+              width: w,
+              child: PageView(
+                controller: _controller,
+                children: [
+                  Container(
+                    color: Colors.grey[200],
+                    margin: EdgeInsets.symmetric(horizontal: 12.0),
+                    width: w,
+                    height: h * 0.3,
+                    child: Video(
+                      controller: VideoPlayerController.network(
+                          widget.currentCommittee.imageUrls[0].toString()),
+                    ),
+                  ),
+                  Container(
+                    child: Image.network(
+                      widget.currentCommittee.imageUrls[1].toString(),
+                      loadingBuilder: (BuildContext context, Widget child,
+                          ImageChunkEvent loadingProgress) {
+                        if (loadingProgress == null) return child;
+                        return Center(
+                          child: CircularProgressIndicator(
+                            value: loadingProgress.expectedTotalBytes != null
+                                ? loadingProgress.cumulativeBytesLoaded /
+                                    loadingProgress.expectedTotalBytes
+                                : null,
+                          ),
+                        );
+                      },
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                  Container(
+                    child: Image.network(
+                      'https://picsum.photos/id/100/200/300',
+                      loadingBuilder: (BuildContext context, Widget child,
+                          ImageChunkEvent loadingProgress) {
+                        if (loadingProgress == null) return child;
+                        return Center(
+                          child: CircularProgressIndicator(
+                            value: loadingProgress.expectedTotalBytes != null
+                                ? loadingProgress.cumulativeBytesLoaded /
+                                    loadingProgress.expectedTotalBytes
+                                : null,
+                          ),
+                        );
+                      },
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ],
               ),
             ),
             Padding(
@@ -72,29 +120,39 @@ class _AboutCommitteeScreenState extends State<AboutCommitteeScreen> {
                   children: [
                     Text(
                       'Agenda :- ${widget.currentCommittee.agenda}',
-                      style:simple(16),
+                      style: simple(16),
                     ),
-                    SizedBox(height: 10,),
+                    SizedBox(
+                      height: 10,
+                    ),
                     Text(
                       'Seats :- ${widget.currentCommittee.remainingSeats}',
-                      style:simple(16),
+                      style: simple(16),
                     ),
-                    SizedBox(height: 10,),
+                    SizedBox(
+                      height: 10,
+                    ),
                     Text(
                       'Suggestions :- ${widget.currentCommittee.suggestions}',
-                      style:simple(16),
+                      style: simple(16),
                     ),
-                    SizedBox(height: 10,),
+                    SizedBox(
+                      height: 10,
+                    ),
                     Text(
                       'Description :-',
-                      style:boldHeading,
+                      style: boldHeading,
                     ),
-                    SizedBox(height: 10,),
+                    SizedBox(
+                      height: 10,
+                    ),
                     Text(
                       '${widget.currentCommittee.description}',
-                      style:simple(16),
+                      style: simple(16),
                     ),
-                    SizedBox(height: 10,),
+                    SizedBox(
+                      height: 10,
+                    ),
                   ],
                 ),
               ),
@@ -117,7 +175,7 @@ class _AboutCommitteeScreenState extends State<AboutCommitteeScreen> {
                     },
                     child: Text(
                       'Confirm Committee',
-                      style:boldHeading,
+                      style: boldHeading,
                     ),
                   ),
                 ),
