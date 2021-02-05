@@ -133,8 +133,10 @@ class _AboutMunScreenState extends State<AboutMunScreen> {
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 10.0),
                 child: SingleChildScrollView(
+
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
+
                     children: [
                       Text(
                         'Venue :- ${widget.currentMun.venue}',
@@ -187,12 +189,12 @@ class _AboutMunScreenState extends State<AboutMunScreen> {
                 ),
               ),
             ),
-            Spacer(),
+            SizedBox(height: 20,),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 10),
               child: Container(
                 color: Colors.grey[200],
-                height: h * 0.04,
+                height: h * 0.08,
                 child: Center(
                   child: TextButton(
                     onPressed: () {

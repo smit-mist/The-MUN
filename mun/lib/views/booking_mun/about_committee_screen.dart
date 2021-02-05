@@ -51,137 +51,140 @@ class _AboutCommitteeScreenState extends State<AboutCommitteeScreen> {
         ),
       ),
       body: Container(
+        height: h*0.9,
         padding: EdgeInsets.only(top: 40.0),
         color: Colors.white,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Container(
-              height: h * 0.3,
-              width: w,
-              child: PageView(
-                controller: _controller,
-                children: [
-                  Container(
-                    color: Colors.grey[200],
-                    margin: EdgeInsets.symmetric(horizontal: 12.0),
-                    width: w,
-                    height: h * 0.3,
-                    child: Video(
-                      controller: VideoPlayerController.network(
-                          widget.currentCommittee.imageUrls[0].toString()),
-                    ),
-                  ),
-                  Container(
-                    child: Image.network(
-                      widget.currentCommittee.imageUrls[1].toString(),
-                      loadingBuilder: (BuildContext context, Widget child,
-                          ImageChunkEvent loadingProgress) {
-                        if (loadingProgress == null) return child;
-                        return Center(
-                          child: CircularProgressIndicator(
-                            value: loadingProgress.expectedTotalBytes != null
-                                ? loadingProgress.cumulativeBytesLoaded /
-                                    loadingProgress.expectedTotalBytes
-                                : null,
-                          ),
-                        );
-                      },
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                  Container(
-                    child: Image.network(
-                      'https://picsum.photos/id/100/200/300',
-                      loadingBuilder: (BuildContext context, Widget child,
-                          ImageChunkEvent loadingProgress) {
-                        if (loadingProgress == null) return child;
-                        return Center(
-                          child: CircularProgressIndicator(
-                            value: loadingProgress.expectedTotalBytes != null
-                                ? loadingProgress.cumulativeBytesLoaded /
-                                    loadingProgress.expectedTotalBytes
-                                : null,
-                          ),
-                        );
-                      },
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: Container(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                height: h * 0.3,
+                width: w,
+                child: PageView(
+                  controller: _controller,
                   children: [
-                    Text(
-                      'Agenda :- ${widget.currentCommittee.agenda}',
-                      style: simple(16),
+                    Container(
+                      color: Colors.grey[200],
+                      margin: EdgeInsets.symmetric(horizontal: 12.0),
+                      width: w,
+                      height: h * 0.3,
+                      child: Video(
+                        controller: VideoPlayerController.network(
+                            widget.currentCommittee.imageUrls[0].toString()),
+                      ),
                     ),
-                    SizedBox(
-                      height: 10,
+                    Container(
+                      child: Image.network(
+                        widget.currentCommittee.imageUrls[1].toString(),
+                        loadingBuilder: (BuildContext context, Widget child,
+                            ImageChunkEvent loadingProgress) {
+                          if (loadingProgress == null) return child;
+                          return Center(
+                            child: CircularProgressIndicator(
+                              value: loadingProgress.expectedTotalBytes != null
+                                  ? loadingProgress.cumulativeBytesLoaded /
+                                      loadingProgress.expectedTotalBytes
+                                  : null,
+                            ),
+                          );
+                        },
+                        fit: BoxFit.cover,
+                      ),
                     ),
-                    Text(
-                      'Seats :- ${widget.currentCommittee.remainingSeats}',
-                      style: simple(16),
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Text(
-                      'Suggestions :- ${widget.currentCommittee.suggestions}',
-                      style: simple(16),
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Text(
-                      'Description :-',
-                      style: boldHeading,
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Text(
-                      '${widget.currentCommittee.description}',
-                      style: simple(16),
-                    ),
-                    SizedBox(
-                      height: 10,
+                    Container(
+                      child: Image.network(
+                        'https://picsum.photos/id/100/200/300',
+                        loadingBuilder: (BuildContext context, Widget child,
+                            ImageChunkEvent loadingProgress) {
+                          if (loadingProgress == null) return child;
+                          return Center(
+                            child: CircularProgressIndicator(
+                              value: loadingProgress.expectedTotalBytes != null
+                                  ? loadingProgress.cumulativeBytesLoaded /
+                                      loadingProgress.expectedTotalBytes
+                                  : null,
+                            ),
+                          );
+                        },
+                        fit: BoxFit.cover,
+                      ),
                     ),
                   ],
                 ),
               ),
-            ),
-            Spacer(),
-            Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: Container(
-                color: Colors.grey[200],
-                height: 80.0,
-                child: Center(
-                  child: TextButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => ExtraDetails(),
-                        ),
-                      );
-                    },
-                    child: Text(
-                      'Confirm Committee',
-                      style: boldHeading,
+              Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Container(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Agenda :- ${widget.currentCommittee.agenda}',
+                        style: simple(16),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Text(
+                        'Seats :- ${widget.currentCommittee.remainingSeats}',
+                        style: simple(16),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Text(
+                        'Suggestions :- ${widget.currentCommittee.suggestions}',
+                        style: simple(16),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Text(
+                        'Description :-',
+                        style: boldHeading,
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Text(
+                        '${widget.currentCommittee.description}',
+                        style: simple(16),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            //  Spacer(),
+              Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Container(
+                  color: Colors.grey[200],
+                  height: 80.0,
+                  child: Center(
+                    child: TextButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => ExtraDetails(),
+                          ),
+                        );
+                      },
+                      child: Text(
+                        'Confirm Committee',
+                        style: boldHeading,
+                      ),
                     ),
                   ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
