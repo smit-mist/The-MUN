@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:mun/logic/auth.dart';
+import 'package:mun/logic/database.dart';
 import 'package:mun/models/mun_user.dart';
 import 'package:mun/views/elements/constants.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:mun/logic/database.dart';
 import 'package:mun/views/elements/textstyles.dart';
 import 'package:mun/views/elements/widgets.dart';
 import 'package:mun/views/elements/widgets/loading.dart';
+import 'package:mun/views/elements/widgets/logo.dart';
 import 'package:mun/views/home/select_city_screen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SignUpScreen extends StatefulWidget {
   @override
@@ -60,175 +61,182 @@ class _SignUpScreenState extends State<SignUpScreen> {
         : Scaffold(
             body: Center(
               child: SingleChildScrollView(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Center(
-                      child: Text(
-                        'BookMyMun',
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
-                          fontFamily: 'Helvetica',
-                          fontSize: 35,
+                child: Padding(
+                  padding: EdgeInsets.all(h * 0.015),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      MUNLogo(),
+                      SizedBox(
+                        height: h * 0.05,
+                      ),
+                      Text(
+                        'Create a New Account',
+                        style: simple(24),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                        child: Divider(
+                          color: Colors.black54,
                         ),
                       ),
-                    ),
-                    SizedBox(
-                      height: h * 0.05,
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(left: w * 0.075),
-                      child: Text(
-                        'Create account',
-                        style: simple(28),
-                      ),
-                    ),
-                    SizedBox(
-                      height: h * 0.02,
-                    ),
-                    Center(
-                      child: SingleChildScrollView(
-                        child: Container(
-                          width: w * 0.85,
-                          height: h * 0.4,
-                          child: Center(
-                            child: Form(
-                              key: _key,
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  Container(
-                                    child: TextFormField(
-                                      validator: (value) {
-                                        return value.isEmpty
-                                            ? 'Enter a proper username'
-                                            : null;
-                                      },
-                                      onChanged: (change) {
-                                        setState(() {
-                                          name = change;
-                                        });
-                                      },
-                                      decoration: textFieldDecoration('Name'),
-                                      cursorColor: Colors.black,
+                      Center(
+                        child: SingleChildScrollView(
+                          child: Padding(
+                            padding: EdgeInsets.all(h * 0.01),
+                            child: Center(
+                              child: Form(
+                                key: _key,
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Container(
+                                      height: h * 0.055,
+                                      child: TextFormField(
+                                        validator: (value) {
+                                          return value.isEmpty
+                                              ? 'Enter a proper username'
+                                              : null;
+                                        },
+                                        onChanged: (change) {
+                                          setState(() {
+                                            name = change;
+                                          });
+                                        },
+                                        decoration:
+                                            textFieldDecoration(' Your Name'),
+                                        cursorColor: Colors.black,
+                                      ),
                                     ),
-                                  ),
-                                  Container(
-                                    child: TextFormField(
-                                      validator: (value) {
-                                        return (value.isEmpty ||
-                                                !RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
-                                                    .hasMatch(value))
-                                            ? 'Enter a valid email'
-                                            : null;
-                                      },
-                                      cursorColor: Colors.black,
-                                      onChanged: (change) {
-                                        setState(() {
-                                          email = change;
-                                        });
-                                      },
-                                      decoration: textFieldDecoration(
-                                          'Your email address'),
+                                    SizedBox(
+                                      height: h * 0.025,
                                     ),
-                                  ),
-                                  Container(
-                                    //height: 70,
-                                    child: TextFormField(
-                                      validator: (value) {
-                                        return (value.isEmpty ||
-                                                value.length < 8)
-                                            ? 'Minimum length of password is 8'
-                                            : null;
-                                      },
-                                      cursorColor: Colors.black,
-                                      onChanged: (change) {
-                                        setState(() {
-                                          password1 = change;
-                                        });
-                                      },
-                                      obscureText: isVisible ? false : true,
-                                      decoration: textFieldDecoration(
-                                          'Create Password'),
+                                    Container(
+                                      height: h * 0.055,
+                                      child: TextFormField(
+                                        validator: (value) {
+                                          return (value.isEmpty ||
+                                                  !RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                                                      .hasMatch(value))
+                                              ? 'Enter a valid email'
+                                              : null;
+                                        },
+                                        cursorColor: Colors.black,
+                                        onChanged: (change) {
+                                          setState(() {
+                                            email = change;
+                                          });
+                                        },
+                                        decoration:
+                                            textFieldDecoration('Email id'),
+                                      ),
                                     ),
-                                  ),
-                                  Container(
-                                    child: TextFormField(
-                                      cursorColor: Colors.black,
-                                      onChanged: (change) {
-                                        setState(() {
-                                          password2 = change;
-                                        });
-                                      },
-                                      obscureText: isVisible ? false : true,
-                                      decoration: textFieldDecoration(
-                                          'Confirm Password'),
-                                      validator: (value) {
-                                        return (password2 != password1)
-                                            ? 'Passwords don\'t match'
-                                            : null;
-                                      },
+                                    SizedBox(
+                                      height: h * 0.025,
                                     ),
-                                  ),
-                                ],
+                                    Container(
+                                      height: h * 0.055,
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Expanded(
+                                            child: TextFormField(
+                                              validator: (value) {
+                                                return (value.isEmpty ||
+                                                        value.length < 8)
+                                                    ? 'Invalid Password'
+                                                    : null;
+                                              },
+                                              cursorColor: Colors.black,
+                                              onChanged: (change) {
+                                                setState(() {
+                                                  password1 = change;
+                                                });
+                                              },
+                                              obscureText:
+                                                  isVisible ? false : true,
+                                              decoration: textFieldDecoration(
+                                                  'Password'),
+                                            ),
+                                          ),
+                                          Container(
+                                            color: Colors.grey.withOpacity(0.1),
+                                            child: IconButton(
+                                                icon: Icon(
+                                                  Icons.remove_red_eye_sharp,
+                                                  color: Colors.blue,
+                                                ),
+                                                onPressed: () {
+                                                  setState(() {
+                                                    isVisible = true;
+                                                  });
+                                                }),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    Container(
+                                      height: h * 0.055,
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Flexible(
+                                            child: TextFormField(
+                                              cursorColor: Colors.black,
+                                              onChanged: (change) {
+                                                setState(() {
+                                                  password2 = change;
+                                                });
+                                              },
+                                              obscureText:
+                                                  isVisible ? false : true,
+                                              decoration: textFieldDecoration(
+                                                  'Confirm Password'),
+                                              validator: (value) {
+                                                return (password2 != password1)
+                                                    ? 'Passwords don\'t match'
+                                                    : null;
+                                              },
+                                            ),
+                                          ),
+                                          Container(
+                                            color: Colors.grey.withOpacity(0.1),
+                                            child: IconButton(
+                                                icon: Icon(
+                                                  Icons.remove_red_eye_sharp,
+                                                  color: Colors.blue,
+                                                ),
+                                                onPressed: () {
+                                                  setState(() {
+                                                    isVisible = true;
+                                                  });
+                                                }),
+                                          )
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
                           ),
                         ),
                       ),
-                    ),
-                    // SizedBox(
-                    //   height: h * 0.01,
-                    // ),
-                    Padding(
-                      padding: EdgeInsets.only(
-                        left: (w * 0.075 - 12) < 0 ? 0 : (w * 0.075 - 12),
-                      ),
-                      child: Row(
-                        children: [
-                          Checkbox(
-                            value: isVisible,
-                            activeColor: Colors.blue,
-                            onChanged: (bool newValue) {
-                              setState(() {
-                                isVisible = newValue;
-                              });
-                            },
-                          ),
-                          Text(
-                            'Show Password',
-                            style: simple(14),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Center(
-                      child: NormalButton(
-                        function: signMeUp,
-                        width: w * 0.85,
-                        height: h * 0.055,
-                        text: 'Sign Up',
-                      ),
-                    ),
-                    Center(
-                      child: Visibility(
-                        child: CircularProgressIndicator(
-                          valueColor: AlwaysStoppedAnimation<Color>(kBlueShade),
+                      Container(
+                        padding: EdgeInsets.symmetric(horizontal: 8.0),
+                        child: Text(
+                          'Password should be atleast 6 characters long and should include atleast 1 special character. Ex: @,\$,%,&,!.',
+                          style: simple(12).copyWith(color: Colors.grey),
                         ),
-                        visible: isLoading,
                       ),
-                    ),
-                    SizedBox(
-                      height: h * 0.01,
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(
-                        left: (w * 0.075 - 12) < 0 ? 0 : (w * 0.075 - 12),
+                      SizedBox(
+                        height: h * 0.01,
                       ),
-                      child: FormField(
+                      FormField(
                         validator: (value) {
                           return (!isAccepted)
                               ? 'Please accept the terms and conditions'
@@ -252,27 +260,28 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                 child: Wrap(
                                   children: [
                                     Text(
-                                      "By creating account or logging in, you agree to BookMyMUN's ",
-                                      style: simple(12),
+                                      "By creating an account, I agree to bookmyMUN’s ",
+                                      style: simple(13).copyWith(
+                                          fontWeight: FontWeight.w400),
                                     ),
                                     GestureDetector(
                                       onTap: () {},
                                       child: Text(
                                         'Conditions of Use ',
-                                        style: simple(12).copyWith(
+                                        style: simple(13).copyWith(
                                           color: kBlueShade,
                                         ),
                                       ),
                                     ),
                                     Text(
                                       'and',
-                                      style: simple(12),
+                                      style: simple(13),
                                     ),
                                     GestureDetector(
                                       onTap: () {},
                                       child: Text(
                                         ' Privacy Policy',
-                                        style: simple(12).copyWith(
+                                        style: simple(13).copyWith(
                                           color: kBlueShade,
                                         ),
                                       ),
@@ -284,53 +293,38 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           );
                         },
                       ),
-                    ),
-                    SizedBox(
-                      height: h * 0.05,
-                    ),
-                    Center(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            "Already have an account?",
-                            style: TextStyle(
-                              fontFamily: 'Helvetica',
-                              fontSize: 18,
+                      SizedBox(
+                        height: h * 0.015,
+                      ),
+                      Container(
+                        alignment: Alignment.centerRight,
+                        child: Container(
+                          height: h * 0.04,
+                          width: w * 0.3,
+                          child: ElevatedButton(
+                            style: ButtonStyle(
+                              backgroundColor:
+                                  MaterialStateProperty.all(kBlueShade),
+                            ),
+                            onPressed: () {
+                              Navigator.pushNamed(context, 'home');
+                            },
+                            child: Text(
+                              'Sign Up',
+                              style: simple(18).copyWith(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w400),
                             ),
                           ),
-                          GestureDetector(
-                            child: Text(
-                              ' Log In',
-                              style: TextStyle(
-                                fontFamily: 'Helvetica',
-                                fontSize: 18,
-                                color: kBlueShade,
-                              ),
-                            ),
-                            onTap: () {
-                              Navigator.of(context)
-                                  .pushReplacementNamed('login');
-                            },
-                          )
-                        ],
+                        ),
                       ),
-                    )
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ),
           );
   }
 }
-// Container(
-// width: w,
-// height: h * 0.3,
-// child: Column(
-// mainAxisAlignment: MainAxisAlignment.spaceBetween,
-// children: [
-//
-//
-// ],
-// ),
-// ),
+// height: h * 0.04,
+// width: w * 0.3

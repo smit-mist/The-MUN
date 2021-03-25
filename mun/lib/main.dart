@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:mun/logic/mun_data.dart';
 import 'package:mun/views/authentication/login_screen.dart';
 import 'package:provider/provider.dart';
+
 import 'models/mun.dart';
 import 'routes.dart';
-
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'The MUN',
-        initialRoute: isUserLoggedIn() ? 'home' : 'login',
+        initialRoute: isUserLoggedIn() ? 'home' : 'welcome',
         routes: route_generator,
         theme: ThemeData(
           primarySwatch: Colors.blue,

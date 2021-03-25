@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-Color kBlueShade = Color(0xff0095F9);
+Color kBlueShade = Color(0xff369FFF);
 
 Color kGreyShade = Color(0xff707070);
 

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:mun/logic/auth.dart';
+import 'package:mun/views/authentication/forgot_password_screen.dart';
 import 'package:mun/views/elements/constants.dart';
 import 'package:mun/views/elements/textstyles.dart';
 import 'package:mun/views/elements/widgets.dart';
@@ -52,157 +53,159 @@ class _LoginScreenState extends State<LoginScreen> {
         : Scaffold(
             body: Center(
               child: SingleChildScrollView(
-                child: Column(
-                  children: [
-                    Center(
-                      child: Text(
-                        'BookMyMun',
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
-                          fontFamily: 'Helvetica',
-                          fontSize: 35,
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      height: h * 0.1,
-                    ),
-                    SingleChildScrollView(
-                      child: Container(
-                        height: h * 0.15,
-                        child: Form(
-                          key: _key,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Container(
-                                width: w * 0.85,
-                                child: TextFormField(
-                                  validator: (value) {
-                                    return (value.isEmpty ||
-                                            !RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
-                                                .hasMatch(value))
-                                        ? 'Enter a valid email'
-                                        : null;
-                                  },
-                                  cursorColor: Colors.black,
-                                  onChanged: (change) {
-                                    setState(() {
-                                      email = change;
-                                    });
-                                  },
-                                  decoration: textFieldDecoration('Email'),
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      RichText(
+                        text: TextSpan(
+                            text: 'My',
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 34,
+                            ),
+                            children: <TextSpan>[
+                              TextSpan(
+                                text: 'Next',
+                                style: TextStyle(
+                                  fontStyle: FontStyle.italic,
+                                  fontWeight: FontWeight.w300,
                                 ),
                               ),
-                              Container(
-                                width: w * 0.85,
-                                child: TextFormField(
-                                  validator: (value) {
-                                    return (value.isEmpty || value.length < 8)
-                                        ? 'Minimum length of password is 8'
-                                        : null;
-                                  },
-                                  cursorColor: Colors.black,
-                                  onChanged: (change) {
-                                    setState(() {
-                                      password = change;
-                                    });
-                                  },
-                                  obscureText: isVisible ? false : true,
-                                  decoration: textFieldDecoration('Password'),
+                              TextSpan(
+                                  text: 'MUN',
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                  )),
+                            ]),
+                      ),
+                      SizedBox(
+                        height: h * 0.025,
+                      ),
+                      Form(
+                        key: _key,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Container(
+                              height: h * 0.055,
+                              child: TextFormField(
+                                validator: (value) {
+                                  return (value.isEmpty ||
+                                          !RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                                              .hasMatch(value))
+                                      ? 'Enter a valid email'
+                                      : null;
+                                },
+                                cursorColor: Colors.black,
+                                onChanged: (change) {
+                                  setState(() {
+                                    email = change;
+                                  });
+                                },
+                                decoration: textFieldDecoration('Email id'),
+                              ),
+                            ),
+                            SizedBox(
+                              height: h * 0.015,
+                            ),
+                            Container(
+                              height: h * 0.055,
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Expanded(
+                                    child: TextFormField(
+                                      validator: (value) {
+                                        return (value.isEmpty ||
+                                                value.length < 8)
+                                            ? 'Invalid Password'
+                                            : null;
+                                      },
+                                      cursorColor: Colors.black,
+                                      onChanged: (change) {
+                                        setState(() {
+                                          password = change;
+                                        });
+                                      },
+                                      obscureText: isVisible ? false : true,
+                                      decoration:
+                                          textFieldDecoration('Password'),
+                                    ),
+                                  ),
+                                  Container(
+                                    color: Colors.grey.withOpacity(0.1),
+                                    child: IconButton(
+                                        icon: Icon(
+                                          Icons.remove_red_eye_sharp,
+                                          color: kBlueShade,
+                                        ),
+                                        onPressed: () {
+                                          setState(() {
+                                            isVisible = true;
+                                          });
+                                        }),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            SizedBox(
+                              height: h * 0.02,
+                            ),
+                            Container(
+                              alignment: Alignment.centerRight,
+                              child: GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => ForgotPassword(),
+                                    ),
+                                  );
+                                },
+                                child: Text(
+                                  'Forgot Password ?',
+                                  style: simple(12).copyWith(
+                                    color: kBlueShade,
+                                  ),
                                 ),
                               ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(
-                          left: (w * 0.075 - 12) < 0 ? 0 : (w * 0.075 - 12),
-                          right: (w * 0.075 - 5) < 0 ? 0 : (w * 0.075 - 5)),
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Checkbox(
-                            value: isVisible,
-                            activeColor: kBlueShade,
-                            onChanged: (bool newValue) {
-                              setState(() {
-                                isVisible = newValue;
-                              });
-                            },
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(top: 18),
-                            child: Text(
-                              'Show Password',
-                              style: simple(14),
                             ),
-                          ),
-                          Spacer(),
-                          GestureDetector(
-                            onTap: () {
-                              Navigator.pushNamed(context, 'forgot_password');
-                            },
-                            child: Text(
-                              'Forgot password?',
-                              style: simple(14).copyWith(color: kBlueShade),
+                            SizedBox(
+                              height: h * 0.06,
                             ),
-                          )
-                        ],
-                      ),
-                    ),
-                    Center(
-                      child: NormalButton(
-                        text: 'Log In',
-                        function: logMeIn,
-                        width: w * 0.85,
-                        height: h * 0.05,
-                      ),
-                    ),
-                    Center(
-                      child: Visibility(
-                        child: CircularProgressIndicator(
-                          valueColor: AlwaysStoppedAnimation<Color>(
-                            kBlueShade,
-                          ),
-                        ),
-                        visible: isLoading,
-                      ),
-                    ),
-                    SizedBox(
-                      height: h * 0.05,
-                    ),
-                    Center(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            "Don't have an account?",
-                            style: simple(18),
-                          ),
-                          TextButton(
-                            child: Text(
-                              "Sign Up",
-                              style: simple(18).copyWith(
-                                color: kBlueShade,
+                            Container(
+                              alignment: Alignment.centerRight,
+                              child: Container(
+                                height: h * 0.04,
+                                width: w * 0.25,
+                                child: ElevatedButton(
+                                  style: ButtonStyle(
+                                    backgroundColor:
+                                        MaterialStateProperty.all(kBlueShade),
+                                  ),
+                                  onPressed: () {
+                                    Navigator.pushNamed(context, 'home');
+                                  },
+                                  child: Text(
+                                    'Log In',
+                                    style: simple(18).copyWith(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w400),
+                                  ),
+                                ),
                               ),
                             ),
-                            onPressed: () {
-                              Navigator.of(context)
-                                  .pushReplacementNamed('sign_up');
-                            },
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
-                    )
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ),
