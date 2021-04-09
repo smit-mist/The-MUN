@@ -144,23 +144,22 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                         children: [
                                           Expanded(
                                             child: TextFormField(
-                                              validator: (value) {
-                                                return (value.isEmpty ||
-                                                        value.length < 8)
-                                                    ? 'Invalid Password'
-                                                    : null;
-                                              },
-                                              cursorColor: Colors.black,
-                                              onChanged: (change) {
-                                                setState(() {
-                                                  password1 = change;
-                                                });
-                                              },
-                                              obscureText:
-                                                  isVisible ? false : true,
-                                              decoration: textFieldDecoration(
-                                                  'Password'),
-                                            ),
+                                                validator: (value) {
+                                                  return (value.isEmpty ||
+                                                          value.length < 8)
+                                                      ? 'Invalid Password'
+                                                      : null;
+                                                },
+                                                cursorColor: Colors.black,
+                                                onChanged: (change) {
+                                                  setState(() {
+                                                    password1 = change;
+                                                  });
+                                                },
+                                                obscureText:
+                                                    isVisible ? false : true,
+                                                decoration: textFieldDecoration(
+                                                    'Password')),
                                           ),
                                           Container(
                                             color: Colors.grey.withOpacity(0.1),
@@ -177,6 +176,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                           ),
                                         ],
                                       ),
+                                      decoration: BoxDecoration(border: Border(bottom: BorderSide(color: Colors.grey[350])),)
                                     ),
                                     Container(
                                       height: h * 0.055,
