@@ -28,38 +28,50 @@ class _HorizontalTileState extends State<HorizontalTile> {
         );
       },
       child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 10),
-        width: w * 0.45,
+        width: w * 0.32,
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Container(
-              child: Image.network(
-                widget.currentMun.imageUrls[1].toString(),
-                loadingBuilder: (BuildContext context, Widget child,
-                    ImageChunkEvent loadingProgress) {
-                  if (loadingProgress == null) return child;
-                  return Center(
-                    child: CircularProgressIndicator(
-                      value: loadingProgress.expectedTotalBytes != null
-                          ? loadingProgress.cumulativeBytesLoaded /
-                              loadingProgress.expectedTotalBytes
-                          : null,
+            Stack(
+              children: [
+                Container(
+                  child: Image.network(
+                    widget.currentMun.imageUrls[1].toString(),
+                    loadingBuilder: (BuildContext context, Widget child,
+                        ImageChunkEvent loadingProgress) {
+                      if (loadingProgress == null) return child;
+                      return Center(
+                        child: CircularProgressIndicator(
+                          value: loadingProgress.expectedTotalBytes != null
+                              ? loadingProgress.cumulativeBytesLoaded /
+                                  loadingProgress.expectedTotalBytes
+                              : null,
+                        ),
+                      );
+                    },
+                    fit: BoxFit.cover,
+                  ),
+                  height: w * 0.5,
+                ),
+                Align(
+                  alignment: Alignment.topRight,
+                  child: Padding(
+                    padding: const EdgeInsets.all(5.0),
+                    child: Icon(
+                      Icons.share,
+                      color: Colors.black,
+                      size: 20,
                     ),
-                  );
-                },
-                fit: BoxFit.cover,
-              ),
-              height: w * 0.5,
+                  ),
+                )
+              ],
             ),
             SizedBox(
               height: 7,
             ),
-            Text(widget.currentMun.venue, style: simple(16)),
-            SizedBox(
-              height: 7,
-            ),
+            Text('Name', style: simple(16)),
             Text(
-              widget.currentMun.date,
+              'Place',
               style: simple(14),
             ),
           ],

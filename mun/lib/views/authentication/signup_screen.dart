@@ -10,7 +10,7 @@ import 'package:mun/views/elements/widgets/loading.dart';
 import 'package:mun/views/elements/widgets/logo.dart';
 import 'package:mun/views/home/select_city_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
+// TODO: Width of line between confirm password and password
 class SignUpScreen extends StatefulWidget {
   @override
   _SignUpScreenState createState() => _SignUpScreenState();

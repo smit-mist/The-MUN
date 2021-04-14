@@ -56,12 +56,7 @@ class _HomeTabBarState extends State<HomeTabBar> {
                     Icon(
                       Icons.home_outlined,
                       color: index == 1 ? kBlueShade : kGreyShade,
-                    ),
-                    Text(
-                      "Home",
-                      style: TextStyle(
-                        color: index == 1 ? kBlueShade : kGreyShade,
-                      ),
+                      size: 32,
                     ),
                   ],
                 ),
@@ -76,15 +71,11 @@ class _HomeTabBarState extends State<HomeTabBar> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Icon(
-                      Icons.shopping_cart_outlined,
+                      Icons.search,
                       color: index == 2 ? kBlueShade : kGreyShade,
+                    size: 32,
                     ),
-                    Text(
-                      "Cart",
-                      style: TextStyle(
-                        color: index == 2 ? kBlueShade : kGreyShade,
-                      ),
-                    ),
+
                   ],
                 ),
               ),
@@ -100,13 +91,9 @@ class _HomeTabBarState extends State<HomeTabBar> {
                     Icon(
                       Icons.card_giftcard_outlined,
                       color: index == 4 ? kBlueShade : kGreyShade,
+                    size: 32,
                     ),
-                    Text(
-                      "Premium",
-                      style: TextStyle(
-                        color: index == 4 ? kBlueShade : kGreyShade,
-                      ),
-                    ),
+
                   ],
                 ),
               ),
@@ -122,12 +109,7 @@ class _HomeTabBarState extends State<HomeTabBar> {
                     Icon(
                       Icons.account_circle_rounded,
                       color: index == 5 ? kBlueShade : kGreyShade,
-                    ),
-                    Text(
-                      "Profile",
-                      style: TextStyle(
-                        color: index == 5 ? kBlueShade : kGreyShade,
-                      ),
+                    size: 32,
                     ),
                   ],
                 ),
