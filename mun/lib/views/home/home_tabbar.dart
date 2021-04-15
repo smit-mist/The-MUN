@@ -1,8 +1,9 @@
-import 'dart:ui';
+import 'dart:ui' as ui;
 
 import 'package:flutter/material.dart';
 import 'package:mun/views/Home/events_screen.dart';
 import 'package:mun/views/elements/constants.dart';
+import 'package:mun/views/home/all_mun_screen.dart';
 import 'package:mun/views/home/home_screen.dart';
 import 'contact_us_screen.dart';
 import 'user_profile_screen.dart';
@@ -16,7 +17,10 @@ class _HomeTabBarState extends State<HomeTabBar> {
   int index = 1;
   List body = [
     HomeScreen(),
-    EventScreen(),
+    BackdropFilter(
+      child: AllMun(),
+      filter: ui.ImageFilter.blur(sigmaY: 10, sigmaX: 10),
+    ),
     Container(
       color: Colors.black,
       height: 100,
@@ -73,9 +77,8 @@ class _HomeTabBarState extends State<HomeTabBar> {
                     Icon(
                       Icons.search,
                       color: index == 2 ? kBlueShade : kGreyShade,
-                    size: 32,
+                      size: 32,
                     ),
-
                   ],
                 ),
               ),
@@ -91,9 +94,8 @@ class _HomeTabBarState extends State<HomeTabBar> {
                     Icon(
                       Icons.card_giftcard_outlined,
                       color: index == 4 ? kBlueShade : kGreyShade,
-                    size: 32,
+                      size: 32,
                     ),
-
                   ],
                 ),
               ),
@@ -109,7 +111,7 @@ class _HomeTabBarState extends State<HomeTabBar> {
                     Icon(
                       Icons.account_circle_rounded,
                       color: index == 5 ? kBlueShade : kGreyShade,
-                    size: 32,
+                      size: 32,
                     ),
                   ],
                 ),

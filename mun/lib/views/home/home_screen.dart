@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mun/logic/database.dart';
+import 'package:mun/models/committee.dart';
 import 'package:mun/models/mun.dart';
 import 'package:mun/views/elements/constants.dart';
 import 'package:mun/views/elements/textstyles.dart';
@@ -9,6 +10,7 @@ import 'package:mun/views/elements/widgets/logo.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'all_mun_screen.dart';
 import 'package:mun/views/Home/select_city_screen.dart';
+import 'dart:ui' as ui;
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -47,6 +49,11 @@ class _HomeScreenState extends State<HomeScreen> {
       'https://picsum.photos/200/300'
     ],
     venue: 'Nowhere',
+  );
+  Committee here = Committee(
+    name: 'U.N.',
+    description: 'Security Council',
+    imageUrls: ['https://picsum.photos/400/300'],
   );
   @override
   Widget build(BuildContext context) {
@@ -118,7 +125,9 @@ class _HomeScreenState extends State<HomeScreen> {
                       'Explore MUNs around you',
                       style: simple(12),
                     ),
-                    SizedBox(height: 10,),
+                    SizedBox(
+                      height: 10,
+                    ),
                     Container(
                       width: w * 0.95,
                       height: h * 0.3,
@@ -160,7 +169,9 @@ class _HomeScreenState extends State<HomeScreen> {
                       'Explore the most popular MUNs from all over the country',
                       style: simple(12),
                     ),
-                    SizedBox(height: 10,),
+                    SizedBox(
+                      height: 10,
+                    ),
                     Container(
                       width: w * 0.95,
                       height: h * 0.3,
@@ -198,9 +209,68 @@ class _HomeScreenState extends State<HomeScreen> {
                       'Explore Committees',
                       style: boldHeading,
                     ),
-                    Text(
-                      'Explore the most popular Committees offered by MUNs from all over the country',
-                      style: simple(11),
+                    SizedBox(
+                      width: w * 0.95,
+                      child: Text(
+                        'Explore the most popular Committees offered by MUNs from all over the country',
+                        style: simple(12),
+                      ),
+                    ),
+                    Container(
+                      height: h * 0.3,
+                      width: w * 0.95,
+                      child: GridView.builder(
+                        scrollDirection: Axis.horizontal,
+                        itemCount: 10,
+                        itemBuilder: (BuildContext _, int ind) {
+                          return CommitteeHorizontalTile(
+                            current: here,
+                          );
+                        },
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2,
+                            childAspectRatio: 0.8,
+                            mainAxisSpacing: 10,
+                            crossAxisSpacing: 10),
+                      ),
+                    ),
+                    Container(
+                      width: w * 0.95,
+                      child: Divider(
+                        thickness: 1,
+                        height: 1,
+                        color: kGreyShade,
+                      ),
+                    ),
+                    Container(
+                      width: w * 0.95,
+                      height: h * 0.1,
+                      child: Center(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Text(
+                              'Are you an Organiser?',
+                              style: boldHeading,
+                            ),
+                            Row(
+                              children: [
+                                Text(
+                                  'Contact us',
+                                  style: simple(14).copyWith(
+                                      color: kBlueShade,
+                                      decoration: TextDecoration.underline),
+                                ),
+                                Text(
+                                  ' to get your MUN listed here!',
+                                  style: simple(14),
+                                )
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
                   ],
                 ),
