@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mun/models/mun.dart';
-import 'package:mun/views/booking_mun/select_committee_screen.dart';
 import 'package:mun/views/elements/textstyles.dart';
-import 'package:mun/views/elements/widgets/chewie_video_player.dart';
+import 'file:///C:/Users/smit3/AndroidStudioProjects/The-MUN/mun/lib/unused/chewie_video_player.dart';
 import 'package:share/share.dart';
 import 'package:video_player/video_player.dart';
 
@@ -199,14 +198,6 @@ class _AboutMunScreenState extends State<AboutMunScreen> {
                   child: Center(
                     child: TextButton(
                       onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => SelectCommitteeScreen(
-                              currentMun: widget.currentMun,
-                            ),
-                          ),
-                        );
                       },
                       child: Text(
                         'Select Committee',

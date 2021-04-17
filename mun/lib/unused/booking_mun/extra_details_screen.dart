@@ -1,6 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:mun/views/booking_mun/summary_of_booking_screen.dart';
 import 'package:mun/views/elements/textstyles.dart';
 import 'package:mun/views/elements/widgets.dart';
 
@@ -160,15 +159,6 @@ class _ExtraDetailsState extends State<ExtraDetails> {
                   padding: const EdgeInsets.only(bottom: 20.0),
                   child: GestureDetector(
                     onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (_) => SummaryOfBooking(
-                            dateOfMUN: DateTime.now(),
-                            dob: DateTime.now(),
-                          ),
-                        ),
-                      );
                     },
                     child: Container(
                       width: w * 0.8,

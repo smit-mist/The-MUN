@@ -3,7 +3,6 @@ import 'package:mun/logic/committee_data.dart';
 import 'package:mun/models/committee.dart';
 import 'package:mun/models/mun.dart';
 import 'package:mun/views/elements/textstyles.dart';
-import 'package:mun/views/elements/widgets/committee_grid.dart';
 import 'package:provider/provider.dart';
 
 class SelectCommitteeScreen extends StatefulWidget {
@@ -39,7 +38,6 @@ class _SelectCommitteeScreenState extends State<SelectCommitteeScreen> {
           ),
 
         ),
-        body: CommitteeGrid(),
       ),
     );
   }

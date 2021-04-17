@@ -4,7 +4,7 @@ import 'package:mun/models/committee.dart';
 import 'package:mun/models/mun.dart';
 import 'package:mun/views/elements/constants.dart';
 import 'package:mun/views/elements/textstyles.dart';
-import 'package:mun/views/elements/widgets/home_mun_list.dart';
+import 'file:///C:/Users/smit3/AndroidStudioProjects/The-MUN/mun/lib/unused/home_mun_list.dart';
 import 'package:mun/views/elements/widgets/horizontal_tile_widget.dart';
 import 'package:mun/views/elements/widgets/logo.dart';
 import 'package:shared_preferences/shared_preferences.dart';

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mun/models/committee.dart';
-import 'package:mun/views/booking_mun/extra_details_screen.dart';
+//import 'package:mun/views/booking_mun/extra_details_screen.dart';
 import 'package:mun/views/elements/textstyles.dart';
-import 'package:mun/views/elements/widgets/chewie_video_player.dart';
+import 'file:///C:/Users/smit3/AndroidStudioProjects/The-MUN/mun/lib/unused/chewie_video_player.dart';
 import 'package:video_player/video_player.dart';
 
 class AboutCommitteeScreen extends StatefulWidget {
@@ -168,12 +168,7 @@ class _AboutCommitteeScreenState extends State<AboutCommitteeScreen> {
                   child: Center(
                     child: TextButton(
                       onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => ExtraDetails(),
-                          ),
-                        );
+
                       },
                       child: Text(
                         'Confirm Committee',

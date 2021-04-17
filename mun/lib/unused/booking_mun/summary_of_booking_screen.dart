@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:mun/views/booking_mun/receipt_screen.dart';
 import 'package:mun/views/elements/textstyles.dart';
 
 class SummaryOfBooking extends StatefulWidget {
@@ -302,12 +301,6 @@ class _SummaryOfBookingState extends State<SummaryOfBooking> {
                 padding: const EdgeInsets.only(bottom: 20.0),
                 child: GestureDetector(
                   onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (_) => ReceiptScreen(),
-                      ),
-                    );
                   },
                   child: Container(
                     width: w * 0.8,

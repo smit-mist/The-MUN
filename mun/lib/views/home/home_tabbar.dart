@@ -5,8 +5,8 @@ import 'package:mun/views/Home/events_screen.dart';
 import 'package:mun/views/elements/constants.dart';
 import 'package:mun/views/home/all_mun_screen.dart';
 import 'package:mun/views/home/home_screen.dart';
-import 'contact_us_screen.dart';
-import 'user_profile_screen.dart';
+import '../../unused/contact_us_screen.dart';
+import '../../unused/user_profile_screen.dart';
 
 class HomeTabBar extends StatefulWidget {
   @override

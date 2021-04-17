@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mun/models/committee.dart';
 import 'package:mun/models/mun.dart';
-import 'package:mun/views/booking_mun/about_mun_screen.dart';
 
 import '../textstyles.dart';
 // ignore: must_be_immutable
@@ -99,14 +98,7 @@ class _HorizontalTileState extends State<HorizontalTile> {
     double h = MediaQuery.of(context).size.height;
     return GestureDetector(
       onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => AboutMunScreen(
-              currentMun: widget.currentMun,
-            ),
-          ),
-        );
+
       },
       child: Container(
         width: w * 0.33,
