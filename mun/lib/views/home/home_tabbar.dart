@@ -5,6 +5,7 @@ import 'package:mun/views/Home/events_screen.dart';
 import 'package:mun/views/elements/constants.dart';
 import 'package:mun/views/home/all_mun_screen.dart';
 import 'package:mun/views/home/home_screen.dart';
+import 'package:mun/views/home/select_committee_screen.dart';
 import '../../unused/contact_us_screen.dart';
 import '../../unused/user_profile_screen.dart';
 
@@ -21,20 +22,9 @@ class _HomeTabBarState extends State<HomeTabBar> {
       child: AllMun(),
       filter: ui.ImageFilter.blur(sigmaY: 10, sigmaX: 10),
     ),
-    Container(
-      color: Colors.black,
-      height: 100,
-      width: 100,
-    ),
+    SelectCommitteeScreen(), // this is for testing purpose
     ContactUs(),
-    UserProfileScreen(),
   ];
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-  }
-
   @override
   Widget build(BuildContext context) {
     double h = MediaQuery.of(context).size.height;
@@ -85,7 +75,7 @@ class _HomeTabBarState extends State<HomeTabBar> {
               RawMaterialButton(
                 onPressed: () {
                   setState(() {
-                    index = 4;
+                    index = 3;
                   });
                 },
                 child: Column(
@@ -93,7 +83,7 @@ class _HomeTabBarState extends State<HomeTabBar> {
                   children: [
                     Icon(
                       Icons.card_giftcard_outlined,
-                      color: index == 4 ? kBlueShade : kGreyShade,
+                      color: index == 3 ? kBlueShade : kGreyShade,
                       size: 32,
                     ),
                   ],
@@ -102,7 +92,7 @@ class _HomeTabBarState extends State<HomeTabBar> {
               RawMaterialButton(
                 onPressed: () {
                   setState(() {
-                    index = 5;
+                    index = 4;
                   });
                 },
                 child: Column(
@@ -110,7 +100,7 @@ class _HomeTabBarState extends State<HomeTabBar> {
                   children: [
                     Icon(
                       Icons.account_circle_rounded,
-                      color: index == 5 ? kBlueShade : kGreyShade,
+                      color: index == 4? kBlueShade : kGreyShade,
                       size: 32,
                     ),
                   ],
