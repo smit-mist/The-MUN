@@ -4,12 +4,12 @@ import 'package:mun/models/committee.dart';
 import 'package:mun/models/mun.dart';
 import 'package:mun/views/elements/constants.dart';
 import 'package:mun/views/elements/textstyles.dart';
+import 'package:mun/views/elements/widgets/committee_tile.dart';
 import 'file:///C:/Users/smit3/AndroidStudioProjects/The-MUN/mun/lib/unused/home_mun_list.dart';
-import 'package:mun/views/elements/widgets/horizontal_tile_widget.dart';
+import 'package:mun/views/elements/widgets/mun_tile.dart';
 import 'package:mun/views/elements/widgets/logo.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'all_mun_screen.dart';
-import 'package:mun/views/Home/select_city_screen.dart';
 import 'dart:ui' as ui;
 
 class HomeScreen extends StatefulWidget {
@@ -228,11 +228,15 @@ class _HomeScreenState extends State<HomeScreen> {
                           );
                         },
                         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 2,
-                            childAspectRatio: 0.8,
-                            mainAxisSpacing: 10,
-                            crossAxisSpacing: 10),
+                          crossAxisCount: 2,
+                          childAspectRatio: 1.3 / 1.7,
+                          mainAxisSpacing: 10,
+                          crossAxisSpacing: 10,
+                        ),
                       ),
+                    ),
+                    SizedBox(
+                      height: 10,
                     ),
                     Container(
                       width: w * 0.95,

@@ -3,7 +3,11 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:mun/models/committee.dart';
 import 'package:mun/views/elements/constants.dart';
-import 'package:mun/views/elements/widgets/horizontal_tile_widget.dart';
+import 'package:mun/views/elements/textstyles.dart';
+import 'package:mun/views/elements/widgets/committee_detail_widget.dart';
+import 'package:mun/views/elements/widgets/committee_small_tile.dart';
+import 'package:mun/views/elements/widgets/committee_tile.dart';
+import 'package:mun/views/elements/widgets/mun_tile.dart';
 import 'package:mun/views/elements/widgets/logo.dart';
 
 Committee here = Committee(
@@ -12,7 +16,8 @@ Committee here = Committee(
   imageUrls: ['https://picsum.photos/400/300'],
 );
 List<Committee> allCommittee = [here, here, here, here, here, here, here];
-List<Widget> wi = [];
+
+int selected = 0;
 
 class SelectCommitteeScreen extends StatefulWidget {
   @override
@@ -21,23 +26,8 @@ class SelectCommitteeScreen extends StatefulWidget {
 
 class _SelectCommitteeScreenState extends State<SelectCommitteeScreen> {
   @override
-  void initState() {
-    // TODO: implement initState
-
-    super.initState();
-  }
-
   @override
   Widget build(BuildContext context) {
-    print(wi.length);
-    if(wi.length ==0){
-      for (int i = 0; i < allCommittee.length; i++) {
-        wi.add(CommitteeHorizontalTile(
-          current: allCommittee[i],
-        ));
-      }
-    }
-
     double h = MediaQuery.of(context).size.height;
     double w = MediaQuery.of(context).size.width;
     return Scaffold(
@@ -47,22 +37,70 @@ class _SelectCommitteeScreenState extends State<SelectCommitteeScreen> {
           color: kGreyShade,
           size: 32,
         ),
-        title: MUNLogo(),
+        toolbarHeight: 70,
         backgroundColor: Colors.white,
-      ),
-      body: Column(
-        children: [
-          Container(
-            height: h*0.4,
-            width: w*0.95,
-            child: GridView(
-              gridDelegate:
-                  SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
-              children: wi,
-
-            ),
+        elevation: 0,
+        centerTitle: true,
+        titleSpacing: 10,
+        automaticallyImplyLeading: false,
+        title: Container(
+          width: w * (0.9),
+          child: Column(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  MUNLogo(),
+                ],
+              ),
+              SizedBox(
+                height: 15,
+              ),
+              Divider(
+                height: 0.01,
+                thickness: 1,
+                color: kGreyShade.withOpacity(0.4),
+              )
+            ],
           ),
-        ],
+        ),
+      ),
+      body: Center(
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Container(
+                height: h * 0.3,
+                width: w * 0.95,
+                child: GridView.builder(
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 3,
+                      childAspectRatio: 3.5 / 2,
+                      crossAxisSpacing: 15,
+                      mainAxisSpacing: 15,
+                    ),
+                    itemCount: allCommittee.length,
+                    itemBuilder: (BuildContext _, int ind) {
+                      return GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            selected = ind;
+                          });
+                        },
+                        child: CommitteeSmallTile(
+                          current: allCommittee[ind],
+                          isActive: selected == ind ? true : false,
+                        ),
+                      );
+                    }),
+              ),
+              CommitteeDetail(
+                current: allCommittee[selected],
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }

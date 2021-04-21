@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mun/models/mun.dart';
 import 'package:provider/provider.dart';
 
-import '../views/elements/widgets/horizontal_tile_widget.dart';
+import '../views/elements/widgets/mun_tile.dart';
 
 class MunList extends StatefulWidget {
   @override
