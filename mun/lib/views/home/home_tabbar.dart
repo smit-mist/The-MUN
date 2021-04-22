@@ -5,7 +5,7 @@ import 'package:mun/views/MUN/select_committee_screen.dart';
 import 'package:mun/views/elements/constants.dart';
 import 'package:mun/views/home/all_mun_screen.dart';
 import 'package:mun/views/home/home_screen.dart';
-import '../../unused/contact_us_screen.dart';
+import 'package:mun/views/home/user_profile_screen.dart';
 
 class HomeTabBar extends StatefulWidget {
   @override
@@ -21,7 +21,7 @@ class _HomeTabBarState extends State<HomeTabBar> {
       filter: ui.ImageFilter.blur(sigmaY: 10, sigmaX: 10),
     ),
     SelectCommitteeScreen(), // this is for testing purpose
-    ContactUs(),
+    UserProfileScreen(),
   ];
   @override
   Widget build(BuildContext context) {
