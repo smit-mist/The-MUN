@@ -1,7 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="97442998-e15e-4188-9322-185ad731b13a" name="Default Changelist" comment="" />
+    <list default="true" id="97442998-e15e-4188-9322-185ad731b13a" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/mun/lib/views/MUN/about_mun_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/The-MUN.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/The-MUN.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mun/lib/unused/booking_mun/about_committee_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/mun/lib/unused/booking_mun/about_committee_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mun/lib/unused/booking_mun/about_mun_screen.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mun/lib/views/authentication/signup_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/mun/lib/views/authentication/signup_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mun/lib/views/authentication/welcome_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/mun/lib/views/authentication/welcome_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mun/lib/views/elements/constants.dart" beforeDir="false" afterPath="$PROJECT_DIR$/mun/lib/views/elements/constants.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mun/lib/views/home/all_mun_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/mun/lib/views/home/all_mun_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mun/lib/views/home/home_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/mun/lib/views/home/home_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mun/lib/views/home/home_tabbar.dart" beforeDir="false" afterPath="$PROJECT_DIR$/mun/lib/views/home/home_tabbar.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mun/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/mun/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mun/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/mun/pubspec.yaml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -20,7 +34,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="android.sdk.path" value="C:/AndroidSDK" />
     <property name="dart.analysis.tool.window.visible" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/mun" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>

@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mun/models/mun.dart';
 import 'package:mun/views/elements/widgets/mun_tile.dart';
-import 'file:///C:/Users/smit3/AndroidStudioProjects/The-MUN/mun/lib/unused/mun_grid.dart';
-import 'package:mun/views/elements/textstyles.dart';
 
 class AllMun extends StatefulWidget {
   @override

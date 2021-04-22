@@ -2,15 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:mun/logic/database.dart';
 import 'package:mun/models/committee.dart';
 import 'package:mun/models/mun.dart';
+import 'package:mun/views/MUN/about_mun_screen.dart';
 import 'package:mun/views/elements/constants.dart';
 import 'package:mun/views/elements/textstyles.dart';
 import 'package:mun/views/elements/widgets/committee_tile.dart';
-import 'file:///C:/Users/smit3/AndroidStudioProjects/The-MUN/mun/lib/unused/home_mun_list.dart';
 import 'package:mun/views/elements/widgets/mun_tile.dart';
 import 'package:mun/views/elements/widgets/logo.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'all_mun_screen.dart';
-import 'dart:ui' as ui;
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -134,8 +132,16 @@ class _HomeScreenState extends State<HomeScreen> {
                       child: ListView(
                         scrollDirection: Axis.horizontal,
                         children: [
-                          HorizontalTile(
-                            currentMun: current,
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => AboutMunScreen()));
+                            },
+                            child: HorizontalTile(
+                              currentMun: current,
+                            ),
                           ),
                           SizedBox(
                             width: 10,

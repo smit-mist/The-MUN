@@ -3,14 +3,14 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:mun/logic/auth.dart';
 import 'package:mun/logic/database.dart';
 import 'package:mun/models/mun_user.dart';
+import 'package:mun/unused/select_city_screen.dart';
 import 'package:mun/views/elements/constants.dart';
 import 'package:mun/views/elements/textstyles.dart';
 import 'package:mun/views/elements/widgets.dart';
 import 'package:mun/views/elements/widgets/loading.dart';
 import 'package:mun/views/elements/widgets/logo.dart';
-import 'file:///C:/Users/smit3/AndroidStudioProjects/The-MUN/mun/lib/unused/select_city_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-// TODO: Width of line between confirm password and password
+
 class SignUpScreen extends StatefulWidget {
   @override
   _SignUpScreenState createState() => _SignUpScreenState();
@@ -137,13 +137,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                       height: h * 0.025,
                                     ),
                                     Container(
-                                      height: h * 0.055,
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Expanded(
-                                            child: TextFormField(
+                                        height: h * 0.055,
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Expanded(
+                                              child: TextFormField(
                                                 validator: (value) {
                                                   return (value.isEmpty ||
                                                           value.length < 8)
@@ -159,11 +159,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                                 obscureText:
                                                     isVisible ? false : true,
                                                 decoration: textFieldDecoration(
-                                                    'Password')),
-                                          ),
-                                          Container(
-                                            color: Colors.grey.withOpacity(0.1),
-                                            child: IconButton(
+                                                    'Password'),
+                                              ),
+                                            ),
+                                            Container(
+                                              color:
+                                                  Colors.grey.withOpacity(0.1),
+                                              child: IconButton(
                                                 icon: Icon(
                                                   Icons.remove_red_eye_sharp,
                                                   color: Colors.blue,
@@ -172,12 +174,23 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                                   setState(() {
                                                     isVisible = true;
                                                   });
-                                                }),
-                                          ),
-                                        ],
-                                      ),
-                                      decoration: BoxDecoration(border: Border(bottom: BorderSide(color: Colors.grey[350])),)
-                                    ),
+                                                },
+                                              ),
+                                              decoration: BoxDecoration(
+                                                border: Border(
+                                                  bottom: BorderSide(
+                                                    color: Colors.grey[350],
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        decoration: BoxDecoration(
+                                          border: Border(
+                                              bottom: BorderSide(
+                                                  color: Colors.grey[350])),
+                                        )),
                                     Container(
                                       height: h * 0.055,
                                       child: Row(

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:mun/models/committee.dart';
 //import 'package:mun/views/booking_mun/extra_details_screen.dart';
 import 'package:mun/views/elements/textstyles.dart';
-import 'file:///C:/Users/smit3/AndroidStudioProjects/The-MUN/mun/lib/unused/chewie_video_player.dart';
 import 'package:video_player/video_player.dart';
 
 class AboutCommitteeScreen extends StatefulWidget {
@@ -70,10 +69,10 @@ class _AboutCommitteeScreenState extends State<AboutCommitteeScreen> {
                       margin: EdgeInsets.symmetric(horizontal: 12.0),
                       width: w,
                       height: h * 0.3,
-                      child: Video(
-                        controller: VideoPlayerController.network(
-                            widget.currentCommittee.imageUrls[0].toString()),
-                      ),
+                      // child: Video(
+                      //   controller: VideoPlayerController.network(
+                      //       widget.currentCommittee.imageUrls[0].toString()),
+                      // ),
                     ),
                     Container(
                       child: Image.network(
