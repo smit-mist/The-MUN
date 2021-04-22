@@ -1,11 +1,12 @@
 
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:mun/models/committee.dart';
 import 'package:mun/views/elements/constants.dart';
 import 'package:mun/views/elements/widgets/committee_detail_widget.dart';
 import 'package:mun/views/elements/widgets/committee_small_tile.dart';
 import 'package:mun/views/elements/widgets/logo.dart';
-
+// TODO: Navigation Path of Select Committee to-be set
 Committee here = Committee(
   name: 'U.N.',
   description: 'Security Council',
@@ -96,6 +97,60 @@ class _SelectCommitteeScreenState extends State<SelectCommitteeScreen> {
               ),
             ],
           ),
+        ),
+      ),
+      bottomNavigationBar: Container(
+        height: h * 0.1,
+        width: w,
+        padding: EdgeInsets.symmetric(vertical: h * 0.001),
+        child: Row(
+          children: [
+            FaIcon(
+              FontAwesomeIcons.briefcase,
+              color: Color(0xFF6C6C6C),
+              size: h * 0.03,
+            ),
+            Text(
+              'Add to MyBriefcase',
+              style: TextStyle(
+                fontSize: h * (kExtraSmallTextSize + 0.003),
+              ),
+            ),
+            Container(
+              height: h * 0.05,
+              width: w * 0.35,
+              child: ElevatedButton(
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all(kBlueShade),
+                  ),
+                  onPressed: () {},
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Column(
+                        children: [
+                          Text(
+                            'Book Now!',
+                            style: TextStyle(color: Colors.white),
+                          ),
+                          Text(
+                            'Select Committee',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: w * (kExtraSmallTextSize - 0.003),
+                            ),
+                          ),
+                        ],
+                      ),
+                      Icon(
+                        Icons.arrow_forward_rounded,
+                        color: Colors.white,
+                        //size: h*0.02,
+                      ),
+                    ],
+                  )),
+            ),
+          ],
         ),
       ),
     );

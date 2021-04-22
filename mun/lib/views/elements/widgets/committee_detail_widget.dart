@@ -1,8 +1,8 @@
-
 import 'package:flutter/material.dart';
 import 'package:mun/models/committee.dart';
 import 'package:mun/views/elements/constants.dart';
 import 'package:mun/views/elements/textstyles.dart';
+
 // ignore: must_be_immutable
 class CommitteeDetail extends StatefulWidget {
   Committee current;
@@ -41,6 +41,9 @@ class _CommitteeDetailState extends State<CommitteeDetail> {
             thickness: 1,
             height: 1,
           ),
+          SizedBox(
+            height: 10,
+          ),
           Text(
             'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt '
             'ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud e'
@@ -55,24 +58,76 @@ class _CommitteeDetailState extends State<CommitteeDetail> {
             child: Container(
               width: w * 0.95,
               height: h * 0.2,
-              padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+              padding: EdgeInsets.symmetric(horizontal: 12, vertical: 12),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Text(
-                    'Agenda The Situation in Yemen',
-                    style: simple(20),
+                  Row(
+                    children: [
+                      Text(
+                        'Agenda ',
+                        style: simple(20).copyWith(fontWeight: FontWeight.w600),
+                      ),
+                      Text(
+                        'The Situation in Yemen',
+                        style: simple(20).copyWith(fontWeight: FontWeight.w300),
+                      )
+                    ],
                   ),
                   Divider(
                     color: kGreyShade,
                     thickness: 1,
-                    height: 5,
+                    height: 1,
                   ),
+                  Row(
+                    children: [
+                      Text(
+                        '27 ',
+                        style: simple(20).copyWith(
+                            fontWeight: FontWeight.w600, color: Colors.blue),
+                      ),
+                      Text(
+                        'Seats remaining!*',
+                        style: simple(20).copyWith(
+                          fontWeight: FontWeight.w300,
+                          color: Colors.blue,
+                        ),
+                      )
+                    ],
+                  ),
+                  Divider(
+                    color: kGreyShade,
+                    thickness: 1,
+                    height: 1,
+                  ),
+                  Row(
+                    children: [
+                      Text(
+                        'Level ',
+                        style: simple(20).copyWith(fontWeight: FontWeight.w600),
+                      ),
+                      Text(
+                        'Advanced',
+                        style: simple(20).copyWith(fontWeight: FontWeight.w300),
+                      )
+                    ],
+                  ),
+                  SizedBox(height: 10,),
+                  Text(
+                    '*Country allocation would be allocated via E-mail.',
+                    style: simple(12).copyWith(
+                      color: Colors.black.withOpacity(
+                        0.4,
+                      ),
+                    ),
+                  )
                 ],
               ),
               color: Colors.white,
             ),
           ),
+          SizedBox(height: 50,),
         ],
       ),
     );

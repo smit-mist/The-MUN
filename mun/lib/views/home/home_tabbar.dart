@@ -1,7 +1,7 @@
 import 'dart:ui' as ui;
 
 import 'package:flutter/material.dart';
-import 'package:mun/views/MUN/about_mun_screen.dart';
+import 'package:mun/views/MUN/select_committee_screen.dart';
 import 'package:mun/views/elements/constants.dart';
 import 'package:mun/views/home/all_mun_screen.dart';
 import 'package:mun/views/home/home_screen.dart';
@@ -20,7 +20,7 @@ class _HomeTabBarState extends State<HomeTabBar> {
       child: AllMun(),
       filter: ui.ImageFilter.blur(sigmaY: 10, sigmaX: 10),
     ),
-    AboutMunScreen(), // this is for testing purpose
+    SelectCommitteeScreen(), // this is for testing purpose
     ContactUs(),
   ];
   @override

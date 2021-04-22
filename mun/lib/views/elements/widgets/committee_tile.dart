@@ -1,25 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:mun/models/committee.dart';
+import 'package:mun/views/MUN/select_committee_screen.dart';
 import 'package:mun/views/elements/constants.dart';
 
 import '../textstyles.dart';
+
 // ignore: must_be_immutable
 class CommitteeHorizontalTile extends StatefulWidget {
   // This widget is used in home page for Committee Display
   Committee current;
   CommitteeHorizontalTile({this.current});
   @override
-  _CommitteeHorizontalTileState createState() => _CommitteeHorizontalTileState();
+  _CommitteeHorizontalTileState createState() =>
+      _CommitteeHorizontalTileState();
 }
 
 class _CommitteeHorizontalTileState extends State<CommitteeHorizontalTile> {
   @override
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width;
-   // double h = MediaQuery.of(context).size.height;
+    // double h = MediaQuery.of(context).size.height;
     return GestureDetector(
       onTap: () {
         // committee page;
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (_) => SelectCommitteeScreen(),
+          ),
+        );
       },
       child: Container(
         width: w * 0.25,
@@ -28,22 +37,19 @@ class _CommitteeHorizontalTileState extends State<CommitteeHorizontalTile> {
             Container(
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(10),
-                child: Image.network(
-                    'https://picsum.photos/id/1032/400/300',
+                child: Image.network('https://picsum.photos/id/1032/400/300',
                     loadingBuilder: (BuildContext context, Widget child,
                         ImageChunkEvent loadingProgress) {
-                      if (loadingProgress == null) return child;
-                      return Center(
-                        child: CircularProgressIndicator(
-                          value: loadingProgress.expectedTotalBytes != null
-                              ? loadingProgress.cumulativeBytesLoaded /
+                  if (loadingProgress == null) return child;
+                  return Center(
+                    child: CircularProgressIndicator(
+                      value: loadingProgress.expectedTotalBytes != null
+                          ? loadingProgress.cumulativeBytesLoaded /
                               loadingProgress.expectedTotalBytes
-                              : null,
-                        ),
-                      );
-                    },
-                    fit: BoxFit.contain
-                ),
+                          : null,
+                    ),
+                  );
+                }, fit: BoxFit.contain),
               ),
               //height: w * 0.5,
             ),
@@ -51,12 +57,20 @@ class _CommitteeHorizontalTileState extends State<CommitteeHorizontalTile> {
               alignment: Alignment.bottomLeft,
               child: Container(
                 padding: EdgeInsets.all(5),
-                height: w*0.15,
+                height: w * 0.15,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(widget.current.name,style:simple(16),),
-                    SizedBox(width:w*(0.15),child: Text(widget.current.description,style: simple(12),))
+                    Text(
+                      widget.current.name,
+                      style: simple(16),
+                    ),
+                    SizedBox(
+                        width: w * (0.15),
+                        child: Text(
+                          widget.current.description,
+                          style: simple(12),
+                        ))
                   ],
                 ),
               ),
@@ -72,16 +86,13 @@ class _CommitteeHorizontalTileState extends State<CommitteeHorizontalTile> {
                 ),
               ),
             ),
-
           ],
         ),
         decoration: BoxDecoration(
           color: kGreyShade.withOpacity(0.4),
-
           borderRadius: BorderRadius.circular(10),
         ),
       ),
-
     );
   }
 }

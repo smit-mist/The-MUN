@@ -4,6 +4,7 @@ import 'package:mun/views/elements/constants.dart';
 import 'package:mun/views/elements/widgets/logo.dart';
 
 // TODO: Configure bottomBar
+// TODO: Pass MUN as Parameter
 class AboutMunScreen extends StatefulWidget {
   @override
   _AboutMunScreenState createState() => _AboutMunScreenState();
