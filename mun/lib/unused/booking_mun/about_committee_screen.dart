@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mun/models/committee.dart';
-//import 'package:mun/views/booking_mun/extra_details_screen.dart';
 import 'package:mun/views/elements/textstyles.dart';
-import 'package:video_player/video_player.dart';
 
+// ignore: must_be_immutable
 class AboutCommitteeScreen extends StatefulWidget {
   Committee currentCommittee;
   AboutCommitteeScreen({this.currentCommittee});

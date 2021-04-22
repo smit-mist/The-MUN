@@ -5,7 +5,6 @@ import 'package:mun/views/MUN/about_mun_screen.dart';
 import 'package:mun/views/elements/constants.dart';
 import 'package:mun/views/home/all_mun_screen.dart';
 import 'package:mun/views/home/home_screen.dart';
-import 'package:mun/views/home/select_committee_screen.dart';
 import '../../unused/contact_us_screen.dart';
 
 class HomeTabBar extends StatefulWidget {
@@ -27,7 +26,7 @@ class _HomeTabBarState extends State<HomeTabBar> {
   @override
   Widget build(BuildContext context) {
     double h = MediaQuery.of(context).size.height;
-    double w = MediaQuery.of(context).size.width;
+   // double w = MediaQuery.of(context).size.width;
     return Scaffold(
       body: body[index - 1],
       bottomNavigationBar: BottomAppBar(

@@ -17,7 +17,7 @@ class Database {
 
   Future<String> getUserCity(String uid) async {
     String city;
-    dynamic result = await _db.collection('users').doc(uid).get().then((value) {
+    await _db.collection('users').doc(uid).get().then((value) {
       Map<String, dynamic> documentData = value.data();
       city = documentData['city'];
     });

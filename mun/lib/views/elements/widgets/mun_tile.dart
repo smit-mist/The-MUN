@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:mun/models/committee.dart';
 import 'package:mun/models/mun.dart';
-import 'package:mun/views/elements/constants.dart';
+import 'package:mun/views/MUN/about_mun_screen.dart';
 
 import '../textstyles.dart';
-// ignore: must_be_immutable
 
 // ignore: must_be_immutable
 class HorizontalTile extends StatefulWidget {
@@ -19,10 +17,13 @@ class _HorizontalTileState extends State<HorizontalTile> {
   @override
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width;
-    double h = MediaQuery.of(context).size.height;
+    //double h = MediaQuery.of(context).size.height;
     return GestureDetector(
       onTap: () {
-
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => AboutMunScreen()));
       },
       child: Container(
         width: w * 0.33,

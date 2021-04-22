@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:mun/logic/database.dart';
 import 'package:mun/models/committee.dart';
 import 'package:mun/models/mun.dart';
-import 'package:mun/views/MUN/about_mun_screen.dart';
 import 'package:mun/views/elements/constants.dart';
 import 'package:mun/views/elements/textstyles.dart';
 import 'package:mun/views/elements/widgets/committee_tile.dart';
@@ -132,16 +131,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       child: ListView(
                         scrollDirection: Axis.horizontal,
                         children: [
-                          GestureDetector(
-                            onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => AboutMunScreen()));
-                            },
-                            child: HorizontalTile(
-                              currentMun: current,
-                            ),
+                          HorizontalTile(
+                            currentMun: current,
                           ),
                           SizedBox(
                             width: 10,

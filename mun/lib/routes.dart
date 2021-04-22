@@ -5,7 +5,7 @@ import 'package:mun/views/authentication/signup_screen.dart';
 import 'package:mun/views/authentication/welcome_screen.dart';
 import 'package:mun/views/home/home_tabbar.dart';
 
-Map<String, Widget Function(BuildContext)> route_generator = {
+Map<String, Widget Function(BuildContext)> routeGenerator = {
   'login': (context) => LoginScreen(),
   'sign_up': (context) => SignUpScreen(),
   'home': (context) => HomeTabBar(),

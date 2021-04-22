@@ -17,6 +17,7 @@ class AuthService {
     } on FirebaseAuthException catch (e) {
       print(e);
     }
+    return null;
   }
 
   Future signIn(String email, String password) async {

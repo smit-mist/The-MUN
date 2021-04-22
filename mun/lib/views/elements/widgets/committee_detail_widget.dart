@@ -1,14 +1,9 @@
-import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:mun/models/committee.dart';
 import 'package:mun/views/elements/constants.dart';
 import 'package:mun/views/elements/textstyles.dart';
-import 'package:mun/views/elements/widgets/committee_small_tile.dart';
-import 'package:mun/views/elements/widgets/committee_tile.dart';
-import 'package:mun/views/elements/widgets/mun_tile.dart';
-import 'package:mun/views/elements/widgets/logo.dart';
-
+// ignore: must_be_immutable
 class CommitteeDetail extends StatefulWidget {
   Committee current;
   CommitteeDetail({this.current});

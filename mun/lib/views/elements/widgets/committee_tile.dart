@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:mun/models/committee.dart';
-import 'package:mun/models/mun.dart';
 import 'package:mun/views/elements/constants.dart';
 
 import '../textstyles.dart';
@@ -17,7 +16,7 @@ class _CommitteeHorizontalTileState extends State<CommitteeHorizontalTile> {
   @override
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width;
-    double h = MediaQuery.of(context).size.height;
+   // double h = MediaQuery.of(context).size.height;
     return GestureDetector(
       onTap: () {
         // committee page;
@@ -30,7 +29,7 @@ class _CommitteeHorizontalTileState extends State<CommitteeHorizontalTile> {
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(10),
                 child: Image.network(
-                    'Nothing here',
+                    'https://picsum.photos/id/1032/400/300',
                     loadingBuilder: (BuildContext context, Widget child,
                         ImageChunkEvent loadingProgress) {
                       if (loadingProgress == null) return child;

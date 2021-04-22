@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'The MUN',
         initialRoute: isUserLoggedIn() ? 'home' : 'welcome',
-        routes: route_generator,
+        routes: routeGenerator,
         theme: ThemeData(
           primarySwatch: Colors.blue,
           visualDensity: VisualDensity.adaptivePlatformDensity,

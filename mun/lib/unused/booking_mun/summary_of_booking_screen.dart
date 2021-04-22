@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mun/views/elements/textstyles.dart';
 
+// ignore: must_be_immutable
 class SummaryOfBooking extends StatefulWidget {
   String name, email, mobileNo, nameOfCommittee, nameOfMUN, address, city;
   DateTime dob = DateTime.now(), dateOfMUN = DateTime.now();
