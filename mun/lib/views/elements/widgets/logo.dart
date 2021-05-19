@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mun/views/elements/constants.dart';
 
 class MUNLogo extends StatefulWidget {
   @override
@@ -12,20 +13,20 @@ class _MUNLogoState extends State<MUNLogo> {
       text: TextSpan(
           text: 'My',
           style: TextStyle(
-            color: Colors.black,
+            color: kBlueShade,
             fontSize: 24,
           ),
           children: <TextSpan>[
             TextSpan(
               text: 'Next',
               style: TextStyle(
-                fontStyle: FontStyle.italic,
-                fontWeight: FontWeight.w300,
+                color: kBlueShade,
               ),
             ),
             TextSpan(
                 text: 'MUN',
                 style: TextStyle(
+                  color: Colors.black,
                   fontWeight: FontWeight.bold,
                 )),
           ]),

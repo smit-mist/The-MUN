@@ -8,6 +8,8 @@ Color kRedShade = Color(0xffED1C24);
 
 Color kBlackShade = Color(0xFF6D6D6D);
 
+Color kBackgroundColor = Color(0xFFE5E5E5);
+
 double kExtraSmallTextSize = 0.02;
 
 double kSmallTextSize = 0.03;
