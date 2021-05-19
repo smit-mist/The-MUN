@@ -51,6 +51,7 @@ class _LoginScreenState extends State<LoginScreen> {
     return isLoading
         ? Loading()
         : Scaffold(
+            backgroundColor: Colors.white,
             body: Center(
               child: SingleChildScrollView(
                 child: Padding(

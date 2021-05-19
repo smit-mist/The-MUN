@@ -21,9 +21,7 @@ class _HorizontalTileState extends State<HorizontalTile> {
     return GestureDetector(
       onTap: () {
         Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) => AboutMunScreen()));
+            context, MaterialPageRoute(builder: (context) => AboutMunScreen()));
       },
       child: Container(
         width: w * 0.33,
@@ -33,21 +31,24 @@ class _HorizontalTileState extends State<HorizontalTile> {
             Stack(
               children: [
                 Container(
-                  child: Image.network(
-                    widget.currentMun.imageUrls[1].toString(),
-                    loadingBuilder: (BuildContext context, Widget child,
-                        ImageChunkEvent loadingProgress) {
-                      if (loadingProgress == null) return child;
-                      return Center(
-                        child: CircularProgressIndicator(
-                          value: loadingProgress.expectedTotalBytes != null
-                              ? loadingProgress.cumulativeBytesLoaded /
-                                  loadingProgress.expectedTotalBytes
-                              : null,
-                        ),
-                      );
-                    },
-                    fit: BoxFit.cover,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(5),
+                    child: Image.network(
+                      widget.currentMun.imageUrls[1].toString(),
+                      loadingBuilder: (BuildContext context, Widget child,
+                          ImageChunkEvent loadingProgress) {
+                        if (loadingProgress == null) return child;
+                        return Center(
+                          child: CircularProgressIndicator(
+                            value: loadingProgress.expectedTotalBytes != null
+                                ? loadingProgress.cumulativeBytesLoaded /
+                                    loadingProgress.expectedTotalBytes
+                                : null,
+                          ),
+                        );
+                      },
+                      fit: BoxFit.cover,
+                    ),
                   ),
                   height: w * 0.5,
                 ),

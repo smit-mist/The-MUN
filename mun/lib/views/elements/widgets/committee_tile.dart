@@ -36,7 +36,7 @@ class _CommitteeHorizontalTileState extends State<CommitteeHorizontalTile> {
           children: [
             Container(
               child: ClipRRect(
-                borderRadius: BorderRadius.circular(10),
+                borderRadius: BorderRadius.circular(5),
                 child: Image.network('https://picsum.photos/id/1032/400/300',
                     loadingBuilder: (BuildContext context, Widget child,
                         ImageChunkEvent loadingProgress) {

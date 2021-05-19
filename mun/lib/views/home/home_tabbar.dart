@@ -1,4 +1,5 @@
 import 'dart:ui' as ui;
+import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:mun/views/MUN/select_committee_screen.dart';
@@ -16,17 +17,55 @@ class _HomeTabBarState extends State<HomeTabBar> {
   int index = 1;
   List body = [
     HomeScreen(),
-    BackdropFilter(
-      child: AllMun(),
-      filter: ui.ImageFilter.blur(sigmaY: 10, sigmaX: 10),
-    ),
+    AllMun(),
+
     SelectCommitteeScreen(), // this is for testing purpose
     UserProfileScreen(),
   ];
+
   @override
   Widget build(BuildContext context) {
     double h = MediaQuery.of(context).size.height;
-   // double w = MediaQuery.of(context).size.width;
+    double w = MediaQuery.of(context).size.width;
+    void getTheDialog() {
+      showDialog(
+
+          context: context,
+          builder: (_) => new AlertDialog(
+            insetPadding: EdgeInsets.all(0),
+            shape: RoundedRectangleBorder(
+
+                borderRadius:
+                BorderRadius.all(
+                    Radius.circular(10.0))),
+            content: Builder(
+              builder: (context) {
+                // Get available height and width of the build area of this widget. Make a choice depending on the size.
+
+                return BackdropFilter(
+                  filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+
+                  child: SizedBox(
+                    height: h,width: w,
+                    child: Container(
+
+                      clipBehavior: Clip.antiAliasWithSaveLayer,
+                      height: h,
+                      width: w,
+                      child: AllMun(),
+
+                      decoration: BoxDecoration(
+
+                      ),
+                    ),
+                  ),
+                );
+              },
+            ),
+          )
+      );
+    }
+
     return Scaffold(
       body: body[index - 1],
       bottomNavigationBar: BottomAppBar(
@@ -56,7 +95,8 @@ class _HomeTabBarState extends State<HomeTabBar> {
               RawMaterialButton(
                 onPressed: () {
                   setState(() {
-                    index = 2;
+                    getTheDialog();
+                    //   index = 2;
                   });
                 },
                 child: Column(
@@ -98,7 +138,7 @@ class _HomeTabBarState extends State<HomeTabBar> {
                   children: [
                     Icon(
                       Icons.account_circle_rounded,
-                      color: index == 4? kBlueShade : kGreyShade,
+                      color: index == 4 ? kBlueShade : kGreyShade,
                       size: 32,
                     ),
                   ],

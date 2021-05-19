@@ -163,8 +163,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                               ),
                                             ),
                                             Container(
-                                              color:
-                                                  Colors.grey.withOpacity(0.1),
                                               child: IconButton(
                                                 icon: Icon(
                                                   Icons.remove_red_eye_sharp,
@@ -177,6 +175,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                                 },
                                               ),
                                               decoration: BoxDecoration(
+                                                color: Colors.grey
+                                                    .withOpacity(0.1),
                                                 border: Border(
                                                   bottom: BorderSide(
                                                     color: Colors.grey[350],
