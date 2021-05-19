@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:mun/logic/mun_data.dart';
 import 'package:mun/views/MUN/my_booking_screen.dart';
 import 'package:mun/views/authentication/login_screen.dart';
+import 'package:mun/views/authentication/welcome_screen.dart';
 import 'package:mun/views/elements/constants.dart';
 import 'package:provider/provider.dart';
 
@@ -24,14 +25,14 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'The MUN',
-        //initialRoute: isUserLoggedIn() ? 'home' : 'welcome',
+        initialRoute: isUserLoggedIn() ? 'home' : 'welcome',
         routes: routeGenerator,
         theme: ThemeData(
           scaffoldBackgroundColor: kBackgroundColor,
           primarySwatch: Colors.blue,
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
-        home: MyBooking(),
+        home: WelcomeScreen(),
       ),
     );
   }

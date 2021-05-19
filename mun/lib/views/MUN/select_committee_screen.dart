@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:mun/models/committee.dart';
@@ -6,6 +5,9 @@ import 'package:mun/views/elements/constants.dart';
 import 'package:mun/views/elements/widgets/committee_detail_widget.dart';
 import 'package:mun/views/elements/widgets/committee_small_tile.dart';
 import 'package:mun/views/elements/widgets/logo.dart';
+
+import 'my_booking_screen.dart';
+
 // TODO: Navigation Path of Select Committee to-be set
 Committee here = Committee(
   name: 'U.N.',
@@ -123,24 +125,20 @@ class _SelectCommitteeScreenState extends State<SelectCommitteeScreen> {
                   style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all(kBlueShade),
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => MyBooking(),
+                      ),
+                    );
+                  },
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      Column(
-                        children: [
-                          Text(
-                            'Book Now!',
-                            style: TextStyle(color: Colors.white),
-                          ),
-                          Text(
-                            'Select Committee',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: w * (kExtraSmallTextSize - 0.003),
-                            ),
-                          ),
-                        ],
+                      Text(
+                        'Book Now!',
+                        style: TextStyle(color: Colors.white),
                       ),
                       Icon(
                         Icons.arrow_forward_rounded,

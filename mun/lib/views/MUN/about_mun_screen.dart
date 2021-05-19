@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:mun/views/MUN/select_committee_screen.dart';
 import 'package:mun/views/elements/constants.dart';
 import 'package:mun/views/elements/widgets/logo.dart';
 
@@ -527,7 +528,14 @@ class _AboutMunScreenState extends State<AboutMunScreen> {
                   style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all(kBlueShade),
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => SelectCommitteeScreen(),
+                      ),
+                    );
+                  },
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
