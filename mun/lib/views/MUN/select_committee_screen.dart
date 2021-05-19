@@ -30,6 +30,7 @@ class _SelectCommitteeScreenState extends State<SelectCommitteeScreen> {
     double h = MediaQuery.of(context).size.height;
     double w = MediaQuery.of(context).size.width;
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         leading: Icon(
           Icons.arrow_back,
@@ -104,8 +105,9 @@ class _SelectCommitteeScreenState extends State<SelectCommitteeScreen> {
       bottomNavigationBar: Container(
         height: h * 0.1,
         width: w,
-        padding: EdgeInsets.symmetric(vertical: h * 0.001),
+        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 8),
         child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             FaIcon(
               FontAwesomeIcons.briefcase,
@@ -122,31 +124,32 @@ class _SelectCommitteeScreenState extends State<SelectCommitteeScreen> {
               height: h * 0.05,
               width: w * 0.35,
               child: ElevatedButton(
-                  style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(kBlueShade),
-                  ),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (_) => MyBooking(),
-                      ),
-                    );
-                  },
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Book Now!',
-                        style: TextStyle(color: Colors.white),
-                      ),
-                      Icon(
-                        Icons.arrow_forward_rounded,
-                        color: Colors.white,
-                        //size: h*0.02,
-                      ),
-                    ],
-                  )),
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all(kBlueShade),
+                ),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => MyBooking(),
+                    ),
+                  );
+                },
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Text(
+                      'Book Now!',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    Icon(
+                      Icons.arrow_forward_rounded,
+                      color: Colors.white,
+                      //size: h*0.02,
+                    ),
+                  ],
+                ),
+              ),
             ),
           ],
         ),
