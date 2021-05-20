@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:mun/views/MUN/select_committee_screen.dart';
 import 'package:mun/views/elements/constants.dart';
 import 'package:mun/views/elements/widgets/logo.dart';
 
@@ -21,6 +22,7 @@ class _AboutMunScreenState extends State<AboutMunScreen> {
     double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.height;
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         centerTitle: false,
         backgroundColor: Colors.white,
@@ -115,7 +117,7 @@ class _AboutMunScreenState extends State<AboutMunScreen> {
                           color: Colors.black,
                         ),
                       ),
-                      Row(
+                      Wrap(
                         children: [
                           Text(
                             '*Priority registration customers will enjoy',
@@ -506,8 +508,9 @@ class _AboutMunScreenState extends State<AboutMunScreen> {
       bottomNavigationBar: Container(
         height: h * 0.1,
         width: w,
-        padding: EdgeInsets.symmetric(vertical: h * 0.001),
+        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 8),
         child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             FaIcon(
               FontAwesomeIcons.briefcase,
@@ -524,35 +527,44 @@ class _AboutMunScreenState extends State<AboutMunScreen> {
               height: h * 0.05,
               width: w * 0.35,
               child: ElevatedButton(
-                  style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(kBlueShade),
-                  ),
-                  onPressed: () {},
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Column(
-                        children: [
-                          Text(
-                            'Book Now!',
-                            style: TextStyle(color: Colors.white),
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all(kBlueShade),
+                ),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => SelectCommitteeScreen(),
+                    ),
+                  );
+                },
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          'Book Now!',
+                          style: TextStyle(color: Colors.white),
+                        ),
+                        Text(
+                          'Select Committee',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 10,
                           ),
-                          Text(
-                            'Select Committee',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: w * (kExtraSmallTextSize - 0.003),
-                            ),
-                          ),
-                        ],
-                      ),
-                      Icon(
-                        Icons.arrow_forward_rounded,
-                        color: Colors.white,
-                        //size: h*0.02,
-                      ),
-                    ],
-                  )),
+                        ),
+                      ],
+                    ),
+                    Icon(
+                      Icons.arrow_forward_rounded,
+                      color: Colors.white,
+                      //size: h*0.02,
+                    ),
+                  ],
+                ),
+              ),
             ),
           ],
         ),

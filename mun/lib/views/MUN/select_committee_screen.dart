@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:mun/models/committee.dart';
@@ -6,6 +5,9 @@ import 'package:mun/views/elements/constants.dart';
 import 'package:mun/views/elements/widgets/committee_detail_widget.dart';
 import 'package:mun/views/elements/widgets/committee_small_tile.dart';
 import 'package:mun/views/elements/widgets/logo.dart';
+
+import 'my_booking_screen.dart';
+
 // TODO: Navigation Path of Select Committee to-be set
 Committee here = Committee(
   name: 'U.N.',
@@ -28,6 +30,7 @@ class _SelectCommitteeScreenState extends State<SelectCommitteeScreen> {
     double h = MediaQuery.of(context).size.height;
     double w = MediaQuery.of(context).size.width;
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         leading: Icon(
           Icons.arrow_back,
@@ -102,8 +105,9 @@ class _SelectCommitteeScreenState extends State<SelectCommitteeScreen> {
       bottomNavigationBar: Container(
         height: h * 0.1,
         width: w,
-        padding: EdgeInsets.symmetric(vertical: h * 0.001),
+        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 8),
         child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             FaIcon(
               FontAwesomeIcons.briefcase,
@@ -120,35 +124,32 @@ class _SelectCommitteeScreenState extends State<SelectCommitteeScreen> {
               height: h * 0.05,
               width: w * 0.35,
               child: ElevatedButton(
-                  style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(kBlueShade),
-                  ),
-                  onPressed: () {},
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Column(
-                        children: [
-                          Text(
-                            'Book Now!',
-                            style: TextStyle(color: Colors.white),
-                          ),
-                          Text(
-                            'Select Committee',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: w * (kExtraSmallTextSize - 0.003),
-                            ),
-                          ),
-                        ],
-                      ),
-                      Icon(
-                        Icons.arrow_forward_rounded,
-                        color: Colors.white,
-                        //size: h*0.02,
-                      ),
-                    ],
-                  )),
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all(kBlueShade),
+                ),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => MyBooking(),
+                    ),
+                  );
+                },
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Text(
+                      'Book Now!',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    Icon(
+                      Icons.arrow_forward_rounded,
+                      color: Colors.white,
+                      //size: h*0.02,
+                    ),
+                  ],
+                ),
+              ),
             ),
           ],
         ),

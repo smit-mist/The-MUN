@@ -24,11 +24,14 @@ class _AllMunState extends State<AllMun> {
     return SafeArea(
       child: Center(
         child: Container(
+          color: Colors.transparent,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               SizedBox(height: 20,),
               Container(
+                color: Colors.transparent,
+
                 width: w*0.95,
                 child: Material(
                   elevation: 10,
@@ -47,6 +50,8 @@ class _AllMunState extends State<AllMun> {
               ),
               SizedBox(height: 50,),
               Container(
+                color: Colors.transparent,
+
                 width: w * 0.95,
                 height: h * 0.3,
                 child: ListView(
