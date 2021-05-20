@@ -525,7 +525,7 @@ class _AboutMunScreenState extends State<AboutMunScreen> {
             ),
             Container(
               height: h * 0.05,
-              width: w * 0.35,
+              width: w * 0.4,
               child: ElevatedButton(
                 style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all(kBlueShade),
@@ -552,7 +552,7 @@ class _AboutMunScreenState extends State<AboutMunScreen> {
                           'Select Committee',
                           style: TextStyle(
                             color: Colors.white,
-                            fontSize: 10,
+                            fontSize: h*0.014,
                           ),
                         ),
                       ],
