@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mun/views/MUN/receipt_screen.dart';
 import 'package:mun/views/elements/constants.dart';
 import 'package:mun/views/elements/widgets/logo.dart';
 
@@ -378,7 +379,7 @@ class BookingSummary extends StatelessWidget {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (_) => BookingSummary(),
+                builder: (_) => ReceiptScreen(),
               ),
             );
           },

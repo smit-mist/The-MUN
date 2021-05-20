@@ -53,7 +53,7 @@ class _MyBooking extends State<MyBooking> {
                 'My Booking',
                 style: TextStyle(
                   color: Colors.black,
-                  fontSize: h * (kMediumTextSize - 0.005),
+                  fontSize: h * 0.025,
                 ),
               ),
               SizedBox(
@@ -68,7 +68,7 @@ class _MyBooking extends State<MyBooking> {
                 height: h * 0.03,
               ),
               Container(
-                height: h * 0.3,
+                height: h * 0.28,
                 width: w,
                 //padding: EdgeInsets.symmetric(horizontal: w * 0.01),
                 child: Row(
@@ -81,7 +81,7 @@ class _MyBooking extends State<MyBooking> {
                       width: w * 0.03,
                     ),
                     Container(
-                      width: w * 0.59,
+                      width: w * 0.58,
                       color: Colors.white,
                       padding: EdgeInsets.symmetric(
                         horizontal: w * 0.015,
@@ -93,7 +93,7 @@ class _MyBooking extends State<MyBooking> {
                           Text(
                             'UCL Model United Nations',
                             style: TextStyle(
-                              fontSize: h * 0.025,
+                              fontSize: h * 0.02,
                               fontWeight: FontWeight.w500,
                             ),
                           ),
@@ -107,12 +107,12 @@ class _MyBooking extends State<MyBooking> {
                           ),
                           Text(
                             'United Nations',
-                            style: TextStyle(fontSize: h * 0.023),
+                            style: TextStyle(fontSize: h * 0.02),
                           ),
                           Text(
                             'Human Rights Committee*',
                             style: TextStyle(
-                              fontSize: h * 0.023,
+                              fontSize: h * 0.02,
                               fontWeight: FontWeight.w500,
                             ),
                           ),
@@ -134,7 +134,7 @@ class _MyBooking extends State<MyBooking> {
                           Text(
                             'Zydus School',
                             style: TextStyle(
-                              fontSize: h * 0.025,
+                              fontSize: h * 0.02,
                               fontWeight: FontWeight.w500,
                             ),
                           ),
@@ -176,7 +176,7 @@ class _MyBooking extends State<MyBooking> {
               SizedBox(
                 height: h * 0.05,
               ),
-              ListView(
+              Column(
                 children: [
                   Container(
                     height: h * 0.25,
@@ -197,9 +197,12 @@ class _MyBooking extends State<MyBooking> {
                         Text(
                           'Name',
                           style: TextStyle(
-                            fontSize: h * 0.035,
+                            fontSize: h * 0.025,
                             fontWeight: FontWeight.w300,
                           ),
+                        ),
+                        SizedBox(
+                          height: h * 0.015,
                         ),
                         Row(
                           children: [
@@ -207,7 +210,9 @@ class _MyBooking extends State<MyBooking> {
                               child: TextField(
                                 decoration: InputDecoration(
                                   contentPadding: EdgeInsets.symmetric(
-                                      horizontal: 10, vertical: 2),
+                                    horizontal: 10,
+                                    vertical: 2,
+                                  ),
                                   fillColor: Colors.white,
                                   border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(3),
@@ -219,7 +224,7 @@ class _MyBooking extends State<MyBooking> {
                                   filled: true,
                                   hintText: 'Alex',
                                   hintStyle: TextStyle(
-                                    fontSize: h * 0.028,
+                                    fontSize: h * 0.022,
                                     color: kBlueShade,
                                   ),
                                 ),
@@ -246,7 +251,7 @@ class _MyBooking extends State<MyBooking> {
                                   filled: true,
                                   hintText: 'Jacob',
                                   hintStyle: TextStyle(
-                                    fontSize: h * 0.028,
+                                    fontSize: h * 0.022,
                                     color: kBlueShade,
                                   ),
                                 ),
@@ -262,7 +267,7 @@ class _MyBooking extends State<MyBooking> {
                             Expanded(
                               child: Text(
                                 'Date of Birth',
-                                style: TextStyle(fontSize: h * 0.03),
+                                style: TextStyle(fontSize: h * 0.025),
                               ),
                             ),
                             SizedBox(
@@ -271,7 +276,7 @@ class _MyBooking extends State<MyBooking> {
                             Expanded(
                               child: Text(
                                 'Age',
-                                style: TextStyle(fontSize: h * 0.03),
+                                style: TextStyle(fontSize: h * 0.025),
                               ),
                             ),
                           ],
@@ -293,7 +298,7 @@ class _MyBooking extends State<MyBooking> {
                                   '08',
                                   style: TextStyle(
                                     color: kBlueShade,
-                                    fontSize: h * 0.03,
+                                    fontSize: h * 0.025,
                                   ),
                                 ),
                               ),
@@ -310,7 +315,7 @@ class _MyBooking extends State<MyBooking> {
                                   'MM',
                                   style: TextStyle(
                                     color: kGreyShade,
-                                    fontSize: h * 0.03,
+                                    fontSize: h * 0.025,
                                   ),
                                 ),
                               ),
@@ -327,7 +332,7 @@ class _MyBooking extends State<MyBooking> {
                                   'YYYY',
                                   style: TextStyle(
                                     color: kGreyShade,
-                                    fontSize: h * 0.03,
+                                    fontSize: h * 0.025,
                                   ),
                                 ),
                               ),
@@ -372,7 +377,7 @@ class _MyBooking extends State<MyBooking> {
                       children: [
                         Text(
                           'Institution',
-                          style: TextStyle(fontSize: h * 0.03),
+                          style: TextStyle(fontSize: h * 0.025),
                         ),
                         SizedBox(
                           height: h * 0.015,
@@ -396,7 +401,7 @@ class _MyBooking extends State<MyBooking> {
                               hintText:
                                   'Full name of the institution you study in',
                               hintStyle: TextStyle(
-                                fontSize: h * 0.028,
+                                fontSize: h * 0.02,
                                 color: kGreyShade,
                               ),
                             ),
@@ -407,7 +412,7 @@ class _MyBooking extends State<MyBooking> {
                         ),
                         Text(
                           'City',
-                          style: TextStyle(fontSize: h * 0.03),
+                          style: TextStyle(fontSize: h * 0.025),
                         ),
                         SizedBox(
                           height: h * 0.015,
@@ -430,7 +435,7 @@ class _MyBooking extends State<MyBooking> {
                               filled: true,
                               hintText: 'Your city of residence',
                               hintStyle: TextStyle(
-                                fontSize: h * 0.028,
+                                fontSize: h * 0.02,
                                 color: kGreyShade,
                               ),
                             ),
@@ -459,7 +464,7 @@ class _MyBooking extends State<MyBooking> {
                       children: [
                         Text(
                           'Contact Details',
-                          style: TextStyle(fontSize: h * 0.03),
+                          style: TextStyle(fontSize: h * 0.025),
                         ),
                         SizedBox(
                           height: h * 0.015,
@@ -488,7 +493,7 @@ class _MyBooking extends State<MyBooking> {
                                 child: Text(
                                   '+91',
                                   style: TextStyle(
-                                    fontSize: h * 0.03,
+                                    fontSize: h * 0.02,
                                   ),
                                 ),
                               ),
@@ -507,10 +512,6 @@ class _MyBooking extends State<MyBooking> {
                                     ),
                                   ),
                                   filled: true,
-                                  hintStyle: TextStyle(
-                                    fontSize: h * 0.028,
-                                    color: kBlueShade,
-                                  ),
                                 ),
                               ),
                             ),
@@ -535,7 +536,7 @@ class _MyBooking extends State<MyBooking> {
                                   filled: true,
                                   hintText: 'Email-id',
                                   hintStyle: TextStyle(
-                                    fontSize: h * 0.028,
+                                    fontSize: h * 0.02,
                                     color: kGreyShade,
                                   ),
                                 ),
@@ -565,7 +566,7 @@ class _MyBooking extends State<MyBooking> {
                       children: [
                         Text(
                           'Food Preference',
-                          style: TextStyle(fontSize: h * 0.03),
+                          style: TextStyle(fontSize: h * 0.025),
                         ),
                         SizedBox(
                           height: h * 0.01,
@@ -578,8 +579,8 @@ class _MyBooking extends State<MyBooking> {
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             Container(
-                              height: h * 0.07,
-                              width: w * 0.25,
+                              height: h * 0.06,
+                              width: w * 0.2,
                               decoration: BoxDecoration(
                                 color: kBlueShade,
                                 borderRadius:
@@ -590,7 +591,7 @@ class _MyBooking extends State<MyBooking> {
                                   'Jain',
                                   style: TextStyle(
                                     color: Colors.white,
-                                    fontSize: h * 0.03,
+                                    fontSize: h * 0.025,
                                   ),
                                 ),
                               ),
@@ -599,7 +600,7 @@ class _MyBooking extends State<MyBooking> {
                               width: w * 0.025,
                             ),
                             Container(
-                              height: h * 0.07,
+                              height: h * 0.06,
                               width: w * 0.25,
                               decoration: BoxDecoration(
                                 color: Colors.white,
@@ -611,7 +612,7 @@ class _MyBooking extends State<MyBooking> {
                                   'Non-Jain',
                                   style: TextStyle(
                                     color: kGreyShade,
-                                    fontSize: h * 0.03,
+                                    fontSize: h * 0.025,
                                   ),
                                 ),
                               ),
@@ -623,7 +624,7 @@ class _MyBooking extends State<MyBooking> {
                         ),
                         Text(
                           'Accommodation',
-                          style: TextStyle(fontSize: h * 0.03),
+                          style: TextStyle(fontSize: h * 0.025),
                         ),
                         SizedBox(
                           height: h * 0.01,
@@ -641,8 +642,8 @@ class _MyBooking extends State<MyBooking> {
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             Container(
-                              height: h * 0.07,
-                              width: w * 0.2,
+                              height: h * 0.06,
+                              width: w * 0.15,
                               decoration: BoxDecoration(
                                 color: kBlueShade,
                                 borderRadius:
@@ -653,7 +654,7 @@ class _MyBooking extends State<MyBooking> {
                                   'Yes',
                                   style: TextStyle(
                                     color: Colors.white,
-                                    fontSize: h * 0.03,
+                                    fontSize: h * 0.025,
                                   ),
                                 ),
                               ),
@@ -662,8 +663,8 @@ class _MyBooking extends State<MyBooking> {
                               width: w * 0.025,
                             ),
                             Container(
-                              height: h * 0.07,
-                              width: w * 0.2,
+                              height: h * 0.06,
+                              width: w * 0.15,
                               decoration: BoxDecoration(
                                 color: Colors.white,
                                 borderRadius:
@@ -674,7 +675,7 @@ class _MyBooking extends State<MyBooking> {
                                   'No',
                                   style: TextStyle(
                                     color: kGreyShade,
-                                    fontSize: h * 0.03,
+                                    fontSize: h * 0.025,
                                   ),
                                 ),
                               ),
@@ -686,7 +687,7 @@ class _MyBooking extends State<MyBooking> {
                         ),
                         Text(
                           'Avail Premium',
-                          style: TextStyle(fontSize: h * 0.03),
+                          style: TextStyle(fontSize: h * 0.025),
                         ),
                         SizedBox(
                           height: h * 0.015,
@@ -695,8 +696,8 @@ class _MyBooking extends State<MyBooking> {
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             Container(
-                              height: h * 0.07,
-                              width: w * 0.2,
+                              height: h * 0.06,
+                              width: w * 0.15,
                               decoration: BoxDecoration(
                                 color: kBlueShade,
                                 borderRadius:
@@ -707,7 +708,7 @@ class _MyBooking extends State<MyBooking> {
                                   'Yes',
                                   style: TextStyle(
                                     color: Colors.white,
-                                    fontSize: h * 0.03,
+                                    fontSize: h * 0.025,
                                   ),
                                 ),
                               ),
@@ -716,8 +717,8 @@ class _MyBooking extends State<MyBooking> {
                               width: w * 0.025,
                             ),
                             Container(
-                              height: h * 0.07,
-                              width: w * 0.2,
+                              height: h * 0.06,
+                              width: w * 0.15,
                               decoration: BoxDecoration(
                                 color: Colors.white,
                                 borderRadius:
@@ -728,7 +729,7 @@ class _MyBooking extends State<MyBooking> {
                                   'No',
                                   style: TextStyle(
                                     color: kGreyShade,
-                                    fontSize: h * 0.03,
+                                    fontSize: h * 0.025,
                                   ),
                                 ),
                               ),
@@ -763,7 +764,7 @@ class _MyBooking extends State<MyBooking> {
             style: TextStyle(
               color: Colors.white,
               fontWeight: FontWeight.w300,
-              fontSize: h * 0.04,
+              fontSize: h * 0.03,
             ),
           ),
           color: kBlueShade,
