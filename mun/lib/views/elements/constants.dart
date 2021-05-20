@@ -4,11 +4,13 @@ Color kBlueShade = Color(0xff369FFF);
 
 Color kGreyShade = Color(0xff707070);
 
+Color kBackgroundColor = Color(0xFFE5E5E5);
+
+Color kBorderColor = Color(0xFFC4C4C4);
+
 Color kRedShade = Color(0xffED1C24);
 
 Color kBlackShade = Color(0xFF6D6D6D);
-
-Color kBackgroundColor = Color(0xFFE5E5E5);
 
 double kExtraSmallTextSize = 0.02;
 
