@@ -117,7 +117,7 @@ class _SelectCommitteeScreenState extends State<SelectCommitteeScreen> {
             Text(
               'Add to MyBriefcase',
               style: TextStyle(
-                fontSize: h * (kExtraSmallTextSize + 0.003),
+                fontSize: h * (0.02 + 0.003),
               ),
             ),
             Container(

@@ -62,7 +62,7 @@ class _AboutMunScreenState extends State<AboutMunScreen> {
                 'World Archive Simulation',
                 style: TextStyle(
                   color: Colors.black,
-                  fontSize: h * (kMediumTextSize - 0.005),
+                  fontSize: h * (0.025 - 0.005),
                 ),
               ),
               Divider(
@@ -86,8 +86,8 @@ class _AboutMunScreenState extends State<AboutMunScreen> {
                       Text(
                         'Priority Booking Closes in',
                         style: TextStyle(
-                          fontSize: h * kSmallTextSize,
-                          color: kBlackShade,
+                          fontSize: h * 0.023,
+                          color: Colors.black,
                         ),
                       ),
                       Container(
@@ -108,7 +108,7 @@ class _AboutMunScreenState extends State<AboutMunScreen> {
                         style: TextStyle(
                           fontWeight: FontWeight.w300,
                           color: kBlueShade,
-                          fontSize: h * kMediumTextSize,
+                          fontSize: h * 0.025,
                         ),
                       ),
                       Text(
@@ -122,14 +122,14 @@ class _AboutMunScreenState extends State<AboutMunScreen> {
                           Text(
                             '*Priority registration customers will enjoy',
                             style: TextStyle(
-                              fontSize: h * (kExtraSmallTextSize - 0.01),
+                              fontSize: h * (0.02 - 0.01),
                               color: Colors.grey[400],
                             ),
                           ),
                           Text(
                             ' added benefits ',
                             style: TextStyle(
-                              fontSize: h * (kExtraSmallTextSize - 0.008),
+                              fontSize: h * (0.02 - 0.008),
                               color: kBlueShade,
                               decoration: TextDecoration.underline,
                             ),
@@ -137,7 +137,7 @@ class _AboutMunScreenState extends State<AboutMunScreen> {
                           Text(
                             'WITHOUT any added costs',
                             style: TextStyle(
-                              fontSize: h * (kExtraSmallTextSize - 0.008),
+                              fontSize: h * (0.02 - 0.008),
                               color: Colors.grey[400],
                             ),
                           ),
@@ -163,14 +163,14 @@ class _AboutMunScreenState extends State<AboutMunScreen> {
               ),
               Text(
                 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Faucibus id fringilla lectus mauris. Ultricies faucibus sit eget mauris at. Velit orci, mauris at et nulla pellentesque amet, sollicitudin. Vestibulum suspendisse augue et nec vel, nam. hajtkhms a. jqherk kajejoro akwjfj lawmj lawke. awkd awjkdf.awkdl',
-                style: TextStyle(fontSize: h * kExtraSmallTextSize),
+                style: TextStyle(fontSize: h * 0.02),
               ),
               SizedBox(
                 height: h * 0.02,
               ),
               Text(
                 'Elit non ipsum id arcu. Mattis nunc, in duis quam alique. Suspendisse viverra turpis ornare turpis. Vitae erat sed purus sit feugiat eget nunc. Proin et condimentum leo quis quis in non gravida. Justo.',
-                style: TextStyle(fontSize: h * kExtraSmallTextSize),
+                style: TextStyle(fontSize: h * 0.02),
               ),
               SizedBox(
                 height: h * 0.03,
@@ -197,7 +197,7 @@ class _AboutMunScreenState extends State<AboutMunScreen> {
                           Text(
                             'October 13-14, 2021',
                             style: TextStyle(
-                              fontSize: h * (kExtraSmallTextSize + 0.005),
+                              fontSize: h * (0.02 + 0.005),
                             ),
                           ),
                         ],
@@ -217,7 +217,7 @@ class _AboutMunScreenState extends State<AboutMunScreen> {
                           Text(
                             '50 seats left',
                             style: TextStyle(
-                              fontSize: h * (kExtraSmallTextSize + 0.005),
+                              fontSize: h * (0.02 + 0.005),
                             ),
                           ),
                         ],
@@ -237,7 +237,7 @@ class _AboutMunScreenState extends State<AboutMunScreen> {
                           Text(
                             '10:00 AM - 5:00 PM',
                             style: TextStyle(
-                                fontSize: h * (kExtraSmallTextSize + 0.005)),
+                                fontSize: h * (0.02 + 0.005)),
                           ),
                         ],
                       ),
@@ -253,7 +253,7 @@ class _AboutMunScreenState extends State<AboutMunScreen> {
                           Text(
                             'Zydus School',
                             style: TextStyle(
-                              fontSize: h * (kExtraSmallTextSize + 0.005),
+                              fontSize: h * (0.02 + 0.005),
                             ),
                           ),
                           Expanded(
@@ -266,12 +266,12 @@ class _AboutMunScreenState extends State<AboutMunScreen> {
                           Text(
                             'View in ',
                             style: TextStyle(
-                                fontSize: h * (kExtraSmallTextSize - 0.005)),
+                                fontSize: h * (0.02 - 0.005)),
                           ),
                           Text(
                             'Maps',
                             style: TextStyle(
-                              fontSize: h * (kExtraSmallTextSize - 0.005),
+                              fontSize: h * (0.02 - 0.005),
                               color: kBlueShade,
                               decoration: TextDecoration.underline,
                             ),
@@ -282,7 +282,7 @@ class _AboutMunScreenState extends State<AboutMunScreen> {
                         'Final booking closes on 11:59 PM, September 15, 2021',
                         style: TextStyle(
                           color: Colors.grey[300],
-                          fontSize: h * kExtraSmallTextSize,
+                          fontSize: h * 0.02,
                         ),
                       ),
                     ],
@@ -309,14 +309,14 @@ class _AboutMunScreenState extends State<AboutMunScreen> {
                               Text(
                                 'INR 4000',
                                 style: TextStyle(
-                                  fontSize: h * kMediumTextSize,
+                                  fontSize: h * 0.025,
                                   fontWeight: FontWeight.w500,
                                 ),
                               ),
                               Text(
                                 'includes',
                                 style: TextStyle(
-                                  fontSize: h * (kExtraSmallTextSize),
+                                  fontSize: h * (0.02),
                                 ),
                               ),
                             ],
@@ -345,7 +345,7 @@ class _AboutMunScreenState extends State<AboutMunScreen> {
                             Text(
                               'BreakFast ',
                               style: TextStyle(
-                                fontSize: h * kExtraSmallTextSize,
+                                fontSize: h * 0.02,
                                 color: kBlueShade,
                               ),
                             ),
@@ -359,7 +359,7 @@ class _AboutMunScreenState extends State<AboutMunScreen> {
                             Text(
                               ' Lunch ',
                               style: TextStyle(
-                                fontSize: h * kExtraSmallTextSize,
+                                fontSize: h * 0.02,
                                 color: kBlueShade,
                               ),
                             ),
@@ -373,7 +373,7 @@ class _AboutMunScreenState extends State<AboutMunScreen> {
                             Text(
                               ' High Tea ',
                               style: TextStyle(
-                                fontSize: h * kExtraSmallTextSize,
+                                fontSize: h * 0.02,
                                 color: kBlueShade,
                               ),
                             ),
@@ -384,7 +384,7 @@ class _AboutMunScreenState extends State<AboutMunScreen> {
                         'All meals along with Delegate Kit will be provided at the venue of the event.',
                         style: TextStyle(
                           color: Color(0xFF848484),
-                          fontSize: h * (kExtraSmallTextSize - 0.005),
+                          fontSize: h * (0.02 - 0.005),
                         ),
                       ),
                       Row(
@@ -394,14 +394,14 @@ class _AboutMunScreenState extends State<AboutMunScreen> {
                             style: TextStyle(
                               color: Color(0xFF848484),
                               fontWeight: FontWeight.bold,
-                              fontSize: h * kExtraSmallTextSize,
+                              fontSize: h * 0.02,
                             ),
                           ),
                           Text(
                             'available at INR 8000',
                             style: TextStyle(
                               color: Color(0xFF848484),
-                              fontSize: h * kExtraSmallTextSize,
+                              fontSize: h * 0.02,
                             ),
                           ),
                         ],
@@ -421,7 +421,7 @@ class _AboutMunScreenState extends State<AboutMunScreen> {
                       Text(
                         'Get in touch with the organizers',
                         style: TextStyle(
-                          fontSize: h * kSmallTextSize,
+                          fontSize: h * 0.023,
                           color: Color(0xFF333333),
                         ),
                       ),
@@ -520,7 +520,7 @@ class _AboutMunScreenState extends State<AboutMunScreen> {
             Text(
               'Add to MyBriefcase',
               style: TextStyle(
-                fontSize: h * (kExtraSmallTextSize + 0.003),
+                fontSize: h * (0.02 + 0.003),
               ),
             ),
             Container(

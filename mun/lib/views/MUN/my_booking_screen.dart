@@ -16,7 +16,7 @@ class _MyBooking extends State<MyBooking> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: false,
-        backgroundColor: kBackgroundColor,
+        backgroundColor: Colors.grey,
         leading: IconButton(
           color: Colors.black,
           icon: Icon(Icons.arrow_back),
@@ -366,7 +366,7 @@ class _MyBooking extends State<MyBooking> {
                     decoration: BoxDecoration(
                       border: Border(
                         left: BorderSide(
-                          color: kBorderColor,
+                          color: Colors.grey,
                           width: w * 0.01,
                         ),
                       ),
@@ -453,7 +453,7 @@ class _MyBooking extends State<MyBooking> {
                     decoration: BoxDecoration(
                       border: Border(
                         left: BorderSide(
-                          color: kBorderColor,
+                          color: Colors.grey,
                           width: w * 0.01,
                         ),
                       ),
@@ -555,7 +555,7 @@ class _MyBooking extends State<MyBooking> {
                     decoration: BoxDecoration(
                       border: Border(
                         left: BorderSide(
-                          color: kBorderColor,
+                          color: Colors.grey,
                           width: w * 0.01,
                         ),
                       ),

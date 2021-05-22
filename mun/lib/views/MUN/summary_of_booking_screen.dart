@@ -35,7 +35,7 @@ class BookingSummary extends StatelessWidget {
     double h = MediaQuery.of(context).size.height;
     double w = MediaQuery.of(context).size.width;
     return Scaffold(
-      backgroundColor: kBackgroundColor,
+      backgroundColor: Colors.grey,
       appBar: AppBar(
         centerTitle: false,
         backgroundColor: Colors.white,
@@ -75,7 +75,7 @@ class BookingSummary extends StatelessWidget {
                 'My Booking Summary',
                 style: TextStyle(
                   color: Colors.black,
-                  fontSize: h * (kMediumTextSize - 0.008),
+                  fontSize: h * (0.023 - 0.008),
                 ),
               ),
               SizedBox(
@@ -165,12 +165,12 @@ class BookingSummary extends StatelessWidget {
                                 'View in ',
                                 style: TextStyle(
                                     fontSize:
-                                        h * (kExtraSmallTextSize - 0.005)),
+                                        h * (0.02 - 0.005)),
                               ),
                               Text(
                                 'Maps',
                                 style: TextStyle(
-                                  fontSize: h * (kExtraSmallTextSize - 0.005),
+                                  fontSize: h * (0.02 - 0.005),
                                   color: kBlueShade,
                                   decoration: TextDecoration.underline,
                                 ),

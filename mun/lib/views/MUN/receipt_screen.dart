@@ -35,7 +35,7 @@ class ReceiptScreen extends StatelessWidget {
           ),
         ),
       ),
-      backgroundColor: kBackgroundColor,
+      backgroundColor: Colors.grey,
       body: Container(
         height: h,
         width: w,
@@ -49,7 +49,7 @@ class ReceiptScreen extends StatelessWidget {
                 'Receipt',
                 style: TextStyle(
                   color: Colors.black,
-                  fontSize: h * (kMediumTextSize - 0.008),
+                  fontSize: h * (0.025 - 0.008),
                 ),
               ),
               SizedBox(
@@ -139,12 +139,12 @@ class ReceiptScreen extends StatelessWidget {
                                 'View in ',
                                 style: TextStyle(
                                     fontSize:
-                                        h * (kExtraSmallTextSize - 0.005)),
+                                        h * (0.02 - 0.005)),
                               ),
                               Text(
                                 'Maps',
                                 style: TextStyle(
-                                  fontSize: h * (kExtraSmallTextSize - 0.005),
+                                  fontSize: h * (0.02 - 0.005),
                                   color: kBlueShade,
                                   decoration: TextDecoration.underline,
                                 ),

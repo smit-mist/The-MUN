@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
         initialRoute: isUserLoggedIn() ? 'home' : 'welcome',
         routes: routeGenerator,
         theme: ThemeData(
-          scaffoldBackgroundColor: kBackgroundColor,
+          scaffoldBackgroundColor: Colors.grey,
           primarySwatch: Colors.blue,
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
