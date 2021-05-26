@@ -34,7 +34,7 @@ class _AboutCommitteeScreenState extends State<AboutCommitteeScreen> {
           children: [
             Text(
               widget.currentCommittee.name,
-              style: boldHeading,
+              style: robotoMedium(size:14),
             ),
             Text(
               widget.currentCommittee.agenda,
@@ -120,35 +120,35 @@ class _AboutCommitteeScreenState extends State<AboutCommitteeScreen> {
                     children: [
                       Text(
                         'Agenda :- ${widget.currentCommittee.agenda}',
-                        style: simple(16),
+                        style: robotoMedium(size:14),
                       ),
                       SizedBox(
                         height: 10,
                       ),
                       Text(
                         'Seats :- ${widget.currentCommittee.remainingSeats}',
-                        style: simple(16),
+                        style: robotoMedium(size:14),
                       ),
                       SizedBox(
                         height: 10,
                       ),
                       Text(
                         'Suggestions :- ${widget.currentCommittee.suggestions}',
-                        style: simple(16),
+                        style: robotoMedium(size:14),
                       ),
                       SizedBox(
                         height: 10,
                       ),
                       Text(
                         'Description :-',
-                        style: boldHeading,
+                        style: robotoMedium(size:14),
                       ),
                       SizedBox(
                         height: 10,
                       ),
                       Text(
                         '${widget.currentCommittee.description}',
-                        style: simple(16),
+                        style: robotoMedium(size:14),
                       ),
                       SizedBox(
                         height: 10,
@@ -170,7 +170,7 @@ class _AboutCommitteeScreenState extends State<AboutCommitteeScreen> {
                       },
                       child: Text(
                         'Confirm Committee',
-                        style: boldHeading,
+                        style: robotoMedium(size:14),
                       ),
                     ),
                   ),

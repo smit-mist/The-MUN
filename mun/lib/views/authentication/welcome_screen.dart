@@ -81,7 +81,7 @@ class WelcomeScreen extends StatelessWidget {
                         },
                         child: Text(
                           'Sign Up',
-                          style: simple(18).copyWith(
+                          style: robotoMedium(size:18).copyWith(
                               color: Colors.white, fontWeight: FontWeight.w400),
                         ),
                       ),
@@ -114,7 +114,7 @@ class WelcomeScreen extends StatelessWidget {
                         },
                         child: Text(
                           'Log In',
-                          style: simple(18).copyWith(
+                          style: robotoMedium(size:18).copyWith(
                               color: kBlueShade, fontWeight: FontWeight.w400),
                         ),
                       ),

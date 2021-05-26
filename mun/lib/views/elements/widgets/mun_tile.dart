@@ -68,10 +68,10 @@ class _HorizontalTileState extends State<HorizontalTile> {
             SizedBox(
               height: 7,
             ),
-            Text('Name', style: simple(16)),
+            Text('Name', style: robotoMedium(size:16)),
             Text(
               'Place',
-              style: simple(14),
+              style: robotoMedium(size:14),
             ),
           ],
         ),

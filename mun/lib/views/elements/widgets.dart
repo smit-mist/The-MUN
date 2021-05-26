@@ -33,10 +33,10 @@ class NormalButton extends StatelessWidget {
           child: Center(
             child: Text(
               text,
-              style: boldHeading.copyWith(
+              style: robotoMedium(size: 18).copyWith(
                   color: textColor,
                   fontWeight: FontWeight.w300,
-                  fontSize: 18.0),
+              ),
             ),
           ),
         ),
@@ -47,7 +47,7 @@ class NormalButton extends StatelessWidget {
 
 InputDecoration textFieldDecoration(String text) {
   return InputDecoration(
-    hintStyle: simple(14).copyWith(color: Colors.grey),
+    hintStyle: robotoMedium(size:14).copyWith(color: Colors.grey),
     hintText: text,
     contentPadding: EdgeInsets.symmetric(horizontal: 10, vertical: 2),
     border: OutlineInputBorder(

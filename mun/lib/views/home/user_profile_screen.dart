@@ -65,7 +65,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
           children: [
             Text(
               'My Profile',
-              style: simple(22),
+              style: robotoMedium(size:14),
             ),
             SizedBox(
               height: 10,
@@ -85,7 +85,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                   children: [
                     Text(
                       'Alex Jacob',
-                      style: simple(18).copyWith(
+                      style:robotoMedium(size:14).copyWith(
                         fontWeight: FontWeight.bold,
                       ),
                     ),
@@ -94,7 +94,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                     ),
                     Text(
                       '+91 9601113347',
-                      style: simple(12).copyWith(
+                      style:robotoMedium(size:14).copyWith(
                         color: Colors.blue,
                       ),
                     )

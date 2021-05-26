@@ -36,7 +36,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                 });
               },
               decoration: InputDecoration(
-                hintStyle: simple(16).copyWith(color: Colors.grey),
+                hintStyle: robotoMedium(size:12).copyWith(color: Colors.grey),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(3),
                   borderSide: BorderSide(
@@ -58,7 +58,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
             ),
             Text(
               'Please make sure you input an Email-id which has an existing MyNextMUN account.',
-              style: simple(12).copyWith(color: Colors.grey),
+              style: robotoMedium(size:12).copyWith(color: Colors.grey),
             ),
             SizedBox(
               height: h * 0.04,
@@ -77,7 +77,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                   child: Center(
                     child: Text(
                       'Submit',
-                      style: simple(15).copyWith(color: Colors.white),
+                      style: robotoMedium(size:12).copyWith(color: Colors.white),
                     ),
                   ),
                 ),
@@ -95,7 +95,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
           children: [
             Text(
               'Enter the OTP sent to you on your registered Email-id',
-              style: simple(12).copyWith(
+              style: robotoMedium(size:12).copyWith(
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -107,7 +107,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                 });
               },
               decoration: InputDecoration(
-                hintStyle: simple(16).copyWith(color: Colors.grey),
+                hintStyle: robotoMedium(size:12).copyWith(color: Colors.grey),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(3),
                   borderSide: BorderSide(
@@ -144,7 +144,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                   child: Center(
                     child: Text(
                       'Confirm OTP',
-                      style: simple(15).copyWith(color: Colors.white),
+                      style: robotoMedium(size:12).copyWith(color: Colors.white),
                     ),
                   ),
                 ),
@@ -163,21 +163,21 @@ class _ForgotPasswordState extends State<ForgotPassword> {
               children: [
                 Text(
                   'Did not Recieve an Email?',
-                  style: simple(10),
+                  style: robotoMedium(size:12),
                 ),
                 Spacer(),
                 Text(
                   'We can always ',
-                  style: simple(10),
+                  style: robotoMedium(size:12),
                 ),
                 Text(
                   'Resend the Email ',
-                  style: simple(10).copyWith(
+                  style: robotoMedium(size:12).copyWith(
                       color: Colors.blue, decoration: TextDecoration.underline),
                 ),
                 Text(
                   'to you!',
-                  style: simple(10),
+                  style: robotoMedium(size:12),
                 ),
               ],
             ),
@@ -202,7 +202,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                   Icons.remove_red_eye_sharp,
                   color: Colors.blue,
                 ),
-                hintStyle: simple(16).copyWith(color: Colors.grey),
+                hintStyle: robotoMedium(size:12).copyWith(color: Colors.grey),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(3),
                   borderSide: BorderSide(
@@ -242,7 +242,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                   Icons.remove_red_eye_sharp,
                   color: Colors.blue,
                 ),
-                hintStyle: simple(16).copyWith(color: Colors.grey),
+                hintStyle: robotoMedium(size:12).copyWith(color: Colors.grey),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(3),
                   borderSide: BorderSide(
@@ -263,7 +263,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
             ),
             Text(
               'Password should be atleast 6 characters long and should include atleast 1 special character. Ex: @,\$,%,&,!.',
-              style: simple(12).copyWith(color: Colors.grey),
+              style: robotoMedium(size:12).copyWith(color: Colors.grey),
             ),
             SizedBox(
               height: h * 0.04,
@@ -282,7 +282,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                   child: Center(
                     child: Text(
                       'Submit',
-                      style: simple(15).copyWith(color: Colors.white),
+                      style: robotoMedium(size:12).copyWith(color: Colors.white),
                     ),
                   ),
                 ),
@@ -348,7 +348,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                           isActive: index == 0 ? true : false,
                           title: Text(
                               'Enter the Email-id associated with your MyNextMUN account.',
-                              style: simple(12).copyWith(
+                              style: robotoMedium(size:12).copyWith(
                                   color:
                                       index == 0 ? Colors.black : Colors.grey)),
                           content: Column(),
@@ -361,7 +361,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                                   : StepState.complete,
                           title: Text(
                             'An autogenerated OTP will be sent to the registered Email-id.',
-                            style: simple(12).copyWith(
+                            style: robotoMedium(size:12).copyWith(
                                 color: index == 1 ? Colors.black : Colors.grey),
                           ),
                           isActive: index == 1 ? true : false,
@@ -374,7 +374,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                                   ? StepState.disabled
                                   : StepState.complete,
                           title: Text('Use the OTP to reset your password',
-                              style: simple(12).copyWith(
+                              style: robotoMedium(size:12).copyWith(
                                   color:
                                       index == 2 ? Colors.black : Colors.grey)),
                           content: Column(),
@@ -493,7 +493,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
 //             });
 //           },
 //           decoration: InputDecoration(
-//             hintStyle: simple(16).copyWith(color: Colors.grey),
+//             hintStyle: robotoMedium(size:12).copyWith(color: Colors.grey),
 //             border: OutlineInputBorder(
 //               borderRadius: BorderRadius.circular(3),
 //               borderSide: BorderSide(
@@ -515,7 +515,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
 //         ),
 //         Text(
 //           'Please make sure you input an Email-id which has an existing MyNextMUN account.',
-//           style: simple(12).copyWith(color: Colors.grey),
+//           style: robotoMedium(size:12).copyWith(color: Colors.grey),
 //         ),
 //         SizedBox(
 //           height: h * 0.04,
@@ -544,7 +544,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
 //                         child: Center(
 //                           child: Text(
 //                             'Submit',
-//                             style: simple(15)
+//                             style: robotoMedium(size:12)
 //                                 .copyWith(color: Colors.white),
 //                           ),
 //                         ),

@@ -81,7 +81,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       Text(
                         'Ahmedabad',
-                        style: simple(16).copyWith(color: kBlueShade),
+                        style: robotoMedium(size:14).copyWith(color: kBlueShade),
                       ),
                     ],
                   )
@@ -117,11 +117,11 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     Text(
                       'In your City',
-                      style: boldHeading,
+                      style: robotoMedium(size:14),
                     ),
                     Text(
                       'Explore MUNs around you',
-                      style: simple(12),
+                      style: robotoMedium(size:14),
                     ),
                     SizedBox(
                       height: 10,
@@ -161,11 +161,11 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     Text(
                       'The Best of MUNs',
-                      style: boldHeading,
+                      style: robotoMedium(size:14),
                     ),
                     Text(
                       'Explore the most popular MUNs from all over the country',
-                      style: simple(12),
+                      style: robotoMedium(size:14),
                     ),
                     SizedBox(
                       height: 10,
@@ -205,13 +205,13 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     Text(
                       'Explore Committees',
-                      style: boldHeading,
+                      style: robotoMedium(size:14),
                     ),
                     SizedBox(
                       width: w * 0.95,
                       child: Text(
                         'Explore the most popular Committees offered by MUNs from all over the country',
-                        style: simple(12),
+                        style: robotoMedium(size:14),
                       ),
                     ),
                     Container(
@@ -254,19 +254,19 @@ class _HomeScreenState extends State<HomeScreen> {
                           children: [
                             Text(
                               'Are you an Organiser?',
-                              style: boldHeading,
+                              style: robotoMedium(size:14),
                             ),
                             Row(
                               children: [
                                 Text(
                                   'Contact us',
-                                  style: simple(14).copyWith(
+                                  style: robotoMedium(size:14).copyWith(
                                       color: kBlueShade,
                                       decoration: TextDecoration.underline),
                                 ),
                                 Text(
                                   ' to get your MUN listed here!',
-                                  style: simple(14),
+                                  style: robotoMedium(size:14),
                                 )
                               ],
                             ),

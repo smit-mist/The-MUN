@@ -81,12 +81,14 @@ flutter:
         - asset: assets/helvetica/Helvetica.ttf
         - asset: assets/helvetica/Helvetica-Bold.ttf
           style: italic
-    - family: Roboto
+    - family: RobotoLigth
       fonts:
-        - asset: assets/Roboto/Roboto-Black.ttf
-        - asset: assets/Roboto/Roboto-Bold.ttf
         - asset: assets/Roboto/Roboto-Ligth.ttf
+    - family: RobotoMedium
+      fonts:
         - asset: assets/Roboto/Roboto-Medium.ttf
+    - family: RobotoRegular
+      fonts:
         - asset: assets/Roboto/Roboto-Regular.ttf
   #   - family: Trajan Pro
   #     fonts:

@@ -31,7 +31,7 @@ class _CommitteeDetailState extends State<CommitteeDetail> {
           ),
           Text(
             'United Nations Security Council',
-            style: simple(24),
+            style: robotoMedium(size:14),
           ),
           SizedBox(
             height: 10,
@@ -48,7 +48,7 @@ class _CommitteeDetailState extends State<CommitteeDetail> {
             'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt '
             'ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud e'
             'xercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-            style: simple(13),
+            style: robotoMedium(size:14),
           ),
           SizedBox(
             height: 10,
@@ -67,11 +67,11 @@ class _CommitteeDetailState extends State<CommitteeDetail> {
                     children: [
                       Text(
                         'Agenda ',
-                        style: simple(20).copyWith(fontWeight: FontWeight.w600),
+                        style: robotoMedium(size:14).copyWith(fontWeight: FontWeight.w600),
                       ),
                       Text(
                         'The Situation in Yemen',
-                        style: simple(20).copyWith(fontWeight: FontWeight.w300),
+                        style: robotoMedium(size:14).copyWith(fontWeight: FontWeight.w300),
                       )
                     ],
                   ),
@@ -84,12 +84,12 @@ class _CommitteeDetailState extends State<CommitteeDetail> {
                     children: [
                       Text(
                         '27 ',
-                        style: simple(20).copyWith(
+                        style:robotoMedium(size:14).copyWith(
                             fontWeight: FontWeight.w600, color: Colors.blue),
                       ),
                       Text(
                         'Seats remaining!*',
-                        style: simple(20).copyWith(
+                        style: robotoMedium(size:14).copyWith(
                           fontWeight: FontWeight.w300,
                           color: Colors.blue,
                         ),
@@ -105,18 +105,18 @@ class _CommitteeDetailState extends State<CommitteeDetail> {
                     children: [
                       Text(
                         'Level ',
-                        style: simple(20).copyWith(fontWeight: FontWeight.w600),
+                        style:robotoMedium(size:14).copyWith(fontWeight: FontWeight.w600),
                       ),
                       Text(
                         'Advanced',
-                        style: simple(20).copyWith(fontWeight: FontWeight.w300),
+                        style: robotoMedium(size:14).copyWith(fontWeight: FontWeight.w300),
                       )
                     ],
                   ),
                   SizedBox(height: 10,),
                   Text(
                     '*Country allocation would be allocated via E-mail.',
-                    style: simple(12).copyWith(
+                    style: robotoMedium(size:14).copyWith(
                       color: Colors.black.withOpacity(
                         0.4,
                       ),

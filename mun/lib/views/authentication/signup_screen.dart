@@ -72,7 +72,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       ),
                       Text(
                         'Create a New Account',
-                        style: simple(24),
+                        style: robotoMedium(size:24),
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 8.0),
@@ -243,7 +243,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         padding: EdgeInsets.symmetric(horizontal: 8.0),
                         child: Text(
                           'Password should be atleast 6 characters long and should include atleast 1 special character. Ex: @,\$,%,&,!.',
-                          style: simple(12).copyWith(color: Colors.grey),
+                          style: robotoMedium(size:12).copyWith(color: Colors.grey),
                         ),
                       ),
                       SizedBox(
@@ -274,27 +274,27 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                   children: [
                                     Text(
                                       "By creating an account, I agree to bookmyMUN’s ",
-                                      style: simple(13).copyWith(
+                                      style: robotoMedium(size:13).copyWith(
                                           fontWeight: FontWeight.w400),
                                     ),
                                     GestureDetector(
                                       onTap: () {},
                                       child: Text(
                                         'Conditions of Use ',
-                                        style: simple(13).copyWith(
+                                        style: robotoMedium(size:13).copyWith(
                                           color: kBlueShade,
                                         ),
                                       ),
                                     ),
                                     Text(
                                       'and',
-                                      style: simple(13),
+                                      style: robotoMedium(size:13),
                                     ),
                                     GestureDetector(
                                       onTap: () {},
                                       child: Text(
                                         ' Privacy Policy',
-                                        style: simple(13).copyWith(
+                                        style: robotoMedium(size:13).copyWith(
                                           color: kBlueShade,
                                         ),
                                       ),
@@ -324,7 +324,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             },
                             child: Text(
                               'Sign Up',
-                              style: simple(18).copyWith(
+                              style: robotoMedium(size:18).copyWith(
                                   color: Colors.white,
                                   fontWeight: FontWeight.w400),
                             ),

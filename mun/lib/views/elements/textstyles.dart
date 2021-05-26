@@ -1,12 +1,25 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-TextStyle boldHeading = TextStyle(
-  fontFamily: 'Helvetica',
-  color: Colors.black,
-  fontWeight: FontWeight.bold,
-  fontSize: 22,
-);
-TextStyle simple(double size) {
+TextStyle robotoLight({double size,Color color = Colors.black}){
   return TextStyle(
-      fontFamily: 'Helvetica', color: Colors.black, fontSize: size);
+    fontFamily: 'RobotoLight',
+    fontSize: size,
+    color: color,
+  );
+}
+
+TextStyle robotoMedium({double size,Color color = Colors.black}){
+  return TextStyle(
+    fontFamily: 'RobotoMedium',
+    fontSize: size,
+    color: color,
+  );
+}
+TextStyle robotoRegular({double size,Color color = Colors.black}){
+  return TextStyle(
+    fontFamily: 'RobotoRegular',
+    fontSize: size,
+    color: color,
+  );
 }

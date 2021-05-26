@@ -63,13 +63,13 @@ class _CommitteeHorizontalTileState extends State<CommitteeHorizontalTile> {
                   children: [
                     Text(
                       widget.current.name,
-                      style: simple(16),
+                      style: robotoMedium(size:16),
                     ),
                     SizedBox(
                         width: w * (0.15),
                         child: Text(
                           widget.current.description,
-                          style: simple(12),
+                          style: robotoMedium(size:12),
                         ))
                   ],
                 ),

@@ -32,7 +32,7 @@ class _CommitteeSmallTileState extends State<CommitteeSmallTile> {
                   children: [
                     Text(
                       widget.current.name,
-                      style: simple(16).copyWith(color: Colors.white),
+                      style: robotoMedium(size:14).copyWith(color: Colors.white),
                     ),
                     Icon(
                       Icons.share,
@@ -48,7 +48,7 @@ class _CommitteeSmallTileState extends State<CommitteeSmallTile> {
                 child: Center(
                     child: Text(
                   widget.current.description,
-                  style: simple(14),
+                  style:robotoMedium(size:14),
                 )),
                 decoration: BoxDecoration(
                   color: Colors.white,

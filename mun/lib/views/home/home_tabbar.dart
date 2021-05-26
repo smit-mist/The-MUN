@@ -82,7 +82,7 @@ class _HomeTabBarState extends State<HomeTabBar> {
                               children: [
                                 Text(
                                   'Your Feedback Matters',
-                                  style: simple(20),
+                                  style: robotoMedium(size:14),
                                 ),
                                 SizedBox(
                                   height: 5,

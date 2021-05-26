@@ -171,7 +171,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 },
                                 child: Text(
                                   'Forgot Password ?',
-                                  style: simple(12).copyWith(
+                                  style: robotoMedium(size:12).copyWith(
                                     color: kBlueShade,
                                   ),
                                 ),
@@ -195,7 +195,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   },
                                   child: Text(
                                     'Log In',
-                                    style: simple(18).copyWith(
+                                    style: robotoMedium(size:18).copyWith(
                                         color: Colors.white,
                                         fontWeight: FontWeight.w400),
                                   ),
