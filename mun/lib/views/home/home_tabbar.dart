@@ -1,4 +1,3 @@
-import 'dart:ui' as ui;
 import 'dart:ui';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter/material.dart';

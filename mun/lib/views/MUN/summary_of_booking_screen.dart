@@ -6,7 +6,7 @@ import 'package:mun/views/elements/widgets/logo.dart';
 //TODO: Add vertical divider
 
 class BookingSummary extends StatelessWidget {
-  List<String> fields = [
+  final List<String> fields = [
     'Name',
     'Date of Birth',
     'Age',
@@ -18,7 +18,7 @@ class BookingSummary extends StatelessWidget {
     'Accommodation',
     'Premium Availed',
   ];
-  List<String> values = [
+  final List<String> values = [
     'Alex Jacob',
     '01-01-1997',
     '26',
