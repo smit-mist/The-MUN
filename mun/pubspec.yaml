@@ -83,7 +83,7 @@ flutter:
           style: italic
     - family: RobotoLigth
       fonts:
-        - asset: assets/Roboto/Roboto-Ligth.ttf
+        - asset: assets/Roboto/Roboto-Light.ttf
     - family: RobotoMedium
       fonts:
         - asset: assets/Roboto/Roboto-Medium.ttf

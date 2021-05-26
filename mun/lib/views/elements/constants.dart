@@ -10,5 +10,5 @@ Color kIconShade = Color(0xffC5C5C5);
 Color kCommitteeTileShade = Color(0xffC2C2C2);
 Color kBackgroundShade = Color(0xffE8E8E8);
 Color kSearchHintShade = Color(0xffAAAAAA);
-const double kScreenHeight = 812;
-const double kScreenWidth = 375;
+ double kScreenHeight = 812;
+ double kScreenWidth = 375;

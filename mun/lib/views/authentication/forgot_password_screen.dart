@@ -23,7 +23,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
     double w = MediaQuery.of(context).size.width;
     List<Widget> toDisplay = [
       Container(
-        width: w * 0.85,
+        width: double.infinity,
         height: h * 0.3,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -36,7 +36,8 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                 });
               },
               decoration: InputDecoration(
-                hintStyle: robotoMedium(size:12).copyWith(color: Colors.grey),
+                hintStyle: robotoRegular(
+                    size: 12, color: Colors.black.withOpacity(0.3)),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(3),
                   borderSide: BorderSide(
@@ -48,17 +49,23 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                 contentPadding:
                     EdgeInsets.symmetric(horizontal: 15, vertical: 8),
                 filled: true,
-                fillColor: kGreyShade.withOpacity(0.15),
-                focusColor: kGreyShade,
+                fillColor: kGreyShade,
               ),
               cursorColor: Colors.black,
             ),
             SizedBox(
-              height: h * 0.02,
+              height: 7,
+            ),
+            Text(
+              'Invalid Email-id!',
+              style: robotoRegular(size: 12, color: kRedShade),
+            ),
+            SizedBox(
+              height: 7,
             ),
             Text(
               'Please make sure you input an Email-id which has an existing MyNextMUN account.',
-              style: robotoMedium(size:12).copyWith(color: Colors.grey),
+              style: robotoMedium(size: 11, color: kIconShade),
             ),
             SizedBox(
               height: h * 0.04,
@@ -73,11 +80,13 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                   });
                 },
                 child: Container(
-                  width: 50,
+                  width: w * (76 / kScreenWidth),
+                  height: h * (30 / kScreenHeight),
                   child: Center(
                     child: Text(
                       'Submit',
-                      style: robotoMedium(size:12).copyWith(color: Colors.white),
+                      style:
+                          robotoRegular(size: 16).copyWith(color: Colors.white),
                     ),
                   ),
                 ),
@@ -95,9 +104,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
           children: [
             Text(
               'Enter the OTP sent to you on your registered Email-id',
-              style: robotoMedium(size:12).copyWith(
-                fontWeight: FontWeight.bold,
-              ),
+              style: robotoMedium(size: 10),
             ),
             SizedBox(height: 10),
             TextField(
@@ -107,7 +114,8 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                 });
               },
               decoration: InputDecoration(
-                hintStyle: robotoMedium(size:12).copyWith(color: Colors.grey),
+                hintStyle: robotoMedium(
+                    size: 12, color: Colors.black.withOpacity(0.3)),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(3),
                   borderSide: BorderSide(
@@ -119,13 +127,16 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                 contentPadding:
                     EdgeInsets.symmetric(horizontal: 15, vertical: 8),
                 filled: true,
-                fillColor: kGreyShade.withOpacity(0.15),
-                focusColor: kGreyShade,
+                fillColor: kGreyShade,
               ),
               cursorColor: Colors.black,
             ),
             SizedBox(
-              height: h * 0.02,
+              height: 7,
+            ),
+            Text(
+              'Incorrect OTP',
+              style: robotoRegular(size: 10, color: kRedShade),
             ),
             SizedBox(
               height: h * 0.04,
@@ -140,11 +151,13 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                   });
                 },
                 child: Container(
-                  width: 100,
+                  width: w * (120 / kScreenWidth),
+                  height: h * (30 / kScreenHeight),
                   child: Center(
                     child: Text(
                       'Confirm OTP',
-                      style: robotoMedium(size:12).copyWith(color: Colors.white),
+                      style:
+                          robotoRegular(size: 16).copyWith(color: Colors.white),
                     ),
                   ),
                 ),
@@ -153,7 +166,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
             Divider(
               height: 20,
               thickness: 1,
-              color: Colors.grey.shade500,
+              color: Colors.black.withOpacity(0.3),
             ),
             SizedBox(
               height: 10,
@@ -163,21 +176,21 @@ class _ForgotPasswordState extends State<ForgotPassword> {
               children: [
                 Text(
                   'Did not Recieve an Email?',
-                  style: robotoMedium(size:12),
+                  style: robotoLight(size: 10),
                 ),
                 Spacer(),
                 Text(
                   'We can always ',
-                  style: robotoMedium(size:12),
+                  style: robotoLight(size: 10),
                 ),
                 Text(
                   'Resend the Email ',
-                  style: robotoMedium(size:12).copyWith(
+                  style: robotoLight(size: 10).copyWith(
                       color: Colors.blue, decoration: TextDecoration.underline),
                 ),
                 Text(
                   'to you!',
-                  style: robotoMedium(size:12),
+                  style: robotoLight(size: 10),
                 ),
               ],
             ),
@@ -191,79 +204,103 @@ class _ForgotPasswordState extends State<ForgotPassword> {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            TextField(
-              onChanged: (change) {
-                setState(() {
-                  email = change;
-                });
-              },
-              decoration: InputDecoration(
-                suffixIcon: Icon(
-                  Icons.remove_red_eye_sharp,
-                  color: Colors.blue,
-                ),
-                hintStyle: robotoMedium(size:12).copyWith(color: Colors.grey),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(3),
-                  borderSide: BorderSide(
-                    width: 0,
-                    style: BorderStyle.none,
-                  ),
-                ),
-                hintText: 'Password',
-                contentPadding:
-                    EdgeInsets.symmetric(horizontal: 15, vertical: 8),
-                fillColor: kGreyShade.withOpacity(0.15),
-                filled: true,
-              ),
-              cursorColor: Colors.black,
-            ),
             Container(
-              color: kGreyShade.withOpacity(0.15),
-              child: Center(
-                child: Container(
-                  width: w * 0.75,
-                  child: Divider(
-                    height: 1,
-                    thickness: 1,
-                    color: Colors.grey,
+              width: double.infinity,
+              height: h * (70 / kScreenHeight),
+              decoration: BoxDecoration(
+                color: kGreyShade,
+                borderRadius: BorderRadius.circular(3),
+              ),
+              child: Column(
+                children: [
+                  SizedBox(
+                    height: h * (34 / kScreenHeight),
+                    child: TextField(
+                      onChanged: (change) {
+                        setState(() {
+                          email = change;
+                        });
+                      },
+                      decoration: InputDecoration(
+                        suffixIcon: Icon(
+                          Icons.remove_red_eye_sharp,
+                          color: Colors.blue,
+                        ),
+                        hintStyle: robotoRegular(
+                            size: 12, color: Colors.black.withOpacity(0.3)),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(3),
+                          borderSide: BorderSide(
+                            width: 0,
+                            style: BorderStyle.none,
+                          ),
+                        ),
+                        hintText: 'Password',
+                        contentPadding:
+                            EdgeInsets.symmetric(horizontal: 15, vertical: 8),
+                        fillColor: kGreyShade,
+                        filled: true,
+                      ),
+                      cursorColor: Colors.black,
+                    ),
                   ),
-                ),
+                  Container(
+                    padding: EdgeInsets.symmetric(horizontal: 7),
+                    color: kGreyShade,
+                    child: Center(
+                      child: Container(
+                        width: double.infinity,
+                        child: Divider(
+                          height: 1,
+                          thickness: 1,
+                          color: Colors.black.withOpacity(0.2),
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: h * (34 / kScreenHeight),
+                    child: TextField(
+                      onChanged: (change) {
+                        setState(() {
+                          email = change;
+                        });
+                      },
+                      decoration: InputDecoration(
+                        suffixIcon: Icon(
+                          Icons.remove_red_eye_sharp,
+                          color: Colors.blue,
+                        ),
+                        hintStyle: robotoRegular(
+                            size: 12, color: Colors.black.withOpacity(0.3)),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(3),
+                          borderSide: BorderSide(
+                            width: 0,
+                            style: BorderStyle.none,
+                          ),
+                        ),
+                        hintText: 'Confirm Password',
+                        contentPadding:
+                            EdgeInsets.symmetric(horizontal: 15, vertical: 8),
+                        fillColor: kGreyShade,
+                        filled: true,
+                      ),
+                      cursorColor: Colors.black,
+                    ),
+                  ),
+                ],
               ),
             ),
-            TextField(
-              onChanged: (change) {
-                setState(() {
-                  email = change;
-                });
-              },
-              decoration: InputDecoration(
-                suffixIcon: Icon(
-                  Icons.remove_red_eye_sharp,
-                  color: Colors.blue,
-                ),
-                hintStyle: robotoMedium(size:12).copyWith(color: Colors.grey),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(3),
-                  borderSide: BorderSide(
-                    width: 0,
-                    style: BorderStyle.none,
-                  ),
-                ),
-                hintText: 'Confirm Password',
-                contentPadding:
-                    EdgeInsets.symmetric(horizontal: 15, vertical: 8),
-                fillColor: kGreyShade.withOpacity(0.15),
-                filled: true,
-              ),
-              cursorColor: Colors.black,
+            SizedBox(height: 7),
+            Text(
+              'Invalid Password!',
+              style: robotoRegular(size: 10, color: kRedShade),
             ),
-            SizedBox(
-              height: h * 0.02,
-            ),
+            //  SizedBox(height: 2,),
             Text(
               'Password should be atleast 6 characters long and should include atleast 1 special character. Ex: @,\$,%,&,!.',
-              style: robotoMedium(size:12).copyWith(color: Colors.grey),
+              style: robotoRegular(size: 11, color: kSimpleTextShade),
             ),
             SizedBox(
               height: h * 0.04,
@@ -278,11 +315,13 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                   });
                 },
                 child: Container(
-                  width: 50,
+                  width: (70/kScreenWidth)*w,
+                  height: (30/kScreenHeight)*h,
                   child: Center(
                     child: Text(
                       'Submit',
-                      style: robotoMedium(size:12).copyWith(color: Colors.white),
+                      style:
+                          robotoRegular(size: 16).copyWith(color: Colors.white),
                     ),
                   ),
                 ),
@@ -296,7 +335,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
       backgroundColor: Colors.white,
       body: Padding(
         padding: EdgeInsets.symmetric(
-          horizontal: 30.0,
+          horizontal: (25 / kScreenWidth) * (w),
         ),
         child: Center(
           child: SingleChildScrollView(
@@ -305,16 +344,17 @@ class _ForgotPasswordState extends State<ForgotPassword> {
               children: [
                 MUNLogo(),
                 SizedBox(
-                  height: h * 0.03,
+                  height: h * (21 / kScreenHeight),
                 ),
                 Text(
                   messageToDisplay[index],
-                  style: TextStyle(fontSize: 32, fontWeight: FontWeight.w300),
+                  style: robotoLight(size: 25),
                 ),
+                SizedBox(height: h * (12 / kScreenHeight)),
                 Divider(
                   height: 10,
                   thickness: 1,
-                  color: Colors.grey.shade500,
+                  color: Colors.black.withOpacity(0.3),
                 ),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -348,7 +388,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                           isActive: index == 0 ? true : false,
                           title: Text(
                               'Enter the Email-id associated with your MyNextMUN account.',
-                              style: robotoMedium(size:12).copyWith(
+                              style: robotoMedium(size: 12).copyWith(
                                   color:
                                       index == 0 ? Colors.black : Colors.grey)),
                           content: Column(),
@@ -361,7 +401,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                                   : StepState.complete,
                           title: Text(
                             'An autogenerated OTP will be sent to the registered Email-id.',
-                            style: robotoMedium(size:12).copyWith(
+                            style: robotoMedium(size: 12).copyWith(
                                 color: index == 1 ? Colors.black : Colors.grey),
                           ),
                           isActive: index == 1 ? true : false,
@@ -374,7 +414,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                                   ? StepState.disabled
                                   : StepState.complete,
                           title: Text('Use the OTP to reset your password',
-                              style: robotoMedium(size:12).copyWith(
+                              style: robotoMedium(size: 12).copyWith(
                                   color:
                                       index == 2 ? Colors.black : Colors.grey)),
                           content: Column(),
