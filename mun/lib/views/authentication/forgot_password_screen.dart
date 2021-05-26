@@ -315,7 +315,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                   });
                 },
                 child: Container(
-                  width: (70 / kScreenWidth) * w,
+                  width: (76 / kScreenWidth) * w,
                   height: (30 / kScreenHeight) * h,
                   child: Center(
                     child: Text(
