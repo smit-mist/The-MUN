@@ -59,261 +59,333 @@ class _SignUpScreenState extends State<SignUpScreen> {
     return isLoading
         ? Loading()
         : Scaffold(
-            body: Center(
+            body: Container(
+              color: Colors.white,
+              height: h,
+              width: w,
               child: SingleChildScrollView(
+                physics: NeverScrollableScrollPhysics(),
                 child: Padding(
-                  padding: EdgeInsets.all(h * 0.015),
+                  padding:
+                      EdgeInsets.symmetric(horizontal: w * (25 / kScreenWidth)),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      SizedBox(
+                        height: h * (74 / kScreenHeight),
+                      ),
                       MUNLogo(),
                       SizedBox(
-                        height: h * 0.05,
+                        height: h * (24 / kScreenHeight),
                       ),
                       Text(
                         'Create a New Account',
-                        style: robotoMedium(size:24),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                        child: Divider(
-                          color: Colors.black54,
+                        style: robotoLight(
+                          size: 25.0,
+                          color: Colors.black,
                         ),
                       ),
-                      Center(
-                        child: SingleChildScrollView(
-                          child: Padding(
-                            padding: EdgeInsets.all(h * 0.01),
-                            child: Center(
-                              child: Form(
-                                key: _key,
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Container(
-                                      height: h * 0.055,
-                                      child: TextFormField(
-                                        validator: (value) {
-                                          return value.isEmpty
-                                              ? 'Enter a proper username'
-                                              : null;
-                                        },
-                                        onChanged: (change) {
-                                          setState(() {
-                                            name = change;
-                                          });
-                                        },
-                                        decoration:
-                                            textFieldDecoration(' Your Name'),
-                                        cursorColor: Colors.black,
-                                      ),
+                      Divider(
+                        color: Colors.black.withOpacity(0.3),
+                      ),
+                      Form(
+                        key: _key,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            SizedBox(
+                              height: 5.0,
+                            ),
+                            Container(
+                              color: kGreyShade,
+                              height: h * (38 / kScreenHeight),
+                              child: TextFormField(
+                                validator: (value) {
+                                  return value.isEmpty
+                                      ? 'Enter a proper username'
+                                      : null;
+                                },
+                                onChanged: (change) {
+                                  setState(() {
+                                    name = change;
+                                  });
+                                },
+                                decoration: InputDecoration(
+                                  hintStyle: robotoRegular(
+                                    size: 12.0,
+                                    color: Colors.black.withOpacity(0.3),
+                                  ),
+                                  hintText: 'Your Name',
+                                  contentPadding:
+                                      EdgeInsets.fromLTRB(14.0, 12.0, 0, 12.0),
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(3),
+                                    borderSide: BorderSide(
+                                      width: 0,
+                                      style: BorderStyle.none,
                                     ),
-                                    SizedBox(
-                                      height: h * 0.025,
-                                    ),
-                                    Container(
-                                      height: h * 0.055,
-                                      child: TextFormField(
-                                        validator: (value) {
-                                          return (value.isEmpty ||
-                                                  !RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
-                                                      .hasMatch(value))
-                                              ? 'Enter a valid email'
-                                              : null;
-                                        },
-                                        cursorColor: Colors.black,
-                                        onChanged: (change) {
-                                          setState(() {
-                                            email = change;
-                                          });
-                                        },
-                                        decoration:
-                                            textFieldDecoration('Email id'),
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      height: h * 0.025,
-                                    ),
-                                    Container(
-                                        height: h * 0.055,
-                                        child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            Expanded(
-                                              child: TextFormField(
-                                                validator: (value) {
-                                                  return (value.isEmpty ||
-                                                          value.length < 8)
-                                                      ? 'Invalid Password'
-                                                      : null;
-                                                },
-                                                cursorColor: Colors.black,
-                                                onChanged: (change) {
-                                                  setState(() {
-                                                    password1 = change;
-                                                  });
-                                                },
-                                                obscureText:
-                                                    isVisible ? false : true,
-                                                decoration: textFieldDecoration(
-                                                    'Password'),
-                                              ),
-                                            ),
-                                            Container(
-                                              child: IconButton(
-                                                icon: Icon(
-                                                  Icons.remove_red_eye_sharp,
-                                                  color: Colors.blue,
-                                                ),
-                                                onPressed: () {
-                                                  setState(() {
-                                                    isVisible = true;
-                                                  });
-                                                },
-                                              ),
-                                              decoration: BoxDecoration(
-                                                color: Colors.grey
-                                                    .withOpacity(0.1),
-                                                border: Border(
-                                                  bottom: BorderSide(
-                                                    color: Colors.grey[350],
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                        decoration: BoxDecoration(
-                                          border: Border(
-                                              bottom: BorderSide(
-                                                  color: Colors.grey[350])),
-                                        )),
-                                    Container(
-                                      height: h * 0.055,
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Flexible(
-                                            child: TextFormField(
-                                              cursorColor: Colors.black,
-                                              onChanged: (change) {
-                                                setState(() {
-                                                  password2 = change;
-                                                });
-                                              },
-                                              obscureText:
-                                                  isVisible ? false : true,
-                                              decoration: textFieldDecoration(
-                                                  'Confirm Password'),
-                                              validator: (value) {
-                                                return (password2 != password1)
-                                                    ? 'Passwords don\'t match'
-                                                    : null;
-                                              },
-                                            ),
-                                          ),
-                                          Container(
-                                            color: Colors.grey.withOpacity(0.1),
-                                            child: IconButton(
-                                                icon: Icon(
-                                                  Icons.remove_red_eye_sharp,
-                                                  color: Colors.blue,
-                                                ),
-                                                onPressed: () {
-                                                  setState(() {
-                                                    isVisible = true;
-                                                  });
-                                                }),
-                                          )
-                                        ],
-                                      ),
-                                    ),
-                                  ],
+                                  ),
                                 ),
+                                cursorColor: Colors.black,
                               ),
                             ),
-                          ),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Container(
+                              color: kGreyShade,
+                              height: h * (38 / kScreenHeight),
+                              child: TextFormField(
+                                validator: (value) {
+                                  return value.isEmpty
+                                      ? 'Enter a proper username'
+                                      : null;
+                                },
+                                onChanged: (change) {
+                                  setState(() {
+                                    name = change;
+                                  });
+                                },
+                                decoration: InputDecoration(
+                                  hintStyle: robotoRegular(
+                                    size: 12.0,
+                                    color: Colors.black.withOpacity(0.3),
+                                  ),
+                                  hintText: 'Email id',
+                                  contentPadding:
+                                      EdgeInsets.fromLTRB(14.0, 13.0, 0, 11.0),
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(3),
+                                    borderSide: BorderSide(
+                                      width: 0,
+                                      style: BorderStyle.none,
+                                    ),
+                                  ),
+                                ),
+                                cursorColor: Colors.black,
+                              ),
+                            ),
+                            SizedBox(
+                              height: 12,
+                            ),
+                            Container(
+                              height: h * (38 / kScreenHeight),
+                              decoration: BoxDecoration(
+                                color: kGreyShade,
+                                border: Border(
+                                  bottom: BorderSide(
+                                    color: Colors.grey[350],
+                                  ),
+                                ),
+                              ),
+                              child: Row(
+                                children: [
+                                  Expanded(
+                                    child: TextFormField(
+                                      validator: (value) {
+                                        return (value.isEmpty ||
+                                                value.length < 8)
+                                            ? 'Invalid Password'
+                                            : null;
+                                      },
+                                      cursorColor: Colors.black,
+                                      onChanged: (change) {
+                                        setState(() {
+                                          password1 = change;
+                                        });
+                                      },
+                                      obscureText: isVisible ? false : true,
+                                      decoration: InputDecoration(
+                                        hintStyle: robotoRegular(
+                                          size: 12.0,
+                                          color: Colors.black.withOpacity(0.3),
+                                        ),
+                                        hintText: 'Password',
+                                        contentPadding: EdgeInsets.fromLTRB(
+                                          14.0,
+                                          9.0,
+                                          0,
+                                          h * (36 / kScreenHeight),
+                                        ),
+                                        border: OutlineInputBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(3),
+                                          borderSide: BorderSide(
+                                            width: 0,
+                                            style: BorderStyle.none,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    width: w * (199 / kScreenWidth),
+                                  ),
+                                  Container(
+                                    child: IconButton(
+                                      icon: Icon(
+                                        Icons.remove_red_eye_sharp,
+                                        color: kBlueShade,
+                                      ),
+                                      onPressed: () {
+                                        setState(() {
+                                          isVisible = true;
+                                        });
+                                      },
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Container(
+                              height: h * (38 / kScreenHeight),
+                              decoration: BoxDecoration(
+                                color: kGreyShade,
+                                border: Border(
+                                  bottom: BorderSide(
+                                    color: Colors.grey[350],
+                                  ),
+                                ),
+                              ),
+                              child: Row(
+                                children: [
+                                  Expanded(
+                                    child: TextFormField(
+                                      validator: (value) {
+                                        return (value.isEmpty ||
+                                                value.length < 8)
+                                            ? 'Invalid Password'
+                                            : null;
+                                      },
+                                      cursorColor: Colors.black,
+                                      onChanged: (change) {
+                                        setState(() {
+                                          password1 = change;
+                                        });
+                                      },
+                                      obscureText: isVisible ? false : true,
+                                      decoration: InputDecoration(
+                                        hintStyle: robotoRegular(
+                                          size: 12.0,
+                                          color: Colors.black.withOpacity(0.3),
+                                        ),
+                                        hintText: 'Confirm Password',
+                                        contentPadding: EdgeInsets.fromLTRB(
+                                          14.0,
+                                          9.0,
+                                          0,
+                                          h * (36 / kScreenHeight),
+                                        ),
+                                        border: OutlineInputBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(3),
+                                          borderSide: BorderSide(
+                                            width: 0,
+                                            style: BorderStyle.none,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    width: w * (170 / kScreenWidth),
+                                  ),
+                                  Container(
+                                    child: IconButton(
+                                      icon: Icon(
+                                        Icons.remove_red_eye_sharp,
+                                        color: kBlueShade,
+                                      ),
+                                      onPressed: () {
+                                        setState(() {
+                                          isVisible = true;
+                                        });
+                                      },
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
                         ),
                       ),
-                      Container(
-                        padding: EdgeInsets.symmetric(horizontal: 8.0),
-                        child: Text(
-                          'Password should be atleast 6 characters long and should include atleast 1 special character. Ex: @,\$,%,&,!.',
-                          style: robotoMedium(size:12).copyWith(color: Colors.grey),
+                      SizedBox(
+                        height: h * (23 / kScreenHeight),
+                      ),
+                      Text(
+                        'Password should be atleast 6 characters long and should include atleast 1 special character. Ex: @,\$,%,&,!.',
+                        style: robotoRegular(
+                          size: 11.0,
+                          color: Color(0xffC7C7C7),
                         ),
                       ),
                       SizedBox(
                         height: h * 0.01,
                       ),
-                      FormField(
-                        validator: (value) {
-                          return (!isAccepted)
-                              ? 'Please accept the terms and conditions'
-                              : null;
-                        },
-                        builder: (state) {
-                          return Row(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Checkbox(
-                                value: isAccepted,
-                                activeColor: kBlueShade,
-                                onChanged: (bool newValue) {
-                                  setState(() {
-                                    isAccepted = newValue;
-                                  });
-                                },
-                              ),
-                              Container(
-                                width: w * 0.8,
-                                child: Wrap(
-                                  children: [
-                                    Text(
-                                      "By creating an account, I agree to bookmyMUN’s ",
-                                      style: robotoMedium(size:13).copyWith(
-                                          fontWeight: FontWeight.w400),
-                                    ),
-                                    GestureDetector(
-                                      onTap: () {},
-                                      child: Text(
-                                        'Conditions of Use ',
-                                        style: robotoMedium(size:13).copyWith(
-                                          color: kBlueShade,
-                                        ),
-                                      ),
-                                    ),
-                                    Text(
-                                      'and',
-                                      style: robotoMedium(size:13),
-                                    ),
-                                    GestureDetector(
-                                      onTap: () {},
-                                      child: Text(
-                                        ' Privacy Policy',
-                                        style: robotoMedium(size:13).copyWith(
-                                          color: kBlueShade,
-                                        ),
-                                      ),
-                                    ),
-                                  ],
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Checkbox(
+                            value: isAccepted,
+                            activeColor: kBlueShade,
+                            onChanged: (bool newValue) {
+                              setState(() {
+                                isAccepted = newValue;
+                              });
+                            },
+                          ),
+                          Container(
+                            width: w * 0.68,
+                            child: Wrap(
+                              children: [
+                                Text(
+                                  "By creating an account, I agree to bookmyMUN’s ",
+                                  style: robotoLight(
+                                    size: 13.0,
+                                    color: Colors.black,
+                                  ),
                                 ),
-                              ),
-                            ],
-                          );
-                        },
+                                GestureDetector(
+                                  onTap: () {},
+                                  child: Text(
+                                    'Conditions of Use ',
+                                    style: robotoLight(
+                                      size: 13.0,
+                                      color: kBlueShade,
+                                    ),
+                                  ),
+                                ),
+                                Text(
+                                  'and',
+                                  style: robotoLight(
+                                    size: 13.0,
+                                    color: Colors.black,
+                                  ),
+                                ),
+                                GestureDetector(
+                                  onTap: () {},
+                                  child: Text(
+                                    ' Privacy Policy',
+                                    style: robotoLight(
+                                      size: 13.0,
+                                      color: kBlueShade,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
                       ),
                       SizedBox(
-                        height: h * 0.015,
+                        height: h * (32 / kScreenHeight),
                       ),
                       Container(
                         alignment: Alignment.centerRight,
                         child: Container(
-                          height: h * 0.04,
-                          width: w * 0.3,
+                          height: h * (30 / kScreenHeight),
+                          width: w * (80 / kScreenWidth),
                           child: ElevatedButton(
                             style: ButtonStyle(
                               backgroundColor:
@@ -324,12 +396,18 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             },
                             child: Text(
                               'Sign Up',
-                              style: robotoMedium(size:18).copyWith(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.w400),
+                              style: robotoRegular(
+                                size: 16.0,
+                                color: Colors.white,
+                              ).copyWith(
+                                fontWeight: FontWeight.w400,
+                              ),
                             ),
                           ),
                         ),
+                      ),
+                      SizedBox(
+                        height: h * (329 / kScreenHeight),
                       ),
                     ],
                   ),
