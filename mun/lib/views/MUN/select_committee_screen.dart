@@ -32,73 +32,81 @@ class _SelectCommitteeScreenState extends State<SelectCommitteeScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        leading: Icon(
-          Icons.arrow_back,
-          color: kGreyShade,
-          size: 32,
-        ),
+        leading: Container(),
         toolbarHeight: 70,
         backgroundColor: Colors.white,
         elevation: 0,
-        centerTitle: true,
-        titleSpacing: 10,
-        automaticallyImplyLeading: false,
+        titleSpacing: -25,
         title: Container(
-          width: w * (0.9),
+          width: w,
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
+                  Icon(
+                    Icons.arrow_back,
+                    color: kIconShade,
+                    size: 32,
+                  ),
+                  SizedBox(width: 5,),
                   MUNLogo(),
                 ],
               ),
               SizedBox(
                 height: 15,
               ),
-              Divider(
-                height: 0.01,
-                thickness: 1,
-                color: kGreyShade.withOpacity(0.4),
+              Container(
+                width: w*(345/kScreenWidth),
+                padding: const EdgeInsets.only(right:25.0),
+                child: Divider(
+                  height: 0.01,
+                  thickness: 1,
+                  color: Colors.black.withOpacity(0.3),
+                ),
               )
             ],
           ),
         ),
       ),
-      body: Center(
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Container(
-                height: h * 0.3,
-                width: w * 0.95,
-                child: GridView.builder(
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 3,
-                      childAspectRatio: 3.5 / 2,
-                      crossAxisSpacing: 15,
-                      mainAxisSpacing: 15,
-                    ),
-                    itemCount: allCommittee.length,
-                    itemBuilder: (BuildContext _, int ind) {
-                      return GestureDetector(
-                        onTap: () {
-                          setState(() {
-                            selected = ind;
-                          });
-                        },
-                        child: CommitteeSmallTile(
-                          current: allCommittee[ind],
-                          isActive: selected == ind ? true : false,
-                        ),
-                      );
-                    }),
-              ),
-              CommitteeDetail(
-                current: allCommittee[selected],
-              ),
-            ],
+      body: Container(
+        color: kGreyShade,
+        child: Center(
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                SizedBox(height: 10,),
+                Container(
+                  height: h * 0.3,
+                  width: w * 0.95,
+                  child: GridView.builder(
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 3,
+                        childAspectRatio: 3.5 / 2,
+                        crossAxisSpacing: 15,
+                        mainAxisSpacing: 15,
+                      ),
+                      itemCount: allCommittee.length,
+                      itemBuilder: (BuildContext _, int ind) {
+                        return GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              selected = ind;
+                            });
+                          },
+                          child: CommitteeSmallTile(
+                            current: allCommittee[ind],
+                            isActive: selected == ind ? true : false,
+                          ),
+                        );
+                      }),
+                ),
+                CommitteeDetail(
+                  current: allCommittee[selected],
+                ),
+              ],
+            ),
           ),
         ),
       ),
