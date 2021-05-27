@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:mun/logic/auth.dart';
 import 'package:mun/views/authentication/forgot_password_screen.dart';
@@ -190,17 +191,18 @@ class _LoginScreenState extends State<LoginScreen> {
                                 SizedBox(
                                   width: w * (198 / kScreenWidth),
                                 ),
-                                IconButton(
-                                  icon: Icon(
-                                    Icons.remove_red_eye_sharp,
+                                GestureDetector(
+                                  child: SvgPicture.asset(
+                                    'assets/icons/eye_regular.svg',
                                     color: kBlueShade,
                                   ),
-                                  onPressed: () {
+                                  onTap: () {
                                     setState(() {
                                       isVisible = true;
                                     });
                                   },
                                 ),
+                                SizedBox(width: 4.0,),
                               ],
                             ),
                           ),
@@ -258,7 +260,9 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                       ),
                     ),
-                    SizedBox(height: h*(329/kScreenHeight),),
+                    SizedBox(
+                      height: h * (329 / kScreenHeight),
+                    ),
                   ],
                 ),
               ),

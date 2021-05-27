@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:mun/logic/auth.dart';
 import 'package:mun/logic/database.dart';
@@ -221,19 +222,18 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                   SizedBox(
                                     width: w * (199 / kScreenWidth),
                                   ),
-                                  Container(
-                                    child: IconButton(
-                                      icon: Icon(
-                                        Icons.remove_red_eye_sharp,
-                                        color: kBlueShade,
-                                      ),
-                                      onPressed: () {
-                                        setState(() {
-                                          isVisible = true;
-                                        });
-                                      },
-                                    ),
+                                  GestureDetector(
+                                  child: SvgPicture.asset(
+                                    'assets/icons/eye_regular.svg',
+                                    color: kBlueShade,
                                   ),
+                                  onTap: () {
+                                    setState(() {
+                                      isVisible = true;
+                                    });
+                                  },
+                                ),
+                                SizedBox(width: 4.0,),
                                 ],
                               ),
                             ),
@@ -290,19 +290,18 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                   SizedBox(
                                     width: w * (170 / kScreenWidth),
                                   ),
-                                  Container(
-                                    child: IconButton(
-                                      icon: Icon(
-                                        Icons.remove_red_eye_sharp,
-                                        color: kBlueShade,
-                                      ),
-                                      onPressed: () {
-                                        setState(() {
-                                          isVisible = true;
-                                        });
-                                      },
-                                    ),
+                                  GestureDetector(
+                                  child: SvgPicture.asset(
+                                    'assets/icons/eye_regular.svg',
+                                    color: kBlueShade,
                                   ),
+                                  onTap: () {
+                                    setState(() {
+                                      isVisible = true;
+                                    });
+                                  },
+                                ),
+                                SizedBox(width: 4.0,),
                                 ],
                               ),
                             ),
@@ -324,23 +323,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Checkbox(
-                            value: isAccepted,
-                            activeColor: kBlueShade,
-                            onChanged: (bool newValue) {
-                              setState(() {
-                                isAccepted = newValue;
-                              });
-                            },
-                          ),
                           Container(
-                            width: w * 0.68,
+                            width: w * 0.77,
                             child: Wrap(
                               children: [
                                 Text(
-                                  "By creating an account, I agree to bookmyMUN’s ",
+                                  "By creating an account, I agree to MyNextMUN's ",
                                   style: robotoLight(
                                     size: 13.0,
                                     color: Colors.black,
@@ -385,7 +374,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         alignment: Alignment.centerRight,
                         child: Container(
                           height: h * (30 / kScreenHeight),
-                          width: w * (80 / kScreenWidth),
+                          width: w * (95 / kScreenWidth),
                           child: ElevatedButton(
                             style: ButtonStyle(
                               backgroundColor:
