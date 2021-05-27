@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mun/models/mun.dart';
+import 'package:mun/views/elements/constants.dart';
+import 'package:mun/views/elements/textstyles.dart';
 import 'package:mun/views/elements/widgets/mun_tile.dart';
 
 class AllMun extends StatefulWidget {
@@ -32,7 +34,8 @@ class _AllMunState extends State<AllMun> {
               Container(
                 color: Colors.transparent,
 
-                width: w*0.95,
+                width: w*(324/kScreenWidth),
+                height: h*(40/kScreenHeight),
                 child: Material(
                   elevation: 10,
                   child: TextField(
@@ -43,7 +46,10 @@ class _AllMunState extends State<AllMun> {
                         color: Colors.blue,
 
                       ),
-                      hintText: 'Dates, MUNs or Locations'
+                      hintText: 'Dates, MUNs or Locations',
+                      hintStyle: robotoMedium(size: 12,color: kSearchHintShade),
+                      border: InputBorder.none,
+                      contentPadding: EdgeInsets.only(top: 8)
                     ),
                   ),
                 ),

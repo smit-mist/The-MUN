@@ -7,6 +7,7 @@ import 'package:mun/views/elements/textstyles.dart';
 import 'package:mun/views/home/all_mun_screen.dart';
 import 'package:mun/views/home/home_screen.dart';
 import 'package:mun/views/home/user_profile_screen.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class HomeTabBar extends StatefulWidget {
   @override
@@ -81,7 +82,7 @@ class _HomeTabBarState extends State<HomeTabBar> {
                               children: [
                                 Text(
                                   'Your Feedback Matters',
-                                  style: robotoMedium(size:14),
+                                  style: robotoMedium(size: 14),
                                 ),
                                 SizedBox(
                                   height: 5,
@@ -408,28 +409,33 @@ class _HomeTabBarState extends State<HomeTabBar> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Icon(
-                      Icons.home_outlined,
-                      color: index == 1 ? kBlueShade : kGreyShade,
-                      size: 32,
+                    SvgPicture.asset(
+                      'assets/icons/home.svg',
+                      color: index == 1 ? kBlueShade : kIconShade,
+
                     ),
+                    // Icon(
+                    //   Icons.home_outlined,
+                    //   color: index == 1 ? kBlueShade : kGreyShade,
+                    //   size: 32,
+                    // ),
                   ],
                 ),
               ),
               RawMaterialButton(
                 onPressed: () {
                   setState(() {
-                    getTheDialogForReview();
+                    getTheDialog();
                     //   index = 2;
                   });
                 },
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Icon(
-                      Icons.search,
-                      color: index == 2 ? kBlueShade : kGreyShade,
-                      size: 32,
+                    SvgPicture.asset(
+                      'assets/icons/search.svg',
+                      color: index == 2 ? kBlueShade : kIconShade,
+
                     ),
                   ],
                 ),
@@ -443,10 +449,10 @@ class _HomeTabBarState extends State<HomeTabBar> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Icon(
-                      Icons.card_giftcard_outlined,
-                      color: index == 3 ? kBlueShade : kGreyShade,
-                      size: 32,
+                    SvgPicture.asset(
+                      'assets/icons/briefcase.svg',
+                      color: index == 3 ? kBlueShade : kIconShade,
+
                     ),
                   ],
                 ),
@@ -460,10 +466,10 @@ class _HomeTabBarState extends State<HomeTabBar> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Icon(
-                      Icons.account_circle_rounded,
-                      color: index == 4 ? kBlueShade : kGreyShade,
-                      size: 32,
+                    SvgPicture.asset(
+                      'assets/icons/profile.svg',
+                      color: index == 4 ? kBlueShade : kIconShade,
+
                     ),
                   ],
                 ),

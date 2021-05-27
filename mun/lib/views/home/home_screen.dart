@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mun/logic/database.dart';
 import 'package:mun/models/committee.dart';
 import 'package:mun/models/mun.dart';
@@ -59,14 +60,16 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        toolbarHeight: 70,
+        toolbarHeight: 80,
         backgroundColor: Colors.white,
         elevation: 0,
         centerTitle: true,
         titleSpacing: 10,
         automaticallyImplyLeading: false,
         title: Container(
-          width: w * (0.9),
+          padding: EdgeInsets.only(
+              top: h * (30 / kScreenHeight), left: 20, right: 20),
+          width: double.infinity,
           child: Column(
             children: [
               Row(
@@ -75,25 +78,25 @@ class _HomeScreenState extends State<HomeScreen> {
                   MUNLogo(),
                   Row(
                     children: [
-                      Icon(
-                        Icons.location_on,
+                      SvgPicture.asset(
+                        'assets/icons/location.svg',
                         color: kBlueShade,
                       ),
                       Text(
-                        'Ahmedabad',
-                        style: robotoMedium(size:14).copyWith(color: kBlueShade),
+                        ' Ahmadabad',
+                        style: robotoLight(size: 14, color: kBlueShade),
                       ),
                     ],
                   )
                 ],
               ),
               SizedBox(
-                height: 15,
+                height: 7,
               ),
               Divider(
-                height: 0.01,
+                height: 1,
                 thickness: 1,
-                color: kGreyShade.withOpacity(0.4),
+                color: Colors.black.withOpacity(0.3),
               )
             ],
           ),
@@ -107,129 +110,151 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Container(
-                      width: w * 0.95,
-                      height: h * 0.3,
-                      color: Colors.blue,
-                    ),
-                    SizedBox(
-                      height: 25,
-                    ),
-                    Text(
-                      'In your City',
-                      style: robotoMedium(size:14),
-                    ),
-                    Text(
-                      'Explore MUNs around you',
-                      style: robotoMedium(size:14),
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Container(
-                      width: w * 0.95,
-                      height: h * 0.3,
-                      child: ListView(
-                        scrollDirection: Axis.horizontal,
-                        children: [
-                          HorizontalTile(
-                            currentMun: current,
-                          ),
-                          SizedBox(
-                            width: 10,
-                          ),
-                          HorizontalTile(
-                            currentMun: current,
-                          ),
-                          SizedBox(
-                            width: 10,
-                          ),
-                          HorizontalTile(
-                            currentMun: current,
-                          ),
-                          SizedBox(
-                            width: 10,
-                          ),
-                          HorizontalTile(
-                            currentMun: current,
-                          ),
-                        ],
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 5.0, vertical: 7),
+                      child: Container(
+                        width: double.infinity,
+                        height: h * (194 / kScreenHeight),
+                        child: Image.network(
+                          'https://picsum.photos/400/300',
+                          loadingBuilder: (BuildContext context, Widget child,
+                              ImageChunkEvent loadingProgress) {
+                            if (loadingProgress == null) return child;
+                            return Center(
+                              child: CircularProgressIndicator(
+                                value: loadingProgress.expectedTotalBytes !=
+                                        null
+                                    ? loadingProgress.cumulativeBytesLoaded /
+                                        loadingProgress.expectedTotalBytes
+                                    : null,
+                              ),
+                            );
+                          },
+                          fit: BoxFit.cover,
+                        ),
                       ),
                     ),
                     SizedBox(
                       height: 25,
                     ),
-                    Text(
-                      'The Best of MUNs',
-                      style: robotoMedium(size:14),
-                    ),
-                    Text(
-                      'Explore the most popular MUNs from all over the country',
-                      style: robotoMedium(size:14),
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Container(
-                      width: w * 0.95,
-                      height: h * 0.3,
-                      child: ListView(
-                        scrollDirection: Axis.horizontal,
-                        children: [
-                          HorizontalTile(
-                            currentMun: current,
-                          ),
-                          SizedBox(
-                            width: 10,
-                          ),
-                          HorizontalTile(
-                            currentMun: current,
-                          ),
-                          SizedBox(
-                            width: 10,
-                          ),
-                          HorizontalTile(
-                            currentMun: current,
-                          ),
-                          SizedBox(
-                            width: 10,
-                          ),
-                          HorizontalTile(
-                            currentMun: current,
-                          ),
-                        ],
-                      ),
-                    ),
-                    SizedBox(
-                      height: 25,
-                    ),
-                    Text(
-                      'Explore Committees',
-                      style: robotoMedium(size:14),
-                    ),
-                    SizedBox(
-                      width: w * 0.95,
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 25.0),
                       child: Text(
-                        'Explore the most popular Committees offered by MUNs from all over the country',
-                        style: robotoMedium(size:14),
+                        'In your City',
+                        style: robotoMedium(size: 20),
                       ),
                     ),
-                    Container(
-                      height: h * 0.3,
-                      width: w * 0.95,
-                      child: GridView.builder(
-                        scrollDirection: Axis.horizontal,
-                        itemCount: 10,
-                        itemBuilder: (BuildContext _, int ind) {
-                          return CommitteeHorizontalTile(
-                            current: here,
-                          );
-                        },
-                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 2,
-                          childAspectRatio: 1.3 / 1.7,
-                          mainAxisSpacing: 10,
-                          crossAxisSpacing: 10,
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                      child: Text(
+                        'Explore MUNs around you',
+                        style: robotoLight(size: 10),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                      child: Container(
+                        height: h * 0.3,
+                        child: ListView.separated(
+                          scrollDirection: Axis.horizontal,
+                          itemCount: 20,
+                          itemBuilder: (BuildContext _, int ind) {
+                            return HorizontalTile(
+                              currentMun: current,
+                            );
+                          },
+                          separatorBuilder: (_, __) {
+                            return SizedBox(
+                              width: 10,
+                            );
+                          },
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                      child: Text(
+                        'The Best of MUNs',
+                        style: robotoMedium(size: 20),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                      child: Text(
+                        'Explore the most popular MUNs from all over the country',
+                        style: robotoLight(size: 10),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                      child: Container(
+                        height: h * 0.3,
+                        child: ListView.separated(
+                          scrollDirection: Axis.horizontal,
+                          itemCount: 20,
+                          itemBuilder: (BuildContext _, int ind) {
+                            return HorizontalTile(
+                              currentMun: current,
+                            );
+                          },
+                          separatorBuilder: (_, __) {
+                            return SizedBox(
+                              width: 10,
+                            );
+                          },
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 15,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                      child: Text(
+                        'Explore Committees',
+                        style: robotoMedium(size: 20),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                      child: SizedBox(
+                        width: double.infinity,
+                        child: Text(
+                          'Explore the most popular Committees offered by MUNs from all over the country',
+                          style: robotoLight(size: 10),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                      child: Container(
+                        height: h * 0.3,
+                        width: double.infinity,
+                        child: GridView.builder(
+                          scrollDirection: Axis.horizontal,
+                          itemCount: 10,
+                          itemBuilder: (BuildContext _, int ind) {
+                            return CommitteeHorizontalTile(
+                              current: here,
+                            );
+                          },
+                          gridDelegate:
+                              SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2,
+                            childAspectRatio: 1.3 / 1.7,
+                            mainAxisSpacing: 10,
+                            crossAxisSpacing: 10,
+                          ),
                         ),
                       ),
                     ),
@@ -254,19 +279,19 @@ class _HomeScreenState extends State<HomeScreen> {
                           children: [
                             Text(
                               'Are you an Organiser?',
-                              style: robotoMedium(size:14),
+                              style: robotoMedium(size: 14),
                             ),
                             Row(
                               children: [
                                 Text(
                                   'Contact us',
-                                  style: robotoMedium(size:14).copyWith(
+                                  style: robotoMedium(size: 14).copyWith(
                                       color: kBlueShade,
                                       decoration: TextDecoration.underline),
                                 ),
                                 Text(
                                   ' to get your MUN listed here!',
-                                  style: robotoMedium(size:14),
+                                  style: robotoMedium(size: 14),
                                 )
                               ],
                             ),

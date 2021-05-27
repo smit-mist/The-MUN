@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mun/models/mun.dart';
 import 'package:mun/views/MUN/about_mun_screen.dart';
+import 'package:mun/views/elements/constants.dart';
 
 import '../textstyles.dart';
 
@@ -17,20 +18,22 @@ class _HorizontalTileState extends State<HorizontalTile> {
   @override
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width;
-    //double h = MediaQuery.of(context).size.height;
+    double h = MediaQuery.of(context).size.height;
     return GestureDetector(
       onTap: () {
         Navigator.push(
             context, MaterialPageRoute(builder: (context) => AboutMunScreen()));
       },
       child: Container(
-        width: w * 0.33,
+        width: w *(105/kScreenWidth),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Stack(
               children: [
-                Container(
+                SizedBox(
+                  width: double.infinity,
+                  height: h*(171/kScreenHeight),
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(5),
                     child: Image.network(
@@ -50,7 +53,6 @@ class _HorizontalTileState extends State<HorizontalTile> {
                       fit: BoxFit.cover,
                     ),
                   ),
-                  height: w * 0.5,
                 ),
                 Align(
                   alignment: Alignment.topRight,
@@ -58,7 +60,7 @@ class _HorizontalTileState extends State<HorizontalTile> {
                     padding: const EdgeInsets.all(5.0),
                     child: Icon(
                       Icons.share,
-                      color: Colors.black,
+                      color: Colors.white,
                       size: 20,
                     ),
                   ),
@@ -68,10 +70,10 @@ class _HorizontalTileState extends State<HorizontalTile> {
             SizedBox(
               height: 7,
             ),
-            Text('Name', style: robotoMedium(size:16)),
+            Text('Name', style: robotoMedium(size:12)),
             Text(
               'Place',
-              style: robotoMedium(size:14),
+              style: robotoLight(size:10),
             ),
           ],
         ),

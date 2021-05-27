@@ -23,3 +23,10 @@ TextStyle robotoRegular({double size,Color color = Colors.black}){
     color: color,
   );
 }
+TextStyle robotoBold({double size,Color color = Colors.black}){
+  return TextStyle(
+    fontFamily: 'RobotoBold',
+    fontSize: size,
+    color: color,
+  );
+}
