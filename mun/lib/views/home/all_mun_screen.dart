@@ -31,60 +31,66 @@ class _AllMunState extends State<AllMun> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               SizedBox(height: 20,),
-              Container(
-                color: Colors.transparent,
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal:1.0),
+                child: Container(
+                  color: Colors.transparent,
 
-                width: w*(324/kScreenWidth),
-                height: h*(40/kScreenHeight),
-                child: Material(
-                  elevation: 10,
-                  child: TextField(
-                    decoration: InputDecoration(
+                  width: double.infinity,
+                  height: h*(40/kScreenHeight),
+                  child: Material(
+                    elevation: 10,
+                    child: TextField(
+                      decoration: InputDecoration(
 
-                      prefixIcon: Icon(
-                        Icons.search,
-                        color: Colors.blue,
+                        prefixIcon: Icon(
+                          Icons.search,
+                          color: Colors.blue,
 
+                        ),
+                        hintText: 'Dates, MUNs or Locations',
+                        hintStyle: robotoMedium(size: 12,color: kSearchHintShade),
+                        border: InputBorder.none,
+                        contentPadding: EdgeInsets.only(top: 8)
                       ),
-                      hintText: 'Dates, MUNs or Locations',
-                      hintStyle: robotoMedium(size: 12,color: kSearchHintShade),
-                      border: InputBorder.none,
-                      contentPadding: EdgeInsets.only(top: 8)
                     ),
                   ),
                 ),
               ),
-              SizedBox(height: 50,),
-              Container(
-                color: Colors.transparent,
+              SizedBox(height: 20,),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal:0.0),
+                child: Container(
+                  color: Colors.transparent,
 
-                width: w * 0.95,
-                height: h * 0.3,
-                child: ListView(
-                  scrollDirection: Axis.horizontal,
-                  children: [
-                    HorizontalTile(
-                      currentMun: current,
-                    ),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    HorizontalTile(
-                      currentMun: current,
-                    ),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    HorizontalTile(
-                      currentMun: current,
-                    ),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    HorizontalTile(
-                      currentMun: current,
-                    ),
-                  ],
+                  width: double.infinity,
+                  height: h * 0.3,
+                  child: ListView(
+                    scrollDirection: Axis.horizontal,
+                    children: [
+                      HorizontalTile(
+                        currentMun: current,
+                      ),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      HorizontalTile(
+                        currentMun: current,
+                      ),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      HorizontalTile(
+                        currentMun: current,
+                      ),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      HorizontalTile(
+                        currentMun: current,
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ],

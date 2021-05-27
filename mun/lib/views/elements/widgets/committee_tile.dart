@@ -19,7 +19,7 @@ class _CommitteeHorizontalTileState extends State<CommitteeHorizontalTile> {
   @override
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width;
-    // double h = MediaQuery.of(context).size.height;
+    double h = MediaQuery.of(context).size.height;
     return GestureDetector(
       onTap: () {
         // committee page;
@@ -31,45 +31,51 @@ class _CommitteeHorizontalTileState extends State<CommitteeHorizontalTile> {
         );
       },
       child: Container(
-        width: w * 0.25,
+        width: w * (105 / kScreenWidth),
+         height: h * (71 / kScreenHeight),
         child: Stack(
           children: [
             Container(
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(5),
-                child: Image.network('https://picsum.photos/id/1032/400/300',
-                    loadingBuilder: (BuildContext context, Widget child,
-                        ImageChunkEvent loadingProgress) {
-                  if (loadingProgress == null) return child;
-                  return Center(
-                    child: CircularProgressIndicator(
-                      value: loadingProgress.expectedTotalBytes != null
-                          ? loadingProgress.cumulativeBytesLoaded /
-                              loadingProgress.expectedTotalBytes
-                          : null,
-                    ),
-                  );
-                }, fit: BoxFit.contain),
+                child: Image.network(
+                  'https://picsum.photos/300/200?blur',
+                  loadingBuilder: (BuildContext context, Widget child,
+                      ImageChunkEvent loadingProgress) {
+                    if (loadingProgress == null) return child;
+                    return Center(
+                      child: CircularProgressIndicator(
+                        value: loadingProgress.expectedTotalBytes != null
+                            ? loadingProgress.cumulativeBytesLoaded /
+                                loadingProgress.expectedTotalBytes
+                            : null,
+                      ),
+                    );
+                  },
+                  fit: BoxFit.cover,
+                ),
               ),
               //height: w * 0.5,
             ),
-            Align(
-              alignment: Alignment.bottomLeft,
+            Positioned(
+              bottom: 0,
+              left: 0,
               child: Container(
-                padding: EdgeInsets.all(5),
-                height: w * 0.15,
+                padding: EdgeInsets.only(left:5),
+                height: (h*(39/kScreenHeight)),
+                width: (w*(40/kScreenWidth)),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
                       widget.current.name,
-                      style: robotoMedium(size:16),
+                      style: robotoMedium(size: 12),
                     ),
                     SizedBox(
                         width: w * (0.15),
                         child: Text(
                           widget.current.description,
-                          style: robotoMedium(size:12),
+                          style: robotoLight(size: 10),
                         ))
                   ],
                 ),
@@ -81,7 +87,7 @@ class _CommitteeHorizontalTileState extends State<CommitteeHorizontalTile> {
                 padding: const EdgeInsets.all(5.0),
                 child: Icon(
                   Icons.share,
-                  color: Colors.black,
+                  color: Colors.white,
                   size: 20,
                 ),
               ),
@@ -89,8 +95,8 @@ class _CommitteeHorizontalTileState extends State<CommitteeHorizontalTile> {
           ],
         ),
         decoration: BoxDecoration(
-          color: kGreyShade.withOpacity(0.4),
-          borderRadius: BorderRadius.circular(10),
+          color: kGreyShade.withOpacity(0),
+          borderRadius: BorderRadius.circular(5),
         ),
       ),
     );

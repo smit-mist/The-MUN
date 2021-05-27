@@ -68,7 +68,10 @@ class _HomeScreenState extends State<HomeScreen> {
         automaticallyImplyLeading: false,
         title: Container(
           padding: EdgeInsets.only(
-              top: h * (30 / kScreenHeight), left: 20, right: 20),
+            top: h * (30 / kScreenHeight),
+            left: 20,
+            right: 20,
+          ),
           width: double.infinity,
           child: Column(
             children: [
@@ -238,7 +241,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 25.0),
                       child: Container(
-                        height: h * 0.3,
+                        height: h * (150/kScreenHeight),
                         width: double.infinity,
                         child: GridView.builder(
                           scrollDirection: Axis.horizontal,
@@ -251,51 +254,53 @@ class _HomeScreenState extends State<HomeScreen> {
                           gridDelegate:
                               SliverGridDelegateWithFixedCrossAxisCount(
                             crossAxisCount: 2,
-                            childAspectRatio: 1.3 / 1.7,
-                            mainAxisSpacing: 10,
-                            crossAxisSpacing: 10,
+                            childAspectRatio: ((h*(71/kScreenHeight)/(w*(105/kScreenWidth)))),
+                            mainAxisSpacing: 5,
+                            crossAxisSpacing: 5,
                           ),
                         ),
                       ),
                     ),
                     SizedBox(
-                      height: 10,
+                      height: 20,
                     ),
                     Container(
-                      width: w * 0.95,
                       child: Divider(
                         thickness: 1,
                         height: 1,
-                        color: kGreyShade,
+                        color: Colors.black.withOpacity(0.3),
                       ),
                     ),
-                    Container(
-                      width: w * 0.95,
-                      height: h * 0.1,
-                      child: Center(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Text(
-                              'Are you an Organiser?',
-                              style: robotoMedium(size: 14),
-                            ),
-                            Row(
-                              children: [
-                                Text(
-                                  'Contact us',
-                                  style: robotoMedium(size: 14).copyWith(
-                                      color: kBlueShade,
-                                      decoration: TextDecoration.underline),
-                                ),
-                                Text(
-                                  ' to get your MUN listed here!',
-                                  style: robotoMedium(size: 14),
-                                )
-                              ],
-                            ),
-                          ],
+                    SizedBox(height: 10,),
+                    Padding(
+                      padding: const EdgeInsets.only(left:25.0),
+                      child: Container(
+                        width: w * 0.95,
+                        child: Center(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Are you an Organiser?',
+                                style: robotoMedium(size: 16),
+                              ),
+                              Row(
+                                children: [
+                                  Text(
+                                    'Contact us',
+                                    style: robotoLight(size: 14).copyWith(
+                                        color: kBlueShade,
+                                        decoration: TextDecoration.underline),
+                                  ),
+                                  Text(
+                                    ' to get your MUN listed here!',
+                                    style: robotoLight(size: 14),
+                                  )
+                                ],
+                              ),
+                              SizedBox(height: 10,),
+                            ],
+                          ),
                         ),
                       ),
                     ),
