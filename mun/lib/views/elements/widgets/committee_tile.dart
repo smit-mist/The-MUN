@@ -31,8 +31,8 @@ class _CommitteeHorizontalTileState extends State<CommitteeHorizontalTile> {
         );
       },
       child: Container(
-        width: w * (105 / kScreenWidth),
-         height: h * (71 / kScreenHeight),
+        //  width: w * (105 / kScreenWidth),
+        //    height: h * (71 / kScreenHeight),
         child: Stack(
           children: [
             Container(
@@ -61,9 +61,9 @@ class _CommitteeHorizontalTileState extends State<CommitteeHorizontalTile> {
               bottom: 0,
               left: 0,
               child: Container(
-                padding: EdgeInsets.only(left:5),
-                height: (h*(39/kScreenHeight)),
-                width: (w*(40/kScreenWidth)),
+                padding: EdgeInsets.only(left: 5),
+                    height: (h * (39 / kScreenHeight)),
+                  width: (w * (40 / kScreenWidth)),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
