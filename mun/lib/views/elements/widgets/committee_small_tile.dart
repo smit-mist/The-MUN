@@ -18,53 +18,61 @@ class _CommitteeSmallTileState extends State<CommitteeSmallTile> {
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width;
    // double h = MediaQuery.of(context).size.height;
-    return Material(
-      elevation: 5,
-      child: Container(
-        width: w * 0.2,
-        child: Column(
-          children: [
-            Expanded(
-              child: Container(
-                padding: EdgeInsets.symmetric(horizontal: 2),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      widget.current.name,
-                      style: robotoMedium(size:14).copyWith(color: Colors.white),
-                    ),
-                    Icon(
-                      Icons.share,
-                      color: Colors.white,
-                    ),
-                  ],
+    return Container(
+      width: w * (98/kScreenWidth),
+      child: Column(
+        children: [
+          Expanded(
+            child: Container(
+              padding: EdgeInsets.symmetric(horizontal: 2),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    " "+widget.current.name,
+                    style: robotoRegular(size:16).copyWith(color: Colors.white),
+                  ),
+                  Icon(
+                    Icons.share,
+                    color: Colors.white,
+                    size: 18,
+                  ),
+                ],
+              ),
+            ),
+          ),
+          Expanded(
+            child: Container(
+              width: double.infinity,
+              child: Padding(
+                padding: const EdgeInsets.only(left:5.0,top: 7),
+                child: Text(
+                  widget.current.description,
+                  style:robotoRegular(size:10),
+                ),
+              ),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(3),
+                  topRight: Radius.circular(3),
                 ),
               ),
             ),
-            Expanded(
-              child: Container(
-                width: double.infinity,
-                child: Center(
-                    child: Text(
-                  widget.current.description,
-                  style:robotoMedium(size:14),
-                )),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(5),
-                    topRight: Radius.circular(5),
-                  ),
-                ),
-              ),
-            )
-          ],
-        ),
-        decoration: BoxDecoration(
-          color:widget.isActive? Colors.blue:kGreyShade.withOpacity(0.4),
-          borderRadius: BorderRadius.circular(3),
-        ),
+          )
+        ],
+      ),
+      decoration: BoxDecoration(
+        color:widget.isActive? kBlueShade:kCommitteeTileShade,
+        borderRadius: BorderRadius.circular(3),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.5),
+            spreadRadius:widget.isActive?3: 0,
+            blurRadius: 5,
+            offset:widget.isActive? Offset(2, 3):Offset(0,0), // changes position of shadow
+          ),
+        ],
       ),
     );
   }

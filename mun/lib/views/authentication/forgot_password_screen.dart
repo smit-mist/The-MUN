@@ -1,4 +1,6 @@
+
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mun/views/elements/constants.dart';
 import 'package:mun/views/elements/textstyles.dart';
 import 'package:mun/views/elements/widgets/logo.dart';
@@ -12,6 +14,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
   bool isLoading = false;
   String email;
   int index = 0;
+  bool pressedPassword = false,pressedConPassword = false;
   List<String> messageToDisplay = [
     'Change your Password',
     'Enter OTP',
@@ -19,6 +22,10 @@ class _ForgotPasswordState extends State<ForgotPassword> {
   ];
   @override
   Widget build(BuildContext context) {
+    if(index != 2){
+      pressedPassword = false;
+      pressedConPassword = false;
+    }
     double h = MediaQuery.of(context).size.height;
     double w = MediaQuery.of(context).size.width;
     List<Widget> toDisplay = [
@@ -222,9 +229,19 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                         });
                       },
                       decoration: InputDecoration(
-                        suffixIcon: Icon(
-                          Icons.remove_red_eye_sharp,
-                          color: Colors.blue,
+                        suffixIcon: IconButton(
+                          onPressed: (){
+                            setState(() {
+                              pressedPassword =!pressedPassword;
+                            });
+                          },
+                          icon: SvgPicture.asset(
+                            pressedPassword==false?'assets/icons/eye_regular.svg':'assets/icons/eye_closed.svg',
+                            color: kBlueShade,
+                            height: 20,
+                            width: 20,
+                          ),
+                          iconSize: 20,
                         ),
                         hintStyle: robotoRegular(
                             size: 12, color: Colors.black.withOpacity(0.3)),
@@ -267,9 +284,20 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                         });
                       },
                       decoration: InputDecoration(
-                        suffixIcon: Icon(
-                          Icons.remove_red_eye_sharp,
-                          color: Colors.blue,
+                        suffixIcon: IconButton(
+                          onPressed: (){
+                            setState(() {
+                              pressedConPassword = !pressedConPassword;
+                            });
+                          },
+                          icon: SvgPicture.asset(
+                            pressedConPassword==false?'assets/icons/eye_regular.svg':'assets/icons/eye_closed.svg',
+
+                            color: kBlueShade,
+                            height: 20,
+                            width: 20,
+                          ),
+                          iconSize: 20,
                         ),
                         hintStyle: robotoRegular(
                             size: 12, color: Colors.black.withOpacity(0.3)),

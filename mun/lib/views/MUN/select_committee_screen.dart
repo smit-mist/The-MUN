@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:mun/models/committee.dart';
 import 'package:mun/views/elements/constants.dart';
+import 'package:mun/views/elements/textstyles.dart';
 import 'package:mun/views/elements/widgets/committee_detail_widget.dart';
 import 'package:mun/views/elements/widgets/committee_small_tile.dart';
 import 'package:mun/views/elements/widgets/logo.dart';
@@ -49,7 +51,9 @@ class _SelectCommitteeScreenState extends State<SelectCommitteeScreen> {
                     color: kIconShade,
                     size: 32,
                   ),
-                  SizedBox(width: 5,),
+                  SizedBox(
+                    width: 5,
+                  ),
                   MUNLogo(),
                 ],
               ),
@@ -57,8 +61,8 @@ class _SelectCommitteeScreenState extends State<SelectCommitteeScreen> {
                 height: 15,
               ),
               Container(
-                width: w*(345/kScreenWidth),
-                padding: const EdgeInsets.only(right:25.0),
+                width: w * (345 / kScreenWidth),
+                padding: const EdgeInsets.only(right: 25.0),
                 child: Divider(
                   height: 0.01,
                   thickness: 1,
@@ -76,31 +80,40 @@ class _SelectCommitteeScreenState extends State<SelectCommitteeScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                SizedBox(height: 10,),
-                Container(
-                  height: h * 0.3,
-                  width: w * 0.95,
-                  child: GridView.builder(
-                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 3,
-                        childAspectRatio: 3.5 / 2,
-                        crossAxisSpacing: 15,
-                        mainAxisSpacing: 15,
-                      ),
-                      itemCount: allCommittee.length,
-                      itemBuilder: (BuildContext _, int ind) {
-                        return GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              selected = ind;
-                            });
-                          },
-                          child: CommitteeSmallTile(
-                            current: allCommittee[ind],
-                            isActive: selected == ind ? true : false,
-                          ),
-                        );
-                      }),
+                SizedBox(
+                  height: 10,
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                  child: Container(
+                    height: h * (210 / kScreenHeight),
+                    width: double.infinity,
+                    child: GridView.builder(
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 3,
+                          childAspectRatio: ((w * (98 / kScreenWidth)) /
+                              (h * (58 / kScreenHeight))),
+                          crossAxisSpacing: 15,
+                          mainAxisSpacing: 15,
+                        ),
+                        itemCount: allCommittee.length,
+                        itemBuilder: (BuildContext _, int ind) {
+                          return GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                selected = ind;
+                              });
+                            },
+                            child: CommitteeSmallTile(
+                              current: allCommittee[ind],
+                              isActive: selected == ind ? true : false,
+                            ),
+                          );
+                        }),
+                  ),
+                ),
+                SizedBox(
+                  height: 10,
                 ),
                 CommitteeDetail(
                   current: allCommittee[selected],
@@ -111,52 +124,50 @@ class _SelectCommitteeScreenState extends State<SelectCommitteeScreen> {
         ),
       ),
       bottomNavigationBar: Container(
-        height: h * 0.1,
+        height: h * (70 / kScreenHeight),
         width: w,
-        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 8),
+        decoration: BoxDecoration(
+          boxShadow: [
+            BoxShadow(
+              spreadRadius: 8,
+              blurRadius: 10,
+              offset: Offset(0,-2),
+
+              color: kIconShade,
+            ),
+          ],
+          color: Colors.white,
+        ),
+        padding: EdgeInsets.only(bottom: 20, left: 25, right: 25),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            FaIcon(
-              FontAwesomeIcons.briefcase,
+            SvgPicture.asset(
+              'assets/icons/briefcase.svg',
               color: Color(0xFF6C6C6C),
-              size: h * 0.03,
             ),
-            Text(
-              'Add to MyBriefcase',
-              style: TextStyle(
-                fontSize: h * (0.02 + 0.003),
-              ),
-            ),
+            Text('Add to MyBriefcase',
+                style: robotoLight(
+                  size: 16,
+                )),
+            SizedBox(width: 1,),
             Container(
-              height: h * 0.05,
-              width: w * 0.35,
-              child: ElevatedButton(
-                style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(kBlueShade),
-                ),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (_) => MyBooking(),
-                    ),
-                  );
-                },
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Text(
-                      'Book Now!',
-                      style: TextStyle(color: Colors.white),
-                    ),
-                    Icon(
-                      Icons.arrow_forward_rounded,
-                      color: Colors.white,
-                      //size: h*0.02,
-                    ),
-                  ],
-                ),
+              height: h * (36 / kScreenHeight),
+              width: w * (125 / kScreenWidth),
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(3), color: kBlueShade),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'Book Now!',
+                    style: robotoLight(size: 18, color: Colors.white),
+                  ),
+                  SizedBox(width: 5,),
+                  SvgPicture.asset(
+                    'assets/icons/right_arrow.svg',
+                  )
+                ],
               ),
             ),
           ],

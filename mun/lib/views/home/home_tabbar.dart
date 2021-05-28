@@ -412,7 +412,6 @@ class _HomeTabBarState extends State<HomeTabBar> {
                     SvgPicture.asset(
                       'assets/icons/home.svg',
                       color: index == 1 ? kBlueShade : kIconShade,
-
                     ),
                     // Icon(
                     //   Icons.home_outlined,
@@ -435,7 +434,6 @@ class _HomeTabBarState extends State<HomeTabBar> {
                     SvgPicture.asset(
                       'assets/icons/search.svg',
                       color: index == 2 ? kBlueShade : kIconShade,
-
                     ),
                   ],
                 ),
@@ -443,6 +441,13 @@ class _HomeTabBarState extends State<HomeTabBar> {
               RawMaterialButton(
                 onPressed: () {
                   setState(() {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => SelectCommitteeScreen(),
+                      ),
+                    );
+                    // Navigator is added for testing purpose
                     index = 3;
                   });
                 },
@@ -452,7 +457,6 @@ class _HomeTabBarState extends State<HomeTabBar> {
                     SvgPicture.asset(
                       'assets/icons/briefcase.svg',
                       color: index == 3 ? kBlueShade : kIconShade,
-
                     ),
                   ],
                 ),
@@ -469,7 +473,6 @@ class _HomeTabBarState extends State<HomeTabBar> {
                     SvgPicture.asset(
                       'assets/icons/profile.svg',
                       color: index == 4 ? kBlueShade : kIconShade,
-
                     ),
                   ],
                 ),
