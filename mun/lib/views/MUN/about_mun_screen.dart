@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:mun/views/MUN/select_committee_screen.dart';
 import 'package:mun/views/elements/constants.dart';
+import 'package:mun/views/elements/textstyles.dart';
 import 'package:mun/views/elements/widgets/logo.dart';
 
 // TODO: Configure bottomBar
@@ -52,47 +54,56 @@ class _AboutMunScreenState extends State<AboutMunScreen> {
       body: Container(
         height: h,
         width: w,
-        padding: EdgeInsets.fromLTRB(15.0, 15.0, 15.0, 0.0),
+        color: Color(0xFFE5E5E5),
+        padding: EdgeInsets.symmetric(horizontal: w * (25 / kScreenWidth)),
         child: SingleChildScrollView(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              SizedBox(
+                height: 15.0,
+              ),
               Text(
                 'World Archive Simulation',
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: h * (0.025 - 0.005),
+                style: robotoRegular(
+                  size: 20.0,
+                ).copyWith(
+                  fontWeight: FontWeight.w400,
                 ),
               ),
-              Divider(
-                height: 0.01,
-                thickness: 1,
-                color: kGreyShade.withOpacity(0.4),
+              SizedBox(
+                height: 5.0,
+                child: Divider(
+                  thickness: 1,
+                  color: Colors.black.withOpacity(0.3),
+                ),
               ),
               SizedBox(
-                height: h * 0.03,
+                height: 10,
               ),
               Card(
-                elevation: 5.0,
+                elevation: 3.0,
                 child: Container(
-                  height: h * 0.25,
+                  height: h * (113 / kScreenHeight),
                   width: w,
-                  padding: EdgeInsets.symmetric(horizontal: w * 0.027),
+                  padding: EdgeInsets.only(left: 11.0, top: 8.0, right: 11.0),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       Text(
                         'Priority Booking Closes in',
-                        style: TextStyle(
-                          fontSize: h * 0.023,
-                          color: Colors.black,
+                        style: robotoRegular(
+                          size: 14.0,
+                        ).copyWith(
+                          fontWeight: FontWeight.w400,
                         ),
+                      ),
+                      SizedBox(
+                        height: 9.0,
                       ),
                       Container(
                         width: w,
-                        height: h * 0.008,
+                        height: 3.0,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(5),
                           color: Colors.white,
@@ -103,42 +114,53 @@ class _AboutMunScreenState extends State<AboutMunScreen> {
                           color: Colors.blue,
                         ),
                       ),
+                      SizedBox(
+                        height: 11.0,
+                      ),
                       Text(
                         '03  22   05    06',
-                        style: TextStyle(
-                          fontWeight: FontWeight.w300,
+                        style: robotoLight(
+                          size: 24.0,
                           color: kBlueShade,
-                          fontSize: h * 0.025,
+                        ).copyWith(
+                          fontWeight: FontWeight.w300,
                         ),
                       ),
                       Text(
                         'DAYS    HOURS    MINUTES  SECONDS',
-                        style: TextStyle(
-                          color: Colors.black,
+                        style: robotoLight(
+                          size: 8.0,
+                        ).copyWith(
+                          fontWeight: FontWeight.w300,
                         ),
                       ),
                       Wrap(
                         children: [
                           Text(
                             '*Priority registration customers will enjoy',
-                            style: TextStyle(
-                              fontSize: h * (0.02 - 0.01),
-                              color: Colors.grey[400],
+                            style: robotoLight(
+                              size: 8.0,
+                              color: Color(0xffA3A3A3),
+                            ).copyWith(
+                              fontWeight: FontWeight.w400,
                             ),
                           ),
                           Text(
                             ' added benefits ',
-                            style: TextStyle(
-                              fontSize: h * (0.02 - 0.008),
+                            style: robotoLight(
+                              size: 8.0,
                               color: kBlueShade,
-                              decoration: TextDecoration.underline,
+                            ).copyWith(
+                              fontWeight: FontWeight.w400,
                             ),
                           ),
                           Text(
                             'WITHOUT any added costs',
-                            style: TextStyle(
-                              fontSize: h * (0.02 - 0.008),
-                              color: Colors.grey[400],
+                            style: robotoLight(
+                              size: 8.0,
+                              color: Color(0xffA3A3A3),
+                            ).copyWith(
+                              fontWeight: FontWeight.w400,
                             ),
                           ),
                         ],
@@ -148,10 +170,10 @@ class _AboutMunScreenState extends State<AboutMunScreen> {
                 ),
               ),
               SizedBox(
-                height: h * 0.03,
+                height: 18.0,
               ),
               Container(
-                height: h * 0.3,
+                height: h * (181 / kScreenHeight),
                 width: w,
                 decoration: BoxDecoration(
                   color: Color(0xFF94CCFF),
@@ -159,57 +181,79 @@ class _AboutMunScreenState extends State<AboutMunScreen> {
                 ),
               ),
               SizedBox(
-                height: h * 0.05,
+                height: 18.0,
               ),
               Text(
                 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Faucibus id fringilla lectus mauris. Ultricies faucibus sit eget mauris at. Velit orci, mauris at et nulla pellentesque amet, sollicitudin. Vestibulum suspendisse augue et nec vel, nam. hajtkhms a. jqherk kajejoro akwjfj lawmj lawke. awkd awjkdf.awkdl',
-                style: TextStyle(fontSize: h * 0.02),
+                style: robotoLight(
+                  size: 12.0,
+                  color: Colors.black,
+                ).copyWith(
+                  fontWeight: FontWeight.w300,
+                ),
               ),
               SizedBox(
-                height: h * 0.02,
+                height: 11.0,
               ),
               Text(
                 'Elit non ipsum id arcu. Mattis nunc, in duis quam alique. Suspendisse viverra turpis ornare turpis. Vitae erat sed purus sit feugiat eget nunc. Proin et condimentum leo quis quis in non gravida. Justo.',
-                style: TextStyle(fontSize: h * 0.02),
+                style: robotoLight(
+                  size: 12.0,
+                  color: Colors.black,
+                ).copyWith(
+                  fontWeight: FontWeight.w300,
+                ),
               ),
               SizedBox(
-                height: h * 0.03,
+                height: 18.0,
               ),
               Card(
-                elevation: 5.0,
+                elevation: 3.0,
                 child: Container(
-                  padding: EdgeInsets.symmetric(horizontal: w * 0.02),
-                  height: h * 0.3,
+                  padding: EdgeInsets.only(
+                    left: 11.0,
+                    right: 11.0,
+                  ),
+                  height: h * (166 / kScreenHeight),
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      SizedBox(
+                        height: 11.0,
+                      ),
                       Row(
                         children: [
-                          Icon(
-                            Icons.calendar_today_outlined,
+                          SvgPicture.asset(
+                            'assets/icons/calendar.svg',
                             color: kBlueShade,
-                            size: w * 0.05,
+                            height: 24.0,
+                            width: 24.0,
                           ),
                           SizedBox(
-                            width: w * 0.025,
+                            width: 11.0,
                           ),
                           Text(
                             'October 13-14, 2021',
-                            style: TextStyle(
-                              fontSize: h * (0.02 + 0.005),
+                            style: robotoLight(size: 14.0, color: Colors.black)
+                                .copyWith(
+                              fontWeight: FontWeight.w300,
                             ),
                           ),
                         ],
                       ),
                       SizedBox(
-                        height: h * 0.018,
+                        height: 11.0,
                       ),
                       Row(
                         children: [
-                          Icon(
-                            Icons.people,
-                            color: kBlueShade,
+                          GestureDetector(
+                            child: SvgPicture.asset(
+                              'assets/icons/vacancy.svg',
+                              color: kBlueShade,
+                            ),
+                          ),
+                          SizedBox(
+                            width: 4.0,
                           ),
                           SizedBox(
                             width: w * 0.025,
@@ -236,8 +280,7 @@ class _AboutMunScreenState extends State<AboutMunScreen> {
                           ),
                           Text(
                             '10:00 AM - 5:00 PM',
-                            style: TextStyle(
-                                fontSize: h * (0.02 + 0.005)),
+                            style: TextStyle(fontSize: h * (0.02 + 0.005)),
                           ),
                         ],
                       ),
@@ -265,8 +308,7 @@ class _AboutMunScreenState extends State<AboutMunScreen> {
                           ),
                           Text(
                             'View in ',
-                            style: TextStyle(
-                                fontSize: h * (0.02 - 0.005)),
+                            style: TextStyle(fontSize: h * (0.02 - 0.005)),
                           ),
                           Text(
                             'Maps',
@@ -552,7 +594,7 @@ class _AboutMunScreenState extends State<AboutMunScreen> {
                           'Select Committee',
                           style: TextStyle(
                             color: Colors.white,
-                            fontSize: h*0.014,
+                            fontSize: h * 0.014,
                           ),
                         ),
                       ],
