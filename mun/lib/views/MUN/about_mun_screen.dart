@@ -214,154 +214,203 @@ class _AboutMunScreenState extends State<AboutMunScreen> {
                     left: 11.0,
                     right: 11.0,
                   ),
-                  height: h * (166 / kScreenHeight),
+                  height: h * (200 / kScreenHeight),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      SizedBox(
-                        height: 11.0,
-                      ),
                       Row(
                         children: [
-                          SvgPicture.asset(
-                            'assets/icons/calendar.svg',
-                            color: kBlueShade,
-                            height: 24.0,
-                            width: 24.0,
+                          Column(
+                            children: [
+                              SizedBox(
+                                height: 11.0,
+                              ),
+                              SvgPicture.asset(
+                                'assets/icons/calendar.svg',
+                                color: kBlueShade,
+                                height: 24.0,
+                                width: 24.0,
+                              ),
+                              SizedBox(
+                                height: 11.0,
+                              ),
+                              SvgPicture.asset(
+                                'assets/icons/vacancy.svg',
+                                color: kBlueShade,
+                                height: 21.0,
+                                width: 25.0,
+                              ),
+                              SizedBox(
+                                height: 11.0,
+                              ),
+                              SvgPicture.asset(
+                                'assets/icons/clock.svg',
+                                color: kBlueShade,
+                                height: 20.0,
+                                width: 20.0,
+                              ),
+                              SizedBox(
+                                height: 11.0,
+                              ),
+                              SvgPicture.asset(
+                                'assets/icons/location.svg',
+                                color: kBlueShade,
+                                height: 19.14,
+                                width: 15.31,
+                              ),
+                            ],
                           ),
                           SizedBox(
                             width: 11.0,
                           ),
-                          Text(
-                            'October 13-14, 2021',
-                            style: robotoLight(size: 14.0, color: Colors.black)
-                                .copyWith(
-                              fontWeight: FontWeight.w300,
-                            ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              SizedBox(
+                                height: 11.0,
+                              ),
+                              Text(
+                                'October 13-14, 2021',
+                                style:
+                                    robotoLight(size: 14.0, color: Colors.black)
+                                        .copyWith(
+                                  fontWeight: FontWeight.w300,
+                                ),
+                              ),
+                              SizedBox(
+                                height: 15.0,
+                              ),
+                              Text(
+                                '50 Seats left',
+                                style:
+                                    robotoLight(size: 14.0, color: Colors.black)
+                                        .copyWith(
+                                  fontWeight: FontWeight.w300,
+                                ),
+                              ),
+                              SizedBox(
+                                height: 15.0,
+                              ),
+                              Text(
+                                '10:00 AM - 5:00 PM',
+                                style:
+                                    robotoLight(size: 14.0, color: Colors.black)
+                                        .copyWith(
+                                  fontWeight: FontWeight.w300,
+                                ),
+                              ),
+                              SizedBox(
+                                height: 15.0,
+                              ),
+                              Container(
+                                width: w * (264 / kScreenWidth),
+                                child: Row(
+                                  children: [
+                                    Text(
+                                      'Zydus School',
+                                      style: robotoLight(
+                                              size: 14.0, color: Colors.black)
+                                          .copyWith(
+                                        fontWeight: FontWeight.w300,
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      width: 8.0,
+                                    ),
+                                    Expanded(
+                                      child: Divider(
+                                        height: 1,
+                                        thickness: 1,
+                                        color: Colors.black.withOpacity(0.3),
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      width: 4.0,
+                                    ),
+                                    Text(
+                                      'View in ',
+                                      style: robotoLight(
+                                              size: 10.0, color: Colors.black)
+                                          .copyWith(
+                                        fontWeight: FontWeight.w300,
+                                      ),
+                                    ),
+                                    Text(
+                                      'Maps',
+                                      style: robotoRegular(
+                                        size: 10.0,
+                                        color: kBlueShade,
+                                      ).copyWith(
+                                        fontWeight: FontWeight.w400,
+                                        decoration: TextDecoration.underline,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
                           ),
                         ],
                       ),
                       SizedBox(
-                        height: 11.0,
-                      ),
-                      Row(
-                        children: [
-                          GestureDetector(
-                            child: SvgPicture.asset(
-                              'assets/icons/vacancy.svg',
-                              color: kBlueShade,
-                            ),
-                          ),
-                          SizedBox(
-                            width: 4.0,
-                          ),
-                          SizedBox(
-                            width: w * 0.025,
-                          ),
-                          Text(
-                            '50 seats left',
-                            style: TextStyle(
-                              fontSize: h * (0.02 + 0.005),
-                            ),
-                          ),
-                        ],
-                      ),
-                      SizedBox(
-                        height: h * 0.018,
-                      ),
-                      Row(
-                        children: [
-                          Icon(
-                            Icons.timer,
-                            color: kBlueShade,
-                          ),
-                          SizedBox(
-                            width: w * 0.025,
-                          ),
-                          Text(
-                            '10:00 AM - 5:00 PM',
-                            style: TextStyle(fontSize: h * (0.02 + 0.005)),
-                          ),
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          Icon(
-                            Icons.location_on_outlined,
-                            color: kBlueShade,
-                          ),
-                          SizedBox(
-                            width: w * 0.025,
-                          ),
-                          Text(
-                            'Zydus School',
-                            style: TextStyle(
-                              fontSize: h * (0.02 + 0.005),
-                            ),
-                          ),
-                          Expanded(
-                            child: Divider(
-                              height: 50,
-                              thickness: 1,
-                              color: kGreyShade.withOpacity(0.4),
-                            ),
-                          ),
-                          Text(
-                            'View in ',
-                            style: TextStyle(fontSize: h * (0.02 - 0.005)),
-                          ),
-                          Text(
-                            'Maps',
-                            style: TextStyle(
-                              fontSize: h * (0.02 - 0.005),
-                              color: kBlueShade,
-                              decoration: TextDecoration.underline,
-                            ),
-                          ),
-                        ],
+                        height: 17.0,
                       ),
                       Text(
                         'Final booking closes on 11:59 PM, September 15, 2021',
-                        style: TextStyle(
-                          color: Colors.grey[300],
-                          fontSize: h * 0.02,
+                        style: robotoRegular(
+                          size: 10.0,
+                          color: Color(0xFFA4A4A4),
+                        ).copyWith(
+                          fontWeight: FontWeight.w400,
                         ),
+                      ),
+                      SizedBox(
+                        height: 10.0,
                       ),
                     ],
                   ),
                 ),
               ),
               Card(
-                elevation: 5.0,
+                elevation: 3.0,
                 child: Container(
-                  height: h * 0.25,
-                  padding: EdgeInsets.symmetric(horizontal: w * 0.015),
+                  height: h * (170 / kScreenHeight),
+                  width: w * (325 / kScreenWidth),
+                  padding: EdgeInsets.only(
+                    top: 8.0,
+                    left: 10.0,
+                    right: 10.0,
+                  ),
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
                           Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
                                 'INR 4000',
-                                style: TextStyle(
-                                  fontSize: h * 0.025,
-                                  fontWeight: FontWeight.w500,
+                                style: robotoLight(
+                                  size: 18.0,
+                                ).copyWith(
+                                  fontWeight: FontWeight.w300,
                                 ),
+                              ),
+                              SizedBox(
+                                height: h * (6 / kScreenHeight),
                               ),
                               Text(
                                 'includes',
-                                style: TextStyle(
-                                  fontSize: h * (0.02),
+                                style: robotoLight(
+                                  size: 10.0,
+                                ).copyWith(
+                                  fontWeight: FontWeight.w300,
                                 ),
                               ),
                             ],
+                          ),
+                          SizedBox(
+                            width: w * (113 / kScreenWidth),
                           ),
                           ElevatedButton(
                             style: ButtonStyle(
@@ -372,23 +421,33 @@ class _AboutMunScreenState extends State<AboutMunScreen> {
                               color: kBlueShade,
                               child: Text(
                                 'Download Iternary',
-                                style: TextStyle(color: Colors.white),
+                                style: robotoRegular(
+                                  size: 12.0,
+                                  color: Colors.white,
+                                ).copyWith(
+                                  fontWeight: FontWeight.w400,
+                                ),
                               ),
-                              padding: EdgeInsets.symmetric(
-                                  horizontal: w * 0.001, vertical: h * 0.0005),
+                              // padding: EdgeInsets.fromLTRB(
+                              //   7.0,
+                              //   8.0,
+                              //   6.0,
+                              //   11.0,
+                              // ),
                             ),
                           ),
                         ],
                       ),
                       Container(
-                        width: w * 0.63,
                         child: Row(
                           children: [
                             Text(
                               'BreakFast ',
-                              style: TextStyle(
-                                fontSize: h * 0.02,
+                              style: robotoRegular(
+                                size: 10.0,
                                 color: kBlueShade,
+                              ).copyWith(
+                                fontWeight: FontWeight.w400,
                               ),
                             ),
                             Expanded(
@@ -400,9 +459,11 @@ class _AboutMunScreenState extends State<AboutMunScreen> {
                             ),
                             Text(
                               ' Lunch ',
-                              style: TextStyle(
-                                fontSize: h * 0.02,
+                              style: robotoRegular(
+                                size: 10.0,
                                 color: kBlueShade,
+                              ).copyWith(
+                                fontWeight: FontWeight.w400,
                               ),
                             ),
                             Expanded(
@@ -414,51 +475,69 @@ class _AboutMunScreenState extends State<AboutMunScreen> {
                             ),
                             Text(
                               ' High Tea ',
-                              style: TextStyle(
-                                fontSize: h * 0.02,
+                              style: robotoRegular(
+                                size: 10.0,
                                 color: kBlueShade,
+                              ).copyWith(
+                                fontWeight: FontWeight.w400,
                               ),
+                            ),
+                            SizedBox(
+                              width: w * 127 / kScreenWidth,
                             ),
                           ],
                         ),
                       ),
                       Text(
                         'All meals along with Delegate Kit will be provided at the venue of the event.',
-                        style: TextStyle(
-                          color: Color(0xFF848484),
-                          fontSize: h * (0.02 - 0.005),
+                        style: robotoLight(
+                          size: 10.0,
+                          color: Color(0xff848484),
+                        ).copyWith(
+                          fontWeight: FontWeight.w300,
                         ),
                       ),
                       Row(
                         children: [
                           Text(
                             'Accomodation Package ',
-                            style: TextStyle(
-                              color: Color(0xFF848484),
-                              fontWeight: FontWeight.bold,
-                              fontSize: h * 0.02,
+                            style: robotoRegular(
+                              size: 12.0,
+                              color: Color(0xff848484),
+                            ).copyWith(
+                              fontWeight: FontWeight.w500,
                             ),
                           ),
                           Text(
                             'available at INR 8000',
-                            style: TextStyle(
-                              color: Color(0xFF848484),
-                              fontSize: h * 0.02,
+                            style: robotoRegular(
+                              size: 12.0,
+                              color: Color(0xff848484),
+                            ).copyWith(
+                              fontWeight: FontWeight.w300,
                             ),
                           ),
                         ],
+                      ),
+                      SizedBox(
+                        height: 9.0,
                       ),
                     ],
                   ),
                 ),
               ),
               Card(
-                elevation: 5.0,
+                elevation: 3.0,
                 child: Container(
-                  padding: EdgeInsets.symmetric(horizontal: w * 0.015),
-                  height: h * 0.25,
+                  height: h * (162 / kScreenHeight),
+                  width: w * (325 / kScreenWidth),
+                  padding: EdgeInsets.only(
+                    left: 10.0,
+                    right: 10.0,
+                    top: 10.0,
+                  ),
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
                         'Get in touch with the organizers',
@@ -472,72 +551,96 @@ class _AboutMunScreenState extends State<AboutMunScreen> {
                           FaIcon(
                             FontAwesomeIcons.instagram,
                             color: kBlueShade,
+                            size: 15.0,
                           ),
                           SizedBox(
-                            width: w * 0.02,
+                            width: 6.0,
                           ),
                           Text(
                             '@w.a.s._2021',
-                            style: TextStyle(
-                              color: Color(0xFF333333),
-                              fontSize: h * 0.018,
+                            style: robotoLight(
+                              size: 10.0,
+                              color: Color(0xff333333),
+                            ).copyWith(
+                              fontWeight: FontWeight.w300,
                             ),
                           ),
                         ],
+                      ),
+                      SizedBox(
+                        height: 11.0,
                       ),
                       Row(
                         children: [
                           FaIcon(
                             FontAwesomeIcons.facebookSquare,
                             color: kBlueShade,
+                            size: 15.0,
                           ),
                           SizedBox(
-                            width: w * 0.02,
+                            width: 6.0,
                           ),
                           Text(
                             'WorldArchiveSimulation2021',
-                            style: TextStyle(
-                              color: Color(0xFF333333),
-                              fontSize: h * 0.018,
+                            style: robotoLight(
+                              size: 10.0,
+                              color: Color(0xff333333),
+                            ).copyWith(
+                              fontWeight: FontWeight.w300,
                             ),
                           ),
                         ],
+                      ),
+                      SizedBox(
+                        height: 11.0,
                       ),
                       Row(
                         children: [
                           FaIcon(
                             FontAwesomeIcons.globe,
                             color: kBlueShade,
+                            size: 15.0,
                           ),
                           SizedBox(
-                            width: w * 0.02,
+                            width: 6.0,
                           ),
                           Text(
                             'www.wasahmedabad.com',
-                            style: TextStyle(
-                              color: Color(0xFF333333),
-                              fontSize: h * 0.018,
+                            style: robotoLight(
+                              size: 10.0,
+                              color: Color(0xff333333),
+                            ).copyWith(
+                              fontWeight: FontWeight.w300,
                             ),
                           ),
                         ],
+                      ),
+                      SizedBox(
+                        height: 11.0,
                       ),
                       Row(
                         children: [
                           Icon(
                             Icons.email_outlined,
                             color: kBlueShade,
+                            size: 15.0,
                           ),
                           SizedBox(
-                            width: w * 0.02,
+                            width: 6.0,
                           ),
                           Text(
                             'queries@ilmun.com',
-                            style: TextStyle(
-                              color: Color(0xFF333333),
-                              fontSize: h * 0.018,
+                            style: robotoLight(
+                              size: 10.0,
+                              color: Color(0xff333333),
+                            ).copyWith(
+                              fontWeight: FontWeight.w300,
                             ),
                           ),
                         ],
+                      ),
+                      SizedBox(
+                        height: 12.0,
                       ),
                     ],
                   ),
@@ -548,62 +651,63 @@ class _AboutMunScreenState extends State<AboutMunScreen> {
         ),
       ),
       bottomNavigationBar: Container(
-        height: h * 0.1,
+        height: h * (70 / kScreenHeight),
         width: w,
-        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 8),
+        decoration: BoxDecoration(
+          boxShadow: [
+            BoxShadow(
+              spreadRadius: 8,
+              blurRadius: 10,
+              offset: Offset(0, -2),
+              color: kIconShade,
+            ),
+          ],
+          color: Colors.white,
+        ),
+        padding: EdgeInsets.only(bottom: 20, left: 25, right: 25),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            FaIcon(
-              FontAwesomeIcons.briefcase,
+            SvgPicture.asset(
+              'assets/icons/briefcase.svg',
               color: Color(0xFF6C6C6C),
-              size: h * 0.03,
             ),
             Text(
               'Add to MyBriefcase',
-              style: TextStyle(
-                fontSize: h * (0.02 + 0.003),
+              style: robotoLight(
+                size: 16,
               ),
             ),
-            Container(
-              height: h * 0.05,
-              width: w * 0.4,
-              child: ElevatedButton(
-                style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(kBlueShade),
-                ),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (_) => SelectCommitteeScreen(),
-                    ),
-                  );
-                },
+            SizedBox(
+              width: 1,
+            ),
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => SelectCommitteeScreen(),
+                  ),
+                );
+              },
+              child: Container(
+                height: h * (36 / kScreenHeight),
+                width: w * (125 / kScreenWidth),
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(3), color: kBlueShade),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          'Book Now!',
-                          style: TextStyle(color: Colors.white),
-                        ),
-                        Text(
-                          'Select Committee',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: h * 0.014,
-                          ),
-                        ),
-                      ],
+                    Text(
+                      'Book Now!',
+                      style: robotoLight(size: 18, color: Colors.white),
                     ),
-                    Icon(
-                      Icons.arrow_forward_rounded,
-                      color: Colors.white,
-                      //size: h*0.02,
+                    SizedBox(
+                      width: 5,
                     ),
+                    SvgPicture.asset(
+                      'assets/icons/right_arrow.svg',
+                    )
                   ],
                 ),
               ),

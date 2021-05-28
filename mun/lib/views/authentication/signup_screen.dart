@@ -7,7 +7,6 @@ import 'package:mun/models/mun_user.dart';
 import 'package:mun/unused/select_city_screen.dart';
 import 'package:mun/views/elements/constants.dart';
 import 'package:mun/views/elements/textstyles.dart';
-import 'package:mun/views/elements/widgets.dart';
 import 'package:mun/views/elements/widgets/loading.dart';
 import 'package:mun/views/elements/widgets/logo.dart';
 import 'package:shared_preferences/shared_preferences.dart';

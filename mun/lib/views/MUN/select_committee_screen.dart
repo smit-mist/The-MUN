@@ -131,8 +131,7 @@ class _SelectCommitteeScreenState extends State<SelectCommitteeScreen> {
             BoxShadow(
               spreadRadius: 8,
               blurRadius: 10,
-              offset: Offset(0,-2),
-
+              offset: Offset(0, -2),
               color: kIconShade,
             ),
           ],
@@ -150,24 +149,38 @@ class _SelectCommitteeScreenState extends State<SelectCommitteeScreen> {
                 style: robotoLight(
                   size: 16,
                 )),
-            SizedBox(width: 1,),
-            Container(
-              height: h * (36 / kScreenHeight),
-              width: w * (125 / kScreenWidth),
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(3), color: kBlueShade),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    'Book Now!',
-                    style: robotoLight(size: 18, color: Colors.white),
+            SizedBox(
+              width: 1,
+            ),
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => MyBooking(),
                   ),
-                  SizedBox(width: 5,),
-                  SvgPicture.asset(
-                    'assets/icons/right_arrow.svg',
-                  )
-                ],
+                );
+              },
+              child: Container(
+                height: h * (36 / kScreenHeight),
+                width: w * (125 / kScreenWidth),
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(3), color: kBlueShade),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Book Now!',
+                      style: robotoLight(size: 18, color: Colors.white),
+                    ),
+                    SizedBox(
+                      width: 5,
+                    ),
+                    SvgPicture.asset(
+                      'assets/icons/right_arrow.svg',
+                    )
+                  ],
+                ),
               ),
             ),
           ],
