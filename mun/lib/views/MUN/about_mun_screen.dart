@@ -84,9 +84,9 @@ class _AboutMunScreenState extends State<AboutMunScreen> {
               Card(
                 elevation: 3.0,
                 child: Container(
-                  height: h * (113 / kScreenHeight),
+                  height: h * (114 / kScreenHeight),
                   width: w,
-                  padding: EdgeInsets.only(left: 11.0, top: 8.0, right: 11.0),
+                  padding: EdgeInsets.only(left: 11.0, top: 8.0, right: 9.0),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -303,7 +303,7 @@ class _AboutMunScreenState extends State<AboutMunScreen> {
                                 height: 15.0,
                               ),
                               Container(
-                                width: w * (264 / kScreenWidth),
+                                width: w * (250/ kScreenWidth),
                                 child: Row(
                                   children: [
                                     Text(
@@ -410,7 +410,7 @@ class _AboutMunScreenState extends State<AboutMunScreen> {
                             ],
                           ),
                           SizedBox(
-                            width: w * (113 / kScreenWidth),
+                            width: w * (84 / kScreenWidth),
                           ),
                           ElevatedButton(
                             style: ButtonStyle(
