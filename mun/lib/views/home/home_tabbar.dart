@@ -24,6 +24,8 @@ class _HomeTabBarState extends State<HomeTabBar> {
     UserProfileScreen(),
   ];
   int reviewForFuture = 1;
+  int reviewForRecom = 1;
+  int hearAboutUs = 1;
 
   @override
   Widget build(BuildContext context) {
@@ -61,334 +63,528 @@ class _HomeTabBarState extends State<HomeTabBar> {
 
     void getTheDialogForReview() {
       showDialog(
-          context: context,
-          builder: (_) => BackdropFilter(
-                filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
-                child: new AlertDialog(
-                  insetPadding: EdgeInsets.all(0),
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(2.0))),
-                  content: Builder(
-                    builder: (context) {
-                      // Get available height and width of the build area of this widget. Make a choice depending on the size.
-
-                      return SizedBox(
-                        height: h * 0.6,
-                        width: w * 0.75,
-                        child: Container(
-                          child: SingleChildScrollView(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  'Your Feedback Matters',
-                                  style: robotoMedium(size: 14),
+        context: context,
+        builder: (_) => BackdropFilter(
+          filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+          child: new AlertDialog(
+            scrollable: true,
+            insetPadding: EdgeInsets.symmetric(horizontal: 25),
+            contentPadding: EdgeInsets.symmetric(horizontal: 15),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(
+                Radius.circular(3.0),
+              ),
+            ),
+            content: StatefulBuilder(
+              builder: (context, setState) {
+                return Container(
+                  height: h * (565 / kScreenHeight),
+                  width: w * (325 / kScreenWidth),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Container(
+                        height: h*(500/kScreenHeight),
+                        child: SingleChildScrollView(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              SizedBox(
+                                height: 10,
+                              ),
+                              Text(
+                                'Your Feedback Matters',
+                                style: robotoLight(size: 18),
+                              ),
+                              SizedBox(
+                                height: 5,
+                              ),
+                              Divider(
+                                height: 1,
+                                thickness: 1,
+                                color: Colors.black.withOpacity(0.3),
+                              ),
+                              SizedBox(
+                                height: 25,
+                              ),
+                              Text(
+                                'How satisfied are you with the booking experience?',
+                                style: robotoLight(
+                                  size: 14,
                                 ),
-                                SizedBox(
-                                  height: 5,
-                                ),
-                                Divider(
-                                  height: 1,
-                                  thickness: 1,
-                                  color: Colors.grey,
-                                ),
-                                SizedBox(
-                                  height: h * (0.03),
-                                ),
-                                SizedBox(
-                                  child: Text(
-                                      'How satisfied are you with the booking experience?'),
-                                  width: w * 0.7,
-                                ),
-                                SizedBox(
-                                  height: 15,
-                                ),
-                                RatingBar.builder(
-                                  initialRating: 3,
-                                  minRating: 1,
-                                  direction: Axis.horizontal,
-                                  allowHalfRating: false,
-                                  itemCount: 5,
-                                  unratedColor: Colors.grey.withOpacity(0.2),
-                                  itemPadding:
-                                      EdgeInsets.symmetric(horizontal: 8.0),
-                                  itemBuilder: (context, _) => Icon(
-                                    Icons.circle,
-                                    color: Colors.blue,
+                              ),
+                              SizedBox(
+                                height: 15,
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(right: 25.0),
+                                child: Container(
+                                  width: w * 0.9,
+                                  height: 50,
+                                  child: Stack(
+                                    alignment: Alignment.center,
+                                    children: [
+                                      Divider(
+                                        height: 1,
+                                        thickness: 1,
+                                        color: Colors.black.withOpacity(0.3),
+                                      ),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Container(
+                                            height: 45,
+                                            width: 45,
+                                            decoration: BoxDecoration(
+                                              shape: BoxShape.circle,
+                                              color: kCommitteeTileShade,
+                                            ),
+                                          ),
+                                          Container(
+                                            height: 45,
+                                            width: 45,
+                                            decoration: BoxDecoration(
+                                              shape: BoxShape.circle,
+                                              color: kCommitteeTileShade,
+                                            ),
+                                          ),
+                                          Container(
+                                            height: 45,
+                                            width: 45,
+                                            decoration: BoxDecoration(
+                                              shape: BoxShape.circle,
+                                              color: kCommitteeTileShade,
+                                            ),
+                                          ),
+                                          Container(
+                                            height: 45,
+                                            width: 45,
+                                            decoration: BoxDecoration(
+                                              shape: BoxShape.circle,
+                                              color: kCommitteeTileShade,
+                                            ),
+                                          ),
+                                          Container(
+                                            height: 45,
+                                            width: 45,
+                                            decoration: BoxDecoration(
+                                              shape: BoxShape.circle,
+                                              color: kCommitteeTileShade,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
                                   ),
-                                  onRatingUpdate: (rating) {
-                                    print(rating);
-                                  },
                                 ),
-                                SizedBox(
-                                  height: h * (0.03),
+                              ),
+                              SizedBox(
+                                height: 30,
+                              ),
+                              Text(
+                                'Would you choose us to be your MUN booking partner in the future?',
+                                style: robotoLight(
+                                  size: 14,
                                 ),
-                                SizedBox(
-                                  child: Text(
-                                      'Would you choose us to be your MUN booking partner in the future?'),
-                                  width: w * 0.7,
-                                ),
-                                SizedBox(
-                                  height: 15,
-                                ),
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceEvenly,
-                                  children: [
-                                    GestureDetector(
-                                      onTap: () {
-                                        setState(() {
+                              ),
+                              SizedBox(
+                                height: 15,
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  GestureDetector(
+                                    onTap: () {
+                                      setState(
+                                        () {
                                           reviewForFuture = 1;
-                                        });
-                                      },
-                                      child: Container(
-                                        height: 40,
-                                        width: w * 0.22,
+                                        },
+                                      );
+                                    },
+                                    child: Container(
+                                      height: 30,
+                                      width: 90,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(3),
                                         color: reviewForFuture == 1
                                             ? Colors.blue
-                                            : Colors.grey.withOpacity(0.2),
-                                        child: Center(
-                                          child: Text(
-                                            'Definitely',
-                                            style: TextStyle(
-                                                color: reviewForFuture == 1
-                                                    ? Colors.white
-                                                    : Colors.blue),
-                                          ),
+                                            : kGreyShade,
+                                      ),
+                                      child: Align(
+                                        alignment: Alignment.centerLeft,
+                                        child: Text(
+                                          '  Definitely',
+                                          style: TextStyle(
+                                              color: reviewForFuture == 1
+                                                  ? Colors.white
+                                                  : Colors.blue),
                                         ),
                                       ),
                                     ),
-                                    GestureDetector(
-                                      onTap: () {
-                                        setState(() {
-                                          reviewForFuture = 2;
-                                        });
-                                      },
-                                      child: Container(
-                                        width: w * 0.22,
-                                        height: 40,
+                                  ),
+                                  SizedBox(
+                                    width: 5,
+                                  ),
+                                  GestureDetector(
+                                    onTap: () {
+                                      setState(() {
+                                        reviewForFuture = 2;
+                                      });
+                                    },
+                                    child: Container(
+                                      height: 30,
+                                      width: 90,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(3),
                                         color: reviewForFuture == 2
                                             ? Colors.blue
-                                            : Colors.grey.withOpacity(0.2),
-                                        child: Center(
-                                          child: Text(
-                                            'Maybe',
-                                            style: TextStyle(
+                                            : kGreyShade,
+                                      ),
+                                      child: Align(
+                                        alignment: Alignment.centerLeft,
+                                        child: Text(
+                                          '  Maybe',
+                                          style: TextStyle(
                                               color: reviewForFuture == 2
                                                   ? Colors.white
-                                                  : Colors.blue,
-                                            ),
-                                          ),
+                                                  : Colors.blue),
                                         ),
                                       ),
                                     ),
-                                    GestureDetector(
-                                      onTap: () {
-                                        setState(() {
-                                          reviewForFuture = 3;
-                                        });
-                                      },
-                                      child: Container(
-                                        width: w * 0.22,
-                                        height: 40,
+                                  ),
+                                  SizedBox(
+                                    width: 5,
+                                  ),
+                                  GestureDetector(
+                                    onTap: () {
+                                      setState(() {
+                                        reviewForFuture = 3;
+                                      });
+                                    },
+                                    child: Container(
+                                      height: 30,
+                                      width: 90,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(3),
                                         color: reviewForFuture == 3
                                             ? Colors.blue
-                                            : Colors.grey.withOpacity(0.2),
-                                        child: Center(
-                                          child: Text(
-                                            'Not at all',
-                                            style: TextStyle(
+                                            : kGreyShade,
+                                      ),
+                                      child: Align(
+                                        alignment: Alignment.centerLeft,
+                                        child: Text(
+                                          '  Not at all',
+                                          style: TextStyle(
                                               color: reviewForFuture == 3
                                                   ? Colors.white
-                                                  : Colors.blue,
-                                            ),
-                                          ),
+                                                  : Colors.blue),
                                         ),
                                       ),
                                     ),
-                                  ],
+                                  ),
+                                ],
+                              ),
+                              SizedBox(
+                                height: 30,
+                              ),
+                              Text(
+                                'Would you recommend MyNextMUN to a friend?',
+                                style: robotoLight(
+                                  size: 14,
                                 ),
-                                SizedBox(
-                                  height: 15,
-                                ),
-                                SizedBox(
-                                  child: Text(
-                                      'Would you recommend MyNextMUN to a friend?'),
-                                  width: w * 0.7,
-                                ),
-                                SizedBox(
-                                  height: 15,
-                                ),
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceEvenly,
-                                  children: [
-                                    GestureDetector(
-                                      onTap: () {
-                                        setState(() {
-                                          reviewForFuture = 1;
-                                        });
-                                      },
-                                      child: Container(
-                                        height: 40,
-                                        width: w * 0.22,
-                                        color: reviewForFuture == 1
+                              ),
+                              SizedBox(
+                                height: 15,
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  GestureDetector(
+                                    onTap: () {
+                                      setState(
+                                        () {
+                                          reviewForRecom = 1;
+                                        },
+                                      );
+                                    },
+                                    child: Container(
+                                      height: 30,
+                                      width: 90,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(3),
+                                        color: reviewForRecom == 1
                                             ? Colors.blue
-                                            : Colors.grey.withOpacity(0.2),
-                                        child: Center(
-                                          child: Text(
-                                            'Definitely',
-                                            style: TextStyle(
-                                                color: reviewForFuture == 1
-                                                    ? Colors.white
-                                                    : Colors.blue),
-                                          ),
-                                        ),
+                                            : kGreyShade,
                                       ),
-                                    ),
-                                    GestureDetector(
-                                      onTap: () {
-                                        setState(() {
-                                          reviewForFuture = 2;
-                                        });
-                                      },
-                                      child: Container(
-                                        width: w * 0.22,
-                                        height: 40,
-                                        color: reviewForFuture == 2
-                                            ? Colors.blue
-                                            : Colors.grey.withOpacity(0.2),
-                                        child: Center(
-                                          child: Text(
-                                            'Maybe',
-                                            style: TextStyle(
-                                              color: reviewForFuture == 2
+                                      child: Align(
+                                        alignment: Alignment.centerLeft,
+                                        child: Text(
+                                          '  Definitely',
+                                          style: TextStyle(
+                                              color: reviewForRecom == 1
                                                   ? Colors.white
-                                                  : Colors.blue,
-                                            ),
-                                          ),
+                                                  : Colors.blue),
                                         ),
                                       ),
                                     ),
-                                    GestureDetector(
-                                      onTap: () {
-                                        setState(() {
-                                          reviewForFuture = 3;
-                                        });
-                                      },
-                                      child: Container(
-                                        width: w * 0.22,
-                                        height: 40,
-                                        color: reviewForFuture == 3
+                                  ),
+                                  SizedBox(
+                                    width: 5,
+                                  ),
+                                  GestureDetector(
+                                    onTap: () {
+                                      setState(() {
+                                        reviewForRecom = 2;
+                                      });
+                                    },
+                                    child: Container(
+                                      height: 30,
+                                      width: 90,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(3),
+                                        color: reviewForRecom == 2
                                             ? Colors.blue
-                                            : Colors.grey.withOpacity(0.2),
-                                        child: Center(
-                                          child: Text(
-                                            'Not at all',
-                                            style: TextStyle(
-                                              color: reviewForFuture == 3
+                                            : kGreyShade,
+                                      ),
+                                      child: Align(
+                                        alignment: Alignment.centerLeft,
+                                        child: Text(
+                                          '  Maybe',
+                                          style: TextStyle(
+                                              color: reviewForRecom == 2
                                                   ? Colors.white
-                                                  : Colors.blue,
-                                            ),
+                                                  : Colors.blue),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    width: 5,
+                                  ),
+                                  GestureDetector(
+                                    onTap: () {
+                                      setState(() {
+                                        reviewForRecom = 3;
+                                      });
+                                    },
+                                    child: Container(
+                                      height: 30,
+                                      width: 90,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(3),
+                                        color: reviewForRecom == 3
+                                            ? Colors.blue
+                                            : kGreyShade,
+                                      ),
+                                      child: Align(
+                                        alignment: Alignment.centerLeft,
+                                        child: Text(
+                                          '  Not at all',
+                                          style: TextStyle(
+                                            color: reviewForRecom == 3
+                                                ? Colors.white
+                                                : Colors.blue,
                                           ),
                                         ),
                                       ),
                                     ),
-                                  ],
-                                ),
-                                SizedBox(
-                                  height: 15,
-                                ),
-                                SizedBox(
-                                  child: Text('How did you hear about us?'),
-                                  width: w * 0.7,
-                                ),
-                                SizedBox(
-                                  height: 15,
-                                ),
-                                Column(
-                                  children: [
-                                    Container(
-                                      width: w * 0.42,
-                                      height: 40,
-                                      color: Colors.blue,
+                                  ),
+                                ],
+                              ),
+                              SizedBox(
+                                height: 30,
+                              ),
+                              Text(
+                                'How did you hear about us?',
+                                style: robotoLight(size: 14),
+                              ),
+                              SizedBox(
+                                height: 15,
+                              ),
+                              Column(
+                                children: [
+                                  GestureDetector(
+                                    onTap: () {
+                                      setState(() {
+                                        hearAboutUs = 1;
+                                      });
+                                    },
+                                    child: Container(
+                                      width: w * (187 / kScreenWidth),
+                                      height: 30,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(3),
+                                        color: hearAboutUs == 1
+                                            ? Colors.blue
+                                            : kGreyShade,
+                                      ),
                                       child: Center(
                                         child: Text(
                                           'Google',
-                                          style: TextStyle(color: Colors.white),
+                                          style: TextStyle(
+                                              color: hearAboutUs == 1
+                                                  ? Colors.white
+                                                  : kBlueShade),
                                         ),
                                       ),
                                     ),
-                                    SizedBox(
-                                      height: 5,
-                                    ),
-                                    Container(
-                                      width: w * 0.42,
-                                      height: 40,
-                                      color: Colors.grey.withOpacity(0.2),
+                                  ),
+                                  SizedBox(
+                                    height: 5,
+                                  ),
+                                  GestureDetector(
+                                    onTap: () {
+                                      setState(() {
+                                        hearAboutUs = 2;
+                                      });
+                                    },
+                                    child: Container(
+                                      width: w * (187 / kScreenWidth),
+                                      height: 30,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(3),
+                                        color: hearAboutUs == 2
+                                            ? Colors.blue
+                                            : kGreyShade,
+                                      ),
                                       child: Center(
                                         child: Text(
                                           'Word of Mouth',
-                                          style: TextStyle(color: Colors.blue),
+                                          style: TextStyle(
+                                              color: hearAboutUs == 2
+                                                  ? Colors.white
+                                                  : kBlueShade),
                                         ),
                                       ),
                                     ),
-                                    SizedBox(
-                                      height: 5,
-                                    ),
-                                    Container(
-                                      width: w * 0.42,
-                                      height: 40,
-                                      color: Colors.grey.withOpacity(0.2),
+                                  ),
+                                  SizedBox(
+                                    height: 5,
+                                  ),
+                                  GestureDetector(
+                                    onTap: () {
+                                      setState(() {
+                                        hearAboutUs = 3;
+                                      });
+                                    },
+                                    child: Container(
+                                      width: w * (187 / kScreenWidth),
+                                      height: 30,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(3),
+                                        color: hearAboutUs == 3
+                                            ? Colors.blue
+                                            : kGreyShade,
+                                      ),
                                       child: Center(
                                         child: Text(
                                           'Social Media',
-                                          style: TextStyle(color: Colors.blue),
+                                          style: TextStyle(
+                                              color: hearAboutUs == 3
+                                                  ? Colors.white
+                                                  : kBlueShade),
                                         ),
                                       ),
                                     ),
-                                    SizedBox(
-                                      height: 5,
-                                    ),
-                                    Container(
-                                      width: w * 0.42,
-                                      height: 40,
-                                      color: Colors.grey.withOpacity(0.2),
+                                  ),
+                                  SizedBox(
+                                    height: 5,
+                                  ),
+                                  GestureDetector(
+                                    onTap: () {
+                                      setState(() {
+                                        hearAboutUs = 4;
+                                      });
+                                    },
+                                    child: Container(
+                                      width: w * (187 / kScreenWidth),
+                                      height: 30,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(3),
+                                        color: hearAboutUs == 4
+                                            ? Colors.blue
+                                            : kGreyShade,
+                                      ),
                                       child: Center(
                                         child: Text(
                                           'In person event',
-                                          style: TextStyle(color: Colors.blue),
+                                          style: TextStyle(
+                                              color: hearAboutUs == 4
+                                                  ? Colors.white
+                                                  : kBlueShade),
                                         ),
                                       ),
                                     ),
-                                    SizedBox(
-                                      height: 5,
-                                    ),
-                                    Container(
-                                      width: w * 0.42,
-                                      height: 40,
-                                      color: Colors.grey.withOpacity(0.2),
+                                  ),
+                                  SizedBox(
+                                    height: 5,
+                                  ),
+                                  GestureDetector(
+                                    onTap: () {
+                                      setState(() {
+                                        hearAboutUs = 5;
+                                      });
+                                    },
+                                    child: Container(
+                                      width: w * (187 / kScreenWidth),
+                                      height: 30,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(3),
+                                        color: hearAboutUs == 5
+                                            ? Colors.blue
+                                            : kGreyShade,
+                                      ),
                                       child: Center(
                                         child: Text(
                                           'Other',
-                                          style: TextStyle(color: Colors.blue),
+                                          style: TextStyle(
+                                              color: hearAboutUs == 5
+                                                  ? Colors.white
+                                                  : kBlueShade),
                                         ),
                                       ),
                                     ),
-                                    SizedBox(
-                                      height: 5,
-                                    ),
-                                  ],
-                                ),
-                              ],
+                                  ),
+                                  SizedBox(
+                                    height: 5,
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                  //    SizedBox(height: 10,),
+                      Align(
+                        alignment: Alignment.centerRight,
+                        child: Container(
+                          height: 30,
+                          width: 65,
+                          decoration: BoxDecoration(
+                            color: kBlueShade,
+                            borderRadius: BorderRadius.circular(3),
+                          ),
+                          child: Center(
+                            child: Text(
+                              'Submit',
+                              style: robotoRegular(
+                                size: 16,
+                                color: Colors.white,
+                              ),
                             ),
                           ),
                         ),
-                      );
-                    },
+                      ),
+
+                    ],
                   ),
-                ),
-              ));
+                );
+              },
+            ),
+          ),
+        ),
+      );
     }
 
     return Scaffold(
@@ -441,14 +637,15 @@ class _HomeTabBarState extends State<HomeTabBar> {
               RawMaterialButton(
                 onPressed: () {
                   setState(() {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (_) => SelectCommitteeScreen(),
-                      ),
-                    );
+                    getTheDialogForReview();
+                    // Navigator.push(
+                    //   context,
+                    //   MaterialPageRoute(
+                    //     builder: (_) => SelectCommitteeScreen(),
+                    //   ),
+                    // );
                     // Navigator is added for testing purpose
-                    index = 3;
+                    //  index = 3;
                   });
                 },
                 child: Column(

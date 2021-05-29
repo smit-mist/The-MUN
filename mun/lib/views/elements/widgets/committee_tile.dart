@@ -84,7 +84,7 @@ class _CommitteeHorizontalTileState extends State<CommitteeHorizontalTile> {
             Align(
               alignment: Alignment.topRight,
               child: Padding(
-                padding: const EdgeInsets.all(5.0),
+                padding: const EdgeInsets.only(top: 5,right: 10),
                 child: Icon(
                   Icons.share,
                   color: Colors.white,

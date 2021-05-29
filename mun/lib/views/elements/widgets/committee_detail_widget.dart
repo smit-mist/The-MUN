@@ -137,7 +137,9 @@ class _CommitteeDetailState extends State<CommitteeDetail> {
                   offset:Offset(3, 3)// changes position of shadow
                 ),
               ],
+              borderRadius: BorderRadius.circular(3),
             ),
+
           ),
           SizedBox(height: 20,),
         ],

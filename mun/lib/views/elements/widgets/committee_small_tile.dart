@@ -53,10 +53,8 @@ class _CommitteeSmallTileState extends State<CommitteeSmallTile> {
               ),
               decoration: BoxDecoration(
                 color: Colors.white,
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(3),
-                  topRight: Radius.circular(3),
-                ),
+                borderRadius: BorderRadius.circular(3)
+
               ),
             ),
           )
