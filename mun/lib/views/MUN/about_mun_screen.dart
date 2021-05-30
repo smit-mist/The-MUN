@@ -26,27 +26,41 @@ class _AboutMunScreenState extends State<AboutMunScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        centerTitle: false,
+        leading: Container(),
+        toolbarHeight: 70,
         backgroundColor: Colors.white,
-        leading: IconButton(
-          color: Colors.black,
-          icon: Icon(Icons.arrow_back),
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
+        elevation: 0,
+        titleSpacing: -25,
         title: Container(
-          alignment: Alignment.centerLeft,
+          width: w,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              MUNLogo(),
-              Divider(
-                height: 0.01,
-                thickness: 1,
-                color: kGreyShade.withOpacity(0.4),
+              Row(
+                children: [
+                  Icon(
+                    Icons.arrow_back,
+                    color: kIconShade,
+                    size: 32,
+                  ),
+                  SizedBox(
+                    width: 5,
+                  ),
+                  MUNLogo(),
+                ],
               ),
+              SizedBox(
+                height: 15,
+              ),
+              Container(
+                width: w * (345 / kScreenWidth),
+                padding: const EdgeInsets.only(right: 25.0),
+                child: Divider(
+                  height: 0.01,
+                  thickness: 1,
+                  color: Colors.black.withOpacity(0.3),
+                ),
+              )
             ],
           ),
         ),
@@ -84,7 +98,7 @@ class _AboutMunScreenState extends State<AboutMunScreen> {
               Card(
                 elevation: 3.0,
                 child: Container(
-                  height: h * (114 / kScreenHeight),
+                  height: h * (126 / kScreenHeight),
                   width: w,
                   padding: EdgeInsets.only(left: 11.0, top: 8.0, right: 9.0),
                   child: Column(
@@ -127,18 +141,21 @@ class _AboutMunScreenState extends State<AboutMunScreen> {
                         ),
                       ),
                       Text(
-                        'DAYS    HOURS    MINUTES  SECONDS',
+                        ' DAYS         HOURS         MINUTES        SECONDS',
                         style: robotoLight(
                           size: 8.0,
                         ).copyWith(
                           fontWeight: FontWeight.w300,
                         ),
                       ),
+                      SizedBox(
+                        height: 11.0,
+                      ),
                       Wrap(
                         children: [
                           Text(
                             '*Priority registration customers will enjoy',
-                            style: robotoLight(
+                            style: robotoRegular(
                               size: 8.0,
                               color: Color(0xffA3A3A3),
                             ).copyWith(
@@ -147,7 +164,7 @@ class _AboutMunScreenState extends State<AboutMunScreen> {
                           ),
                           Text(
                             ' added benefits ',
-                            style: robotoLight(
+                            style: robotoRegular(
                               size: 8.0,
                               color: kBlueShade,
                             ).copyWith(
@@ -156,7 +173,7 @@ class _AboutMunScreenState extends State<AboutMunScreen> {
                           ),
                           Text(
                             'WITHOUT any added costs',
-                            style: robotoLight(
+                            style: robotoRegular(
                               size: 8.0,
                               color: Color(0xffA3A3A3),
                             ).copyWith(
@@ -303,7 +320,7 @@ class _AboutMunScreenState extends State<AboutMunScreen> {
                                 height: 15.0,
                               ),
                               Container(
-                                width: w * (250/ kScreenWidth),
+                                width: w * (250 / kScreenWidth),
                                 child: Row(
                                   children: [
                                     Text(
@@ -646,6 +663,9 @@ class _AboutMunScreenState extends State<AboutMunScreen> {
                   ),
                 ),
               ),
+              SizedBox(
+                height: 7.0,
+              ),
             ],
           ),
         ),
@@ -691,16 +711,29 @@ class _AboutMunScreenState extends State<AboutMunScreen> {
                 );
               },
               child: Container(
-                height: h * (36 / kScreenHeight),
+                height: h * (40 / kScreenHeight),
                 width: w * (125 / kScreenWidth),
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(3), color: kBlueShade),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(
-                      'Book Now!',
-                      style: robotoLight(size: 18, color: Colors.white),
+                    Column(
+                      children: [
+                        Text(
+                          'Book Now!',
+                          style: robotoLight(size: 18, color: Colors.white),
+                        ),
+                        Text(
+                          'Select Committee',
+                          style: robotoLight(
+                            size: 10.0,
+                            color: Colors.white,
+                          ).copyWith(
+                            fontWeight: FontWeight.w300,
+                          ),
+                        ),
+                      ],
                     ),
                     SizedBox(
                       width: 5,

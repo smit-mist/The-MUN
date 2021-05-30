@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mun/views/MUN/summary_of_booking_screen.dart';
 import 'package:mun/views/elements/constants.dart';
+import 'package:mun/views/elements/textstyles.dart';
 import 'package:mun/views/elements/widgets/logo.dart';
 
 class MyBooking extends StatefulWidget {
@@ -14,36 +15,53 @@ class _MyBooking extends State<MyBooking> {
     double h = MediaQuery.of(context).size.height;
     double w = MediaQuery.of(context).size.width;
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        centerTitle: false,
-        backgroundColor: Colors.grey,
-        leading: IconButton(
-          color: Colors.black,
-          icon: Icon(Icons.arrow_back),
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
+        leading: Container(),
+        toolbarHeight: 70,
+        backgroundColor: Colors.white,
+        elevation: 0,
+        titleSpacing: -25,
         title: Container(
-          alignment: Alignment.centerLeft,
+          width: w,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              MUNLogo(),
-              Divider(
-                height: 0.01,
-                thickness: 1,
-                color: kGreyShade.withOpacity(0.4),
+              Row(
+                children: [
+                  Icon(
+                    Icons.arrow_back,
+                    color: kIconShade,
+                    size: 32,
+                  ),
+                  SizedBox(
+                    width: 5,
+                  ),
+                  MUNLogo(),
+                ],
               ),
+              SizedBox(
+                height: 15,
+              ),
+              Container(
+                width: w * (345 / kScreenWidth),
+                padding: const EdgeInsets.only(right: 25.0),
+                child: Divider(
+                  height: 0.01,
+                  thickness: 1,
+                  color: Colors.black.withOpacity(0.3),
+                ),
+              )
             ],
           ),
         ),
       ),
       body: Container(
+        color: kGreyShade,
         height: h,
         width: w,
-        padding: EdgeInsets.fromLTRB(h * 0.021, h * 0.021, h * 0.021, 0.0),
+        padding: EdgeInsets.fromLTRB(
+            w * (25 / kScreenWidth), 15.0, w * (25 / kScreenWidth), 0.0),
         child: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -51,21 +69,22 @@ class _MyBooking extends State<MyBooking> {
             children: [
               Text(
                 'My Booking',
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: h * 0.025,
+                style: robotoLight(
+                  size: 18.0,
+                ).copyWith(
+                  fontWeight: FontWeight.w300,
                 ),
               ),
               SizedBox(
-                height: h * 0.01,
+                height: 8.0,
               ),
               Divider(
                 height: 0.01,
                 thickness: 1,
-                color: kGreyShade.withOpacity(0.4),
+                color: Colors.black.withOpacity(0.3),
               ),
               SizedBox(
-                height: h * 0.03,
+                height: 8.0,
               ),
               Container(
                 height: h * 0.28,

@@ -152,8 +152,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                     color: Colors.black.withOpacity(0.3),
                                   ),
                                   hintText: 'Email id',
-                                  contentPadding:
-                                      EdgeInsets.fromLTRB(14.0, 13.0, 0, 11.0),
+                                  contentPadding: EdgeInsets.fromLTRB(
+                                    14.0,
+                                    13.0,
+                                    0,
+                                    11.0,
+                                  ),
                                   border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(3),
                                     borderSide: BorderSide(
@@ -222,30 +226,30 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                     width: w * (199 / kScreenWidth),
                                   ),
                                   GestureDetector(
-                                  child: SvgPicture.asset(
-                                    'assets/icons/eye_regular.svg',
-                                    color: kBlueShade,
+                                    child: isVisible
+                                        ? SvgPicture.asset(
+                                            'assets/icons/eye_regular.svg',
+                                            color: kBlueShade,
+                                          )
+                                        : SvgPicture.asset(
+                                            'assets/icons/eye_closed.svg',
+                                            color: kBlueShade,
+                                          ),
+                                    onTap: () {
+                                      setState(() {
+                                        isVisible = !isVisible;
+                                      });
+                                    },
                                   ),
-                                  onTap: () {
-                                    setState(() {
-                                      isVisible = true;
-                                    });
-                                  },
-                                ),
-                                SizedBox(width: 4.0,),
+                                  SizedBox(
+                                    width: 4.0,
+                                  ),
                                 ],
                               ),
                             ),
                             Container(
                               height: h * (38 / kScreenHeight),
-                              decoration: BoxDecoration(
-                                color: kGreyShade,
-                                border: Border(
-                                  bottom: BorderSide(
-                                    color: Colors.grey[350],
-                                  ),
-                                ),
-                              ),
+                              color: kGreyShade,
                               child: Row(
                                 children: [
                                   Expanded(
@@ -290,17 +294,24 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                     width: w * (170 / kScreenWidth),
                                   ),
                                   GestureDetector(
-                                  child: SvgPicture.asset(
-                                    'assets/icons/eye_regular.svg',
-                                    color: kBlueShade,
+                                    child: isVisible
+                                        ? SvgPicture.asset(
+                                            'assets/icons/eye_regular.svg',
+                                            color: kBlueShade,
+                                          )
+                                        : SvgPicture.asset(
+                                            'assets/icons/eye_closed.svg',
+                                            color: kBlueShade,
+                                          ),
+                                    onTap: () {
+                                      setState(() {
+                                        isVisible = !isVisible;
+                                      });
+                                    },
                                   ),
-                                  onTap: () {
-                                    setState(() {
-                                      isVisible = true;
-                                    });
-                                  },
-                                ),
-                                SizedBox(width: 4.0,),
+                                  SizedBox(
+                                    width: 4.0,
+                                  ),
                                 ],
                               ),
                             ),
@@ -324,8 +335,17 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           Container(
+                              color: kBlueShade,
+                              child: SvgPicture.asset(
+                                'assets/icons/checkbox.svg',
+                                color: Colors.white,
+                              )),
+                          SizedBox(
+                            width: 3.0,
+                          ),
+                          Container(
                             width: w * 0.77,
-                            child: Wrap(
+                            child: Column(
                               children: [
                                 Text(
                                   "By creating an account, I agree to MyNextMUN's ",
@@ -334,32 +354,36 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                     color: Colors.black,
                                   ),
                                 ),
-                                GestureDetector(
-                                  onTap: () {},
-                                  child: Text(
-                                    'Conditions of Use ',
-                                    style: robotoLight(
-                                      size: 13.0,
-                                      color: kBlueShade,
+                                Row(
+                                  children: [
+                                    GestureDetector(
+                                      onTap: () {},
+                                      child: Text(
+                                        'Conditions of Use ',
+                                        style: robotoLight(
+                                          size: 13.0,
+                                          color: kBlueShade,
+                                        ),
+                                      ),
                                     ),
-                                  ),
-                                ),
-                                Text(
-                                  'and',
-                                  style: robotoLight(
-                                    size: 13.0,
-                                    color: Colors.black,
-                                  ),
-                                ),
-                                GestureDetector(
-                                  onTap: () {},
-                                  child: Text(
-                                    ' Privacy Policy',
-                                    style: robotoLight(
-                                      size: 13.0,
-                                      color: kBlueShade,
+                                    Text(
+                                      'and',
+                                      style: robotoLight(
+                                        size: 13.0,
+                                        color: Colors.black,
+                                      ),
                                     ),
-                                  ),
+                                    GestureDetector(
+                                      onTap: () {},
+                                      child: Text(
+                                        ' Privacy Policy',
+                                        style: robotoLight(
+                                          size: 13.0,
+                                          color: kBlueShade,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ],
                             ),
