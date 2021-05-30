@@ -35,7 +35,7 @@ class _SelectCommitteeScreenState extends State<SelectCommitteeScreen> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         leading: Container(),
-        toolbarHeight: 70,
+        toolbarHeight: 60,
         backgroundColor: Colors.white,
         elevation: 0,
         titleSpacing: -25,
@@ -58,7 +58,7 @@ class _SelectCommitteeScreenState extends State<SelectCommitteeScreen> {
                 ],
               ),
               SizedBox(
-                height: 15,
+                height: 5,
               ),
               Container(
                 width: w * (345 / kScreenWidth),
