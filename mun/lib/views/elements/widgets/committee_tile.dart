@@ -39,7 +39,7 @@ class _CommitteeHorizontalTileState extends State<CommitteeHorizontalTile> {
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(5),
                 child: Image.network(
-                  'https://picsum.photos/300/200?blur',
+                    'https://picsum.photos/300/200',
                   loadingBuilder: (BuildContext context, Widget child,
                       ImageChunkEvent loadingProgress) {
                     if (loadingProgress == null) return child;
@@ -58,12 +58,12 @@ class _CommitteeHorizontalTileState extends State<CommitteeHorizontalTile> {
               //height: w * 0.5,
             ),
             Positioned(
-              bottom: 0,
+              bottom: 5,
               left: 0,
               child: Container(
                 padding: EdgeInsets.only(left: 5),
-                    height: (h * (39 / kScreenHeight)),
-                  width: (w * (40 / kScreenWidth)),
+          //          height: (h * (39 / kScreenHeight)),
+            //      width: (w * (40 / kScreenWidth)),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
