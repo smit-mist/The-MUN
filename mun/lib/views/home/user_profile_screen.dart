@@ -153,7 +153,7 @@ class _TileState extends State<Tile> {
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width;
     return Padding(
-      padding: const EdgeInsets.only(bottom:10.0),
+      padding: const EdgeInsets.only(bottom: 10.0),
       child: Container(
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -168,11 +168,14 @@ class _TileState extends State<Tile> {
               children: [
                 Text(
                   widget.text,
-                  style: robotoLight(size: 14,color: Colors.black.withOpacity(0.8)),
+                  style: robotoLight(
+                      size: 14, color: Colors.black.withOpacity(0.8)),
                 ),
-                SizedBox(height: 10,),
                 SizedBox(
-                  width: w * 0.8,
+                  height: 10,
+                ),
+                SizedBox(
+                  width: w - 80,
                   child: Divider(
                     thickness: 1,
                     height: 1,
