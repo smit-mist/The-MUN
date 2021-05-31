@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mun/views/MUN/receipt_screen.dart';
 import 'package:mun/views/elements/constants.dart';
+import 'package:mun/views/elements/textstyles.dart';
 import 'package:mun/views/elements/widgets/logo.dart';
 
 //TODO: Add vertical divider
@@ -35,29 +37,43 @@ class BookingSummary extends StatelessWidget {
     double h = MediaQuery.of(context).size.height;
     double w = MediaQuery.of(context).size.width;
     return Scaffold(
-      backgroundColor: Colors.grey,
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        centerTitle: false,
+        leading: Container(),
+        toolbarHeight: 70,
         backgroundColor: Colors.white,
-        leading: IconButton(
-          color: Colors.black,
-          icon: Icon(Icons.arrow_back),
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
+        elevation: 0,
+        titleSpacing: -25,
         title: Container(
-          alignment: Alignment.centerLeft,
+          width: w,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              MUNLogo(),
-              Divider(
-                height: 0.01,
-                thickness: 1,
-                color: kGreyShade.withOpacity(0.4),
+              Row(
+                children: [
+                  Icon(
+                    Icons.arrow_back,
+                    color: kIconShade,
+                    size: 32,
+                  ),
+                  SizedBox(
+                    width: 5,
+                  ),
+                  MUNLogo(),
+                ],
               ),
+              SizedBox(
+                height: 15,
+              ),
+              Container(
+                width: w * (345 / kScreenWidth),
+                padding: const EdgeInsets.only(right: 25.0),
+                child: Divider(
+                  height: 0.01,
+                  thickness: 1,
+                  color: Colors.black.withOpacity(0.3),
+                ),
+              )
             ],
           ),
         ),
@@ -65,7 +81,9 @@ class BookingSummary extends StatelessWidget {
       body: Container(
         height: h,
         width: w,
-        padding: EdgeInsets.fromLTRB(h * 0.021, h * 0.021, h * 0.021, 0.0),
+        color: Color(0xffECECEC),
+        padding: EdgeInsets.fromLTRB(
+            w * (25 / kScreenWidth), 13.0, w * (23 / kScreenWidth), 0.0),
         child: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -73,137 +91,183 @@ class BookingSummary extends StatelessWidget {
             children: [
               Text(
                 'My Booking Summary',
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: h * (0.023 - 0.008),
+                style: robotoLight(
+                  size: 18.0,
+                ).copyWith(
+                  fontWeight: FontWeight.w300,
                 ),
               ),
               SizedBox(
-                height: h * 0.01,
-              ),
-              Divider(
-                height: 0.01,
-                thickness: 1,
-                color: kGreyShade.withOpacity(0.4),
-              ),
-              SizedBox(
-                height: h * 0.03,
+                height: 8.0,
+                child: Divider(
+                  height: 0.01,
+                  thickness: 1,
+                  color: Colors.black.withOpacity(0.3),
+                ),
               ),
               Container(
-                height: h * 0.295,
+                height: h * (172 / kScreenHeight),
                 width: w,
-                //padding: EdgeInsets.symmetric(horizontal: w * 0.01),
                 child: Row(
                   children: [
                     Container(
-                      width: w * 0.3,
+                      width: w * (105 / kScreenWidth),
+                      height: h * (172 / kScreenHeight),
+                      padding: EdgeInsets.fromLTRB(
+                        6.0,
+                        h * (40 / kScreenHeight),
+                        5.0,
+                        h * (35.95 / kScreenHeight),
+                      ),
                       color: Colors.white,
                     ),
                     SizedBox(
-                      width: w * 0.03,
+                      width: 15.0,
                     ),
                     Container(
-                      width: w * 0.55,
-                      color: Colors.white,
-                      padding: EdgeInsets.symmetric(
-                        horizontal: w * 0.015,
-                        vertical: h * 0.01,
+                      width: w * (205 / kScreenWidth),
+                      height: h * (172 / kScreenHeight),
+                      color: Color(0xFFF8F8F8),
+                      padding: EdgeInsets.only(
+                        left: 10.0,
+                        top: 7.0,
                       ),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'World Archive Simulation',
-                            style: TextStyle(
-                              fontSize: h * 0.022,
-                              fontWeight: FontWeight.w500,
+                            'UCL Model United Nations',
+                            style: robotoRegular(
+                              size: 14.0,
+                              color: Colors.black,
+                            ).copyWith(
+                              fontWeight: FontWeight.w400,
                             ),
                           ),
                           SizedBox(
-                            height: h * 0.015,
+                            height: 5.0,
                             child: Divider(
                               height: 0.01,
                               thickness: 1,
-                              color: kGreyShade.withOpacity(0.4),
+                              color: Colors.black.withOpacity(0.3),
                             ),
                           ),
                           Text(
                             'United Nations',
-                            style: TextStyle(fontSize: h * 0.023),
+                            style: robotoRegular(
+                              size: 12.0,
+                              color: Colors.black,
+                            ).copyWith(
+                              fontWeight: FontWeight.w300,
+                            ),
                           ),
                           Text(
                             'Human Rights Committee*',
-                            style: TextStyle(
-                              fontSize: h * 0.022,
+                            style: robotoRegular(
+                              size: 12.0,
+                              color: Colors.black,
+                            ).copyWith(
                               fontWeight: FontWeight.w500,
                             ),
                           ),
+                          Text(
+                            'Change Committee',
+                            style: robotoLight(
+                              size: 10.0,
+                              color: kBlueShade,
+                            ).copyWith(
+                              fontWeight: FontWeight.w300,
+                              decoration: TextDecoration.underline,
+                            ),
+                          ),
                           SizedBox(
-                            height: h * 0.015,
+                            height: 7.0,
                             child: Divider(
                               height: 0.01,
                               thickness: 1,
-                              color: kGreyShade.withOpacity(0.4),
+                              color: Colors.black.withOpacity(0.3),
                             ),
                           ),
                           Row(
                             children: [
                               Text(
                                 'Zydus School',
-                                style: TextStyle(
-                                  fontSize: h * 0.02,
-                                  fontWeight: FontWeight.bold,
+                                style: robotoLight(
+                                  size: 12.0,
+                                  color: Colors.black,
+                                ).copyWith(
+                                  fontWeight: FontWeight.w300,
                                 ),
                               ),
-                              Expanded(
-                                child: Divider(
-                                  thickness: 1,
-                                  color: kGreyShade.withOpacity(0.4),
-                                ),
+                              // SizedBox(
+                              //   width: 8.0,
+                              // ),
+                              // Expanded(
+                              //   child: Divider(
+                              //     height: 1,
+                              //     thickness: 1,
+                              //     color: Colors.black.withOpacity(0.3),
+                              //   ),
+                              // ),
+                              SizedBox(
+                                width: 54.0,
                               ),
                               Text(
                                 'View in ',
-                                style: TextStyle(
-                                    fontSize:
-                                        h * (0.02 - 0.005)),
+                                style:
+                                    robotoLight(size: 10.0, color: Colors.black)
+                                        .copyWith(
+                                  fontWeight: FontWeight.w300,
+                                ),
                               ),
                               Text(
                                 'Maps',
-                                style: TextStyle(
-                                  fontSize: h * (0.02 - 0.005),
+                                style: robotoRegular(
+                                  size: 10.0,
                                   color: kBlueShade,
+                                ).copyWith(
+                                  fontWeight: FontWeight.w400,
                                   decoration: TextDecoration.underline,
                                 ),
                               ),
                             ],
                           ),
                           SizedBox(
-                            height: h * 0.015,
+                            height: 7.0,
                             child: Divider(
                               height: 0.01,
                               thickness: 1,
-                              color: kGreyShade.withOpacity(0.4),
+                              color: Colors.black.withOpacity(0.3),
                             ),
                           ),
                           Text(
                             '10 a.m. - 5 p.m.',
-                            style: TextStyle(
-                              fontSize: h * 0.023,
-                              fontWeight: FontWeight.w400,
+                            style: robotoLight(
+                              size: 12.0,
+                              color: Colors.black,
+                            ).copyWith(
+                              fontWeight: FontWeight.w300,
                             ),
+                          ),
+                          SizedBox(
+                            height: 2.0,
                           ),
                           Text(
                             'October 13-14,2021',
-                            style: TextStyle(
-                              fontSize: h * 0.023,
-                              fontWeight: FontWeight.w400,
+                            style: robotoLight(
+                              size: 12.0,
+                              color: Colors.black,
+                            ).copyWith(
+                              fontWeight: FontWeight.w300,
                             ),
                           ),
                           Text(
                             '*Further details will be communicated via Email',
-                            style: TextStyle(
-                              fontSize: h * 0.0175,
-                              color: kGreyShade,
+                            style: robotoRegular(
+                              size: 10.0,
+                              color: Color(0xFFA1A1A1),
+                            ).copyWith(
+                              fontWeight: FontWeight.w400,
                             ),
                           ),
                         ],
@@ -213,38 +277,42 @@ class BookingSummary extends StatelessWidget {
                 ),
               ),
               SizedBox(
-                height: h * 0.02,
+                height: 12.05,
               ),
               Container(
-                height: h * 0.55,
+                height: h * (385 / kScreenHeight),
                 width: w,
                 color: Colors.white,
-                padding: EdgeInsets.symmetric(
-                  vertical: h * 0.02,
-                  horizontal: w * 0.02,
+                padding: EdgeInsets.only(
+                  left: 13.0,
+                  top: 12.0,
                 ),
-                child: ListView.builder(
+                child: ListView.separated(
                   physics: NeverScrollableScrollPhysics(),
                   itemCount: fields.length,
+                  separatorBuilder: (context, index) => SizedBox(
+                    height: 13.0,
+                  ),
                   itemBuilder: (context, index) {
                     return Row(
                       children: [
-                        SizedBox(
-                          height: h * 0.04,
-                        ),
                         Expanded(
                           child: Text(
                             fields[index],
-                            style: TextStyle(
-                              fontSize: h * 0.025,
+                            style: robotoLight(
+                              size: 14.0,
+                            ).copyWith(
+                              fontWeight: FontWeight.w300,
                             ),
                           ),
                         ),
                         Expanded(
                           child: Text(
                             values[index],
-                            style: TextStyle(
-                              fontSize: h * 0.023,
+                            style: robotoLight(
+                              size: 14.0,
+                            ).copyWith(
+                              fontWeight: FontWeight.w300,
                             ),
                           ),
                         ),
@@ -254,15 +322,15 @@ class BookingSummary extends StatelessWidget {
                 ),
               ),
               SizedBox(
-                height: h * 0.04,
+                height: 11.0,
               ),
               Container(
-                height: h * 0.22,
+                height: h * (120 / kScreenHeight),
                 width: w,
                 color: Colors.white,
                 padding: EdgeInsets.symmetric(
-                  vertical: h * 0.02,
-                  horizontal: w * 0.05,
+                  vertical: 5.0,
+                  horizontal: 13.0,
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -270,74 +338,110 @@ class BookingSummary extends StatelessWidget {
                     Row(
                       children: [
                         Expanded(
-                          child: Text('Cost of MUN'),
+                          child: Text(
+                            'Cost of MUN',
+                            style: robotoLight(
+                              size: 10.0,
+                            ).copyWith(
+                              fontWeight: FontWeight.w300,
+                            ),
+                          ),
                         ),
                         Text(
                           'INR 4000',
-                          style: TextStyle(
+                          style: robotoLight(
+                            size: 10.0,
                             color: kBlueShade,
+                          ).copyWith(
                             fontWeight: FontWeight.w300,
                           ),
                         ),
                       ],
                     ),
                     SizedBox(
-                      height: h * 0.01,
+                      height: 7.0,
                     ),
                     Row(
                       children: [
                         Expanded(
-                          child: Text('Accommodation Charges'),
+                          child: Text(
+                            'Accommodation Charges',
+                            style: robotoLight(
+                              size: 10.0,
+                            ).copyWith(
+                              fontWeight: FontWeight.w300,
+                            ),
+                          ),
                         ),
                         Text(
                           'INR 4000',
-                          style: TextStyle(
+                          style: robotoLight(
+                            size: 10.0,
                             color: kBlueShade,
+                          ).copyWith(
                             fontWeight: FontWeight.w300,
                           ),
                         ),
                       ],
                     ),
                     SizedBox(
-                      height: h * 0.01,
+                      height: 7.0,
                     ),
                     Row(
                       children: [
                         Expanded(
-                          child: Text('Premium Charges'),
+                          child: Text(
+                            'Premium Charges',
+                            style: robotoLight(
+                              size: 10.0,
+                            ).copyWith(
+                              fontWeight: FontWeight.w300,
+                            ),
+                          ),
                         ),
                         Text(
                           'INR 4000',
-                          style: TextStyle(
+                          style: robotoLight(
+                            size: 10.0,
                             color: kBlueShade,
+                          ).copyWith(
                             fontWeight: FontWeight.w300,
                           ),
                         ),
                       ],
                     ),
                     SizedBox(
-                      height: h * 0.01,
+                      height: 7.0,
                     ),
                     Row(
                       children: [
                         Expanded(
-                          child: Text('Taxes'),
+                          child: Text(
+                            'Taxes',
+                            style: robotoLight(
+                              size: 10.0,
+                            ).copyWith(
+                              fontWeight: FontWeight.w300,
+                            ),
+                          ),
                         ),
                         Text(
                           'INR 4000',
-                          style: TextStyle(
+                          style: robotoLight(
+                            size: 10.0,
                             color: kBlueShade,
+                          ).copyWith(
                             fontWeight: FontWeight.w300,
                           ),
                         ),
                       ],
                     ),
                     SizedBox(
-                      height: h * 0.015,
+                      height: 7.0,
                       child: Divider(
                         height: 0.01,
                         thickness: 1,
-                        color: kGreyShade.withOpacity(0.4),
+                        color: Colors.black.withOpacity(0.3),
                       ),
                     ),
                     Row(
@@ -345,16 +449,20 @@ class BookingSummary extends StatelessWidget {
                         Expanded(
                           child: Text(
                             'Total Amount',
-                            style: TextStyle(
-                              fontSize: h * 0.03,
+                            style: robotoLight(
+                              size: 18.0,
+                            ).copyWith(
+                              fontWeight: FontWeight.w300,
                             ),
                           ),
                         ),
                         Text(
                           'INR 4000',
-                          style: TextStyle(
+                          style: robotoLight(
+                            size: 16.0,
                             color: kBlueShade,
-                            fontSize: h * 0.03,
+                          ).copyWith(
+                            fontWeight: FontWeight.w400,
                           ),
                         ),
                       ],
@@ -370,28 +478,46 @@ class BookingSummary extends StatelessWidget {
         ),
       ),
       bottomNavigationBar: Container(
-        height: h * 0.1,
-        color: Colors.white,
-        padding: EdgeInsets.only(right: w * 0.05),
+        height: h * (70 / kScreenHeight),
+        width: w,
         alignment: Alignment.centerRight,
-        child: MaterialButton(
-          onPressed: () {
+        decoration: BoxDecoration(
+          boxShadow: [
+            BoxShadow(
+              spreadRadius: 8,
+              blurRadius: 10,
+              offset: Offset(0, -2),
+              color: kIconShade,
+            ),
+          ],
+          color: Colors.white,
+        ),
+        padding: EdgeInsets.only(bottom: 20, left: 25, right: 25),
+        child: GestureDetector(
+          onTap: () {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (_) => ReceiptScreen(),
+                builder: (context) => ReceiptScreen(),
               ),
             );
           },
-          child: Text(
-            'Proceed to Payment',
-            style: TextStyle(
-              color: Colors.white,
-              fontWeight: FontWeight.w300,
-              fontSize: h * 0.03,
+          child: Container(
+            height: h * (36 / kScreenHeight),
+            alignment: Alignment.center,
+            width: w * (185 / kScreenWidth),
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(3), color: kBlueShade),
+            child: Text(
+              'Proceed to Payment',
+              style: robotoLight(
+                size: 18.0,
+                color: Colors.white,
+              ).copyWith(
+                fontWeight: FontWeight.w300,
+              ),
             ),
           ),
-          color: kBlueShade,
         ),
       ),
     );
