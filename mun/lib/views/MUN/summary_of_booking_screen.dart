@@ -83,7 +83,11 @@ class BookingSummary extends StatelessWidget {
         width: w,
         color: Color(0xffECECEC),
         padding: EdgeInsets.fromLTRB(
-            w * (25 / kScreenWidth), 13.0, w * (23 / kScreenWidth), 0.0),
+          w * (25 / kScreenWidth),
+          13.0,
+          w * (23 / kScreenWidth),
+          0.0,
+        ),
         child: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
