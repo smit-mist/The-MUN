@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:mun/views/MUN/summary_of_booking_screen.dart';
 import 'package:mun/views/elements/constants.dart';
 import 'package:mun/views/elements/textstyles.dart';
@@ -61,7 +62,11 @@ class _MyBooking extends State<MyBooking> {
         height: h,
         width: w,
         padding: EdgeInsets.fromLTRB(
-            w * (25 / kScreenWidth), 15.0, w * (25 / kScreenWidth), 0.0),
+          w * (25 / kScreenWidth),
+          15.0,
+          w * (20 / kScreenWidth),
+          0.0,
+        ),
         child: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -77,113 +82,144 @@ class _MyBooking extends State<MyBooking> {
               ),
               SizedBox(
                 height: 8.0,
-              ),
-              Divider(
-                height: 0.01,
-                thickness: 1,
-                color: Colors.black.withOpacity(0.3),
-              ),
-              SizedBox(
-                height: 8.0,
+                child: Divider(
+                  height: 0.01,
+                  thickness: 1,
+                  color: Colors.black.withOpacity(0.3),
+                ),
               ),
               Container(
-                height: h * 0.28,
+                height: h * (172 / kScreenHeight),
                 width: w,
-                //padding: EdgeInsets.symmetric(horizontal: w * 0.01),
                 child: Row(
                   children: [
                     Container(
-                      width: w * 0.3,
+                      width: w * (105 / kScreenWidth),
+                      height: h * (172 / kScreenHeight),
+                      padding: EdgeInsets.fromLTRB(
+                        6.0,
+                        h * (40 / kScreenHeight),
+                        5.0,
+                        h * (35.95 / kScreenHeight),
+                      ),
                       color: Colors.white,
+                      child: SvgPicture.asset(
+                        'assets/icons/specific_mun_logo.svg',
+                        color: kBlueShade,
+                      ),
                     ),
                     SizedBox(
-                      width: w * 0.03,
+                      width: 15.0,
                     ),
                     Container(
-                      width: w * 0.58,
-                      color: Colors.white,
-                      padding: EdgeInsets.symmetric(
-                        horizontal: w * 0.015,
-                        vertical: h * 0.01,
+                      width: w * (205 / kScreenWidth),
+                      height: h * (172 / kScreenHeight),
+                      color: Color(0xFFF8F8F8),
+                      padding: EdgeInsets.only(
+                        left: 10.0,
+                        top: 7.0,
                       ),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
                             'UCL Model United Nations',
-                            style: TextStyle(
-                              fontSize: h * 0.02,
-                              fontWeight: FontWeight.w500,
+                            style: robotoRegular(
+                              size: 14.0,
+                              color: Colors.black,
+                            ).copyWith(
+                              fontWeight: FontWeight.w400,
                             ),
                           ),
                           SizedBox(
-                            height: h * 0.015,
+                            height: 5.0,
                             child: Divider(
                               height: 0.01,
                               thickness: 1,
-                              color: kGreyShade.withOpacity(0.4),
+                              color: Colors.black.withOpacity(0.3),
                             ),
                           ),
                           Text(
                             'United Nations',
-                            style: TextStyle(fontSize: h * 0.02),
+                            style: robotoRegular(
+                              size: 12.0,
+                              color: Colors.black,
+                            ).copyWith(
+                              fontWeight: FontWeight.w300,
+                            ),
                           ),
                           Text(
                             'Human Rights Committee*',
-                            style: TextStyle(
-                              fontSize: h * 0.02,
+                            style: robotoRegular(
+                              size: 12.0,
+                              color: Colors.black,
+                            ).copyWith(
                               fontWeight: FontWeight.w500,
                             ),
                           ),
                           Text(
                             'Change Committee',
-                            style: TextStyle(
+                            style: robotoLight(
+                              size: 10.0,
                               color: kBlueShade,
+                            ).copyWith(
+                              fontWeight: FontWeight.w300,
                               decoration: TextDecoration.underline,
                             ),
                           ),
                           SizedBox(
-                            height: h * 0.015,
+                            height: 7.0,
                             child: Divider(
                               height: 0.01,
                               thickness: 1,
-                              color: kGreyShade.withOpacity(0.4),
+                              color: Colors.black.withOpacity(0.3),
                             ),
                           ),
                           Text(
                             'Zydus School',
-                            style: TextStyle(
-                              fontSize: h * 0.02,
-                              fontWeight: FontWeight.w500,
+                            style: robotoRegular(
+                              size: 12.0,
+                              color: Colors.black,
+                            ).copyWith(
+                              fontWeight: FontWeight.w400,
                             ),
                           ),
                           SizedBox(
-                            height: h * 0.015,
+                            height: 7.0,
                             child: Divider(
                               height: 0.01,
                               thickness: 1,
-                              color: kGreyShade.withOpacity(0.4),
+                              color: Colors.black.withOpacity(0.3),
                             ),
                           ),
                           Text(
                             '10 a.m. - 5 p.m.',
-                            style: TextStyle(
-                              fontSize: h * 0.023,
-                              fontWeight: FontWeight.w400,
+                            style: robotoLight(
+                              size: 12.0,
+                              color: Colors.black,
+                            ).copyWith(
+                              fontWeight: FontWeight.w300,
                             ),
+                          ),
+                          SizedBox(
+                            height: 2.0,
                           ),
                           Text(
                             'October 13-14,2021',
-                            style: TextStyle(
-                              fontSize: h * 0.023,
-                              fontWeight: FontWeight.w400,
+                            style: robotoLight(
+                              size: 12.0,
+                              color: Colors.black,
+                            ).copyWith(
+                              fontWeight: FontWeight.w300,
                             ),
                           ),
                           Text(
                             '*Further details will be communicated via Email',
-                            style: TextStyle(
-                              fontSize: h * 0.0175,
-                              color: kGreyShade,
+                            style: robotoRegular(
+                              size: 10.0,
+                              color: Color(0xFFA1A1A1),
+                            ).copyWith(
+                              fontWeight: FontWeight.w400,
                             ),
                           ),
                         ],
@@ -193,181 +229,234 @@ class _MyBooking extends State<MyBooking> {
                 ),
               ),
               SizedBox(
-                height: h * 0.05,
+                height: h * (30.05 / kScreenHeight),
               ),
               Column(
                 children: [
                   Container(
-                    height: h * 0.25,
+                    height: h * (122.5 / kScreenHeight),
                     width: w,
                     decoration: BoxDecoration(
                       border: Border(
                         left: BorderSide(
                           color: kBlueShade,
-                          width: w * 0.01,
+                          width: 2.0,
                         ),
                       ),
                     ),
-                    padding: EdgeInsets.symmetric(horizontal: w * 0.025),
+                    padding: EdgeInsets.symmetric(
+                        horizontal: w * (27 / kScreenWidth)),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisSize: MainAxisSize.min,
                       children: [
                         Text(
                           'Name',
-                          style: TextStyle(
-                            fontSize: h * 0.025,
+                          style: robotoLight(
+                            size: 16.0,
+                            color: Colors.black,
+                          ).copyWith(
                             fontWeight: FontWeight.w300,
                           ),
                         ),
                         SizedBox(
-                          height: h * 0.015,
+                          height: 2.0,
                         ),
-                        Row(
-                          children: [
-                            Expanded(
-                              child: TextField(
-                                decoration: InputDecoration(
-                                  contentPadding: EdgeInsets.symmetric(
-                                    horizontal: 10,
-                                    vertical: 2,
-                                  ),
-                                  fillColor: Colors.white,
-                                  border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(3),
-                                    borderSide: BorderSide(
-                                      width: 0,
-                                      style: BorderStyle.none,
+                        Container(
+                          height: h * (30 / kScreenHeight),
+                          width: w * (299 / kScreenWidth),
+                          color: Colors.white,
+                          child: Row(
+                            children: [
+                              Expanded(
+                                child: TextField(
+                                  cursorColor: Colors.black,
+                                  decoration: InputDecoration(
+                                    hintStyle: robotoRegular(
+                                      size: 14.0,
+                                      color: kBlueShade,
+                                    ).copyWith(
+                                      fontWeight: FontWeight.w400,
                                     ),
-                                  ),
-                                  filled: true,
-                                  hintText: 'Alex',
-                                  hintStyle: TextStyle(
-                                    fontSize: h * 0.022,
-                                    color: kBlueShade,
+                                    hintText: 'Alex',
+                                    contentPadding: EdgeInsets.fromLTRB(
+                                      9.0,
+                                      7.0,
+                                      0.0,
+                                      10.0,
+                                    ),
+                                    border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(3),
+                                      borderSide: BorderSide(
+                                        width: 0,
+                                        style: BorderStyle.none,
+                                      ),
+                                    ),
                                   ),
                                 ),
                               ),
-                            ),
-                            SizedBox(
-                              width: w * 0.02,
-                            ),
-                            Expanded(
-                              child: TextField(
-                                decoration: InputDecoration(
-                                  contentPadding: EdgeInsets.symmetric(
-                                    horizontal: 10,
-                                    vertical: 2,
-                                  ),
-                                  border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(3),
-                                    borderSide: BorderSide(
-                                      width: 0,
-                                      style: BorderStyle.none,
+                              SizedBox(
+                                width: 8.0,
+                              ),
+                              Expanded(
+                                child: TextField(
+                                  cursorColor: Colors.black,
+                                  decoration: InputDecoration(
+                                    hintStyle: robotoRegular(
+                                      size: 14.0,
+                                      color: kBlueShade,
+                                    ).copyWith(
+                                      fontWeight: FontWeight.w400,
                                     ),
-                                  ),
-                                  fillColor: Colors.white,
-                                  filled: true,
-                                  hintText: 'Jacob',
-                                  hintStyle: TextStyle(
-                                    fontSize: h * 0.022,
-                                    color: kBlueShade,
+                                    hintText: 'Jacob',
+                                    contentPadding: EdgeInsets.fromLTRB(
+                                      9.0,
+                                      7.0,
+                                      0.0,
+                                      10.0,
+                                    ),
+                                    border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(3),
+                                      borderSide: BorderSide(
+                                        width: 0,
+                                        style: BorderStyle.none,
+                                      ),
+                                    ),
                                   ),
                                 ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                         SizedBox(
-                          height: h * 0.015,
+                          height: 9.0,
                         ),
                         Row(
                           children: [
                             Expanded(
                               child: Text(
                                 'Date of Birth',
-                                style: TextStyle(fontSize: h * 0.025),
+                                style: robotoLight(
+                                  size: 16.0,
+                                  color: Colors.black,
+                                ).copyWith(
+                                  fontWeight: FontWeight.w300,
+                                ),
                               ),
                             ),
                             SizedBox(
-                              width: w * 0.05,
+                              width: w * (60 / kScreenWidth),
                             ),
                             Expanded(
                               child: Text(
                                 'Age',
-                                style: TextStyle(fontSize: h * 0.025),
+                                style: robotoLight(
+                                  size: 16.0,
+                                  color: Colors.black,
+                                ).copyWith(
+                                  fontWeight: FontWeight.w300,
+                                ),
                               ),
                             ),
                           ],
                         ),
                         SizedBox(
-                          height: h * 0.012,
+                          height: 7.0,
                         ),
                         Row(
                           children: [
                             Container(
-                              height: h * 0.07,
-                              width: w * 0.12,
+                              height: h * (30 / kScreenHeight),
+                              width: w * (38 / kScreenWidth),
                               decoration: BoxDecoration(
                                 color: Colors.white,
+                                borderRadius: BorderRadius.circular(3.0),
                                 border: Border.all(color: kBlueShade),
                               ),
                               child: Center(
                                 child: Text(
                                   '08',
-                                  style: TextStyle(
+                                  style: robotoRegular(
+                                    size: 14.0,
                                     color: kBlueShade,
-                                    fontSize: h * 0.025,
+                                  ).copyWith(
+                                    fontWeight: FontWeight.w400,
                                   ),
                                 ),
                               ),
                             ),
                             SizedBox(
-                              width: w * 0.02,
+                              width: 8.0,
                             ),
                             Container(
-                              height: h * 0.07,
-                              width: w * 0.12,
-                              color: Colors.white,
+                              height: h * (30 / kScreenHeight),
+                              width: w * (38 / kScreenWidth),
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(3.0),
+                              ),
                               child: Center(
                                 child: Text(
                                   'MM',
-                                  style: TextStyle(
-                                    color: kGreyShade,
-                                    fontSize: h * 0.025,
+                                  style: robotoRegular(
+                                    size: 14.0,
+                                    color: Color(0xffB6B6B6),
+                                  ).copyWith(
+                                    fontWeight: FontWeight.w400,
                                   ),
                                 ),
                               ),
                             ),
                             SizedBox(
-                              width: w * 0.015,
+                              width: 8.0,
                             ),
                             Container(
-                              height: h * 0.07,
-                              width: w * 0.18,
-                              color: Colors.white,
+                              height: h * (30 / kScreenHeight),
+                              width: w * (58 / kScreenWidth),
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(3.0),
+                              ),
                               child: Center(
                                 child: Text(
                                   'YYYY',
-                                  style: TextStyle(
-                                    color: kGreyShade,
-                                    fontSize: h * 0.025,
+                                  style: robotoRegular(
+                                    size: 14.0,
+                                    color: Color(0xffB6B6B6),
+                                  ).copyWith(
+                                    fontWeight: FontWeight.w400,
                                   ),
                                 ),
                               ),
                             ),
                             SizedBox(
-                              width: w * 0.02,
+                              width: 12.0,
                             ),
-                            Expanded(
+                            Container(
+                              height: h * (30 / kScreenHeight),
+                              width: w * (56 / kScreenWidth),
+                              color: Colors.white,
                               child: TextField(
+                                cursorColor: Colors.black,
                                 decoration: InputDecoration(
-                                  fillColor: Colors.white,
-                                  filled: true,
-                                  focusedBorder: InputBorder.none,
-                                  enabledBorder: InputBorder.none,
-                                  errorBorder: InputBorder.none,
-                                  disabledBorder: InputBorder.none,
+                                  hintStyle: robotoRegular(
+                                    size: 14.0,
+                                    color: kBlueShade,
+                                  ).copyWith(
+                                    fontWeight: FontWeight.w400,
+                                  ),
+                                  contentPadding: EdgeInsets.fromLTRB(
+                                    14.0,
+                                    9.0,
+                                    0,
+                                    h * (36 / kScreenHeight),
+                                  ),
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(3),
+                                    borderSide: BorderSide(
+                                      width: 0,
+                                      style: BorderStyle.none,
+                                    ),
+                                  ),
                                 ),
                               ),
                             ),
@@ -377,36 +466,54 @@ class _MyBooking extends State<MyBooking> {
                     ),
                   ),
                   SizedBox(
-                    height: h * 0.05,
+                    height: h * (39 / kScreenHeight),
                   ),
                   Container(
-                    height: h * 0.22,
+                    height: h * (128 / kScreenHeight),
                     width: w,
                     decoration: BoxDecoration(
                       border: Border(
                         left: BorderSide(
                           color: Colors.grey,
-                          width: w * 0.01,
+                          width: 2.0,
                         ),
                       ),
                     ),
-                    padding: EdgeInsets.symmetric(horizontal: w * 0.025),
+                    padding: EdgeInsets.symmetric(
+                        horizontal: w * (25 / kScreenWidth)),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
                           'Institution',
-                          style: TextStyle(fontSize: h * 0.025),
+                          style: robotoLight(
+                            size: 16.0,
+                            color: Colors.black,
+                          ).copyWith(
+                            fontWeight: FontWeight.w300,
+                          ),
                         ),
                         SizedBox(
-                          height: h * 0.015,
+                          height: 7.0,
                         ),
-                        Expanded(
+                        Container(
+                          color: Colors.white,
+                          height: h * (30 / kScreenHeight),
                           child: TextField(
+                            cursorColor: Colors.black,
                             decoration: InputDecoration(
-                              contentPadding: EdgeInsets.symmetric(
-                                horizontal: 10,
-                                vertical: 2,
+                              hintStyle: robotoRegular(
+                                size: 14.0,
+                                color: Color(0xffB6B6B6),
+                              ).copyWith(
+                                fontWeight: FontWeight.w400,
+                              ),
+                              hintText: 'Full name of the institution you study in',
+                              contentPadding: EdgeInsets.fromLTRB(
+                                6.0,
+                                8.0,
+                                0.0,
+                                10.0,
                               ),
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(3),
@@ -414,34 +521,43 @@ class _MyBooking extends State<MyBooking> {
                                   width: 0,
                                   style: BorderStyle.none,
                                 ),
-                              ),
-                              fillColor: Colors.white,
-                              filled: true,
-                              hintText:
-                                  'Full name of the institution you study in',
-                              hintStyle: TextStyle(
-                                fontSize: h * 0.02,
-                                color: kGreyShade,
                               ),
                             ),
                           ),
                         ),
                         SizedBox(
-                          height: h * 0.015,
+                          height: 9.0,
                         ),
                         Text(
                           'City',
-                          style: TextStyle(fontSize: h * 0.025),
+                          style: robotoLight(
+                            size: 16.0,
+                            color: Colors.black,
+                          ).copyWith(
+                            fontWeight: FontWeight.w300,
+                          ),
                         ),
                         SizedBox(
-                          height: h * 0.015,
+                          height: 7.0,
                         ),
-                        Expanded(
+                        Container(
+                          color: Colors.white,
+                          height: h * (30 / kScreenHeight),
                           child: TextField(
+                            cursorColor: Colors.black,
                             decoration: InputDecoration(
-                              contentPadding: EdgeInsets.symmetric(
-                                horizontal: 10,
-                                vertical: 2,
+                              hintStyle: robotoRegular(
+                                size: 14.0,
+                                color: Color(0xffB6B6B6),
+                              ).copyWith(
+                                fontWeight: FontWeight.w400,
+                              ),
+                              hintText: 'Your city of residence',
+                              contentPadding: EdgeInsets.fromLTRB(
+                                6.0,
+                                8.0,
+                                0.0,
+                                10.0,
                               ),
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(3),
@@ -449,13 +565,6 @@ class _MyBooking extends State<MyBooking> {
                                   width: 0,
                                   style: BorderStyle.none,
                                 ),
-                              ),
-                              fillColor: Colors.white,
-                              filled: true,
-                              hintText: 'Your city of residence',
-                              hintStyle: TextStyle(
-                                fontSize: h * 0.02,
-                                color: kGreyShade,
                               ),
                             ),
                           ),

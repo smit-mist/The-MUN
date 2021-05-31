@@ -98,9 +98,14 @@ class _AboutMunScreenState extends State<AboutMunScreen> {
               Card(
                 elevation: 3.0,
                 child: Container(
-                  height: h * (126 / kScreenHeight),
+                  height: h * (135 / kScreenHeight),
                   width: w,
-                  padding: EdgeInsets.only(left: 11.0, top: 8.0, right: 9.0),
+                  padding: EdgeInsets.only(
+                    left: 11.0,
+                    top: 8.0,
+                    right: 9.0,
+                    bottom: 8.0,
+                  ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -181,7 +186,7 @@ class _AboutMunScreenState extends State<AboutMunScreen> {
                             ),
                           ),
                         ],
-                      )
+                      ),
                     ],
                   ),
                 ),
