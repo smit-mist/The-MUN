@@ -192,17 +192,24 @@ class _LoginScreenState extends State<LoginScreen> {
                                   width: w * (198 / kScreenWidth),
                                 ),
                                 GestureDetector(
-                                  child: SvgPicture.asset(
-                                    'assets/icons/eye_regular.svg',
-                                    color: kBlueShade,
-                                  ),
+                                  child: isVisible
+                                      ? SvgPicture.asset(
+                                          'assets/icons/eye_regular.svg',
+                                          color: kBlueShade,
+                                        )
+                                      : SvgPicture.asset(
+                                          'assets/icons/eye_closed.svg',
+                                          color: kBlueShade,
+                                        ),
                                   onTap: () {
                                     setState(() {
-                                      isVisible = true;
+                                      isVisible = !isVisible;
                                     });
                                   },
                                 ),
-                                SizedBox(width: 4.0,),
+                                SizedBox(
+                                  width: 4.0,
+                                ),
                               ],
                             ),
                           ),
