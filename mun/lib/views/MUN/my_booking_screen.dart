@@ -11,11 +11,12 @@ class MyBooking extends StatefulWidget {
 }
 
 class _MyBooking extends State<MyBooking> {
+  int index = 0;
   @override
   Widget build(BuildContext context) {
     double h = MediaQuery.of(context).size.height;
     double w = MediaQuery.of(context).size.width;
-    int index = 0;
+
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -312,6 +313,11 @@ class _MyBooking extends State<MyBooking> {
                               children: [
                                 Expanded(
                                   child: TextField(
+                                    onTap: () {
+                                      setState(() {
+                                        index = 0;
+                                      });
+                                    },
                                     cursorColor: Colors.black,
                                     decoration: InputDecoration(
                                       hintStyle: robotoRegular(
@@ -326,6 +332,11 @@ class _MyBooking extends State<MyBooking> {
                                         7.0,
                                         0.0,
                                         10.0,
+                                      ),
+                                      focusedBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: kBlueShade,
+                                        ),
                                       ),
                                       border: OutlineInputBorder(
                                         borderRadius: BorderRadius.circular(3),
@@ -345,6 +356,11 @@ class _MyBooking extends State<MyBooking> {
                                 ),
                                 Expanded(
                                   child: TextField(
+                                    onTap: () {
+                                      setState(() {
+                                        index = 0;
+                                      });
+                                    },
                                     cursorColor: Colors.black,
                                     decoration: InputDecoration(
                                       hintStyle: robotoRegular(
@@ -359,6 +375,11 @@ class _MyBooking extends State<MyBooking> {
                                         7.0,
                                         0.0,
                                         10.0,
+                                      ),
+                                      focusedBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: kBlueShade,
+                                        ),
                                       ),
                                       border: OutlineInputBorder(
                                         borderRadius: BorderRadius.circular(3),
@@ -413,19 +434,48 @@ class _MyBooking extends State<MyBooking> {
                               Container(
                                 height: h * (30 / kScreenHeight),
                                 width: w * (38 / kScreenWidth),
-                                decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(3.0),
-                                  border: Border.all(color: kBlueShade),
-                                ),
+                                color: Colors.white,
                                 child: Center(
-                                  child: Text(
-                                    '08',
+                                  child: TextField(
+                                    onTap: () {
+                                      setState(() {
+                                        index = 0;
+                                      });
+                                    },
                                     style: robotoRegular(
                                       size: 14.0,
                                       color: kBlueShade,
                                     ).copyWith(
                                       fontWeight: FontWeight.w400,
+                                    ),
+                                    keyboardType: TextInputType.number,
+                                    textAlign: TextAlign.center,
+                                    decoration: InputDecoration(
+                                      focusedBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: kBlueShade,
+                                        ),
+                                      ),
+                                      border: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(3),
+                                        borderSide: BorderSide(
+                                          width: 0,
+                                          style: BorderStyle.none,
+                                        ),
+                                      ),
+                                      hintText: 'DD',
+                                      hintStyle: robotoRegular(
+                                        size: 14.0,
+                                        color: Color(0xffB6B6B6),
+                                      ).copyWith(
+                                        fontWeight: FontWeight.w400,
+                                      ),
+                                      contentPadding: EdgeInsets.fromLTRB(
+                                        8.0,
+                                        8.0,
+                                        8.0,
+                                        0.0,
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -435,19 +485,52 @@ class _MyBooking extends State<MyBooking> {
                               ),
                               Container(
                                 height: h * (30 / kScreenHeight),
-                                width: w * (38 / kScreenWidth),
+                                width: w * (45 / kScreenWidth),
                                 decoration: BoxDecoration(
                                   color: Colors.white,
                                   borderRadius: BorderRadius.circular(3.0),
                                 ),
                                 child: Center(
-                                  child: Text(
-                                    'MM',
+                                  child: TextField(
+                                    onTap: () {
+                                      setState(() {
+                                        index = 0;
+                                      });
+                                    },
                                     style: robotoRegular(
                                       size: 14.0,
-                                      color: Color(0xffB6B6B6),
+                                      color: kBlueShade,
                                     ).copyWith(
                                       fontWeight: FontWeight.w400,
+                                    ),
+                                    keyboardType: TextInputType.number,
+                                    textAlign: TextAlign.center,
+                                    decoration: InputDecoration(
+                                      focusedBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: kBlueShade,
+                                        ),
+                                      ),
+                                      border: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(3),
+                                        borderSide: BorderSide(
+                                          width: 0,
+                                          style: BorderStyle.none,
+                                        ),
+                                      ),
+                                      hintText: 'MM',
+                                      hintStyle: robotoRegular(
+                                        size: 14.0,
+                                        color: Color(0xffB6B6B6),
+                                      ).copyWith(
+                                        fontWeight: FontWeight.w400,
+                                      ),
+                                      contentPadding: EdgeInsets.fromLTRB(
+                                        7.0,
+                                        10.0,
+                                        7.0,
+                                        6.0,
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -463,13 +546,46 @@ class _MyBooking extends State<MyBooking> {
                                   borderRadius: BorderRadius.circular(3.0),
                                 ),
                                 child: Center(
-                                  child: Text(
-                                    'YYYY',
+                                  child: TextField(
+                                    onTap: () {
+                                      setState(() {
+                                        index = 0;
+                                      });
+                                    },
                                     style: robotoRegular(
                                       size: 14.0,
-                                      color: Color(0xffB6B6B6),
+                                      color: kBlueShade,
                                     ).copyWith(
                                       fontWeight: FontWeight.w400,
+                                    ),
+                                    keyboardType: TextInputType.number,
+                                    textAlign: TextAlign.center,
+                                    decoration: InputDecoration(
+                                      focusedBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: kBlueShade,
+                                        ),
+                                      ),
+                                      border: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(3),
+                                        borderSide: BorderSide(
+                                          width: 0,
+                                          style: BorderStyle.none,
+                                        ),
+                                      ),
+                                      hintText: 'YYYY',
+                                      hintStyle: robotoRegular(
+                                        size: 14.0,
+                                        color: Color(0xffB6B6B6),
+                                      ).copyWith(
+                                        fontWeight: FontWeight.w400,
+                                      ),
+                                      contentPadding: EdgeInsets.fromLTRB(
+                                        8.0,
+                                        0.0,
+                                        8.0,
+                                        7.0,
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -482,19 +598,24 @@ class _MyBooking extends State<MyBooking> {
                                 width: w * (56 / kScreenWidth),
                                 color: Colors.white,
                                 child: TextField(
-                                  cursorColor: Colors.black,
+                                  onTap: () {
+                                    setState(() {
+                                      index = 0;
+                                    });
+                                  },
+                                  style: robotoRegular(
+                                    size: 14.0,
+                                    color: kBlueShade,
+                                  ).copyWith(
+                                    fontWeight: FontWeight.w400,
+                                  ),
+                                  keyboardType: TextInputType.number,
+                                  textAlign: TextAlign.center,
                                   decoration: InputDecoration(
-                                    hintStyle: robotoRegular(
-                                      size: 14.0,
-                                      color: kBlueShade,
-                                    ).copyWith(
-                                      fontWeight: FontWeight.w400,
-                                    ),
-                                    contentPadding: EdgeInsets.fromLTRB(
-                                      14.0,
-                                      9.0,
-                                      0,
-                                      h * (36 / kScreenHeight),
+                                    focusedBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color: kBlueShade,
+                                      ),
                                     ),
                                     border: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(3),
@@ -502,6 +623,12 @@ class _MyBooking extends State<MyBooking> {
                                         width: 0,
                                         style: BorderStyle.none,
                                       ),
+                                    ),
+                                    contentPadding: EdgeInsets.fromLTRB(
+                                      9.0,
+                                      7.0,
+                                      0.0,
+                                      10.0,
                                     ),
                                   ),
                                 ),
@@ -553,6 +680,11 @@ class _MyBooking extends State<MyBooking> {
                             color: Colors.white,
                             height: h * (30 / kScreenHeight),
                             child: TextField(
+                              onTap: () {
+                                setState(() {
+                                  index = 1;
+                                });
+                              },
                               cursorColor: Colors.black,
                               decoration: InputDecoration(
                                 hintStyle: robotoRegular(
@@ -568,6 +700,11 @@ class _MyBooking extends State<MyBooking> {
                                   8.0,
                                   0.0,
                                   10.0,
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: kBlueShade,
+                                  ),
                                 ),
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(3),
@@ -598,6 +735,11 @@ class _MyBooking extends State<MyBooking> {
                             color: Colors.white,
                             height: h * (30 / kScreenHeight),
                             child: TextField(
+                              onTap: () {
+                                setState(() {
+                                  index = 1;
+                                });
+                              },
                               cursorColor: Colors.black,
                               decoration: InputDecoration(
                                 hintStyle: robotoRegular(
@@ -612,6 +754,11 @@ class _MyBooking extends State<MyBooking> {
                                   8.0,
                                   0.0,
                                   10.0,
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: kBlueShade,
+                                  ),
                                 ),
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(3),
@@ -710,6 +857,11 @@ class _MyBooking extends State<MyBooking> {
                                       ),
                                       Expanded(
                                         child: TextField(
+                                          onTap: () {
+                                            setState(() {
+                                              index = 2;
+                                            });
+                                          },
                                           cursorColor: Colors.black,
                                           decoration: InputDecoration(
                                             hintStyle: robotoRegular(
@@ -723,6 +875,11 @@ class _MyBooking extends State<MyBooking> {
                                               7.0,
                                               0.0,
                                               10.0,
+                                            ),
+                                            focusedBorder: OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color: kBlueShade,
+                                              ),
                                             ),
                                             border: OutlineInputBorder(
                                               borderRadius:
@@ -746,6 +903,11 @@ class _MyBooking extends State<MyBooking> {
                                 ),
                                 Expanded(
                                   child: TextField(
+                                    onTap: () {
+                                      setState(() {
+                                        index = 2;
+                                      });
+                                    },
                                     cursorColor: Colors.black,
                                     decoration: InputDecoration(
                                       hintStyle: robotoRegular(
@@ -760,6 +922,11 @@ class _MyBooking extends State<MyBooking> {
                                         7.0,
                                         0.0,
                                         10.0,
+                                      ),
+                                      focusedBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: kBlueShade,
+                                        ),
                                       ),
                                       border: OutlineInputBorder(
                                         borderRadius: BorderRadius.circular(3),
@@ -792,7 +959,7 @@ class _MyBooking extends State<MyBooking> {
                       decoration: BoxDecoration(
                         border: Border(
                           left: BorderSide(
-                            color: index==3 ? kBlueShade : Color(0xffC4C4C4),
+                            color: index == 3 ? kBlueShade : Color(0xffC4C4C4),
                             width: 2.0,
                           ),
                         ),
@@ -826,22 +993,29 @@ class _MyBooking extends State<MyBooking> {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
-                              Container(
-                                height: h * (30 / kScreenHeight),
-                                width: w * (56 / kScreenWidth),
-                                decoration: BoxDecoration(
-                                  color: kBlueShade,
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(3.0)),
-                                ),
-                                child: Center(
-                                  child: Text(
-                                    'Jain',
-                                    style: robotoRegular(
-                                      size: 14.0,
-                                      color: Colors.white,
-                                    ).copyWith(
-                                      fontWeight: FontWeight.w300,
+                              GestureDetector(
+                                onTap: () {
+                                  setState(() {
+                                    index = 3;
+                                  });
+                                },
+                                child: Container(
+                                  height: h * (30 / kScreenHeight),
+                                  width: w * (56 / kScreenWidth),
+                                  decoration: BoxDecoration(
+                                    color: kBlueShade,
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(3.0)),
+                                  ),
+                                  child: Center(
+                                    child: Text(
+                                      'Jain',
+                                      style: robotoRegular(
+                                        size: 14.0,
+                                        color: Colors.white,
+                                      ).copyWith(
+                                        fontWeight: FontWeight.w300,
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -849,22 +1023,29 @@ class _MyBooking extends State<MyBooking> {
                               SizedBox(
                                 width: 4.0,
                               ),
-                              Container(
-                                height: h * (30 / kScreenHeight),
-                                width: w * (80 / kScreenWidth),
-                                decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(3.0)),
-                                ),
-                                child: Center(
-                                  child: Text(
-                                    'Non-Jain',
-                                    style: robotoLight(
-                                      size: 14.0,
-                                      color: Colors.black.withOpacity(0.3),
-                                    ).copyWith(
-                                      fontWeight: FontWeight.w300,
+                              GestureDetector(
+                                onTap: () {
+                                  setState(() {
+                                    index = 3;
+                                  });
+                                },
+                                child: Container(
+                                  height: h * (30 / kScreenHeight),
+                                  width: w * (80 / kScreenWidth),
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(3.0)),
+                                  ),
+                                  child: Center(
+                                    child: Text(
+                                      'Non-Jain',
+                                      style: robotoLight(
+                                        size: 14.0,
+                                        color: Colors.black.withOpacity(0.3),
+                                      ).copyWith(
+                                        fontWeight: FontWeight.w300,
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -907,22 +1088,29 @@ class _MyBooking extends State<MyBooking> {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
-                              Container(
-                                height: h * (30 / kScreenHeight),
-                                width: w * (56 / kScreenWidth),
-                                decoration: BoxDecoration(
-                                  color: kBlueShade,
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(3.0)),
-                                ),
-                                child: Center(
-                                  child: Text(
-                                    'Yes',
-                                    style: robotoRegular(
-                                      size: 14.0,
-                                      color: Colors.white,
-                                    ).copyWith(
-                                      fontWeight: FontWeight.w300,
+                              GestureDetector(
+                                onTap: () {
+                                  setState(() {
+                                    index = 3;
+                                  });
+                                },
+                                child: Container(
+                                  height: h * (30 / kScreenHeight),
+                                  width: w * (56 / kScreenWidth),
+                                  decoration: BoxDecoration(
+                                    color: kBlueShade,
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(3.0)),
+                                  ),
+                                  child: Center(
+                                    child: Text(
+                                      'Yes',
+                                      style: robotoRegular(
+                                        size: 14.0,
+                                        color: Colors.white,
+                                      ).copyWith(
+                                        fontWeight: FontWeight.w300,
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -930,22 +1118,29 @@ class _MyBooking extends State<MyBooking> {
                               SizedBox(
                                 width: 4.0,
                               ),
-                              Container(
-                                height: h * (30 / kScreenHeight),
-                                width: w * (56 / kScreenWidth),
-                                decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(3.0)),
-                                ),
-                                child: Center(
-                                  child: Text(
-                                    'No',
-                                    style: robotoLight(
-                                      size: 14.0,
-                                      color: Colors.black.withOpacity(0.3),
-                                    ).copyWith(
-                                      fontWeight: FontWeight.w300,
+                              GestureDetector(
+                                onTap: () {
+                                  setState(() {
+                                    index = 3;
+                                  });
+                                },
+                                child: Container(
+                                  height: h * (30 / kScreenHeight),
+                                  width: w * (56 / kScreenWidth),
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(3.0)),
+                                  ),
+                                  child: Center(
+                                    child: Text(
+                                      'No',
+                                      style: robotoLight(
+                                        size: 14.0,
+                                        color: Colors.black.withOpacity(0.3),
+                                      ).copyWith(
+                                        fontWeight: FontWeight.w300,
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -969,22 +1164,29 @@ class _MyBooking extends State<MyBooking> {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
-                              Container(
-                                height: h * (30 / kScreenHeight),
-                                width: w * (56 / kScreenWidth),
-                                decoration: BoxDecoration(
-                                  color: kBlueShade,
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(3.0)),
-                                ),
-                                child: Center(
-                                  child: Text(
-                                    'Yes',
-                                    style: robotoRegular(
-                                      size: 14.0,
-                                      color: Colors.white,
-                                    ).copyWith(
-                                      fontWeight: FontWeight.w300,
+                              GestureDetector(
+                                onTap: () {
+                                  setState(() {
+                                    index = 3;
+                                  });
+                                },
+                                child: Container(
+                                  height: h * (30 / kScreenHeight),
+                                  width: w * (56 / kScreenWidth),
+                                  decoration: BoxDecoration(
+                                    color: kBlueShade,
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(3.0)),
+                                  ),
+                                  child: Center(
+                                    child: Text(
+                                      'Yes',
+                                      style: robotoRegular(
+                                        size: 14.0,
+                                        color: Colors.white,
+                                      ).copyWith(
+                                        fontWeight: FontWeight.w300,
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -992,22 +1194,29 @@ class _MyBooking extends State<MyBooking> {
                               SizedBox(
                                 width: 4.0,
                               ),
-                              Container(
-                                height: h * (30 / kScreenHeight),
-                                width: w * (56 / kScreenWidth),
-                                decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(3.0)),
-                                ),
-                                child: Center(
-                                  child: Text(
-                                    'No',
-                                    style: robotoLight(
-                                      size: 14.0,
-                                      color: Colors.black.withOpacity(0.3),
-                                    ).copyWith(
-                                      fontWeight: FontWeight.w300,
+                              GestureDetector(
+                                onTap: () {
+                                  setState(() {
+                                    index = 3;
+                                  });
+                                },
+                                child: Container(
+                                  height: h * (30 / kScreenHeight),
+                                  width: w * (56 / kScreenWidth),
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(3.0)),
+                                  ),
+                                  child: Center(
+                                    child: Text(
+                                      'No',
+                                      style: robotoLight(
+                                        size: 14.0,
+                                        color: Colors.black.withOpacity(0.3),
+                                      ).copyWith(
+                                        fontWeight: FontWeight.w300,
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -1019,6 +1228,9 @@ class _MyBooking extends State<MyBooking> {
                     ),
                   ),
                 ],
+              ),
+              SizedBox(
+                height: h*0.05,
               ),
             ],
           ),
@@ -1040,19 +1252,31 @@ class _MyBooking extends State<MyBooking> {
           color: Colors.white,
         ),
         padding: EdgeInsets.only(bottom: 20, left: 25, right: 25),
-        child: Container(
-          height: h * (36 / kScreenHeight),
-          alignment: Alignment.center,
-          width: w * (129 / kScreenWidth),
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(3), color: kBlueShade),
-          child: Text(
-            'Book',
-            style: robotoLight(
-              size: 18.0,
-              color: Colors.white,
-            ).copyWith(
-              fontWeight: FontWeight.w300,
+        child: GestureDetector(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (_) => BookingSummary(),
+              ),
+            );
+          },
+          child: Container(
+            height: h * (36 / kScreenHeight),
+            alignment: Alignment.center,
+            width: w * (61 / kScreenWidth),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(3),
+              color: kBlueShade,
+            ),
+            child: Text(
+              'Book',
+              style: robotoLight(
+                size: 18.0,
+                color: Colors.white,
+              ).copyWith(
+                fontWeight: FontWeight.w300,
+              ),
             ),
           ),
         ),
