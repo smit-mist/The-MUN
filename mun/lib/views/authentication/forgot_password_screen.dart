@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mun/views/elements/constants.dart';
@@ -14,7 +13,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
   bool isLoading = false;
   String email;
   int index = 0;
-  bool pressedPassword = false,pressedConPassword = false;
+  bool pressedPassword = false, pressedConPassword = false;
   List<String> messageToDisplay = [
     'Change your Password',
     'Enter OTP',
@@ -22,7 +21,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
   ];
   @override
   Widget build(BuildContext context) {
-    if(index != 2){
+    if (index != 2) {
       pressedPassword = false;
       pressedConPassword = false;
     }
@@ -230,13 +229,15 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                       },
                       decoration: InputDecoration(
                         suffixIcon: IconButton(
-                          onPressed: (){
+                          onPressed: () {
                             setState(() {
-                              pressedPassword =!pressedPassword;
+                              pressedPassword = !pressedPassword;
                             });
                           },
                           icon: SvgPicture.asset(
-                            pressedPassword==false?'assets/icons/eye_regular.svg':'assets/icons/eye_closed.svg',
+                            pressedPassword == false
+                                ? 'assets/icons/eye_regular.svg'
+                                : 'assets/icons/eye_closed.svg',
                             color: kBlueShade,
                             height: 20,
                             width: 20,
@@ -285,14 +286,15 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                       },
                       decoration: InputDecoration(
                         suffixIcon: IconButton(
-                          onPressed: (){
+                          onPressed: () {
                             setState(() {
                               pressedConPassword = !pressedConPassword;
                             });
                           },
                           icon: SvgPicture.asset(
-                            pressedConPassword==false?'assets/icons/eye_regular.svg':'assets/icons/eye_closed.svg',
-
+                            pressedConPassword == false
+                                ? 'assets/icons/eye_regular.svg'
+                                : 'assets/icons/eye_closed.svg',
                             color: kBlueShade,
                             height: 20,
                             width: 20,
@@ -363,7 +365,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
       backgroundColor: Colors.white,
       body: Padding(
         padding: EdgeInsets.symmetric(
-          horizontal: (25 / kScreenWidth) * (w),
+          horizontal: (20 / kScreenWidth) * (w),
         ),
         child: Center(
           child: SingleChildScrollView(
@@ -392,7 +394,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                   children: [
                     Container(
                       width: (304 / kScreenWidth) * w,
-                      height: (90 / kScreenHeight) * h,
+                      height: (125 / kScreenHeight) * h,
                       child: Row(
                         children: [
                           Column(
@@ -407,16 +409,17 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                                 ),
                               ),
                               Container(
-                                height: 25,
+                                height: 35,
                                 width: 2,
                                 decoration: BoxDecoration(
                                   gradient: LinearGradient(
-                                      colors: [
-                                        index == 0 ? kBlueShade : kGreyShade,
-                                        index == 1 ? kBlueShade : kGreyShade
-                                      ],
-                                      begin: Alignment.topCenter,
-                                      end: Alignment.bottomCenter),
+                                    colors: [
+                                      index == 0 ? kBlueShade : kGreyShade,
+                                      index == 1 ? kBlueShade : kGreyShade
+                                    ],
+                                    begin: Alignment.topCenter,
+                                    end: Alignment.bottomCenter,
+                                  ),
                                 ),
                               ),
                               AnimatedContainer(
@@ -429,16 +432,17 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                                 ),
                               ),
                               Container(
-                                height: 25,
+                                height: 35,
                                 width: 2,
                                 decoration: BoxDecoration(
                                   gradient: LinearGradient(
-                                      colors: [
-                                        index == 1 ? kBlueShade : kGreyShade,
-                                        index == 2 ? kBlueShade : kGreyShade
-                                      ],
-                                      begin: Alignment.topCenter,
-                                      end: Alignment.bottomCenter),
+                                    colors: [
+                                      index == 1 ? kBlueShade : kGreyShade,
+                                      index == 2 ? kBlueShade : kGreyShade
+                                    ],
+                                    begin: Alignment.topCenter,
+                                    end: Alignment.bottomCenter,
+                                  ),
                                 ),
                               ),
                               AnimatedContainer(
@@ -455,34 +459,36 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                           SizedBox(
                             width: 10,
                           ),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                'Enter the Email-id associated with your MyNextMUN account.',
-                                style: robotoLight(
-                                  size: 10,
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Enter the Email-id associated with your MyNextMUN account.',
+                                  style: robotoLight(
+                                    size: 10,
+                                  ),
                                 ),
-                              ),
-                              SizedBox(
-                                height: 26,
-                              ),
-                              Text(
-                                'An autogenerated OTP will be sent to the registered Email-id.',
-                                style: robotoLight(
-                                  size: 10,
+                                SizedBox(
+                                  height: 26,
                                 ),
-                              ),
-                              SizedBox(
-                                height: 26,
-                              ),
-                              Text(
-                                'Use the OTP to reset your password',
-                                style: robotoLight(
-                                  size: 10,
+                                Text(
+                                  'An autogenerated OTP will be sent to the registered Email-id.',
+                                  style: robotoLight(
+                                    size: 10,
+                                  ),
                                 ),
-                              )
-                            ],
+                                SizedBox(
+                                  height: 26,
+                                ),
+                                Text(
+                                  'Use the OTP to reset your password',
+                                  style: robotoLight(
+                                    size: 10,
+                                  ),
+                                )
+                              ],
+                            ),
                           )
                         ],
                       ),
